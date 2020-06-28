@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "color": "^3.1.2",
     "prop-types": "15.7.2",
     "react": "16.11.0",
     "react-native": "0.62.2",
