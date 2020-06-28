@@ -11,7 +11,7 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Text,
+  Text as ReactText,
   StatusBar,
 } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
@@ -20,9 +20,10 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import LoginScreen from './containers/loginScreen/LoginScreen';
+import Text from './baseComponents/text/Text';
 
 
-const App = () => {
+const KantApp = () => {
 
   useEffect( () => {
     SplashScreen.hide();
@@ -30,18 +31,22 @@ const App = () => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar 
+        barStyle="dark-content"
+        backgroundColor="transparent" />
       <SafeAreaView>
         <ScrollView>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                <Text style={styles.highlight}>Text Input</Text> 
-                  
-              </Text>
+              <ReactText style={styles.sectionTitle}>Step One</ReactText>
+              <ReactText style={styles.sectionDescription}>
+                <ReactText style={styles.highlight}>ReactText Input</ReactText> 
+              </ReactText>
               <LoginScreen/>
-                
+              <ReactText style={styles.sectionDescription}>
+                <Text> Text box or Label </Text> 
+              </ReactText>
+              
             </View>
           </View>
         </ScrollView>
@@ -92,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default KantApp;

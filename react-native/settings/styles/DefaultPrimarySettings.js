@@ -47,8 +47,7 @@ export default {
     fontFamily: {
         bold: 'Avenir-Heavy',
         medium: 'Avenir-Medium',
-        regular: 'Avenir-Roman',
-        atocRail: 'ATOC-Rail-Alphabet'
+        regular: 'Avenir-Roman'
     },
     fontFamilyAndroid: {
         bold: 'Roboto-Bold',
