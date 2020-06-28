@@ -6,7 +6,6 @@
  * @flow strict-local
  */
 import React, {useEffect} from 'react';
-
 import {
   SafeAreaView,
   StyleSheet,
@@ -15,12 +14,13 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-
 import SplashScreen from 'react-native-splash-screen';
-
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+
+import LoginScreen from './containers/loginScreen/LoginScreen';
+
 
 const App = () => {
 
@@ -37,9 +37,11 @@ const App = () => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
-                Editj <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
+                <Text style={styles.highlight}>Text Input</Text> 
+                  
               </Text>
+              <LoginScreen/>
+                
             </View>
           </View>
         </ScrollView>
@@ -65,17 +67,20 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
+    paddingBottom: 10,
     fontWeight: '600',
     color: Colors.black,
   },
   sectionDescription: {
     marginTop: 8,
+    paddingBottom: 4,
     fontSize: 18,
     fontWeight: '400',
     color: Colors.dark,
   },
   highlight: {
-    fontWeight: '700',
+    fontWeight: '700'
+    
   },
   footer: {
     color: Colors.dark,
