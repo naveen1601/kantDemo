@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { create } from '../../helpers/PlatformSpecificStyles';
 import TextStyles from './TextStyles';
-import Constants from '../../Constants';
+import Config from '../../Configs';
 
 const Text = (props) => {
 
@@ -26,7 +26,7 @@ const Text = (props) => {
         accessible: true,
         numberOfLines: props.numberOfLines,
         onPress: props.onPress,
-        allowFontScaling: Constants.ALLOW_FONT_SCALING
+        allowFontScaling: Config.ALLOW_FONT_SCALING
     };
 
     if (Platform.OS === 'android')

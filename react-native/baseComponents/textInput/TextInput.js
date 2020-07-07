@@ -96,7 +96,7 @@ TextInput.propTypes = {
     secureTextEntry: PropTypes.bool,
     stacked: PropTypes.bool,
     style: PropTypes.oneOfType([PropTypes.shape(), PropTypes.array]),
-    testID: PropTypes.string.isRequired,
+    testID: PropTypes.string,
     textInputContainerStyle: ViewPropTypes.style,
     value: PropTypes.string.isRequired,
 };

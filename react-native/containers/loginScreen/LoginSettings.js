@@ -1,6 +1,10 @@
 import $primary from '../../settings/styles/DefaultPrimarySettings';
 
 let $_ = {
+  loginOptionBackgroundColor: $primary.secondaryColor,
+  loginOptionBorderColor: $primary.secondaryColor,
+  loginPageBackgroundColor: $primary.primaryColor,
+  loginOptionPaddingTop: $primary.baseGridUnit * 3,
   loginLabelColor: $primary.interfaceColors._3,
   loginLabelPaddingTop: $primary.baseGridUnit * 3,
   loginLabelPaddingBottom: $primary.baseGridUnit * 2,
@@ -19,6 +23,37 @@ let $_ = {
 //   containerHeaderColor: $primary.interfaceColors._3,
 //   registerlabelColor: $primary.primaryColor,
 //   registerlabelFontSize: $primary.baseFontSize + 2
+
+// Testing, Delete after use
+    productName: $primary.productName,
+    toclogo: 'toclogo',
+    toclogoColor: 'white',
+    headerBackgroundColor: $primary.primaryColor,
+    headerPaddingTop: $primary.baseGridUnit * 4,
+    headerPaddingBottom: $primary.baseGridUnit + 10,
+    searchFieldsBackgroundColor: $primary.primaryColor,
+    searchFieldsPadding: $primary.baseGridUnit * 2 ,
+    headerTitleColor: $primary.white,
+    searchBoxPlaceholderColor: $primary.white,
+    switchIconColor: $primary.white,
+    switchIconSize: $primary.baseGridUnit * 4,
+    searchBoxTextInputViewPaddingHorizontal: $primary.baseGridUnit,
+    searchBoxTextInputColor: $primary.white,
+    searchBoxTextInputHeight: $primary.baseGridUnit * 5,
+    cancelBorderColor: $primary.secondaryColor,
+    actionsWrapperBorderTopColor: $primary.interfaceColors._5,
+    actionsWrapperBackgroundColor: $primary.white,
+    searchBoxBorderColor: 'transparent',
+    searchBoxBorderWidth: 0,
+    searchBoxPlaceholderFontSize: $primary.baseFontSize + 4,
+    searchBoxTextInputFontSize: $primary.baseFontSize + 10,
+    searchScrollViewBackgroundColor: $primary.interfaceColors._6,
+    PassengersAndRailCardsModalWrapperMarginBottom: $primary.baseGridUnit * 2,
+    searchScrollViewMargin: $primary.baseGridUnit * 2,
+    carnetTermsAndConditionFontSize: $primary.baseFontSize + 1,
+    carnetTermsAndConditionColor: $primary.interfaceColors._3,
+    newTicketTypeBoxTextColor: $primary.interfaceColors._2,
+    newTicketTypeContainerBorderColor: $primary.interfaceColors._4,
 };
 
 export default $_;

@@ -1,7 +1,7 @@
 export default {
     productName: 'TOC Product',
-    primaryColor: '#68A0CF',
-    secondaryColor: '#68A0CF',
+    primaryColor: '#e9f4f7',
+    secondaryColor: '#255166',
     tertiaryColor: '#A7B9C9',
     underlineColor: '#00A9A5',
     black: '#000000',
