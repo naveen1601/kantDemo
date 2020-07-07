@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import LoginStyles, { PropStyles } from './LoginStyles';
+import LoginStyles, { PropStyles } from './LoginOptionStyles';
 import { create } from '../../helpers/PlatformSpecificStyles';
 import TextInput from '../../baseComponents/textInput/TextInput'
 import Button from '../../baseComponents/button/Button'
@@ -11,7 +11,7 @@ import {
     Animated
 } from 'react-native';
 
-class LoginScreen extends Component {
+class LoginOptionScreen extends Component {
 
     state = {
         userName: '',
@@ -105,8 +105,8 @@ class LoginScreen extends Component {
     }
 }
 
-LoginScreen.propTypes = {
+LoginOptionScreen.propTypes = {
 };
 let styles = create(LoginStyles);
 
-export default LoginScreen;
+export default LoginOptionScreen;

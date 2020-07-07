@@ -8,7 +8,8 @@
 import React, {useEffect} from 'react';
 import ComponentsDemoPage from './ComponentsDemoPage';
 import SplashScreen from 'react-native-splash-screen';
-import LoginScreen from './containers/loginScreen/LoginScreen'
+import LoginOptionScreen from './containers/loginOptionScreen/LoginOptionScreen';
+import KantNavigator from './kantApp/KantNavigator';
 
 
 const KantApp = () => {
@@ -19,7 +20,7 @@ const KantApp = () => {
 
   return (
       // <ComponentsDemoPage/>
-      <LoginScreen/>
+      <KantNavigator/>
   );
 };
 
