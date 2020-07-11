@@ -9,18 +9,30 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, HeaderBackground } from '@react-navigation/stack';
 import LoginOptionScreen from '../containers/loginOptionScreen/LoginOptionScreen';
-import FlatButton from '../baseComponents/button/FlatButton'
+import LoginScreen from '../containers/loginScreen/LoginScreen';
+import GuestScreen from '../containers/guestScreen/GuestScreen'
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="LoginOption" 
+    <Stack.Navigator mode='card' screenOptions={{
+        gestureEnabled: true,
+        headerBackTitleVisible: false
+      }}>
+        <Stack.Screen name="LoginOption" 
             component={LoginOptionScreen} 
             options={{ headerMode: 'none', headerShown : false}}/>
-      {/* <Stack.Screen name="Notifications" component={NotificationsScreen} />
-      <Stack.Screen name="Profile" component={ProfileScreen} />
+
+        <Stack.Screen name="LoginScreen" 
+            component={LoginScreen} 
+            options={{ headerTitle: 'Please Login'}}/>
+            
+        <Stack.Screen name="GuestScreen" 
+            component={GuestScreen} 
+            options={{ headerTitle: 'Guest Login Screen'}}/>
+
+      {/* <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} /> */}
     </Stack.Navigator>
   );
@@ -37,12 +49,6 @@ export default KantNavigator=()=> {
         </NavigationContainer>
     </>
     );
-  }
-
-  const styles = StyleSheet.create({
-    scrollView: {
-        backgroundColor: "#000000",
-    },
-});
+}
 
  

@@ -13,11 +13,16 @@ import {
 
 class LoginOptionScreen extends Component {
 
-    state = {
-        userName: '',
-        password: '',
-        animBottom: new Animated.Value(400),
-    };
+    
+
+    constructor(props){
+        super(props)
+        this.state = {
+            userName: '',
+            password: '',
+            animBottom: new Animated.Value(400),
+        };
+    }
 
     componentDidMount() {
         Animated.spring(
@@ -76,6 +81,9 @@ class LoginOptionScreen extends Component {
     //     );
     // }
 
+    handleLoginButton = () => this.props.navigation.navigate('LoginScreen');
+    handleGuestLogin = () => this.props.navigation.navigate('GuestScreen');
+
     renderLoginOption = () => {
         return (
             <View>
@@ -85,12 +93,12 @@ class LoginOptionScreen extends Component {
                     <View style={styles.loginInputFieldsContainer}>
                         <View style={styles.loginFields}>
                             <Button
-                                onPress={() => { }}
+                                onPress={this.handleLoginButton}
                                 text="Login through user id"
                                 secondaryButton={true}
                             />
                             <Button
-                                onPress={() => { }}
+                                onPress={this.handleGuestLogin}
                                 text="Login as Guest"
                                 secondaryButton={true}
                             />

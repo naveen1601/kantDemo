@@ -18,6 +18,8 @@ import FlatButton from './baseComponents/button/FlatButton';
 import Password from './baseComponents/passwordInput/PasswordInput';
 import _ from 'lodash';
 import Config from './Configs';
+import SelectBox from './baseComponents/selectBox/SelectBox';
+import GradeOptions from './components/gradeOption/GradeOption'
 
 
 export default class ComponentsDemoPage extends Component {
@@ -103,6 +105,8 @@ export default class ComponentsDemoPage extends Component {
                                     autoCapitalize="none"
                                     autoCorrect={false}
                                 />
+                                <ReactText style={styles.highlight}>SelectBox</ReactText>
+                                <GradeOptions options={[1,2,3,4,5]}/>
                             </View>
                         </View>
                     </ScrollView>
