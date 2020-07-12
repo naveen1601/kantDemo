@@ -5,6 +5,8 @@ let SelectBoxStyles = {
         borderColor: $_.borderColor,
         borderWidth: 1,
         borderRadius: 5,
+        marginBottom: $_.boxMarginBottom,
+        marginRight: $_.boxMarginRight,
         width: $_.boxSize, 
         height: $_.boxSize
     },

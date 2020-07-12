@@ -7,12 +7,14 @@ import Text from '../../baseComponents/text/Text';
 import TextInput from '../../baseComponents/textInput/TextInput';
 import Button from '../../baseComponents/button/Button';
 import _ from 'lodash';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 class GuestScreen extends Component {
     state = { 
         name: "",
         grade: 0,
-        
+        nameHasErrors: false,
+        gradeSelected: false
     };
 
     handleNameChange = (name) => {
@@ -20,33 +22,66 @@ class GuestScreen extends Component {
             name
         });
     }
-
     handleGradeSelection =(grade)=>{
         this.setState({ 
             grade
         });
     }
 
-    handleGuestSubmit = () =>{
+    isNameValid =(name) =>{
+        return !_.isEmpty(name)
+    }
+    isGradeValid =(grade) =>{
+        return grade>0;
+    }
 
+    areUserInputValid =() =>{
+        const nameValidation = this.isNameValid(this.state.name);
+        const gradeValidation = this.isGradeValid(this.state.grade);
+        this.setState({
+            nameHasErrors: !nameValidation,
+            gradeNotSelected: !gradeValidation
+        });
+        return nameValidation && gradeValidation;
+    }
+
+    handleGuestSubmit = () =>{
+        if(this.areUserInputValid()){
+            console.log('Submit form')
+        }
     }
     
     render() {
         return (
-            <View style={styles.guestScreen}>
-                <GradeOption options={[1,2,3,4]}
-                    onSelect= {this.handleGradeSelection}
-                    value= {this.state.grade}/>
-                
-                <Text>Enter Name:</Text>
-                <TextInput value={this.state.name}
-                    placeholder= "First Name"
-                    onChangeText= {this.handleNameChange}/>
-                <Button
-                    onPress={() => { }}
-                    text="Submit"
-                />
-            </View>
+            <KeyboardAwareScrollView>
+                <View style={styles.guestScreen}>
+                    <View style={styles.gradeLabelBox}>
+                        <Text style={styles.gradeLabelText}> Choose your grade </Text>
+                        {this.state.gradeNotSelected &&
+                            <Text style={styles.validationErrorText}> Grade is not selected</Text>
+                        }
+                    </View>
+                    <GradeOption options={[1,2,3,4,5,6,7,8,9,10,11,12]}
+                        onSelect= {this.handleGradeSelection}
+                        value= {this.state.grade}/>
+
+                    <View style={styles.nameLabelBox}>
+                        <Text style={styles.nameLabelText}>Enter Name</Text>
+                        <TextInput value={this.state.name}
+                            placeholder= "First Name"
+                            onChangeText= {this.handleNameChange}
+                            hasErrors= {this.state.nameHasErrors}/>
+                        {this.state.nameHasErrors &&
+                            <Text style={styles.validationErrorText}>Please enter valid name</Text>
+                        }
+                        
+                    </View>
+                    <Button
+                        onPress={this.handleGuestSubmit}
+                        text="Submit"
+                    />
+                </View>
+            </KeyboardAwareScrollView>
         );
     }
 }

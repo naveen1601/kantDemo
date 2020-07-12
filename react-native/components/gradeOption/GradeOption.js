@@ -41,7 +41,7 @@ class GradeOption extends Component {
 
 GradeOption.propTypes = {
     onSelect: PropTypes.func,
-    options: PropTypes.shape(),
+    options: PropTypes.array,
     value: PropTypes.string
 };
 
