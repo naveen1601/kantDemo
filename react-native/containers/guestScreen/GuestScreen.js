@@ -7,35 +7,36 @@ import Text from '../../baseComponents/text/Text';
 import TextInput from '../../baseComponents/textInput/TextInput';
 import Button from '../../baseComponents/button/Button';
 import _ from 'lodash';
+import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
+import GuestActions from './GuestActions';
 class GuestScreen extends Component {
-    state = { 
-        name: "",
-        grade: 0,
+    state = {
+        name: _.get(this.props.userData, "name" ),
+        grade: _.get( this.props.userData, "grade"),
         nameHasErrors: false,
         gradeSelected: false
     };
 
     handleNameChange = (name) => {
-        this.setState({ 
+        this.setState({
             name
         });
     }
-    handleGradeSelection =(grade)=>{
-        this.setState({ 
+    handleGradeSelection = (grade) => {
+        this.setState({
             grade
         });
     }
 
-    isNameValid =(name) =>{
+    isNameValid = (name) => {
         return !_.isEmpty(name)
     }
-    isGradeValid =(grade) =>{
-        return grade>0;
+    isGradeValid = (grade) => {
+        return grade > 0;
     }
 
-    areUserInputValid =() =>{
+    areUserInputValid = () => {
         const nameValidation = this.isNameValid(this.state.name);
         const gradeValidation = this.isGradeValid(this.state.grade);
         this.setState({
@@ -45,12 +46,15 @@ class GuestScreen extends Component {
         return nameValidation && gradeValidation;
     }
 
-    handleGuestSubmit = () =>{
-        if(this.areUserInputValid()){
-            console.log('Submit form')
+    handleGuestSubmit = () => {
+        if (this.areUserInputValid()) {
+            this.props.saveGuestUser({
+                name: this.state.name,
+                grade: this.state.grade
+            })
         }
     }
-    
+
     render() {
         return (
             <KeyboardAwareScrollView>
@@ -61,21 +65,21 @@ class GuestScreen extends Component {
                             <Text style={styles.validationErrorText}> Grade is not selected</Text>
                         }
                     </View>
-                    <GradeOption options={[1,2,3,4,5,6,7,8,9,10,11,12]}
-                        onSelect= {this.handleGradeSelection}
-                        value= {this.state.grade}/>
-
+                    <GradeOption options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+                        onSelect={this.handleGradeSelection}
+                        value={this.state.grade} />
+                    
                     <View style={styles.nameLabelBox}>
                         <Text style={styles.nameLabelText}>Enter Name</Text>
                         <TextInput value={this.state.name}
-                            placeholder= "First Name"
-                            onChangeText= {this.handleNameChange}
-                            hasErrors= {this.state.nameHasErrors}/>
+                            placeholder="First Name"
+                            onChangeText={this.handleNameChange}
+                            hasErrors={this.state.nameHasErrors} />
                         {this.state.nameHasErrors &&
                             <Text style={styles.validationErrorText}>Please enter valid name</Text>
                         }
-                        
                     </View>
+                    
                     <Button
                         onPress={this.handleGuestSubmit}
                         text="Submit"
@@ -86,4 +90,20 @@ class GuestScreen extends Component {
     }
 }
 let styles = create(GuestScreenStyles);
-export default GuestScreen;
+
+function mapStateToProps(state) {
+    return {
+        userData: state.login.userData,
+        isGuest: state.login.isGuest
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        saveGuestUser: function(userData) { 
+            dispatch(GuestActions.saveGuestUser(userData));
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GuestScreen);
