@@ -52,6 +52,7 @@ class GuestScreen extends Component {
                 name: this.state.name,
                 grade: this.state.grade
             })
+            this.props.navigation.navigate('QuizOptionScreen');
         }
     }
 

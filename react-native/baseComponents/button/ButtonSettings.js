@@ -2,14 +2,14 @@ import $primary from '../../settings/styles/DefaultPrimarySettings';
 import color from 'color';
 
 let $_ = {
-    buttonPaddingTop: $primary.baseGridUnit + 4.5,
-    buttonPaddingBottom: $primary.baseGridUnit+2.5,
-    buttonPaddingTopAndroid: $primary.baseGridUnit + 5,
-    buttonPaddingBottomAndroid: $primary.baseGridUnit + 4.5,
-    buttonSecondaryPaddingTop: $primary.baseGridUnit + 3.5,
-    buttonSecondaryPaddingBottom: $primary.baseGridUnit + 1.5,
-    buttonSecondaryPaddingTopAndroid: $primary.baseGridUnit + 4,
-    buttonSecondaryPaddingBottomAndroid: $primary.baseGridUnit + 3.5,
+    buttonPaddingTop: $primary.baseGridUnit + 10,
+    buttonPaddingBottom: $primary.baseGridUnit+ 10,
+    buttonPaddingTopAndroid: $primary.baseGridUnit + 10,
+    buttonPaddingBottomAndroid: $primary.baseGridUnit + 10,
+    buttonSecondaryPaddingTop: $primary.baseGridUnit + 10,
+    buttonSecondaryPaddingBottom: $primary.baseGridUnit + 10,
+    buttonSecondaryPaddingTopAndroid: $primary.baseGridUnit + 10,
+    buttonSecondaryPaddingBottomAndroid: $primary.baseGridUnit + 10,
     buttonWrapperMargin: $primary.baseGridUnit*2,
     buttonPrimaryBackgroundColor: $primary.secondaryColor,
     buttonQuaternaryBackgroundColor: $primary.tertiaryColor,

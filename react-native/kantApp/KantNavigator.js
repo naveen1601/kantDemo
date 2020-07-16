@@ -11,6 +11,7 @@ import { createStackNavigator, HeaderBackground } from '@react-navigation/stack'
 import LoginOptionScreen from '../containers/loginOptionScreen/LoginOptionScreen';
 import LoginScreen from '../containers/loginScreen/LoginScreen';
 import GuestScreen from '../containers/guestScreen/GuestScreen'
+import QuizOptionScreen from '../containers/quizOptionScreen/QuizOptionScreen'
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,11 @@ function MyStack() {
             component={GuestScreen} 
             options={{ headerTitle: 'Guest Login Screen'}}/>
 
+        <Stack.Screen name="QuizOptionScreen" 
+            component={QuizOptionScreen} 
+            options={{ title: "",}}/>
+      {/* headerShown: false  // to hide header
+            headerLeft: null //to hide back button*/}
       {/* <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} /> */}
     </Stack.Navigator>
