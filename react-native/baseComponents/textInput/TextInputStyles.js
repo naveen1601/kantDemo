@@ -8,10 +8,6 @@ let TextInputStyles = {
         borderColor: $_.textBorderColor,
         borderWidth: 1,
         backgroundColor: $_.textBackgroundColor,
-        android: {
-            marginRight: 3,
-            marginLeft: 4,
-        }
     },
     textInputContainerError: {
         borderColor: $_.textInputContainerErrorBorderColor,

@@ -8,9 +8,10 @@ import { connect } from 'react-redux';
 
 class QuizOptionScreen extends Component {
     state = {}
+    handlePractiseOffline =()=> this.props.navigation.navigate('OfflineQuizScreen');
     render() {
         return (
-            <View style={styles.quizScreen}>
+            <View>
                 <StudentInfoDisplay name={this.props.name}
                     grade= {this.props.grade}
                     school= {this.props.school}/>
@@ -27,7 +28,7 @@ class QuizOptionScreen extends Component {
                     />
                     
                     <Button
-                        onPress={()=>{}}
+                        onPress={this.handlePractiseOffline}
                         text="Practice Offline"
                         secondaryButton={false}
                     />

@@ -20,7 +20,7 @@ export default {
         marginTop: $_.gradeBoxMarginTop,
         marginBottom: $_.gradeBoxMarginBottom,
     },
-    nameLabelBox:{
+    nameContainer:{
         marginTop: $_.nameBoxMarginTop,
         marginBottom: $_.nameBoxMarginBottom,
     },
@@ -29,4 +29,8 @@ export default {
         paddingBottom: $_.nameTextPaddingBottom,
         paddingLeft: $_.nameTextPaddingLeft
     },
+    nameInputBox:{
+        marginLeft: 3,
+        marginRight: 5,
+    }
 }

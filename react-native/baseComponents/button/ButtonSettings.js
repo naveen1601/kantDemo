@@ -38,7 +38,7 @@ let $_ = {
     buttonShadowWidth: $primary.baseGridUnit-5,
     flatButtonColor: $primary.secondaryColor,
     flatButtonPadding: $primary.baseGridUnit,
-    flatButtonFontSize: $primary.baseFontSize + 2,
+    flatButtonFontSize: $primary.baseFontSize + 8,
     floatingButtonBackgroundColor: $primary.primaryColor,
     floatingButtonShadowColor: $primary.black,
 };

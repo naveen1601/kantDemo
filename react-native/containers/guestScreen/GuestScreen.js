@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { create } from '../../helpers/PlatformSpecificStyles';
 import GuestScreenStyles from './GuestScreenStyles'
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import GradeOption from '../../components/gradeOption/GradeOption'
 import Text from '../../baseComponents/text/Text';
 import TextInput from '../../baseComponents/textInput/TextInput';
 import Button from '../../baseComponents/button/Button';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import PropTypes from 'prop-types';
 import GuestActions from './GuestActions';
 class GuestScreen extends Component {
     state = {
@@ -58,7 +58,7 @@ class GuestScreen extends Component {
 
     render() {
         return (
-            <KeyboardAwareScrollView>
+            <ScrollView keyboardShouldPersistTaps={'always'}>
                 <View style={styles.guestScreen}>
                     <View style={styles.gradeLabelBox}>
                         <Text style={styles.gradeLabelText}> Choose your grade </Text>
@@ -70,15 +70,17 @@ class GuestScreen extends Component {
                         onSelect={this.handleGradeSelection}
                         value={this.state.grade} />
                     
-                    <View style={styles.nameLabelBox}>
+                    <View style={styles.nameContainer}>
                         <Text style={styles.nameLabelText}>Enter Name</Text>
-                        <TextInput value={this.state.name}
-                            placeholder="First Name"
-                            onChangeText={this.handleNameChange}
-                            hasErrors={this.state.nameHasErrors} />
-                        {this.state.nameHasErrors &&
-                            <Text style={styles.validationErrorText}>Please enter valid name</Text>
-                        }
+                        <View style={styles.nameInputBox}>
+                            <TextInput value={this.state.name}
+                                placeholder="First Name"
+                                onChangeText={this.handleNameChange}
+                                hasErrors={this.state.nameHasErrors} />
+                            {this.state.nameHasErrors &&
+                                <Text style={styles.validationErrorText}>Please enter valid name</Text>
+                            }
+                        </View>
                     </View>
                     
                     <Button
@@ -86,7 +88,7 @@ class GuestScreen extends Component {
                         text="Submit"
                     />
                 </View>
-            </KeyboardAwareScrollView>
+            </ScrollView>
         );
     }
 }
@@ -106,5 +108,11 @@ function mapDispatchToProps(dispatch) {
         }
     };
 }
+
+GuestScreen.propTypes = {
+    saveGuestUser: PropTypes.func,
+    userData: PropTypes.object,
+    isGuest: PropTypes.bool
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(GuestScreen);

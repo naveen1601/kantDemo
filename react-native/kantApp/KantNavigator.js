@@ -11,7 +11,8 @@ import { createStackNavigator, HeaderBackground } from '@react-navigation/stack'
 import LoginOptionScreen from '../containers/loginOptionScreen/LoginOptionScreen';
 import LoginScreen from '../containers/loginScreen/LoginScreen';
 import GuestScreen from '../containers/guestScreen/GuestScreen'
-import QuizOptionScreen from '../containers/quizOptionScreen/QuizOptionScreen'
+import QuizOptionScreen from '../containers/quizOptionScreen/QuizOptionScreen';
+import OfflineQuizScreen from '../containers/offlineQuizScreen/OfflineQuizScreen';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,9 @@ function MyStack() {
         <Stack.Screen name="QuizOptionScreen" 
             component={QuizOptionScreen} 
             options={{ title: "",}}/>
+        <Stack.Screen name="OfflineQuizScreen" 
+            component={OfflineQuizScreen} 
+            options={{ headerShown: false}}/>
       {/* headerShown: false  // to hide header
             headerLeft: null //to hide back button*/}
       {/* <Stack.Screen name="Profile" component={ProfileScreen} />
@@ -49,7 +53,7 @@ export default KantNavigator=()=> {
     <>
         <StatusBar
             barStyle="light-content"
-            backgroundColor="#255166" />
+            backgroundColor= "#255166" />
         <NavigationContainer>
             <MyStack />
         </NavigationContainer>

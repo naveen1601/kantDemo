@@ -3,7 +3,8 @@ import $_ from './QuizOptionScreenSettings';
 export default {
     
     quizOptionButtonContainer:{
-        padding:20
+        padding:10,
+        paddingTop:20
     }
 
 }

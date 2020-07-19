@@ -3,13 +3,14 @@ import { View } from 'react-native';
 import Text from '../../baseComponents/text/Text';
 import { create } from '../../helpers/PlatformSpecificStyles';
 import StudentInfoDisplayStyles from './StudentInfoDisplayStyles';
+import PropTypes from 'prop-types';
 
 
 StudentInfoDisplay = (props) => {
 
     let name = props.name ? props.name.toUpperCase() : "";
     
-    functionrenderIcon = () => {
+    renderIcon = () => {
         let initial = name ? name.charAt(0) : "";
         return (
             <View style={styles.userInitialWrapper}>
@@ -21,7 +22,7 @@ StudentInfoDisplay = (props) => {
     };
     return (
         <View style={styles.studentInfoContainer}>
-            {functionrenderIcon()}
+            {renderIcon()}
             <View style={styles.userInfoDivision}>
                 <Text style={styles.displayName}>{name}</Text>
                 <Text style={styles.displayGradeLabel}>Grade: <Text style={styles.displayGradeValue}>{props.grade}</Text></Text>
@@ -33,6 +34,13 @@ StudentInfoDisplay = (props) => {
     );
 
 }
+
+StudentInfoDisplay.propTypes = {
+    name: PropTypes.string.isRequired,
+    grade: PropTypes.number,
+    school: PropTypes.string,
+    
+};
 
 let styles = create(StudentInfoDisplayStyles) 
 
