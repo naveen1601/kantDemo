@@ -1,0 +1,4880 @@
+[
+ {
+   "id": 16923,
+   "subject": "TXT-Math05",
+   "competency": 470,
+   "level": 0
+ },
+ {
+   "id": 16924,
+   "subject": "TXT-Math05",
+   "competency": 480,
+   "level": 0
+ },
+ {
+   "id": 16925,
+   "subject": "TXT-Math05",
+   "competency": 490,
+   "level": 1
+ },
+ {
+   "id": 16926,
+   "subject": "TXT-Math05",
+   "competency": 500,
+   "level": 1
+ },
+ {
+   "id": 16927,
+   "subject": "TXT-Math05",
+   "competency": 510,
+   "level": 2
+ },
+ {
+   "id": 16928,
+   "subject": "TXT-Math05",
+   "competency": 520,
+   "level": 2
+ },
+ {
+   "id": 16929,
+   "subject": "TXT-Math05",
+   "competency": 530,
+   "level": 3
+ },
+ {
+   "id": 16930,
+   "subject": "TXT-Math05",
+   "competency": 540,
+   "level": 3
+ },
+ {
+   "id": 16931,
+   "subject": "TXT-Math05",
+   "competency": 550,
+   "level": 4
+ },
+ {
+   "id": 16932,
+   "subject": "TXT-Math05",
+   "competency": 560,
+   "level": 4
+ },
+ {
+   "id": 16933,
+   "subject": "TXT-Math05",
+   "competency": 570,
+   "level": 5
+ },
+ {
+   "id": 16934,
+   "subject": "TXT-Math05",
+   "competency": 580,
+   "level": 5
+ },
+ {
+   "id": 16935,
+   "subject": "TXT-Math05",
+   "competency": 590,
+   "level": 6
+ },
+ {
+   "id": 16936,
+   "subject": "TXT-Math05",
+   "competency": 600,
+   "level": 6
+ },
+ {
+   "id": 16937,
+   "subject": "TXT-Math05",
+   "competency": 610,
+   "level": 7
+ },
+ {
+   "id": 16938,
+   "subject": "TXT-Math05",
+   "competency": 620,
+   "level": 7
+ },
+ {
+   "id": 16939,
+   "subject": "TXT-Math05",
+   "competency": 630,
+   "level": 8
+ },
+ {
+   "id": 16940,
+   "subject": "TXT-GK",
+   "competency": 400,
+   "level": 0
+ },
+ {
+   "id": 16941,
+   "subject": "TXT-GK",
+   "competency": 425,
+   "level": 0
+ },
+ {
+   "id": 16942,
+   "subject": "TXT-GK",
+   "competency": 450,
+   "level": 1
+ },
+ {
+   "id": 16943,
+   "subject": "TXT-GK",
+   "competency": 475,
+   "level": 1
+ },
+ {
+   "id": 16944,
+   "subject": "TXT-GK",
+   "competency": 500,
+   "level": 2
+ },
+ {
+   "id": 16945,
+   "subject": "TXT-GK",
+   "competency": 525,
+   "level": 2
+ },
+ {
+   "id": 16946,
+   "subject": "TXT-GK",
+   "competency": 550,
+   "level": 3
+ },
+ {
+   "id": 16947,
+   "subject": "TXT-GK",
+   "competency": 575,
+   "level": 3
+ },
+ {
+   "id": 16948,
+   "subject": "TXT-GK",
+   "competency": 600,
+   "level": 4
+ },
+ {
+   "id": 16949,
+   "subject": "TXT-GK",
+   "competency": 625,
+   "level": 4
+ },
+ {
+   "id": 16950,
+   "subject": "TXT-GK",
+   "competency": 650,
+   "level": 5
+ },
+ {
+   "id": 16951,
+   "subject": "TXT-GK",
+   "competency": 675,
+   "level": 5
+ },
+ {
+   "id": 16952,
+   "subject": "TXT-GK",
+   "competency": 700,
+   "level": 6
+ },
+ {
+   "id": 16953,
+   "subject": "TXT-GK",
+   "competency": 725,
+   "level": 6
+ },
+ {
+   "id": 16954,
+   "subject": "TXT-GK",
+   "competency": 750,
+   "level": 7
+ },
+ {
+   "id": 16955,
+   "subject": "TXT-GK",
+   "competency": 775,
+   "level": 7
+ },
+ {
+   "id": 16956,
+   "subject": "TXT-GK",
+   "competency": 800,
+   "level": 8
+ },
+ {
+   "id": 16957,
+   "subject": "TXT-Science06",
+   "competency": 570,
+   "level": 0
+ },
+ {
+   "id": 16958,
+   "subject": "TXT-Science06",
+   "competency": 580,
+   "level": 0
+ },
+ {
+   "id": 16959,
+   "subject": "TXT-Science06",
+   "competency": 590,
+   "level": 1
+ },
+ {
+   "id": 16960,
+   "subject": "TXT-Science06",
+   "competency": 600,
+   "level": 1
+ },
+ {
+   "id": 16961,
+   "subject": "TXT-Science06",
+   "competency": 610,
+   "level": 2
+ },
+ {
+   "id": 16962,
+   "subject": "TXT-Science06",
+   "competency": 620,
+   "level": 2
+ },
+ {
+   "id": 16963,
+   "subject": "TXT-Science06",
+   "competency": 630,
+   "level": 3
+ },
+ {
+   "id": 16964,
+   "subject": "TXT-Science06",
+   "competency": 640,
+   "level": 3
+ },
+ {
+   "id": 16965,
+   "subject": "TXT-Science06",
+   "competency": 650,
+   "level": 4
+ },
+ {
+   "id": 16966,
+   "subject": "TXT-Science06",
+   "competency": 660,
+   "level": 4
+ },
+ {
+   "id": 16967,
+   "subject": "TXT-Science06",
+   "competency": 670,
+   "level": 5
+ },
+ {
+   "id": 16968,
+   "subject": "TXT-Science06",
+   "competency": 680,
+   "level": 5
+ },
+ {
+   "id": 16969,
+   "subject": "TXT-Science06",
+   "competency": 690,
+   "level": 6
+ },
+ {
+   "id": 16970,
+   "subject": "TXT-Science06",
+   "competency": 700,
+   "level": 6
+ },
+ {
+   "id": 16971,
+   "subject": "TXT-Science06",
+   "competency": 710,
+   "level": 7
+ },
+ {
+   "id": 16972,
+   "subject": "TXT-Science06",
+   "competency": 720,
+   "level": 7
+ },
+ {
+   "id": 16973,
+   "subject": "TXT-Science06",
+   "competency": 730,
+   "level": 8
+ },
+ {
+   "id": 16974,
+   "subject": "TXT-Science07",
+   "competency": 670,
+   "level": 0
+ },
+ {
+   "id": 16975,
+   "subject": "TXT-Science07",
+   "competency": 680,
+   "level": 0
+ },
+ {
+   "id": 16976,
+   "subject": "TXT-Science07",
+   "competency": 690,
+   "level": 1
+ },
+ {
+   "id": 16977,
+   "subject": "TXT-Science07",
+   "competency": 700,
+   "level": 1
+ },
+ {
+   "id": 16978,
+   "subject": "TXT-Science07",
+   "competency": 710,
+   "level": 2
+ },
+ {
+   "id": 16979,
+   "subject": "TXT-Science07",
+   "competency": 720,
+   "level": 2
+ },
+ {
+   "id": 16980,
+   "subject": "TXT-Science07",
+   "competency": 730,
+   "level": 3
+ },
+ {
+   "id": 16981,
+   "subject": "TXT-Science07",
+   "competency": 740,
+   "level": 3
+ },
+ {
+   "id": 16982,
+   "subject": "TXT-Science07",
+   "competency": 750,
+   "level": 4
+ },
+ {
+   "id": 16983,
+   "subject": "TXT-Science07",
+   "competency": 760,
+   "level": 4
+ },
+ {
+   "id": 16984,
+   "subject": "TXT-Science07",
+   "competency": 770,
+   "level": 5
+ },
+ {
+   "id": 16985,
+   "subject": "TXT-Science07",
+   "competency": 780,
+   "level": 5
+ },
+ {
+   "id": 16986,
+   "subject": "TXT-Science07",
+   "competency": 790,
+   "level": 6
+ },
+ {
+   "id": 16987,
+   "subject": "TXT-Science07",
+   "competency": 800,
+   "level": 6
+ },
+ {
+   "id": 16988,
+   "subject": "TXT-Science07",
+   "competency": 810,
+   "level": 7
+ },
+ {
+   "id": 16989,
+   "subject": "TXT-Science07",
+   "competency": 820,
+   "level": 7
+ },
+ {
+   "id": 16990,
+   "subject": "TXT-Science07",
+   "competency": 830,
+   "level": 8
+ },
+ {
+   "id": 16991,
+   "subject": "TXT-Math07",
+   "competency": 670,
+   "level": 0
+ },
+ {
+   "id": 16992,
+   "subject": "TXT-Math07",
+   "competency": 680,
+   "level": 0
+ },
+ {
+   "id": 16993,
+   "subject": "TXT-Math07",
+   "competency": 690,
+   "level": 1
+ },
+ {
+   "id": 16994,
+   "subject": "TXT-Math07",
+   "competency": 700,
+   "level": 1
+ },
+ {
+   "id": 16995,
+   "subject": "TXT-Math07",
+   "competency": 710,
+   "level": 2
+ },
+ {
+   "id": 16996,
+   "subject": "TXT-Math07",
+   "competency": 720,
+   "level": 2
+ },
+ {
+   "id": 16997,
+   "subject": "TXT-Math07",
+   "competency": 730,
+   "level": 3
+ },
+ {
+   "id": 16998,
+   "subject": "TXT-Math07",
+   "competency": 740,
+   "level": 3
+ },
+ {
+   "id": 16999,
+   "subject": "TXT-Math07",
+   "competency": 750,
+   "level": 4
+ },
+ {
+   "id": 17000,
+   "subject": "TXT-Math07",
+   "competency": 760,
+   "level": 4
+ },
+ {
+   "id": 17001,
+   "subject": "TXT-Math07",
+   "competency": 770,
+   "level": 5
+ },
+ {
+   "id": 17002,
+   "subject": "TXT-Math07",
+   "competency": 780,
+   "level": 5
+ },
+ {
+   "id": 17003,
+   "subject": "TXT-Math07",
+   "competency": 790,
+   "level": 6
+ },
+ {
+   "id": 17004,
+   "subject": "TXT-Math07",
+   "competency": 800,
+   "level": 6
+ },
+ {
+   "id": 17005,
+   "subject": "TXT-Math07",
+   "competency": 810,
+   "level": 7
+ },
+ {
+   "id": 17006,
+   "subject": "TXT-Math07",
+   "competency": 820,
+   "level": 7
+ },
+ {
+   "id": 17007,
+   "subject": "TXT-Math07",
+   "competency": 830,
+   "level": 8
+ },
+ {
+   "id": 17008,
+   "subject": "TXT-Math08",
+   "competency": 770,
+   "level": 0
+ },
+ {
+   "id": 17009,
+   "subject": "TXT-Math08",
+   "competency": 780,
+   "level": 0
+ },
+ {
+   "id": 17010,
+   "subject": "TXT-Math08",
+   "competency": 790,
+   "level": 1
+ },
+ {
+   "id": 17011,
+   "subject": "TXT-Math08",
+   "competency": 800,
+   "level": 1
+ },
+ {
+   "id": 17012,
+   "subject": "TXT-Math08",
+   "competency": 810,
+   "level": 2
+ },
+ {
+   "id": 17013,
+   "subject": "TXT-Math08",
+   "competency": 820,
+   "level": 2
+ },
+ {
+   "id": 17014,
+   "subject": "TXT-Math08",
+   "competency": 830,
+   "level": 3
+ },
+ {
+   "id": 17015,
+   "subject": "TXT-Math08",
+   "competency": 840,
+   "level": 3
+ },
+ {
+   "id": 17016,
+   "subject": "TXT-Math08",
+   "competency": 850,
+   "level": 4
+ },
+ {
+   "id": 17017,
+   "subject": "TXT-Math08",
+   "competency": 860,
+   "level": 4
+ },
+ {
+   "id": 17018,
+   "subject": "TXT-Math08",
+   "competency": 870,
+   "level": 5
+ },
+ {
+   "id": 17019,
+   "subject": "TXT-Math08",
+   "competency": 880,
+   "level": 5
+ },
+ {
+   "id": 17020,
+   "subject": "TXT-Math08",
+   "competency": 890,
+   "level": 6
+ },
+ {
+   "id": 17021,
+   "subject": "TXT-Math08",
+   "competency": 900,
+   "level": 6
+ },
+ {
+   "id": 17022,
+   "subject": "TXT-Math08",
+   "competency": 910,
+   "level": 7
+ },
+ {
+   "id": 17023,
+   "subject": "TXT-Math08",
+   "competency": 920,
+   "level": 7
+ },
+ {
+   "id": 17024,
+   "subject": "TXT-Math08",
+   "competency": 930,
+   "level": 8
+ },
+ {
+   "id": 17025,
+   "subject": "TXT-English02",
+   "competency": 170,
+   "level": 0
+ },
+ {
+   "id": 17026,
+   "subject": "TXT-English02",
+   "competency": 190,
+   "level": 1
+ },
+ {
+   "id": 17027,
+   "subject": "TXT-English02",
+   "competency": 210,
+   "level": 2
+ },
+ {
+   "id": 17028,
+   "subject": "TXT-English02",
+   "competency": 230,
+   "level": 3
+ },
+ {
+   "id": 17029,
+   "subject": "TXT-English02",
+   "competency": 250,
+   "level": 4
+ },
+ {
+   "id": 17030,
+   "subject": "TXT-English02",
+   "competency": 270,
+   "level": 5
+ },
+ {
+   "id": 17031,
+   "subject": "TXT-English02",
+   "competency": 290,
+   "level": 6
+ },
+ {
+   "id": 17032,
+   "subject": "TXT-English02",
+   "competency": 310,
+   "level": 7
+ },
+ {
+   "id": 17033,
+   "subject": "TXT-English02",
+   "competency": 330,
+   "level": 8
+ },
+ {
+   "id": 17034,
+   "subject": "TXT-Science09",
+   "competency": 870,
+   "level": 0
+ },
+ {
+   "id": 17035,
+   "subject": "TXT-Science09",
+   "competency": 880,
+   "level": 0
+ },
+ {
+   "id": 17036,
+   "subject": "TXT-Science09",
+   "competency": 890,
+   "level": 1
+ },
+ {
+   "id": 17037,
+   "subject": "TXT-Science09",
+   "competency": 900,
+   "level": 1
+ },
+ {
+   "id": 17038,
+   "subject": "TXT-Science09",
+   "competency": 910,
+   "level": 2
+ },
+ {
+   "id": 17039,
+   "subject": "TXT-Science09",
+   "competency": 920,
+   "level": 2
+ },
+ {
+   "id": 17040,
+   "subject": "TXT-Science09",
+   "competency": 930,
+   "level": 3
+ },
+ {
+   "id": 17041,
+   "subject": "TXT-Science09",
+   "competency": 940,
+   "level": 3
+ },
+ {
+   "id": 17042,
+   "subject": "TXT-Science09",
+   "competency": 950,
+   "level": 4
+ },
+ {
+   "id": 17043,
+   "subject": "TXT-Science09",
+   "competency": 960,
+   "level": 4
+ },
+ {
+   "id": 17044,
+   "subject": "TXT-Science09",
+   "competency": 970,
+   "level": 5
+ },
+ {
+   "id": 17045,
+   "subject": "TXT-Science09",
+   "competency": 980,
+   "level": 5
+ },
+ {
+   "id": 17046,
+   "subject": "TXT-Science09",
+   "competency": 990,
+   "level": 6
+ },
+ {
+   "id": 17047,
+   "subject": "TXT-Science09",
+   "competency": 1000,
+   "level": 6
+ },
+ {
+   "id": 17048,
+   "subject": "TXT-Science09",
+   "competency": 1010,
+   "level": 7
+ },
+ {
+   "id": 17049,
+   "subject": "TXT-Science09",
+   "competency": 1020,
+   "level": 7
+ },
+ {
+   "id": 17050,
+   "subject": "TXT-Science09",
+   "competency": 1030,
+   "level": 8
+ },
+ {
+   "id": 17051,
+   "subject": "TXT-Math09",
+   "competency": 870,
+   "level": 0
+ },
+ {
+   "id": 17052,
+   "subject": "TXT-Math09",
+   "competency": 880,
+   "level": 0
+ },
+ {
+   "id": 17053,
+   "subject": "TXT-Math09",
+   "competency": 890,
+   "level": 1
+ },
+ {
+   "id": 17054,
+   "subject": "TXT-Math09",
+   "competency": 900,
+   "level": 1
+ },
+ {
+   "id": 17055,
+   "subject": "TXT-Math09",
+   "competency": 910,
+   "level": 2
+ },
+ {
+   "id": 17056,
+   "subject": "TXT-Math09",
+   "competency": 920,
+   "level": 2
+ },
+ {
+   "id": 17057,
+   "subject": "TXT-Math09",
+   "competency": 930,
+   "level": 3
+ },
+ {
+   "id": 17058,
+   "subject": "TXT-Math09",
+   "competency": 940,
+   "level": 3
+ },
+ {
+   "id": 17059,
+   "subject": "TXT-Math09",
+   "competency": 950,
+   "level": 4
+ },
+ {
+   "id": 17060,
+   "subject": "TXT-Math09",
+   "competency": 960,
+   "level": 4
+ },
+ {
+   "id": 17061,
+   "subject": "TXT-Math09",
+   "competency": 970,
+   "level": 5
+ },
+ {
+   "id": 17062,
+   "subject": "TXT-Math09",
+   "competency": 980,
+   "level": 5
+ },
+ {
+   "id": 17063,
+   "subject": "TXT-Math09",
+   "competency": 990,
+   "level": 6
+ },
+ {
+   "id": 17064,
+   "subject": "TXT-Math09",
+   "competency": 1000,
+   "level": 6
+ },
+ {
+   "id": 17065,
+   "subject": "TXT-Math09",
+   "competency": 1010,
+   "level": 7
+ },
+ {
+   "id": 17066,
+   "subject": "TXT-Math09",
+   "competency": 1020,
+   "level": 7
+ },
+ {
+   "id": 17067,
+   "subject": "TXT-Math09",
+   "competency": 1030,
+   "level": 8
+ },
+ {
+   "id": 17068,
+   "subject": "TXT-Science08",
+   "competency": 770,
+   "level": 0
+ },
+ {
+   "id": 17069,
+   "subject": "TXT-Science08",
+   "competency": 780,
+   "level": 0
+ },
+ {
+   "id": 17070,
+   "subject": "TXT-Science08",
+   "competency": 790,
+   "level": 1
+ },
+ {
+   "id": 17071,
+   "subject": "TXT-Science08",
+   "competency": 800,
+   "level": 1
+ },
+ {
+   "id": 17072,
+   "subject": "TXT-Science08",
+   "competency": 810,
+   "level": 2
+ },
+ {
+   "id": 17073,
+   "subject": "TXT-Science08",
+   "competency": 820,
+   "level": 2
+ },
+ {
+   "id": 17074,
+   "subject": "TXT-Science08",
+   "competency": 830,
+   "level": 3
+ },
+ {
+   "id": 17075,
+   "subject": "TXT-Science08",
+   "competency": 840,
+   "level": 3
+ },
+ {
+   "id": 17076,
+   "subject": "TXT-Science08",
+   "competency": 850,
+   "level": 4
+ },
+ {
+   "id": 17077,
+   "subject": "TXT-Science08",
+   "competency": 860,
+   "level": 4
+ },
+ {
+   "id": 17078,
+   "subject": "TXT-Science08",
+   "competency": 870,
+   "level": 5
+ },
+ {
+   "id": 17079,
+   "subject": "TXT-Science08",
+   "competency": 880,
+   "level": 5
+ },
+ {
+   "id": 17080,
+   "subject": "TXT-Science08",
+   "competency": 890,
+   "level": 6
+ },
+ {
+   "id": 17081,
+   "subject": "TXT-Science08",
+   "competency": 900,
+   "level": 6
+ },
+ {
+   "id": 17082,
+   "subject": "TXT-Science08",
+   "competency": 910,
+   "level": 7
+ },
+ {
+   "id": 17083,
+   "subject": "TXT-Science08",
+   "competency": 920,
+   "level": 7
+ },
+ {
+   "id": 17084,
+   "subject": "TXT-Science08",
+   "competency": 930,
+   "level": 8
+ },
+ {
+   "id": 17085,
+   "subject": "TXT-Science10",
+   "competency": 970,
+   "level": 0
+ },
+ {
+   "id": 17086,
+   "subject": "TXT-Science10",
+   "competency": 980,
+   "level": 0
+ },
+ {
+   "id": 17087,
+   "subject": "TXT-Science10",
+   "competency": 990,
+   "level": 1
+ },
+ {
+   "id": 17088,
+   "subject": "TXT-Science10",
+   "competency": 1000,
+   "level": 1
+ },
+ {
+   "id": 17089,
+   "subject": "TXT-Science10",
+   "competency": 1010,
+   "level": 2
+ },
+ {
+   "id": 17090,
+   "subject": "TXT-Science10",
+   "competency": 1020,
+   "level": 2
+ },
+ {
+   "id": 17091,
+   "subject": "TXT-Science10",
+   "competency": 1030,
+   "level": 3
+ },
+ {
+   "id": 17092,
+   "subject": "TXT-Science10",
+   "competency": 1040,
+   "level": 3
+ },
+ {
+   "id": 17093,
+   "subject": "TXT-Science10",
+   "competency": 1050,
+   "level": 4
+ },
+ {
+   "id": 17094,
+   "subject": "TXT-Science10",
+   "competency": 1060,
+   "level": 4
+ },
+ {
+   "id": 17095,
+   "subject": "TXT-Science10",
+   "competency": 1070,
+   "level": 5
+ },
+ {
+   "id": 17096,
+   "subject": "TXT-Science10",
+   "competency": 1080,
+   "level": 5
+ },
+ {
+   "id": 17097,
+   "subject": "TXT-Science10",
+   "competency": 1090,
+   "level": 6
+ },
+ {
+   "id": 17098,
+   "subject": "TXT-Science10",
+   "competency": 1100,
+   "level": 6
+ },
+ {
+   "id": 17099,
+   "subject": "TXT-Science10",
+   "competency": 1110,
+   "level": 7
+ },
+ {
+   "id": 17100,
+   "subject": "TXT-Science10",
+   "competency": 1120,
+   "level": 7
+ },
+ {
+   "id": 17101,
+   "subject": "TXT-Science10",
+   "competency": 1130,
+   "level": 8
+ },
+ {
+   "id": 17102,
+   "subject": "TXT-Math10",
+   "competency": 970,
+   "level": 0
+ },
+ {
+   "id": 17103,
+   "subject": "TXT-Math10",
+   "competency": 980,
+   "level": 0
+ },
+ {
+   "id": 17104,
+   "subject": "TXT-Math10",
+   "competency": 990,
+   "level": 1
+ },
+ {
+   "id": 17105,
+   "subject": "TXT-Math10",
+   "competency": 1000,
+   "level": 1
+ },
+ {
+   "id": 17106,
+   "subject": "TXT-Math10",
+   "competency": 1010,
+   "level": 2
+ },
+ {
+   "id": 17107,
+   "subject": "TXT-Math10",
+   "competency": 1020,
+   "level": 2
+ },
+ {
+   "id": 17108,
+   "subject": "TXT-Math10",
+   "competency": 1030,
+   "level": 3
+ },
+ {
+   "id": 17109,
+   "subject": "TXT-Math10",
+   "competency": 1040,
+   "level": 3
+ },
+ {
+   "id": 17110,
+   "subject": "TXT-Math10",
+   "competency": 1050,
+   "level": 4
+ },
+ {
+   "id": 17111,
+   "subject": "TXT-Math10",
+   "competency": 1060,
+   "level": 4
+ },
+ {
+   "id": 17112,
+   "subject": "TXT-Math10",
+   "competency": 1070,
+   "level": 5
+ },
+ {
+   "id": 17113,
+   "subject": "TXT-Math10",
+   "competency": 1080,
+   "level": 5
+ },
+ {
+   "id": 17114,
+   "subject": "TXT-Math10",
+   "competency": 1090,
+   "level": 6
+ },
+ {
+   "id": 17115,
+   "subject": "TXT-Math10",
+   "competency": 1100,
+   "level": 6
+ },
+ {
+   "id": 17116,
+   "subject": "TXT-Math10",
+   "competency": 1110,
+   "level": 7
+ },
+ {
+   "id": 17117,
+   "subject": "TXT-Math10",
+   "competency": 1120,
+   "level": 7
+ },
+ {
+   "id": 17118,
+   "subject": "TXT-Math10",
+   "competency": 1130,
+   "level": 8
+ },
+ {
+   "id": 17119,
+   "subject": "TXT-Physics11",
+   "competency": 1070,
+   "level": 0
+ },
+ {
+   "id": 17120,
+   "subject": "TXT-Physics11",
+   "competency": 1080,
+   "level": 0
+ },
+ {
+   "id": 17121,
+   "subject": "TXT-Physics11",
+   "competency": 1090,
+   "level": 1
+ },
+ {
+   "id": 17122,
+   "subject": "TXT-Physics11",
+   "competency": 1100,
+   "level": 1
+ },
+ {
+   "id": 17123,
+   "subject": "TXT-Physics11",
+   "competency": 1110,
+   "level": 2
+ },
+ {
+   "id": 17124,
+   "subject": "TXT-Physics11",
+   "competency": 1120,
+   "level": 2
+ },
+ {
+   "id": 17125,
+   "subject": "TXT-Physics11",
+   "competency": 1130,
+   "level": 3
+ },
+ {
+   "id": 17126,
+   "subject": "TXT-Physics11",
+   "competency": 1140,
+   "level": 3
+ },
+ {
+   "id": 17127,
+   "subject": "TXT-Physics11",
+   "competency": 1150,
+   "level": 4
+ },
+ {
+   "id": 17128,
+   "subject": "TXT-Physics11",
+   "competency": 1160,
+   "level": 4
+ },
+ {
+   "id": 17129,
+   "subject": "TXT-Physics11",
+   "competency": 1170,
+   "level": 5
+ },
+ {
+   "id": 17130,
+   "subject": "TXT-Physics11",
+   "competency": 1180,
+   "level": 5
+ },
+ {
+   "id": 17131,
+   "subject": "TXT-Physics11",
+   "competency": 1190,
+   "level": 6
+ },
+ {
+   "id": 17132,
+   "subject": "TXT-Physics11",
+   "competency": 1200,
+   "level": 6
+ },
+ {
+   "id": 17133,
+   "subject": "TXT-Physics11",
+   "competency": 1210,
+   "level": 7
+ },
+ {
+   "id": 17134,
+   "subject": "TXT-Physics11",
+   "competency": 1220,
+   "level": 7
+ },
+ {
+   "id": 17135,
+   "subject": "TXT-Physics11",
+   "competency": 1230,
+   "level": 8
+ },
+ {
+   "id": 17136,
+   "subject": "TXT-Math11",
+   "competency": 1070,
+   "level": 0
+ },
+ {
+   "id": 17137,
+   "subject": "TXT-Math11",
+   "competency": 1080,
+   "level": 0
+ },
+ {
+   "id": 17138,
+   "subject": "TXT-Math11",
+   "competency": 1090,
+   "level": 1
+ },
+ {
+   "id": 17139,
+   "subject": "TXT-Math11",
+   "competency": 1100,
+   "level": 1
+ },
+ {
+   "id": 17140,
+   "subject": "TXT-Math11",
+   "competency": 1110,
+   "level": 2
+ },
+ {
+   "id": 17141,
+   "subject": "TXT-Math11",
+   "competency": 1120,
+   "level": 2
+ },
+ {
+   "id": 17142,
+   "subject": "TXT-Math11",
+   "competency": 1130,
+   "level": 3
+ },
+ {
+   "id": 17143,
+   "subject": "TXT-Math11",
+   "competency": 1140,
+   "level": 3
+ },
+ {
+   "id": 17144,
+   "subject": "TXT-Math11",
+   "competency": 1150,
+   "level": 4
+ },
+ {
+   "id": 17145,
+   "subject": "TXT-Math11",
+   "competency": 1160,
+   "level": 4
+ },
+ {
+   "id": 17146,
+   "subject": "TXT-Math11",
+   "competency": 1170,
+   "level": 5
+ },
+ {
+   "id": 17147,
+   "subject": "TXT-Math11",
+   "competency": 1180,
+   "level": 5
+ },
+ {
+   "id": 17148,
+   "subject": "TXT-Math11",
+   "competency": 1190,
+   "level": 6
+ },
+ {
+   "id": 17149,
+   "subject": "TXT-Math11",
+   "competency": 1200,
+   "level": 6
+ },
+ {
+   "id": 17150,
+   "subject": "TXT-Math11",
+   "competency": 1210,
+   "level": 7
+ },
+ {
+   "id": 17151,
+   "subject": "TXT-Math11",
+   "competency": 1220,
+   "level": 7
+ },
+ {
+   "id": 17152,
+   "subject": "TXT-Math11",
+   "competency": 1230,
+   "level": 8
+ },
+ {
+   "id": 17153,
+   "subject": "TXT-Chem11",
+   "competency": 1070,
+   "level": 0
+ },
+ {
+   "id": 17154,
+   "subject": "TXT-Chem11",
+   "competency": 1080,
+   "level": 0
+ },
+ {
+   "id": 17155,
+   "subject": "TXT-Chem11",
+   "competency": 1090,
+   "level": 1
+ },
+ {
+   "id": 17156,
+   "subject": "TXT-Chem11",
+   "competency": 1100,
+   "level": 1
+ },
+ {
+   "id": 17157,
+   "subject": "TXT-Chem11",
+   "competency": 1110,
+   "level": 2
+ },
+ {
+   "id": 17158,
+   "subject": "TXT-Chem11",
+   "competency": 1120,
+   "level": 2
+ },
+ {
+   "id": 17159,
+   "subject": "TXT-Chem11",
+   "competency": 1130,
+   "level": 3
+ },
+ {
+   "id": 17160,
+   "subject": "TXT-Chem11",
+   "competency": 1140,
+   "level": 3
+ },
+ {
+   "id": 17161,
+   "subject": "TXT-Chem11",
+   "competency": 1150,
+   "level": 4
+ },
+ {
+   "id": 17162,
+   "subject": "TXT-Chem11",
+   "competency": 1160,
+   "level": 4
+ },
+ {
+   "id": 17163,
+   "subject": "TXT-Chem11",
+   "competency": 1170,
+   "level": 5
+ },
+ {
+   "id": 17164,
+   "subject": "TXT-Chem11",
+   "competency": 1180,
+   "level": 5
+ },
+ {
+   "id": 17165,
+   "subject": "TXT-Chem11",
+   "competency": 1190,
+   "level": 6
+ },
+ {
+   "id": 17166,
+   "subject": "TXT-Chem11",
+   "competency": 1200,
+   "level": 6
+ },
+ {
+   "id": 17167,
+   "subject": "TXT-Chem11",
+   "competency": 1210,
+   "level": 7
+ },
+ {
+   "id": 17168,
+   "subject": "TXT-Chem11",
+   "competency": 1220,
+   "level": 7
+ },
+ {
+   "id": 17169,
+   "subject": "TXT-Chem11",
+   "competency": 1230,
+   "level": 8
+ },
+ {
+   "id": 17170,
+   "subject": "TXT-Math06",
+   "competency": 570,
+   "level": 0
+ },
+ {
+   "id": 17171,
+   "subject": "TXT-Math06",
+   "competency": 580,
+   "level": 0
+ },
+ {
+   "id": 17172,
+   "subject": "TXT-Math06",
+   "competency": 590,
+   "level": 1
+ },
+ {
+   "id": 17173,
+   "subject": "TXT-Math06",
+   "competency": 600,
+   "level": 1
+ },
+ {
+   "id": 17174,
+   "subject": "TXT-Math06",
+   "competency": 610,
+   "level": 2
+ },
+ {
+   "id": 17175,
+   "subject": "TXT-Math06",
+   "competency": 620,
+   "level": 2
+ },
+ {
+   "id": 17176,
+   "subject": "TXT-Math06",
+   "competency": 630,
+   "level": 3
+ },
+ {
+   "id": 17177,
+   "subject": "TXT-Math06",
+   "competency": 640,
+   "level": 3
+ },
+ {
+   "id": 17178,
+   "subject": "TXT-Math06",
+   "competency": 650,
+   "level": 4
+ },
+ {
+   "id": 17179,
+   "subject": "TXT-Math06",
+   "competency": 660,
+   "level": 4
+ },
+ {
+   "id": 17180,
+   "subject": "TXT-Math06",
+   "competency": 670,
+   "level": 5
+ },
+ {
+   "id": 17181,
+   "subject": "TXT-Math06",
+   "competency": 680,
+   "level": 5
+ },
+ {
+   "id": 17182,
+   "subject": "TXT-Math06",
+   "competency": 690,
+   "level": 6
+ },
+ {
+   "id": 17183,
+   "subject": "TXT-Math06",
+   "competency": 700,
+   "level": 6
+ },
+ {
+   "id": 17184,
+   "subject": "TXT-Math06",
+   "competency": 710,
+   "level": 7
+ },
+ {
+   "id": 17185,
+   "subject": "TXT-Math06",
+   "competency": 720,
+   "level": 7
+ },
+ {
+   "id": 17186,
+   "subject": "TXT-Math06",
+   "competency": 730,
+   "level": 8
+ },
+ {
+   "id": 17187,
+   "subject": "TXT-English03",
+   "competency": 270,
+   "level": 0
+ },
+ {
+   "id": 17188,
+   "subject": "TXT-English03",
+   "competency": 300,
+   "level": 1
+ },
+ {
+   "id": 17189,
+   "subject": "TXT-English03",
+   "competency": 330,
+   "level": 2
+ },
+ {
+   "id": 17190,
+   "subject": "TXT-English03",
+   "competency": 360,
+   "level": 3
+ },
+ {
+   "id": 17191,
+   "subject": "TXT-English03",
+   "competency": 390,
+   "level": 4
+ },
+ {
+   "id": 17192,
+   "subject": "TXT-English03",
+   "competency": 420,
+   "level": 5
+ },
+ {
+   "id": 17193,
+   "subject": "TXT-Correct",
+   "competency": 400,
+   "level": 0
+ },
+ {
+   "id": 17194,
+   "subject": "TXT-Correct",
+   "competency": 420,
+   "level": 0
+ },
+ {
+   "id": 17195,
+   "subject": "TXT-Correct",
+   "competency": 440,
+   "level": 1
+ },
+ {
+   "id": 17196,
+   "subject": "TXT-Correct",
+   "competency": 460,
+   "level": 1
+ },
+ {
+   "id": 17197,
+   "subject": "TXT-Correct",
+   "competency": 480,
+   "level": 2
+ },
+ {
+   "id": 17198,
+   "subject": "TXT-Correct",
+   "competency": 500,
+   "level": 2
+ },
+ {
+   "id": 17199,
+   "subject": "TXT-Correct",
+   "competency": 520,
+   "level": 3
+ },
+ {
+   "id": 17200,
+   "subject": "TXT-Correct",
+   "competency": 540,
+   "level": 3
+ },
+ {
+   "id": 17201,
+   "subject": "TXT-Correct",
+   "competency": 560,
+   "level": 4
+ },
+ {
+   "id": 17202,
+   "subject": "TXT-Correct",
+   "competency": 580,
+   "level": 4
+ },
+ {
+   "id": 17203,
+   "subject": "TXT-Correct",
+   "competency": 600,
+   "level": 5
+ },
+ {
+   "id": 17204,
+   "subject": "TXT-Correct",
+   "competency": 620,
+   "level": 5
+ },
+ {
+   "id": 17205,
+   "subject": "TXT-Correct",
+   "competency": 640,
+   "level": 6
+ },
+ {
+   "id": 17206,
+   "subject": "TXT-Correct",
+   "competency": 660,
+   "level": 6
+ },
+ {
+   "id": 17207,
+   "subject": "TXT-Correct",
+   "competency": 680,
+   "level": 7
+ },
+ {
+   "id": 17208,
+   "subject": "TXT-Correct",
+   "competency": 700,
+   "level": 7
+ },
+ {
+   "id": 17209,
+   "subject": "TXT-Correct",
+   "competency": 720,
+   "level": 8
+ },
+ {
+   "id": 17210,
+   "subject": "TXT-Correct",
+   "competency": 740,
+   "level": 8
+ },
+ {
+   "id": 17211,
+   "subject": "TXT-Correct",
+   "competency": 760,
+   "level": 9
+ },
+ {
+   "id": 17212,
+   "subject": "TXT-Degrees",
+   "competency": 400,
+   "level": 0
+ },
+ {
+   "id": 17213,
+   "subject": "TXT-Degrees",
+   "competency": 420,
+   "level": 1
+ },
+ {
+   "id": 17214,
+   "subject": "TXT-Degrees",
+   "competency": 440,
+   "level": 2
+ },
+ {
+   "id": 17215,
+   "subject": "TXT-Degrees",
+   "competency": 460,
+   "level": 3
+ },
+ {
+   "id": 17216,
+   "subject": "TXT-Degrees",
+   "competency": 480,
+   "level": 4
+ },
+ {
+   "id": 17217,
+   "subject": "TXT-Degrees",
+   "competency": 500,
+   "level": 5
+ },
+ {
+   "id": 17218,
+   "subject": "TXT-Degrees",
+   "competency": 520,
+   "level": 6
+ },
+ {
+   "id": 17219,
+   "subject": "TXT-Degrees",
+   "competency": 540,
+   "level": 7
+ },
+ {
+   "id": 17220,
+   "subject": "TXT-Degrees",
+   "competency": 560,
+   "level": 8
+ },
+ {
+   "id": 17221,
+   "subject": "TXT-Degrees",
+   "competency": 580,
+   "level": 9
+ },
+ {
+   "id": 17222,
+   "subject": "TXT-Degrees",
+   "competency": 600,
+   "level": 9
+ },
+ {
+   "id": 17223,
+   "subject": "TXT-Gender",
+   "competency": 310,
+   "level": 0
+ },
+ {
+   "id": 17224,
+   "subject": "TXT-Gender",
+   "competency": 330,
+   "level": 1
+ },
+ {
+   "id": 17225,
+   "subject": "TXT-Gender",
+   "competency": 350,
+   "level": 2
+ },
+ {
+   "id": 17226,
+   "subject": "TXT-Gender",
+   "competency": 370,
+   "level": 3
+ },
+ {
+   "id": 17227,
+   "subject": "TXT-Gender",
+   "competency": 390,
+   "level": 4
+ },
+ {
+   "id": 17228,
+   "subject": "TXT-Gender",
+   "competency": 410,
+   "level": 5
+ },
+ {
+   "id": 17229,
+   "subject": "TXT-Gender",
+   "competency": 430,
+   "level": 6
+ },
+ {
+   "id": 17230,
+   "subject": "TXT-Gender",
+   "competency": 450,
+   "level": 7
+ },
+ {
+   "id": 17231,
+   "subject": "TXT-Gender",
+   "competency": 470,
+   "level": 8
+ },
+ {
+   "id": 17232,
+   "subject": "TXT-Gender",
+   "competency": 490,
+   "level": 9
+ },
+ {
+   "id": 17233,
+   "subject": "TXT-Gender",
+   "competency": 510,
+   "level": 9
+ },
+ {
+   "id": 17234,
+   "subject": "TXT-Gender",
+   "competency": 530,
+   "level": 9
+ },
+ {
+   "id": 17235,
+   "subject": "TXT-Gender",
+   "competency": 550,
+   "level": 9
+ },
+ {
+   "id": 17236,
+   "subject": "TXT-Hindi",
+   "competency": 200,
+   "level": 0
+ },
+ {
+   "id": 17237,
+   "subject": "TXT-Hindi",
+   "competency": 220,
+   "level": 1
+ },
+ {
+   "id": 17238,
+   "subject": "TXT-Hindi",
+   "competency": 240,
+   "level": 2
+ },
+ {
+   "id": 17239,
+   "subject": "TXT-Hindi",
+   "competency": 260,
+   "level": 3
+ },
+ {
+   "id": 17240,
+   "subject": "TXT-Hindi",
+   "competency": 280,
+   "level": 4
+ },
+ {
+   "id": 17241,
+   "subject": "TXT-Hindi",
+   "competency": 300,
+   "level": 5
+ },
+ {
+   "id": 17242,
+   "subject": "TXT-Hindi",
+   "competency": 320,
+   "level": 6
+ },
+ {
+   "id": 17243,
+   "subject": "TXT-Hindi",
+   "competency": 340,
+   "level": 7
+ },
+ {
+   "id": 17244,
+   "subject": "TXT-Hindi",
+   "competency": 360,
+   "level": 8
+ },
+ {
+   "id": 17245,
+   "subject": "TXT-Hindi",
+   "competency": 380,
+   "level": 9
+ },
+ {
+   "id": 17246,
+   "subject": "TXT-Hindi",
+   "competency": 400,
+   "level": 9
+ },
+ {
+   "id": 17247,
+   "subject": "TXT-Hindi",
+   "competency": 420,
+   "level": 9
+ },
+ {
+   "id": 17248,
+   "subject": "TXT-Hindi",
+   "competency": 440,
+   "level": 9
+ },
+ {
+   "id": 17249,
+   "subject": "TXT-Identify",
+   "competency": 450,
+   "level": 0
+ },
+ {
+   "id": 17250,
+   "subject": "TXT-Identify",
+   "competency": 470,
+   "level": 1
+ },
+ {
+   "id": 17251,
+   "subject": "TXT-Identify",
+   "competency": 490,
+   "level": 2
+ },
+ {
+   "id": 17252,
+   "subject": "TXT-Identify",
+   "competency": 510,
+   "level": 3
+ },
+ {
+   "id": 17253,
+   "subject": "TXT-Identify",
+   "competency": 530,
+   "level": 4
+ },
+ {
+   "id": 17254,
+   "subject": "TXT-Identify",
+   "competency": 550,
+   "level": 5
+ },
+ {
+   "id": 17255,
+   "subject": "TXT-Identify",
+   "competency": 570,
+   "level": 6
+ },
+ {
+   "id": 17256,
+   "subject": "TXT-Identify",
+   "competency": 590,
+   "level": 7
+ },
+ {
+   "id": 17257,
+   "subject": "TXT-Identify",
+   "competency": 610,
+   "level": 8
+ },
+ {
+   "id": 17258,
+   "subject": "TXT-Identify",
+   "competency": 630,
+   "level": 9
+ },
+ {
+   "id": 17259,
+   "subject": "TXT-Identify",
+   "competency": 650,
+   "level": 9
+ },
+ {
+   "id": 17260,
+   "subject": "TXT-Identify",
+   "competency": 670,
+   "level": 9
+ },
+ {
+   "id": 17261,
+   "subject": "TXT-Identify",
+   "competency": 690,
+   "level": 9
+ },
+ {
+   "id": 17262,
+   "subject": "TXT-Identify",
+   "competency": 710,
+   "level": 9
+ },
+ {
+   "id": 17263,
+   "subject": "TXT-Identify",
+   "competency": 730,
+   "level": 9
+ },
+ {
+   "id": 17264,
+   "subject": "TXT-Passive",
+   "competency": 540,
+   "level": 0
+ },
+ {
+   "id": 17265,
+   "subject": "TXT-Passive",
+   "competency": 560,
+   "level": 0
+ },
+ {
+   "id": 17266,
+   "subject": "TXT-Passive",
+   "competency": 580,
+   "level": 1
+ },
+ {
+   "id": 17267,
+   "subject": "TXT-Passive",
+   "competency": 600,
+   "level": 1
+ },
+ {
+   "id": 17268,
+   "subject": "TXT-Passive",
+   "competency": 620,
+   "level": 2
+ },
+ {
+   "id": 17269,
+   "subject": "TXT-Passive",
+   "competency": 640,
+   "level": 2
+ },
+ {
+   "id": 17270,
+   "subject": "TXT-Passive",
+   "competency": 660,
+   "level": 3
+ },
+ {
+   "id": 17271,
+   "subject": "TXT-Passive",
+   "competency": 680,
+   "level": 3
+ },
+ {
+   "id": 17272,
+   "subject": "TXT-Passive",
+   "competency": 700,
+   "level": 4
+ },
+ {
+   "id": 17273,
+   "subject": "TXT-Passive",
+   "competency": 720,
+   "level": 4
+ },
+ {
+   "id": 17274,
+   "subject": "TXT-Passive",
+   "competency": 740,
+   "level": 5
+ },
+ {
+   "id": 17275,
+   "subject": "TXT-Passive",
+   "competency": 760,
+   "level": 5
+ },
+ {
+   "id": 17276,
+   "subject": "TXT-Passive",
+   "competency": 780,
+   "level": 6
+ },
+ {
+   "id": 17277,
+   "subject": "TXT-Passive",
+   "competency": 800,
+   "level": 6
+ },
+ {
+   "id": 17278,
+   "subject": "TXT-Passive",
+   "competency": 820,
+   "level": 7
+ },
+ {
+   "id": 17279,
+   "subject": "TXT-Passive",
+   "competency": 840,
+   "level": 7
+ },
+ {
+   "id": 17280,
+   "subject": "TXT-Passive",
+   "competency": 860,
+   "level": 8
+ },
+ {
+   "id": 17281,
+   "subject": "TXT-Passive",
+   "competency": 880,
+   "level": 8
+ },
+ {
+   "id": 17282,
+   "subject": "TXT-Passive",
+   "competency": 900,
+   "level": 9
+ },
+ {
+   "id": 17283,
+   "subject": "TXT-Plural",
+   "competency": 410,
+   "level": 0
+ },
+ {
+   "id": 17284,
+   "subject": "TXT-Plural",
+   "competency": 430,
+   "level": 1
+ },
+ {
+   "id": 17285,
+   "subject": "TXT-Plural",
+   "competency": 450,
+   "level": 2
+ },
+ {
+   "id": 17286,
+   "subject": "TXT-Plural",
+   "competency": 470,
+   "level": 3
+ },
+ {
+   "id": 17287,
+   "subject": "TXT-Plural",
+   "competency": 490,
+   "level": 4
+ },
+ {
+   "id": 17288,
+   "subject": "TXT-Plural",
+   "competency": 510,
+   "level": 5
+ },
+ {
+   "id": 17289,
+   "subject": "TXT-Plural",
+   "competency": 530,
+   "level": 6
+ },
+ {
+   "id": 17290,
+   "subject": "TXT-Plural",
+   "competency": 550,
+   "level": 7
+ },
+ {
+   "id": 17291,
+   "subject": "TXT-Plural",
+   "competency": 570,
+   "level": 8
+ },
+ {
+   "id": 17292,
+   "subject": "TXT-Plural",
+   "competency": 590,
+   "level": 9
+ },
+ {
+   "id": 17293,
+   "subject": "TXT-Plural",
+   "competency": 610,
+   "level": 9
+ },
+ {
+   "id": 17294,
+   "subject": "TXT-Plural",
+   "competency": 630,
+   "level": 9
+ },
+ {
+   "id": 17295,
+   "subject": "TXT-QNA",
+   "competency": 420,
+   "level": 0
+ },
+ {
+   "id": 17296,
+   "subject": "TXT-QNA",
+   "competency": 430,
+   "level": 0
+ },
+ {
+   "id": 17297,
+   "subject": "TXT-QNA",
+   "competency": 440,
+   "level": 0
+ },
+ {
+   "id": 17298,
+   "subject": "TXT-QNA",
+   "competency": 450,
+   "level": 1
+ },
+ {
+   "id": 17299,
+   "subject": "TXT-QNA",
+   "competency": 460,
+   "level": 1
+ },
+ {
+   "id": 17300,
+   "subject": "TXT-QNA",
+   "competency": 470,
+   "level": 1
+ },
+ {
+   "id": 17301,
+   "subject": "TXT-QNA",
+   "competency": 480,
+   "level": 2
+ },
+ {
+   "id": 17302,
+   "subject": "TXT-QNA",
+   "competency": 490,
+   "level": 2
+ },
+ {
+   "id": 17303,
+   "subject": "TXT-QNA",
+   "competency": 500,
+   "level": 2
+ },
+ {
+   "id": 17304,
+   "subject": "TXT-QNA",
+   "competency": 510,
+   "level": 3
+ },
+ {
+   "id": 17305,
+   "subject": "TXT-QNA",
+   "competency": 520,
+   "level": 3
+ },
+ {
+   "id": 17306,
+   "subject": "TXT-QNA",
+   "competency": 530,
+   "level": 3
+ },
+ {
+   "id": 17307,
+   "subject": "TXT-QNA",
+   "competency": 540,
+   "level": 4
+ },
+ {
+   "id": 17308,
+   "subject": "TXT-QNA",
+   "competency": 550,
+   "level": 4
+ },
+ {
+   "id": 17309,
+   "subject": "TXT-QNA",
+   "competency": 560,
+   "level": 4
+ },
+ {
+   "id": 17310,
+   "subject": "TXT-QNA",
+   "competency": 570,
+   "level": 5
+ },
+ {
+   "id": 17311,
+   "subject": "TXT-QNA",
+   "competency": 580,
+   "level": 5
+ },
+ {
+   "id": 17312,
+   "subject": "TXT-QNA",
+   "competency": 590,
+   "level": 5
+ },
+ {
+   "id": 17313,
+   "subject": "TXT-QNA",
+   "competency": 600,
+   "level": 6
+ },
+ {
+   "id": 17314,
+   "subject": "TXT-QNA",
+   "competency": 610,
+   "level": 6
+ },
+ {
+   "id": 17315,
+   "subject": "TXT-QNA",
+   "competency": 620,
+   "level": 6
+ },
+ {
+   "id": 17316,
+   "subject": "TXT-QNA",
+   "competency": 630,
+   "level": 7
+ },
+ {
+   "id": 17317,
+   "subject": "TXT-QNA",
+   "competency": 640,
+   "level": 7
+ },
+ {
+   "id": 17318,
+   "subject": "TXT-QNA",
+   "competency": 650,
+   "level": 7
+ },
+ {
+   "id": 17319,
+   "subject": "TXT-QNA",
+   "competency": 660,
+   "level": 8
+ },
+ {
+   "id": 17320,
+   "subject": "TXT-QNA",
+   "competency": 670,
+   "level": 8
+ },
+ {
+   "id": 17321,
+   "subject": "TXT-QNA",
+   "competency": 680,
+   "level": 8
+ },
+ {
+   "id": 17322,
+   "subject": "TXT-QNA",
+   "competency": 690,
+   "level": 9
+ },
+ {
+   "id": 17323,
+   "subject": "TXT-QNA",
+   "competency": 700,
+   "level": 9
+ },
+ {
+   "id": 17324,
+   "subject": "TXT-QNA",
+   "competency": 710,
+   "level": 9
+ },
+ {
+   "id": 17325,
+   "subject": "TXT-QNA",
+   "competency": 720,
+   "level": 9
+ },
+ {
+   "id": 17326,
+   "subject": "TXT-QNA",
+   "competency": 730,
+   "level": 9
+ },
+ {
+   "id": 17327,
+   "subject": "TXT-QNA",
+   "competency": 740,
+   "level": 9
+ },
+ {
+   "id": 17328,
+   "subject": "TXT-QNA",
+   "competency": 750,
+   "level": 9
+ },
+ {
+   "id": 17329,
+   "subject": "TXT-Shapes",
+   "competency": 480,
+   "level": 0
+ },
+ {
+   "id": 17330,
+   "subject": "TXT-Shapes",
+   "competency": 500,
+   "level": 1
+ },
+ {
+   "id": 17331,
+   "subject": "TXT-Shapes",
+   "competency": 520,
+   "level": 2
+ },
+ {
+   "id": 17332,
+   "subject": "TXT-Shapes",
+   "competency": 540,
+   "level": 3
+ },
+ {
+   "id": 17333,
+   "subject": "TXT-Shapes",
+   "competency": 560,
+   "level": 4
+ },
+ {
+   "id": 17334,
+   "subject": "TXT-Shapes",
+   "competency": 580,
+   "level": 5
+ },
+ {
+   "id": 17335,
+   "subject": "TXT-Shapes",
+   "competency": 600,
+   "level": 6
+ },
+ {
+   "id": 17336,
+   "subject": "TXT-Shapes",
+   "competency": 620,
+   "level": 7
+ },
+ {
+   "id": 17337,
+   "subject": "TXT-Shapes",
+   "competency": 640,
+   "level": 8
+ },
+ {
+   "id": 17338,
+   "subject": "TXT-Shapes",
+   "competency": 660,
+   "level": 9
+ },
+ {
+   "id": 17339,
+   "subject": "TXT-Shapes",
+   "competency": 680,
+   "level": 9
+ },
+ {
+   "id": 17340,
+   "subject": "TXT-Shapes",
+   "competency": 700,
+   "level": 9
+ },
+ {
+   "id": 17341,
+   "subject": "TXT-Shapes",
+   "competency": 720,
+   "level": 9
+ },
+ {
+   "id": 17342,
+   "subject": "TXT-Shapes",
+   "competency": 740,
+   "level": 9
+ },
+ {
+   "id": 17343,
+   "subject": "TXT-Shapes",
+   "competency": 760,
+   "level": 9
+ },
+ {
+   "id": 17344,
+   "subject": "TXT-Tense",
+   "competency": 410,
+   "level": 0
+ },
+ {
+   "id": 17345,
+   "subject": "TXT-Tense",
+   "competency": 420,
+   "level": 0
+ },
+ {
+   "id": 17346,
+   "subject": "TXT-Tense",
+   "competency": 430,
+   "level": 0
+ },
+ {
+   "id": 17347,
+   "subject": "TXT-Tense",
+   "competency": 440,
+   "level": 0
+ },
+ {
+   "id": 17348,
+   "subject": "TXT-Tense",
+   "competency": 450,
+   "level": 1
+ },
+ {
+   "id": 17349,
+   "subject": "TXT-Tense",
+   "competency": 460,
+   "level": 1
+ },
+ {
+   "id": 17350,
+   "subject": "TXT-Tense",
+   "competency": 470,
+   "level": 1
+ },
+ {
+   "id": 17351,
+   "subject": "TXT-Tense",
+   "competency": 480,
+   "level": 1
+ },
+ {
+   "id": 17352,
+   "subject": "TXT-Tense",
+   "competency": 490,
+   "level": 2
+ },
+ {
+   "id": 17353,
+   "subject": "TXT-Tense",
+   "competency": 500,
+   "level": 2
+ },
+ {
+   "id": 17354,
+   "subject": "TXT-Tense",
+   "competency": 510,
+   "level": 2
+ },
+ {
+   "id": 17355,
+   "subject": "TXT-Tense",
+   "competency": 520,
+   "level": 2
+ },
+ {
+   "id": 17356,
+   "subject": "TXT-Tense",
+   "competency": 530,
+   "level": 3
+ },
+ {
+   "id": 17357,
+   "subject": "TXT-Tense",
+   "competency": 540,
+   "level": 3
+ },
+ {
+   "id": 17358,
+   "subject": "TXT-Tense",
+   "competency": 550,
+   "level": 3
+ },
+ {
+   "id": 17359,
+   "subject": "TXT-Tense",
+   "competency": 560,
+   "level": 3
+ },
+ {
+   "id": 17360,
+   "subject": "TXT-Tense",
+   "competency": 570,
+   "level": 4
+ },
+ {
+   "id": 17361,
+   "subject": "TXT-Tense",
+   "competency": 580,
+   "level": 4
+ },
+ {
+   "id": 17362,
+   "subject": "TXT-Tense",
+   "competency": 590,
+   "level": 4
+ },
+ {
+   "id": 17363,
+   "subject": "TXT-Tense",
+   "competency": 600,
+   "level": 4
+ },
+ {
+   "id": 17364,
+   "subject": "TXT-Tense",
+   "competency": 610,
+   "level": 5
+ },
+ {
+   "id": 17365,
+   "subject": "TXT-Tense",
+   "competency": 620,
+   "level": 5
+ },
+ {
+   "id": 17366,
+   "subject": "TXT-Tense",
+   "competency": 630,
+   "level": 5
+ },
+ {
+   "id": 17367,
+   "subject": "TXT-Tense",
+   "competency": 640,
+   "level": 5
+ },
+ {
+   "id": 17368,
+   "subject": "TXT-Tense",
+   "competency": 650,
+   "level": 6
+ },
+ {
+   "id": 17369,
+   "subject": "TXT-Tense",
+   "competency": 660,
+   "level": 6
+ },
+ {
+   "id": 17370,
+   "subject": "TXT-Tense",
+   "competency": 670,
+   "level": 6
+ },
+ {
+   "id": 17371,
+   "subject": "TXT-Tense",
+   "competency": 680,
+   "level": 6
+ },
+ {
+   "id": 17372,
+   "subject": "TXT-Tense",
+   "competency": 690,
+   "level": 7
+ },
+ {
+   "id": 17373,
+   "subject": "TXT-Tense",
+   "competency": 700,
+   "level": 7
+ },
+ {
+   "id": 17374,
+   "subject": "TXT-Tense",
+   "competency": 710,
+   "level": 7
+ },
+ {
+   "id": 17375,
+   "subject": "TXT-Tense",
+   "competency": 720,
+   "level": 7
+ },
+ {
+   "id": 17376,
+   "subject": "TXT-Tense",
+   "competency": 730,
+   "level": 8
+ },
+ {
+   "id": 17377,
+   "subject": "TXT-Tense",
+   "competency": 740,
+   "level": 8
+ },
+ {
+   "id": 17378,
+   "subject": "TXT-Tense",
+   "competency": 750,
+   "level": 8
+ },
+ {
+   "id": 17379,
+   "subject": "TXT-Tense",
+   "competency": 760,
+   "level": 8
+ },
+ {
+   "id": 17380,
+   "subject": "TXT-Tense",
+   "competency": 770,
+   "level": 9
+ },
+ {
+   "id": 17381,
+   "subject": "TXT-Verbs",
+   "competency": 410,
+   "level": 0
+ },
+ {
+   "id": 17382,
+   "subject": "TXT-Verbs",
+   "competency": 420,
+   "level": 0
+ },
+ {
+   "id": 17383,
+   "subject": "TXT-Verbs",
+   "competency": 430,
+   "level": 1
+ },
+ {
+   "id": 17384,
+   "subject": "TXT-Verbs",
+   "competency": 440,
+   "level": 1
+ },
+ {
+   "id": 17385,
+   "subject": "TXT-Verbs",
+   "competency": 450,
+   "level": 2
+ },
+ {
+   "id": 17386,
+   "subject": "TXT-Verbs",
+   "competency": 460,
+   "level": 2
+ },
+ {
+   "id": 17387,
+   "subject": "TXT-Verbs",
+   "competency": 470,
+   "level": 3
+ },
+ {
+   "id": 17388,
+   "subject": "TXT-Verbs",
+   "competency": 480,
+   "level": 3
+ },
+ {
+   "id": 17389,
+   "subject": "TXT-Verbs",
+   "competency": 490,
+   "level": 4
+ },
+ {
+   "id": 17390,
+   "subject": "TXT-Verbs",
+   "competency": 500,
+   "level": 4
+ },
+ {
+   "id": 17391,
+   "subject": "TXT-Verbs",
+   "competency": 510,
+   "level": 5
+ },
+ {
+   "id": 17392,
+   "subject": "TXT-Verbs",
+   "competency": 520,
+   "level": 5
+ },
+ {
+   "id": 17393,
+   "subject": "TXT-Verbs",
+   "competency": 530,
+   "level": 6
+ },
+ {
+   "id": 17394,
+   "subject": "TXT-Verbs",
+   "competency": 540,
+   "level": 6
+ },
+ {
+   "id": 17395,
+   "subject": "TXT-Verbs",
+   "competency": 550,
+   "level": 7
+ },
+ {
+   "id": 17396,
+   "subject": "TXT-Verbs",
+   "competency": 560,
+   "level": 7
+ },
+ {
+   "id": 17397,
+   "subject": "TXT-Verbs",
+   "competency": 570,
+   "level": 8
+ },
+ {
+   "id": 17398,
+   "subject": "TXT-Verbs",
+   "competency": 580,
+   "level": 8
+ },
+ {
+   "id": 17399,
+   "subject": "TXT-Verbs",
+   "competency": 590,
+   "level": 9
+ },
+ {
+   "id": 17400,
+   "subject": "TXT-Verbs",
+   "competency": 600,
+   "level": 9
+ },
+ {
+   "id": 17401,
+   "subject": "TXT-Verbs",
+   "competency": 610,
+   "level": 9
+ },
+ {
+   "id": 17402,
+   "subject": "TXT-Verbs",
+   "competency": 620,
+   "level": 9
+ },
+ {
+   "id": 17403,
+   "subject": "TXT-Verbs",
+   "competency": 630,
+   "level": 9
+ },
+ {
+   "id": 17404,
+   "subject": "TXT-Verbs",
+   "competency": 640,
+   "level": 9
+ },
+ {
+   "id": 17405,
+   "subject": "TXT-Verbs",
+   "competency": 650,
+   "level": 9
+ },
+ {
+   "id": 17406,
+   "subject": "TXT-Verbs",
+   "competency": 660,
+   "level": 9
+ },
+ {
+   "id": 17407,
+   "subject": "TXT-Write",
+   "competency": 370,
+   "level": 0
+ },
+ {
+   "id": 17408,
+   "subject": "TXT-Write",
+   "competency": 380,
+   "level": 0
+ },
+ {
+   "id": 17409,
+   "subject": "TXT-Write",
+   "competency": 390,
+   "level": 1
+ },
+ {
+   "id": 17410,
+   "subject": "TXT-Write",
+   "competency": 400,
+   "level": 1
+ },
+ {
+   "id": 17411,
+   "subject": "TXT-Write",
+   "competency": 410,
+   "level": 2
+ },
+ {
+   "id": 17412,
+   "subject": "TXT-Write",
+   "competency": 420,
+   "level": 2
+ },
+ {
+   "id": 17413,
+   "subject": "TXT-Write",
+   "competency": 430,
+   "level": 3
+ },
+ {
+   "id": 17414,
+   "subject": "TXT-Write",
+   "competency": 440,
+   "level": 3
+ },
+ {
+   "id": 17415,
+   "subject": "TXT-Write",
+   "competency": 450,
+   "level": 4
+ },
+ {
+   "id": 17416,
+   "subject": "TXT-Write",
+   "competency": 460,
+   "level": 4
+ },
+ {
+   "id": 17417,
+   "subject": "TXT-Write",
+   "competency": 470,
+   "level": 5
+ },
+ {
+   "id": 17418,
+   "subject": "TXT-Write",
+   "competency": 480,
+   "level": 5
+ },
+ {
+   "id": 17419,
+   "subject": "TXT-Write",
+   "competency": 490,
+   "level": 6
+ },
+ {
+   "id": 17420,
+   "subject": "TXT-Write",
+   "competency": 500,
+   "level": 6
+ },
+ {
+   "id": 17421,
+   "subject": "TXT-Write",
+   "competency": 510,
+   "level": 7
+ },
+ {
+   "id": 17422,
+   "subject": "TXT-Write",
+   "competency": 520,
+   "level": 7
+ },
+ {
+   "id": 17423,
+   "subject": "TXT-Write",
+   "competency": 530,
+   "level": 8
+ },
+ {
+   "id": 17424,
+   "subject": "TXT-Write",
+   "competency": 540,
+   "level": 8
+ },
+ {
+   "id": 17425,
+   "subject": "TXT-Write",
+   "competency": 550,
+   "level": 9
+ },
+ {
+   "id": 17426,
+   "subject": "TXT-Write",
+   "competency": 560,
+   "level": 9
+ },
+ {
+   "id": 17427,
+   "subject": "TXT-Write",
+   "competency": 570,
+   "level": 9
+ },
+ {
+   "id": 17428,
+   "subject": "TXT-Write",
+   "competency": 580,
+   "level": 9
+ },
+ {
+   "id": 17429,
+   "subject": "TXT-Write",
+   "competency": 590,
+   "level": 9
+ },
+ {
+   "id": 17430,
+   "subject": "TXT-Write",
+   "competency": 600,
+   "level": 9
+ },
+ {
+   "id": 17431,
+   "subject": "TXT-Write",
+   "competency": 610,
+   "level": 9
+ },
+ {
+   "id": 17432,
+   "subject": "TXT-Math02",
+   "competency": 170,
+   "level": 0
+ },
+ {
+   "id": 17433,
+   "subject": "TXT-Math02",
+   "competency": 180,
+   "level": 0
+ },
+ {
+   "id": 17434,
+   "subject": "TXT-Math02",
+   "competency": 190,
+   "level": 1
+ },
+ {
+   "id": 17435,
+   "subject": "TXT-Math02",
+   "competency": 200,
+   "level": 1
+ },
+ {
+   "id": 17436,
+   "subject": "TXT-Math02",
+   "competency": 210,
+   "level": 2
+ },
+ {
+   "id": 17437,
+   "subject": "TXT-Math02",
+   "competency": 220,
+   "level": 2
+ },
+ {
+   "id": 17438,
+   "subject": "TXT-Math02",
+   "competency": 230,
+   "level": 3
+ },
+ {
+   "id": 17439,
+   "subject": "TXT-Math02",
+   "competency": 240,
+   "level": 3
+ },
+ {
+   "id": 17440,
+   "subject": "TXT-Math02",
+   "competency": 250,
+   "level": 4
+ },
+ {
+   "id": 17441,
+   "subject": "TXT-Math02",
+   "competency": 260,
+   "level": 4
+ },
+ {
+   "id": 17442,
+   "subject": "TXT-Math02",
+   "competency": 270,
+   "level": 5
+ },
+ {
+   "id": 17443,
+   "subject": "TXT-Math02",
+   "competency": 280,
+   "level": 5
+ },
+ {
+   "id": 17444,
+   "subject": "TXT-Math02",
+   "competency": 290,
+   "level": 6
+ },
+ {
+   "id": 17445,
+   "subject": "TXT-Math02",
+   "competency": 300,
+   "level": 6
+ },
+ {
+   "id": 17446,
+   "subject": "TXT-Math02",
+   "competency": 310,
+   "level": 7
+ },
+ {
+   "id": 17447,
+   "subject": "TXT-Math02",
+   "competency": 320,
+   "level": 7
+ },
+ {
+   "id": 17448,
+   "subject": "TXT-Math02",
+   "competency": 330,
+   "level": 8
+ },
+ {
+   "id": 17449,
+   "subject": "TXT-Math03",
+   "competency": 270,
+   "level": 0
+ },
+ {
+   "id": 17450,
+   "subject": "TXT-Math03",
+   "competency": 280,
+   "level": 0
+ },
+ {
+   "id": 17451,
+   "subject": "TXT-Math03",
+   "competency": 290,
+   "level": 1
+ },
+ {
+   "id": 17452,
+   "subject": "TXT-Math03",
+   "competency": 300,
+   "level": 1
+ },
+ {
+   "id": 17453,
+   "subject": "TXT-Math03",
+   "competency": 310,
+   "level": 2
+ },
+ {
+   "id": 17454,
+   "subject": "TXT-Math03",
+   "competency": 320,
+   "level": 2
+ },
+ {
+   "id": 17455,
+   "subject": "TXT-Math03",
+   "competency": 330,
+   "level": 3
+ },
+ {
+   "id": 17456,
+   "subject": "TXT-Math03",
+   "competency": 340,
+   "level": 3
+ },
+ {
+   "id": 17457,
+   "subject": "TXT-Math03",
+   "competency": 350,
+   "level": 4
+ },
+ {
+   "id": 17458,
+   "subject": "TXT-Math03",
+   "competency": 360,
+   "level": 4
+ },
+ {
+   "id": 17459,
+   "subject": "TXT-Math03",
+   "competency": 370,
+   "level": 5
+ },
+ {
+   "id": 17460,
+   "subject": "TXT-Math03",
+   "competency": 380,
+   "level": 5
+ },
+ {
+   "id": 17461,
+   "subject": "TXT-Math03",
+   "competency": 390,
+   "level": 6
+ },
+ {
+   "id": 17462,
+   "subject": "TXT-Math03",
+   "competency": 400,
+   "level": 6
+ },
+ {
+   "id": 17463,
+   "subject": "TXT-Math03",
+   "competency": 410,
+   "level": 7
+ },
+ {
+   "id": 17464,
+   "subject": "TXT-Math03",
+   "competency": 420,
+   "level": 7
+ },
+ {
+   "id": 17465,
+   "subject": "TXT-Math03",
+   "competency": 430,
+   "level": 8
+ },
+ {
+   "id": 17466,
+   "subject": "TXT-Math04",
+   "competency": 370,
+   "level": 0
+ },
+ {
+   "id": 17467,
+   "subject": "TXT-Math04",
+   "competency": 380,
+   "level": 0
+ },
+ {
+   "id": 17468,
+   "subject": "TXT-Math04",
+   "competency": 390,
+   "level": 1
+ },
+ {
+   "id": 17469,
+   "subject": "TXT-Math04",
+   "competency": 400,
+   "level": 1
+ },
+ {
+   "id": 17470,
+   "subject": "TXT-Math04",
+   "competency": 410,
+   "level": 2
+ },
+ {
+   "id": 17471,
+   "subject": "TXT-Math04",
+   "competency": 420,
+   "level": 2
+ },
+ {
+   "id": 17472,
+   "subject": "TXT-Math04",
+   "competency": 430,
+   "level": 3
+ },
+ {
+   "id": 17473,
+   "subject": "TXT-Math04",
+   "competency": 440,
+   "level": 3
+ },
+ {
+   "id": 17474,
+   "subject": "TXT-Math04",
+   "competency": 450,
+   "level": 4
+ },
+ {
+   "id": 17475,
+   "subject": "TXT-Math04",
+   "competency": 460,
+   "level": 4
+ },
+ {
+   "id": 17476,
+   "subject": "TXT-Math04",
+   "competency": 470,
+   "level": 5
+ },
+ {
+   "id": 17477,
+   "subject": "TXT-Math04",
+   "competency": 480,
+   "level": 5
+ },
+ {
+   "id": 17478,
+   "subject": "TXT-Math04",
+   "competency": 490,
+   "level": 6
+ },
+ {
+   "id": 17479,
+   "subject": "TXT-Math04",
+   "competency": 500,
+   "level": 6
+ },
+ {
+   "id": 17480,
+   "subject": "TXT-Math04",
+   "competency": 510,
+   "level": 7
+ },
+ {
+   "id": 17481,
+   "subject": "TXT-Math04",
+   "competency": 520,
+   "level": 7
+ },
+ {
+   "id": 17482,
+   "subject": "TXT-Math04",
+   "competency": 530,
+   "level": 8
+ },
+ {
+   "id": 17483,
+   "subject": "PPT-Math05",
+   "competency": 470,
+   "level": 0
+ },
+ {
+   "id": 17484,
+   "subject": "PPT-Math05",
+   "competency": 480,
+   "level": 0
+ },
+ {
+   "id": 17485,
+   "subject": "PPT-Math05",
+   "competency": 490,
+   "level": 1
+ },
+ {
+   "id": 17486,
+   "subject": "PPT-Math05",
+   "competency": 500,
+   "level": 1
+ },
+ {
+   "id": 17487,
+   "subject": "PPT-Math05",
+   "competency": 510,
+   "level": 2
+ },
+ {
+   "id": 17488,
+   "subject": "PPT-Math05",
+   "competency": 520,
+   "level": 2
+ },
+ {
+   "id": 17489,
+   "subject": "PPT-Math05",
+   "competency": 530,
+   "level": 3
+ },
+ {
+   "id": 17490,
+   "subject": "PPT-Math05",
+   "competency": 540,
+   "level": 3
+ },
+ {
+   "id": 17491,
+   "subject": "PPT-Math05",
+   "competency": 550,
+   "level": 4
+ },
+ {
+   "id": 17492,
+   "subject": "PPT-Math05",
+   "competency": 560,
+   "level": 4
+ },
+ {
+   "id": 17493,
+   "subject": "PPT-Math05",
+   "competency": 570,
+   "level": 5
+ },
+ {
+   "id": 17494,
+   "subject": "PPT-Math05",
+   "competency": 580,
+   "level": 5
+ },
+ {
+   "id": 17495,
+   "subject": "PPT-Math05",
+   "competency": 590,
+   "level": 6
+ },
+ {
+   "id": 17496,
+   "subject": "PPT-Math05",
+   "competency": 600,
+   "level": 6
+ },
+ {
+   "id": 17497,
+   "subject": "PPT-Math05",
+   "competency": 610,
+   "level": 7
+ },
+ {
+   "id": 17498,
+   "subject": "PPT-Math05",
+   "competency": 620,
+   "level": 7
+ },
+ {
+   "id": 17499,
+   "subject": "PPT-Math05",
+   "competency": 630,
+   "level": 8
+ },
+ {
+   "id": 17500,
+   "subject": "PPT-GK",
+   "competency": 400,
+   "level": 0
+ },
+ {
+   "id": 17501,
+   "subject": "PPT-GK",
+   "competency": 425,
+   "level": 0
+ },
+ {
+   "id": 17502,
+   "subject": "PPT-GK",
+   "competency": 450,
+   "level": 1
+ },
+ {
+   "id": 17503,
+   "subject": "PPT-GK",
+   "competency": 475,
+   "level": 1
+ },
+ {
+   "id": 17504,
+   "subject": "PPT-GK",
+   "competency": 500,
+   "level": 2
+ },
+ {
+   "id": 17505,
+   "subject": "PPT-GK",
+   "competency": 525,
+   "level": 2
+ },
+ {
+   "id": 17506,
+   "subject": "PPT-GK",
+   "competency": 550,
+   "level": 3
+ },
+ {
+   "id": 17507,
+   "subject": "PPT-GK",
+   "competency": 575,
+   "level": 3
+ },
+ {
+   "id": 17508,
+   "subject": "PPT-GK",
+   "competency": 600,
+   "level": 4
+ },
+ {
+   "id": 17509,
+   "subject": "PPT-GK",
+   "competency": 625,
+   "level": 4
+ },
+ {
+   "id": 17510,
+   "subject": "PPT-GK",
+   "competency": 650,
+   "level": 5
+ },
+ {
+   "id": 17511,
+   "subject": "PPT-GK",
+   "competency": 675,
+   "level": 5
+ },
+ {
+   "id": 17512,
+   "subject": "PPT-GK",
+   "competency": 700,
+   "level": 6
+ },
+ {
+   "id": 17513,
+   "subject": "PPT-GK",
+   "competency": 725,
+   "level": 6
+ },
+ {
+   "id": 17514,
+   "subject": "PPT-GK",
+   "competency": 750,
+   "level": 7
+ },
+ {
+   "id": 17515,
+   "subject": "PPT-GK",
+   "competency": 775,
+   "level": 7
+ },
+ {
+   "id": 17516,
+   "subject": "PPT-GK",
+   "competency": 800,
+   "level": 8
+ },
+ {
+   "id": 17517,
+   "subject": "PPT-Science06",
+   "competency": 570,
+   "level": 0
+ },
+ {
+   "id": 17518,
+   "subject": "PPT-Science06",
+   "competency": 580,
+   "level": 0
+ },
+ {
+   "id": 17519,
+   "subject": "PPT-Science06",
+   "competency": 590,
+   "level": 1
+ },
+ {
+   "id": 17520,
+   "subject": "PPT-Science06",
+   "competency": 600,
+   "level": 1
+ },
+ {
+   "id": 17521,
+   "subject": "PPT-Science06",
+   "competency": 610,
+   "level": 2
+ },
+ {
+   "id": 17522,
+   "subject": "PPT-Science06",
+   "competency": 620,
+   "level": 2
+ },
+ {
+   "id": 17523,
+   "subject": "PPT-Science06",
+   "competency": 630,
+   "level": 3
+ },
+ {
+   "id": 17524,
+   "subject": "PPT-Science06",
+   "competency": 640,
+   "level": 3
+ },
+ {
+   "id": 17525,
+   "subject": "PPT-Science06",
+   "competency": 650,
+   "level": 4
+ },
+ {
+   "id": 17526,
+   "subject": "PPT-Science06",
+   "competency": 660,
+   "level": 4
+ },
+ {
+   "id": 17527,
+   "subject": "PPT-Science06",
+   "competency": 670,
+   "level": 5
+ },
+ {
+   "id": 17528,
+   "subject": "PPT-Science06",
+   "competency": 680,
+   "level": 5
+ },
+ {
+   "id": 17529,
+   "subject": "PPT-Science06",
+   "competency": 690,
+   "level": 6
+ },
+ {
+   "id": 17530,
+   "subject": "PPT-Science06",
+   "competency": 700,
+   "level": 6
+ },
+ {
+   "id": 17531,
+   "subject": "PPT-Science06",
+   "competency": 710,
+   "level": 7
+ },
+ {
+   "id": 17532,
+   "subject": "PPT-Science06",
+   "competency": 720,
+   "level": 7
+ },
+ {
+   "id": 17533,
+   "subject": "PPT-Science06",
+   "competency": 730,
+   "level": 8
+ },
+ {
+   "id": 17534,
+   "subject": "PPT-Science07",
+   "competency": 670,
+   "level": 0
+ },
+ {
+   "id": 17535,
+   "subject": "PPT-Science07",
+   "competency": 680,
+   "level": 0
+ },
+ {
+   "id": 17536,
+   "subject": "PPT-Science07",
+   "competency": 690,
+   "level": 1
+ },
+ {
+   "id": 17537,
+   "subject": "PPT-Science07",
+   "competency": 700,
+   "level": 1
+ },
+ {
+   "id": 17538,
+   "subject": "PPT-Science07",
+   "competency": 710,
+   "level": 2
+ },
+ {
+   "id": 17539,
+   "subject": "PPT-Science07",
+   "competency": 720,
+   "level": 2
+ },
+ {
+   "id": 17540,
+   "subject": "PPT-Science07",
+   "competency": 730,
+   "level": 3
+ },
+ {
+   "id": 17541,
+   "subject": "PPT-Science07",
+   "competency": 740,
+   "level": 3
+ },
+ {
+   "id": 17542,
+   "subject": "PPT-Science07",
+   "competency": 750,
+   "level": 4
+ },
+ {
+   "id": 17543,
+   "subject": "PPT-Science07",
+   "competency": 760,
+   "level": 4
+ },
+ {
+   "id": 17544,
+   "subject": "PPT-Science07",
+   "competency": 770,
+   "level": 5
+ },
+ {
+   "id": 17545,
+   "subject": "PPT-Science07",
+   "competency": 780,
+   "level": 5
+ },
+ {
+   "id": 17546,
+   "subject": "PPT-Science07",
+   "competency": 790,
+   "level": 6
+ },
+ {
+   "id": 17547,
+   "subject": "PPT-Science07",
+   "competency": 800,
+   "level": 6
+ },
+ {
+   "id": 17548,
+   "subject": "PPT-Science07",
+   "competency": 810,
+   "level": 7
+ },
+ {
+   "id": 17549,
+   "subject": "PPT-Science07",
+   "competency": 820,
+   "level": 7
+ },
+ {
+   "id": 17550,
+   "subject": "PPT-Science07",
+   "competency": 830,
+   "level": 8
+ },
+ {
+   "id": 17585,
+   "subject": "PPT-English02",
+   "competency": 170,
+   "level": 0
+ },
+ {
+   "id": 17586,
+   "subject": "PPT-English02",
+   "competency": 190,
+   "level": 1
+ },
+ {
+   "id": 17587,
+   "subject": "PPT-English02",
+   "competency": 210,
+   "level": 2
+ },
+ {
+   "id": 17588,
+   "subject": "PPT-English02",
+   "competency": 230,
+   "level": 3
+ },
+ {
+   "id": 17589,
+   "subject": "PPT-English02",
+   "competency": 250,
+   "level": 4
+ },
+ {
+   "id": 17590,
+   "subject": "PPT-English02",
+   "competency": 270,
+   "level": 5
+ },
+ {
+   "id": 17591,
+   "subject": "PPT-English02",
+   "competency": 290,
+   "level": 6
+ },
+ {
+   "id": 17592,
+   "subject": "PPT-English02",
+   "competency": 310,
+   "level": 7
+ },
+ {
+   "id": 17593,
+   "subject": "PPT-English02",
+   "competency": 330,
+   "level": 8
+ },
+ {
+   "id": 17628,
+   "subject": "PPT-Science08",
+   "competency": 770,
+   "level": 0
+ },
+ {
+   "id": 17629,
+   "subject": "PPT-Science08",
+   "competency": 780,
+   "level": 0
+ },
+ {
+   "id": 17630,
+   "subject": "PPT-Science08",
+   "competency": 790,
+   "level": 1
+ },
+ {
+   "id": 17631,
+   "subject": "PPT-Science08",
+   "competency": 800,
+   "level": 1
+ },
+ {
+   "id": 17632,
+   "subject": "PPT-Science08",
+   "competency": 810,
+   "level": 2
+ },
+ {
+   "id": 17633,
+   "subject": "PPT-Science08",
+   "competency": 820,
+   "level": 2
+ },
+ {
+   "id": 17634,
+   "subject": "PPT-Science08",
+   "competency": 830,
+   "level": 3
+ },
+ {
+   "id": 17635,
+   "subject": "PPT-Science08",
+   "competency": 840,
+   "level": 3
+ },
+ {
+   "id": 17636,
+   "subject": "PPT-Science08",
+   "competency": 850,
+   "level": 4
+ },
+ {
+   "id": 17637,
+   "subject": "PPT-Science08",
+   "competency": 860,
+   "level": 4
+ },
+ {
+   "id": 17638,
+   "subject": "PPT-Science08",
+   "competency": 870,
+   "level": 5
+ },
+ {
+   "id": 17639,
+   "subject": "PPT-Science08",
+   "competency": 880,
+   "level": 5
+ },
+ {
+   "id": 17640,
+   "subject": "PPT-Science08",
+   "competency": 890,
+   "level": 6
+ },
+ {
+   "id": 17641,
+   "subject": "PPT-Science08",
+   "competency": 900,
+   "level": 6
+ },
+ {
+   "id": 17642,
+   "subject": "PPT-Science08",
+   "competency": 910,
+   "level": 7
+ },
+ {
+   "id": 17643,
+   "subject": "PPT-Science08",
+   "competency": 920,
+   "level": 7
+ },
+ {
+   "id": 17644,
+   "subject": "PPT-Science08",
+   "competency": 930,
+   "level": 8
+ },
+ {
+   "id": 17730,
+   "subject": "PPT-English03",
+   "competency": 270,
+   "level": 0
+ },
+ {
+   "id": 17731,
+   "subject": "PPT-English03",
+   "competency": 290,
+   "level": 1
+ },
+ {
+   "id": 17732,
+   "subject": "PPT-English03",
+   "competency": 310,
+   "level": 2
+ },
+ {
+   "id": 17733,
+   "subject": "PPT-English03",
+   "competency": 330,
+   "level": 3
+ },
+ {
+   "id": 17734,
+   "subject": "PPT-English03",
+   "competency": 350,
+   "level": 4
+ },
+ {
+   "id": 17735,
+   "subject": "PPT-English03",
+   "competency": 370,
+   "level": 5
+ },
+ {
+   "id": 17736,
+   "subject": "PPT-English03",
+   "competency": 390,
+   "level": 6
+ },
+ {
+   "id": 17737,
+   "subject": "PPT-English03",
+   "competency": 410,
+   "level": 7
+ },
+ {
+   "id": 17738,
+   "subject": "PPT-English03",
+   "competency": 430,
+   "level": 8
+ },
+ {
+   "id": 17739,
+   "subject": "PPT-English04",
+   "competency": 370,
+   "level": 0
+ },
+ {
+   "id": 17740,
+   "subject": "PPT-English04",
+   "competency": 390,
+   "level": 1
+ },
+ {
+   "id": 17741,
+   "subject": "PPT-English04",
+   "competency": 410,
+   "level": 2
+ },
+ {
+   "id": 17742,
+   "subject": "PPT-English04",
+   "competency": 430,
+   "level": 3
+ },
+ {
+   "id": 17743,
+   "subject": "PPT-English04",
+   "competency": 450,
+   "level": 4
+ },
+ {
+   "id": 17744,
+   "subject": "PPT-English04",
+   "competency": 470,
+   "level": 5
+ },
+ {
+   "id": 17745,
+   "subject": "PPT-English04",
+   "competency": 490,
+   "level": 6
+ },
+ {
+   "id": 17746,
+   "subject": "PPT-English04",
+   "competency": 510,
+   "level": 7
+ },
+ {
+   "id": 17747,
+   "subject": "PPT-English04",
+   "competency": 530,
+   "level": 8
+ },
+ {
+   "id": 17748,
+   "subject": "PPT-English05",
+   "competency": 470,
+   "level": 0
+ },
+ {
+   "id": 17749,
+   "subject": "PPT-English05",
+   "competency": 490,
+   "level": 1
+ },
+ {
+   "id": 17750,
+   "subject": "PPT-English05",
+   "competency": 510,
+   "level": 2
+ },
+ {
+   "id": 17751,
+   "subject": "PPT-English05",
+   "competency": 530,
+   "level": 3
+ },
+ {
+   "id": 17752,
+   "subject": "PPT-English05",
+   "competency": 550,
+   "level": 4
+ },
+ {
+   "id": 17753,
+   "subject": "PPT-English05",
+   "competency": 570,
+   "level": 5
+ },
+ {
+   "id": 17754,
+   "subject": "PPT-English05",
+   "competency": 590,
+   "level": 6
+ },
+ {
+   "id": 17755,
+   "subject": "PPT-English05",
+   "competency": 610,
+   "level": 7
+ },
+ {
+   "id": 17756,
+   "subject": "PPT-English05",
+   "competency": 630,
+   "level": 8
+ },
+ {
+   "id": 17757,
+   "subject": "TXT-Physics12",
+   "competency": 1170,
+   "level": 0
+ },
+ {
+   "id": 17758,
+   "subject": "TXT-Physics12",
+   "competency": 1180,
+   "level": 0
+ },
+ {
+   "id": 17759,
+   "subject": "TXT-Physics12",
+   "competency": 1190,
+   "level": 1
+ },
+ {
+   "id": 17760,
+   "subject": "TXT-Physics12",
+   "competency": 1200,
+   "level": 1
+ },
+ {
+   "id": 17761,
+   "subject": "TXT-Physics12",
+   "competency": 1210,
+   "level": 2
+ },
+ {
+   "id": 17762,
+   "subject": "TXT-Physics12",
+   "competency": 1220,
+   "level": 2
+ },
+ {
+   "id": 17763,
+   "subject": "TXT-Physics12",
+   "competency": 1230,
+   "level": 3
+ },
+ {
+   "id": 17764,
+   "subject": "TXT-Physics12",
+   "competency": 1240,
+   "level": 3
+ },
+ {
+   "id": 17765,
+   "subject": "TXT-Physics12",
+   "competency": 1250,
+   "level": 4
+ },
+ {
+   "id": 17766,
+   "subject": "TXT-Physics12",
+   "competency": 1260,
+   "level": 4
+ },
+ {
+   "id": 17767,
+   "subject": "TXT-Physics12",
+   "competency": 1270,
+   "level": 5
+ },
+ {
+   "id": 17768,
+   "subject": "TXT-Physics12",
+   "competency": 1280,
+   "level": 5
+ },
+ {
+   "id": 17769,
+   "subject": "TXT-Physics12",
+   "competency": 1290,
+   "level": 6
+ },
+ {
+   "id": 17770,
+   "subject": "TXT-Physics12",
+   "competency": 1300,
+   "level": 6
+ },
+ {
+   "id": 17771,
+   "subject": "TXT-Physics12",
+   "competency": 1310,
+   "level": 7
+ },
+ {
+   "id": 17772,
+   "subject": "TXT-Physics12",
+   "competency": 1320,
+   "level": 7
+ },
+ {
+   "id": 17773,
+   "subject": "TXT-Physics12",
+   "competency": 1330,
+   "level": 8
+ },
+ {
+   "id": 17791,
+   "subject": "TXT-Chem12",
+   "competency": 1170,
+   "level": 0
+ },
+ {
+   "id": 17792,
+   "subject": "TXT-Chem12",
+   "competency": 1180,
+   "level": 0
+ },
+ {
+   "id": 17793,
+   "subject": "TXT-Chem12",
+   "competency": 1190,
+   "level": 1
+ },
+ {
+   "id": 17794,
+   "subject": "TXT-Chem12",
+   "competency": 1200,
+   "level": 1
+ },
+ {
+   "id": 17795,
+   "subject": "TXT-Chem12",
+   "competency": 1210,
+   "level": 2
+ },
+ {
+   "id": 17796,
+   "subject": "TXT-Chem12",
+   "competency": 1220,
+   "level": 2
+ },
+ {
+   "id": 17797,
+   "subject": "TXT-Chem12",
+   "competency": 1230,
+   "level": 3
+ },
+ {
+   "id": 17798,
+   "subject": "TXT-Chem12",
+   "competency": 1240,
+   "level": 3
+ },
+ {
+   "id": 17799,
+   "subject": "TXT-Chem12",
+   "competency": 1250,
+   "level": 4
+ },
+ {
+   "id": 17800,
+   "subject": "TXT-Chem12",
+   "competency": 1260,
+   "level": 4
+ },
+ {
+   "id": 17801,
+   "subject": "TXT-Chem12",
+   "competency": 1270,
+   "level": 5
+ },
+ {
+   "id": 17802,
+   "subject": "TXT-Chem12",
+   "competency": 1280,
+   "level": 5
+ },
+ {
+   "id": 17803,
+   "subject": "TXT-Chem12",
+   "competency": 1290,
+   "level": 6
+ },
+ {
+   "id": 17804,
+   "subject": "TXT-Chem12",
+   "competency": 1300,
+   "level": 6
+ },
+ {
+   "id": 17805,
+   "subject": "TXT-Chem12",
+   "competency": 1310,
+   "level": 7
+ },
+ {
+   "id": 17806,
+   "subject": "TXT-Chem12",
+   "competency": 1320,
+   "level": 7
+ },
+ {
+   "id": 17807,
+   "subject": "TXT-Chem12",
+   "competency": 1330,
+   "level": 8
+ },
+ {
+   "id": 17915,
+   "subject": "TXT-Math12",
+   "competency": 1170,
+   "level": 0
+ },
+ {
+   "id": 17916,
+   "subject": "TXT-Math12",
+   "competency": 1180,
+   "level": 0
+ },
+ {
+   "id": 17917,
+   "subject": "TXT-Math12",
+   "competency": 1190,
+   "level": 1
+ },
+ {
+   "id": 17918,
+   "subject": "TXT-Math12",
+   "competency": 1200,
+   "level": 1
+ },
+ {
+   "id": 17919,
+   "subject": "TXT-Math12",
+   "competency": 1210,
+   "level": 2
+ },
+ {
+   "id": 17920,
+   "subject": "TXT-Math12",
+   "competency": 1220,
+   "level": 2
+ },
+ {
+   "id": 17921,
+   "subject": "TXT-Math12",
+   "competency": 1230,
+   "level": 3
+ },
+ {
+   "id": 17922,
+   "subject": "TXT-Math12",
+   "competency": 1240,
+   "level": 3
+ },
+ {
+   "id": 17923,
+   "subject": "TXT-Math12",
+   "competency": 1250,
+   "level": 4
+ },
+ {
+   "id": 17924,
+   "subject": "TXT-Math12",
+   "competency": 1260,
+   "level": 4
+ },
+ {
+   "id": 17925,
+   "subject": "TXT-Math12",
+   "competency": 1270,
+   "level": 5
+ },
+ {
+   "id": 17926,
+   "subject": "TXT-Math12",
+   "competency": 1280,
+   "level": 5
+ },
+ {
+   "id": 17927,
+   "subject": "TXT-Math12",
+   "competency": 1290,
+   "level": 6
+ },
+ {
+   "id": 17928,
+   "subject": "TXT-Math12",
+   "competency": 1300,
+   "level": 6
+ },
+ {
+   "id": 17929,
+   "subject": "TXT-Math12",
+   "competency": 1310,
+   "level": 7
+ },
+ {
+   "id": 17930,
+   "subject": "TXT-Math12",
+   "competency": 1320,
+   "level": 7
+ },
+ {
+   "id": 17931,
+   "subject": "TXT-Math12",
+   "competency": 1330,
+   "level": 8
+ },
+ {
+   "id": 17932,
+   "subject": "PPT-Class01",
+   "competency": 70,
+   "level": 0
+ },
+ {
+   "id": 17933,
+   "subject": "PPT-Class01",
+   "competency": 73,
+   "level": 0
+ },
+ {
+   "id": 17934,
+   "subject": "PPT-Class01",
+   "competency": 76,
+   "level": 0
+ },
+ {
+   "id": 17935,
+   "subject": "PPT-Class01",
+   "competency": 79,
+   "level": 0
+ },
+ {
+   "id": 17936,
+   "subject": "PPT-Class01",
+   "competency": 82,
+   "level": 0
+ },
+ {
+   "id": 17937,
+   "subject": "PPT-Class01",
+   "competency": 85,
+   "level": 1
+ },
+ {
+   "id": 17938,
+   "subject": "PPT-Class01",
+   "competency": 88,
+   "level": 1
+ },
+ {
+   "id": 17939,
+   "subject": "PPT-Class01",
+   "competency": 91,
+   "level": 1
+ },
+ {
+   "id": 17940,
+   "subject": "PPT-Class01",
+   "competency": 94,
+   "level": 1
+ },
+ {
+   "id": 17941,
+   "subject": "PPT-Class01",
+   "competency": 97,
+   "level": 1
+ },
+ {
+   "id": 17942,
+   "subject": "PPT-Class01",
+   "competency": 100,
+   "level": 2
+ },
+ {
+   "id": 17943,
+   "subject": "PPT-Class01",
+   "competency": 103,
+   "level": 2
+ },
+ {
+   "id": 17944,
+   "subject": "PPT-Class01",
+   "competency": 106,
+   "level": 2
+ },
+ {
+   "id": 17945,
+   "subject": "PPT-Class01",
+   "competency": 109,
+   "level": 2
+ },
+ {
+   "id": 17946,
+   "subject": "PPT-Class01",
+   "competency": 112,
+   "level": 2
+ },
+ {
+   "id": 17947,
+   "subject": "PPT-Class01",
+   "competency": 115,
+   "level": 3
+ },
+ {
+   "id": 17948,
+   "subject": "PPT-Class01",
+   "competency": 118,
+   "level": 3
+ },
+ {
+   "id": 17949,
+   "subject": "PPT-Class01",
+   "competency": 121,
+   "level": 3
+ },
+ {
+   "id": 17950,
+   "subject": "PPT-Class01",
+   "competency": 124,
+   "level": 3
+ },
+ {
+   "id": 17951,
+   "subject": "PPT-Class01",
+   "competency": 127,
+   "level": 3
+ },
+ {
+   "id": 17952,
+   "subject": "PPT-Class01",
+   "competency": 130,
+   "level": 4
+ },
+ {
+   "id": 17953,
+   "subject": "PPT-Class01",
+   "competency": 133,
+   "level": 4
+ },
+ {
+   "id": 17954,
+   "subject": "PPT-Class01",
+   "competency": 136,
+   "level": 4
+ },
+ {
+   "id": 17955,
+   "subject": "PPT-Class01",
+   "competency": 139,
+   "level": 4
+ },
+ {
+   "id": 17956,
+   "subject": "PPT-Class01",
+   "competency": 142,
+   "level": 4
+ },
+ {
+   "id": 17957,
+   "subject": "PPT-Class01",
+   "competency": 145,
+   "level": 5
+ },
+ {
+   "id": 17958,
+   "subject": "PPT-Class01",
+   "competency": 148,
+   "level": 5
+ },
+ {
+   "id": 17959,
+   "subject": "PPT-Class01",
+   "competency": 151,
+   "level": 5
+ },
+ {
+   "id": 17960,
+   "subject": "PPT-Class01",
+   "competency": 154,
+   "level": 5
+ },
+ {
+   "id": 17961,
+   "subject": "PPT-Class01",
+   "competency": 157,
+   "level": 5
+ },
+ {
+   "id": 17962,
+   "subject": "PPT-Class01",
+   "competency": 160,
+   "level": 6
+ },
+ {
+   "id": 17963,
+   "subject": "PPT-Class01",
+   "competency": 163,
+   "level": 6
+ },
+ {
+   "id": 17964,
+   "subject": "PPT-Class01",
+   "competency": 166,
+   "level": 6
+ },
+ {
+   "id": 17965,
+   "subject": "PPT-Class01",
+   "competency": 169,
+   "level": 6
+ },
+ {
+   "id": 17966,
+   "subject": "PPT-Class01",
+   "competency": 172,
+   "level": 6
+ },
+ {
+   "id": 17967,
+   "subject": "PPT-Class01",
+   "competency": 175,
+   "level": 7
+ },
+ {
+   "id": 17968,
+   "subject": "PPT-Class01",
+   "competency": 178,
+   "level": 7
+ },
+ {
+   "id": 17969,
+   "subject": "PPT-Class01",
+   "competency": 181,
+   "level": 7
+ },
+ {
+   "id": 17970,
+   "subject": "PPT-Class01",
+   "competency": 184,
+   "level": 7
+ },
+ {
+   "id": 17971,
+   "subject": "PPT-Class01",
+   "competency": 187,
+   "level": 7
+ },
+ {
+   "id": 17972,
+   "subject": "PPT-Class01",
+   "competency": 190,
+   "level": 8
+ },
+ {
+   "id": 17973,
+   "subject": "PPT-Class01",
+   "competency": 193,
+   "level": 8
+ },
+ {
+   "id": 17974,
+   "subject": "PPT-Class01",
+   "competency": 196,
+   "level": 8
+ },
+ {
+   "id": 17975,
+   "subject": "PPT-Class01",
+   "competency": 199,
+   "level": 8
+ },
+ {
+   "id": 17976,
+   "subject": "PPT-Class01",
+   "competency": 202,
+   "level": 8
+ },
+ {
+   "id": 17977,
+   "subject": "PPT-Class01",
+   "competency": 205,
+   "level": 9
+ },
+ {
+   "id": 17978,
+   "subject": "PPT-Class01",
+   "competency": 208,
+   "level": 9
+ },
+ {
+   "id": 17979,
+   "subject": "PPT-Class01",
+   "competency": 211,
+   "level": 9
+ },
+ {
+   "id": 17980,
+   "subject": "PPT-Class01",
+   "competency": 214,
+   "level": 9
+ },
+ {
+   "id": 17981,
+   "subject": "PPT-Class01",
+   "competency": 217,
+   "level": 9
+ },
+ {
+   "id": 17982,
+   "subject": "PPT-Class01",
+   "competency": 220,
+   "level": 9
+ },
+ {
+   "id": 17983,
+   "subject": "PPT-Class01",
+   "competency": 223,
+   "level": 9
+ },
+ {
+   "id": 17984,
+   "subject": "PPT-Class01",
+   "competency": 226,
+   "level": 9
+ },
+ {
+   "id": 17985,
+   "subject": "PPT-Class01",
+   "competency": 229,
+   "level": 9
+ },
+ {
+   "id": 17986,
+   "subject": "TXT-English01",
+   "competency": 70,
+   "level": 0
+ },
+ {
+   "id": 17987,
+   "subject": "TXT-English01",
+   "competency": 90,
+   "level": 1
+ },
+ {
+   "id": 17988,
+   "subject": "TXT-English01",
+   "competency": 110,
+   "level": 2
+ },
+ {
+   "id": 17989,
+   "subject": "TXT-English01",
+   "competency": 130,
+   "level": 3
+ },
+ {
+   "id": 17990,
+   "subject": "TXT-English01",
+   "competency": 150,
+   "level": 4
+ },
+ {
+   "id": 17991,
+   "subject": "TXT-English01",
+   "competency": 170,
+   "level": 5
+ },
+ {
+   "id": 17992,
+   "subject": "TXT-English01",
+   "competency": 190,
+   "level": 6
+ },
+ {
+   "id": 17993,
+   "subject": "TXT-English01",
+   "competency": 210,
+   "level": 7
+ },
+ {
+   "id": 17994,
+   "subject": "TXT-English01",
+   "competency": 230,
+   "level": 8
+ },
+ {
+   "id": 17995,
+   "subject": "TXT-English04",
+   "competency": 370,
+   "level": 0
+ },
+ {
+   "id": 17996,
+   "subject": "TXT-English04",
+   "competency": 390,
+   "level": 1
+ },
+ {
+   "id": 17997,
+   "subject": "TXT-English04",
+   "competency": 410,
+   "level": 2
+ },
+ {
+   "id": 17998,
+   "subject": "TXT-English04",
+   "competency": 430,
+   "level": 3
+ },
+ {
+   "id": 17999,
+   "subject": "TXT-English04",
+   "competency": 450,
+   "level": 4
+ },
+ {
+   "id": 18000,
+   "subject": "TXT-English04",
+   "competency": 470,
+   "level": 5
+ },
+ {
+   "id": 18001,
+   "subject": "TXT-English04",
+   "competency": 490,
+   "level": 6
+ },
+ {
+   "id": 18002,
+   "subject": "TXT-English04",
+   "competency": 510,
+   "level": 7
+ },
+ {
+   "id": 18003,
+   "subject": "TXT-English04",
+   "competency": 530,
+   "level": 8
+ },
+ {
+   "id": 18004,
+   "subject": "TXT-English05",
+   "competency": 470,
+   "level": 0
+ },
+ {
+   "id": 18005,
+   "subject": "TXT-English05",
+   "competency": 490,
+   "level": 1
+ },
+ {
+   "id": 18006,
+   "subject": "TXT-English05",
+   "competency": 510,
+   "level": 2
+ },
+ {
+   "id": 18007,
+   "subject": "TXT-English05",
+   "competency": 530,
+   "level": 3
+ },
+ {
+   "id": 18008,
+   "subject": "TXT-English05",
+   "competency": 550,
+   "level": 4
+ },
+ {
+   "id": 18009,
+   "subject": "TXT-English05",
+   "competency": 570,
+   "level": 5
+ },
+ {
+   "id": 18010,
+   "subject": "TXT-English05",
+   "competency": 590,
+   "level": 6
+ },
+ {
+   "id": 18011,
+   "subject": "TXT-English05",
+   "competency": 610,
+   "level": 7
+ },
+ {
+   "id": 18012,
+   "subject": "TXT-English05",
+   "competency": 630,
+   "level": 8
+ }
+]

@@ -16,22 +16,23 @@ import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoD
 class OfflineQuizScreen extends Component {
     state = {
         isAnswerEmpty: false,
-        test: QuestionBank.Test1.map((item, index) => ({ ...item, index, showEmptyWarning: false, userAnswer: "" })),
+        quiz: QuestionBank.Test1.map((item, index) => ({ ...item, index, showEmptyWarning: false, userAnswer: "", isUserAnswerCorrect: false })),
         currentQuestionIndex: 0,
-        isQuizEndded: false
+        isQuizEnded: false,
+        isReviewAnswerClicked: false
     }
 
     handleUserInput = ({ userAnswer, key }) => {
-        let questionWithUserInput = this.state.test;
+        let questionWithUserInput = this.state.quiz;
         questionWithUserInput[key].userAnswer = userAnswer
         this.setState({
-            test: questionWithUserInput
+            quiz: questionWithUserInput
         })
     }
 
     renderQuestionAndAnswer = () => {
-        const currentQuestion = this.state.currentQuestionIndex < this.state.test.length &&
-            this.state.test[this.state.currentQuestionIndex];
+        const currentQuestion = this.state.currentQuestionIndex < this.state.quiz.length &&
+            this.state.quiz[this.state.currentQuestionIndex];
 
         return currentQuestion && (<QuestionAnswer
             question={currentQuestion.ques}
@@ -53,7 +54,7 @@ class OfflineQuizScreen extends Component {
     }
 
     renderNextButton = () => {
-        return (this.state.currentQuestionIndex < this.state.test.length - 1) && (
+        return (this.state.currentQuestionIndex < this.state.quiz.length - 1) && (
             <View>
                 <FlatButton
                     onPress={this.renderNextQuestion}
@@ -63,34 +64,60 @@ class OfflineQuizScreen extends Component {
         )
     }
 
-    submitQuiz = () => this.setState({ isQuizEndded: true })
+    submitQuiz = () => {
+
+        const quizWithAns = this.state.quiz.map(item => {
+            item.isUserAnswerCorrect =  this.compareAnswer(item.ans, item.userAnswer);
+            return item;
+        });
+        this.setState({ 
+            isQuizEnded: true,
+            quiz: quizWithAns })
+    }
+
+    compareAnswer = (correctAns, userAns)=>{
+        let systemAns = String(correctAns).trim().split(' ').join('').toLowerCase();
+        let userInput = String(userAns).trim().split(' ').join('').toLowerCase();
+        
+        let isCorrect = ( systemAns == userInput );
+        if(!isCorrect && systemAns.split('(').length > 1){
+            systemAns = systemAns.split('(');
+            userInput = userInput.split('(');
+            const firstPartOfAns = systemAns[0] == userInput[0];
+            const userHasSecondAnswer = userInput.length > 1;
+            isCorrect = userHasSecondAnswer ? (systemAns[1] == userInput[1] && firstPartOfAns) :
+                firstPartOfAns;
+
+        }
+        return isCorrect;
+    }
 
     showEmptyBoxWarning = () => {
-        let testWithUserInput = this.state.test;
-        testWithUserInput[this.state.currentQuestionIndex].showEmptyWarning = true
+        let quizWithUserInput = this.state.quiz;
+        quizWithUserInput[this.state.currentQuestionIndex].showEmptyWarning = true
         this.setState({
-            test: testWithUserInput
+            quiz: quizWithUserInput
         })
     }
 
     hideEmptyBoxWarning = () => {
-        let testWithUserInput = this.state.test;
+        let quizWithUserInput = this.state.quiz;
 
-        if (testWithUserInput[this.state.currentQuestionIndex].userAnswer &&
-            testWithUserInput[this.state.currentQuestionIndex].showEmptyWarning) {
+        if (quizWithUserInput[this.state.currentQuestionIndex].userAnswer &&
+            quizWithUserInput[this.state.currentQuestionIndex].showEmptyWarning) {
 
-            testWithUserInput[this.state.currentQuestionIndex].showEmptyWarning = false;
+            quizWithUserInput[this.state.currentQuestionIndex].showEmptyWarning = false;
             this.setState({
-                test: testWithUserInput
+                quiz: quizWithUserInput
             })
         }
     }
 
     renderSubmitButton = () => {
-        const isLastQuestion = !(this.state.currentQuestionIndex < this.state.test.length - 1);
+        const isLastQuestion = !(this.state.currentQuestionIndex < this.state.quiz.length - 1);
         const buttonText = isLastQuestion ? "Submit Quiz" : "Submit Answer";
         const onSubmitAns = () => {
-            if (this.state.test[this.state.currentQuestionIndex].userAnswer != "") {
+            if (this.state.quiz[this.state.currentQuestionIndex].userAnswer != "") {
                 this.hideEmptyBoxWarning();
                 this.renderNextQuestion();
             }
@@ -119,22 +146,27 @@ class OfflineQuizScreen extends Component {
         this.setState({ currentQuestionIndex: --this.state.currentQuestionIndex });
     }
 
-    renderResultSection = () => {
-        return this.state.test.map((item) => (
+    renderQuizReview = () => {
+        return this.state.quiz.map((item, index) => {
+            const answerStyle = [styles.reviewUserAnswerText];
+            item.isUserAnswerCorrect ?  answerStyle.push( styles.corrrectUserAnswerText ) : 
+                answerStyle.push( styles.errorUserAnswerText );
+
+            return(
             <View>
-                <Text>{item.ques}</Text>
-                <Text>{item.ans}</Text>
-                <Text>{item.userAnswer}</Text>
+                <Text style={styles.reviewQuestionText}>{index+1}. {item.ques}</Text>
+                <Text style={styles.reviewAnswerText}>Ans. {item.ans}</Text>
+                <Text style={answerStyle}>Your Ans. {item.userAnswer}</Text>
             </View>
-        ))
+        )})
     }
 
-    renderQuizSection = () =>(
+    renderQuizSection = () => (
         <View>
             <CountDown
                 until={30 * 60}
                 onFinish={this.submitQuiz}
-                onPress={()=>{}}
+                onPress={() => { }}
                 timeToShow={['M', 'S']}
                 digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                 digitTxtStyle={{ color: '#255166' }}
@@ -147,7 +179,7 @@ class OfflineQuizScreen extends Component {
             {this.renderQuestionAndAnswer()}
             <View style={styles.switchQuestionSection}>
                 {this.renderPreviousButton()}
-                <Text style={styles.questionNumberDisplay}>Que. {this.state.currentQuestionIndex + 1} of {this.state.test.length} </Text>
+                <Text style={styles.questionNumberDisplay}>Que. {this.state.currentQuestionIndex + 1} of {this.state.quiz.length} </Text>
                 {this.renderNextButton()}
             </View>
 
@@ -155,19 +187,50 @@ class OfflineQuizScreen extends Component {
         </View>
     )
 
+    renderScoreBoxContainer = () => {
+        const score = this.state.quiz.filter( item => item.isUserAnswerCorrect).length;
+        return (
+            <>
+                <Text style={styles.quizResultLabel}> Quiz Result </Text>
+                <View style={styles.scoreBoxContainer}>
+                    <View style={styles.scoreBox}>
+                        <Text style={styles.displayScoreText}>{this.props.name}</Text>
+                        <Text style={styles.displayScoreText}>{score}/{this.state.quiz.length}</Text>
+                        <Text style={styles.displayScoreText}>Correct</Text>
+                    </View>
+                    <View style={styles.scoreBox}>
+                        <Text style={styles.displayScoreText}>Pavan</Text>
+                        <Text style={styles.displayScoreText}>2/{this.state.quiz.length}</Text>
+                        <Text style={styles.displayScoreText}>Correct</Text>
+                    </View>
+                </View>
+                <View style={styles.reviewAnswerButton}>
+                    <Button
+                        onPress={() => this.setState({ isReviewAnswerClicked: true })}
+                        text={'Review Answer'} />
+                </View>
+            </>)
+    }
+
     render() {
-        const comp = this.state.isQuizEndded ? this.renderResultSection() : this.renderQuizSection();
+        const comp = this.state.isQuizEnded ? 
+            (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer()) :
+            this.renderQuizSection();
+        // const comp = this.renderQuizReview();
+
         return (
             <ScrollView keyboardShouldPersistTaps={'always'}>
                 <View style={styles.userInfoBox}>
                     <StudentInfoDisplay
                         name={this.props.name}
                         grade={this.props.grade}
-                        school={this.props.school}/>
-                    {/* <StudentInfoDisplay
-                    name={this.props.name}
-                    grade={this.props.grade}
-                    school={this.props.school}/> */}
+                        school={this.props.school}
+                        isSmall />
+                    <StudentInfoDisplay
+                        name={'Pavan'}
+                        grade={this.props.grade}
+                        school={this.props.school}
+                        isSmall />
                 </View>
                 <View style={styles.OfflineQuizScreen}>
                     {comp}

@@ -12,9 +12,5 @@ Test1: [
         ques: 'What is a curve which does not cross itself called?',
         ans: 'simple curve'
     }
-],
-Test2: [],
-Test3: []
-
-
+]
 }

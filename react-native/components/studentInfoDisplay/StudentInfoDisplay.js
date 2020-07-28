@@ -9,25 +9,44 @@ import PropTypes from 'prop-types';
 StudentInfoDisplay = (props) => {
 
     let name = props.name ? props.name.toUpperCase() : "";
+
+    const userInitialWrapper = [styles.userInitialWrapper];
+    const studentInfoContainer = [styles.studentInfoContainer];
+    const userInfoDivision = [styles.userInfoDivision];
+    const displayName = [styles.displayName];
+    const userInitial = [styles.userInitial];
+    const displayGradeLabel = [styles.displayGradeLabel];
+    const displayGradeValue = [styles.displayGradeValue];
+    const diplaySchool = [styles.diplaySchool];
+
+    if(props.isSmall){
+
+        userInfoDivision.push(styles.userInfoDivision_small);
+        displayName.push(styles.displayName_small)
+        userInitial.push(styles.userInitial_small)
+        userInitialWrapper.push(styles.userInitialWrapper_small)
+        studentInfoContainer.push(styles.studentInfoContainer_small)
+
+    }
     
     renderIcon = () => {
         let initial = name ? name.charAt(0) : "";
         return (
-            <View style={styles.userInitialWrapper}>
-                <Text style={styles.userInitial}
+            <View style={userInitialWrapper}>
+                <Text style={userInitial}
                     testID="userInitial"
                     fontWeight="bold">{initial}</Text>
             </View>
         );
     };
     return (
-        <View style={styles.studentInfoContainer}>
+        <View style={studentInfoContainer}>
             {renderIcon()}
-            <View style={styles.userInfoDivision}>
-                <Text style={styles.displayName}>{name}</Text>
-                <Text style={styles.displayGradeLabel}>Grade: <Text style={styles.displayGradeValue}>{props.grade}</Text></Text>
+            <View style={userInfoDivision}>
+                <Text style={displayName}>{name}</Text>
+                <Text style={displayGradeLabel}>Grade: <Text style={displayGradeValue}>{props.grade}</Text></Text>
                 {props.school &&
-                    <Text style={styles.diplaySchool}>{props.school}</Text>
+                    <Text style={diplaySchool}>{props.school}</Text>
                 }
             </View>
         </View>
@@ -39,6 +58,7 @@ StudentInfoDisplay.propTypes = {
     name: PropTypes.string.isRequired,
     grade: PropTypes.number,
     school: PropTypes.string,
+    isSmall: PropTypes.bool
     
 };
 

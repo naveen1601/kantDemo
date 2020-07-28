@@ -7,33 +7,60 @@ import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoD
 import { connect } from 'react-redux';
 
 class QuizOptionScreen extends Component {
-    state = {}
-    handlePractiseOffline =()=> this.props.navigation.navigate('OfflineQuizScreen');
+    state = {
+        isQuizInstructionEnabled: false
+    };
+
+    handlePractiseOffline = () => this.setState({
+        isQuizInstructionEnabled: true
+    });
+
+    renderInstructions = () => (
+        <View style={styles.instructionContainer}>
+            <Text style={styles.instructionLabel}>Instructions</Text>
+            <View style={styles.instructionTextContainer}>
+                <Text style={styles.instructionText}>1. You have to finish your Quiz in limited time period.</Text>
+                <Text style={styles.instructionText}>2. You can skip the question by clicking 'Next'</Text>
+                <Text style={styles.instructionText}>3. You can revisit the questions by clicking 'Previous'</Text>
+            </View>
+            <Button
+                onPress={() => this.props.navigation.navigate('OfflineQuizScreen')}
+                text="Start Quiz"
+            />
+        </View>);
+
+
+    renderQuizOptionButtonsConatiner = () => (
+        <View style={styles.quizOptionButtonContainer}>
+            <Button
+                onPress={() => { }}
+                text="Schedule Class"
+                disabled={!this.props.isLoggedIn}
+                secondaryButton={!this.props.isLoggedIn}
+                
+
+            />
+            <Button
+                onPress={() => { }}
+                text="Virtual Class"
+                disabled={!this.props.isLoggedIn}
+                secondaryButton={!this.props.isLoggedIn}                
+            />
+
+            <Button
+                onPress={this.handlePractiseOffline}
+                text="Practice Offline"
+            />
+        </View>);
+
     render() {
+        const comp = this.state.isQuizInstructionEnabled ? this.renderInstructions() : this.renderQuizOptionButtonsConatiner()
         return (
             <View>
                 <StudentInfoDisplay name={this.props.name}
-                    grade= {this.props.grade}
-                    school= {this.props.school}/>
-                <View style={styles.quizOptionButtonContainer}>
-                    <Button
-                        onPress={()=>{}}
-                        text="Schedule Class"
-                        secondaryButton={false}
-                    />
-                    <Button
-                        onPress={()=>{}}
-                        text="Virtual Class"
-                        secondaryButton={false}
-                    />
-                    
-                    <Button
-                        onPress={this.handlePractiseOffline}
-                        text="Practice Offline"
-                        secondaryButton={false}
-                    />
-                </View>
-                
+                    grade={this.props.grade}
+                    school={this.props.school} />
+                {comp}
             </View>
         );
     }
@@ -59,4 +86,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 let styles = create(QuizOptionScreenStyles);
 
 
-export default connect(mapStateToProps, mapDispatchToProps)( QuizOptionScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizOptionScreen);

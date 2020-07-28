@@ -3,7 +3,8 @@ import $_ from './StudentInfoDisplaySettings';
 export default {
     studentInfoContainer: {
         padding: $_.conatinerPadding,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        width: '70%'
     },
     userInitialWrapper: {
         padding: $_.userInitialWrapperPadding,
@@ -20,12 +21,13 @@ export default {
     },
     displayName: {
         paddingTop: $_.namePaddingTop,
-        fontSize: $_.nameFontSize
+        fontSize: $_.nameFontSize,
     },
     userInfoDivision: {
-        paddingLeft: $_.userInfoPaddingLeft
+        paddingLeft: $_.userInfoPaddingLeft,
+        fontSize: $_.userInfoFontSize
+        
     },
-
     displayGradeLabel: {
         paddingTop: 6,
         fontSize: $_.userInfoFontSize
@@ -35,5 +37,30 @@ export default {
     },
     diplaySchool: {
         fontSize: $_.userInfoFontSize
+    },
+
+    studentInfoContainer_small:{
+        width: '50%',
+        paddingLeft: 10,
+        paddingRight: 0,
+        borderBottomColor: '#255166',
+        borderBottomWidth: 2,
+        backgroundColor: '#e9f4f7'
+    },
+    userInitialWrapper_small: {
+        width: 60,
+        height: 60
+    },
+    userInitial_small: {
+        fontSize: 36
+    },
+    displayName_small: {
+        paddingTop: 4,
+        fontSize: 16   
+    },
+    userInfoDivision_small: {
+        paddingLeft: 8,
+        width:'70%'
     }
+
 }
