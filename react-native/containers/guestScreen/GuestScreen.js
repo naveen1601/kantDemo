@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import GuestActions from './GuestActions';
 import { CompetencyAndGradeArray } from '../../helpers/CommonHelper';
 //temp
-
+import {Screens} from '../../helpers/screenHelpers'
 class GuestScreen extends Component {
     state = {
         name: _.get(this.props.userData, "name"),
@@ -58,7 +58,7 @@ class GuestScreen extends Component {
                 grade: this.state.grade,
                 competencyLevel: CompetencyAndGradeArray[this.state.grade],
             })
-            this.props.navigation.navigate('QuizOptionScreen');
+           this.props.navigation.navigate(Screens.QuizOptionScreen);
         }
     }
 

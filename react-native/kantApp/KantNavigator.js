@@ -14,6 +14,7 @@ import GuestScreen from '../containers/guestScreen/GuestScreen'
 import QuizOptionScreen from '../containers/quizOptionScreen/QuizOptionScreen';
 import OfflineQuizScreen from '../containers/offlineQuizScreen/OfflineQuizScreen';
 import LeadersBoardScreen from '../containers/leadersBoardScreen/LeadersBoardScreen';
+import { Screens } from '../helpers/screenHelpers';
 
 const Stack = createStackNavigator();
 
@@ -23,27 +24,27 @@ function MyStack() {
         gestureEnabled: false,
         headerBackTitleVisible: false
       }}>
-        <Stack.Screen name="LoginOption" 
+        <Stack.Screen name={Screens.LoginOption}
             component={LoginOptionScreen} 
             options={{ headerMode: 'none', headerShown : false}}/>
 
-        <Stack.Screen name="LoginScreen" 
+        <Stack.Screen name={Screens.LoginScreen} 
             component={LoginScreen} 
             options={{ headerTitle: 'Please Login'}}/>
             
-        <Stack.Screen name="GuestScreen" 
+        <Stack.Screen name={Screens.GuestScreen }
             component={GuestScreen} 
             options={{ headerTitle: 'Guest Login Screen'}}/>
 
-        <Stack.Screen name="QuizOptionScreen" 
+        <Stack.Screen name={Screens.QuizOptionScreen }
             component={QuizOptionScreen} 
             options={{ title: "",}}/>
-        <Stack.Screen name="OfflineQuizScreen" 
+        <Stack.Screen name={Screens.OfflineQuizScreen }
             component={OfflineQuizScreen} 
             options={{ headerShown: false}}/>
-        <Stack.Screen name="LeadersBoardScreen" 
+        <Stack.Screen name={Screens.LeadersBoardScreen }
             component={LeadersBoardScreen} 
-            options={{ title: "Leaders Board"}}/>
+            options={{ title: "Leaders Board", headerLeft: null}}/>
       {/* headerShown: false  // to hide header
             headerLeft: null //to hide back button*/}
       {/* <Stack.Screen name="Profile" component={ProfileScreen} />

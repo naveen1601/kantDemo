@@ -5,8 +5,8 @@ import { create } from '../../helpers/PlatformSpecificStyles';
 import QuizOptionScreenStyles from './QuizOptionScreenStyles'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
 import { connect } from 'react-redux';
-import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions'
-
+import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
+import { Screens } from '../../helpers/screenHelpers';
 
 class QuizOptionScreen extends Component {
     state = {
@@ -29,7 +29,7 @@ class QuizOptionScreen extends Component {
                 <Text style={styles.instructionText}>3. You can revisit the questions by clicking 'Previous'</Text>
             </View>
             <Button
-                onPress={() => this.props.navigation.navigate('OfflineQuizScreen')}
+                onPress={() => this.props.navigation.navigate(Screens.LeadersBoardScreen)}
                 text="Start Quiz"
             />
         </View>);

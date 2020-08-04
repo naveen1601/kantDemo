@@ -5,7 +5,8 @@ import Constants from './LeadersBoardConstants';
 let initialState = {
     botsPair: [],
     evenPairDirection: true,
-    isRenderedOnce: false
+    isRenderedOnce: false,
+    botNamePairedWithUser: '' 
 };
 
 export default function LoginReducer(state = initialState, action) {
@@ -18,6 +19,7 @@ export default function LoginReducer(state = initialState, action) {
         case Constants.ACTIONS.SAVE_LEADERSBOARD_DATA:
             newState.botsPair= action.data.botsPair;
             newState.evenPairDirection = action.data.evenPairDirection;
+            newState.botNamePairedWithUser = action.data.botNamePairedWithUser;            
             newState.isRenderedOnce= true;
             break;
         case Constants.ACTIONS.CLEAR_DATA:

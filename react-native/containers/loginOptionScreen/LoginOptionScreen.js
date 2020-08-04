@@ -10,6 +10,8 @@ import {
     TouchableOpacity,
     Animated
 } from 'react-native';
+import {Screens} from '../../helpers/screenHelpers'
+
 
 class LoginOptionScreen extends Component {
 
@@ -81,8 +83,8 @@ class LoginOptionScreen extends Component {
     //     );
     // }
 
-    handleLoginButton = () => this.props.navigation.navigate('LoginScreen');
-    handleGuestLogin = () => this.props.navigation.navigate('GuestScreen');
+    handleLoginButton = () => this.props.navigation.navigate(Screens.LoginScreen);
+    handleGuestLogin = () => this.props.navigation.navigate(Screens.GuestScreen);
 
     renderLoginOption = () => {
         return (

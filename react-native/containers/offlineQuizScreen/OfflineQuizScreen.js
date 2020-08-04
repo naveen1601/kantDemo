@@ -13,16 +13,23 @@ import _ from 'lodash'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
 import { AllCompetencyArray, randomNumberBetweenTwoNum } from '../../helpers/CommonHelper';
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
+import {Screens, resetScreen} from '../../helpers/screenHelpers';
+
 
 class OfflineQuizScreen extends Component {
-    state = {
-        isAnswerEmpty: false,
-        quiz: findQuestionsForQuiz(this.props.competencyLevel, randomNumberBetweenTwoNum(6, 10))
-            .map((item, index) =>
-                ({ ...item, index, showEmptyWarning: false, userAnswer: '', isUserAnswerCorrect: false })),
-        currentQuestionIndex: 0,
-        isQuizEnded: false,
-        isReviewAnswerClicked: false
+    
+
+    constructor(props){
+        super(props);
+        this.state = {
+            isAnswerEmpty: false,
+            quiz: findQuestionsForQuiz(this.props.competencyLevel, randomNumberBetweenTwoNum(6, 10))
+                .map((item, index) =>
+                    ({ ...item, index, showEmptyWarning: false, userAnswer: '', isUserAnswerCorrect: false })),
+            currentQuestionIndex: 0,
+            isQuizEnded: false,
+            isReviewAnswerClicked: false
+        };
     }
 
     handleUserInput = ({ userAnswer, key }) => {
@@ -168,7 +175,7 @@ class OfflineQuizScreen extends Component {
                     )
                 })}
                 <Button
-                    onPress={() => this.props.navigation.navigate('LeadersBoardScreen')}
+                    onPress={() => resetScreen(this.props.navigation,Screens.LeadersBoardScreen)}
                     text={'See Leaders Board'} />
             </View>
         )
@@ -177,7 +184,7 @@ class OfflineQuizScreen extends Component {
     renderQuizSection = () => (
         <View>
             <CountDown
-                until={1.5 * 60}
+                until={5}
                 onFinish={this.submitQuiz}
                 onPress={() => { }}
                 timeToShow={['M', 'S']}
@@ -211,7 +218,7 @@ class OfflineQuizScreen extends Component {
                         <Text style={styles.displayScoreText}>Correct</Text>
                     </View>
                     <View style={styles.scoreBox}>
-                        <Text style={styles.displayScoreText}>Pavan</Text>
+                        <Text style={styles.displayScoreText}>{this.props.botNamePairedWithUser}</Text>
                         <Text style={styles.displayScoreText}>2/{this.state.quiz.length}</Text>
                         <Text style={styles.displayScoreText}>Correct</Text>
                     </View>
@@ -225,10 +232,10 @@ class OfflineQuizScreen extends Component {
     }
 
     render() {
-        // const comp = this.state.isQuizEnded ?
-        //     (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer()) :
-        //     this.renderQuizSection();
-        const comp = this.renderQuizReview();
+        const comp = this.state.isQuizEnded ?
+            (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer()) :
+            this.renderQuizSection();
+        //const comp = this.renderQuizReview();
 
         return (
             <ScrollView keyboardShouldPersistTaps={'always'}>
@@ -239,7 +246,7 @@ class OfflineQuizScreen extends Component {
                         school={this.props.school}
                         isSmall />
                     <StudentInfoDisplay
-                        name={'Pavan'}
+                        name={this.props.botNamePairedWithUser}
                         grade={this.props.grade}
                         school={this.props.school}
                         isSmall />
@@ -258,7 +265,8 @@ const mapStateToProps = state => {
         grade: state.login.userData && state.login.userData.grade,
         school: state.login.userData && state.login.userData.school,
         competencyLevel: state.login.userData && state.login.userData.competencyLevel,
-        isLoggedIn: state.login.isLoggedIn
+        isLoggedIn: state.login.isLoggedIn,
+        botNamePairedWithUser: state.leadersBoard.botNamePairedWithUser,
     }
 }
 
