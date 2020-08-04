@@ -9,14 +9,17 @@ import Text from '../../baseComponents/text/Text';
 import TextInput from '../../baseComponents/textInput/TextInput';
 import FlatButton from '../../baseComponents/button/FlatButton';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer';
-import QuestionBank from '../../QuestionBank';
 import _ from 'lodash'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
+import { AllCompetencyArray, randomNumberBetweenTwoNum } from '../../helpers/CommonHelper';
+import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
 
 class OfflineQuizScreen extends Component {
     state = {
         isAnswerEmpty: false,
-        quiz: QuestionBank.Test1.map((item, index) => ({ ...item, index, showEmptyWarning: false, userAnswer: "", isUserAnswerCorrect: false })),
+        quiz: findQuestionsForQuiz(this.props.competencyLevel, randomNumberBetweenTwoNum(6, 10))
+            .map((item, index) =>
+                ({ ...item, index, showEmptyWarning: false, userAnswer: '', isUserAnswerCorrect: false })),
         currentQuestionIndex: 0,
         isQuizEnded: false,
         isReviewAnswerClicked: false
@@ -36,6 +39,7 @@ class OfflineQuizScreen extends Component {
 
         return currentQuestion && (<QuestionAnswer
             question={currentQuestion.ques}
+            questionParam={currentQuestion.questParam}
             userAnswer={currentQuestion.userAnswer}
             onChangeValue={this.handleUserInput}
             quesIndex={currentQuestion.index}
@@ -65,22 +69,23 @@ class OfflineQuizScreen extends Component {
     }
 
     submitQuiz = () => {
-
         const quizWithAns = this.state.quiz.map(item => {
-            item.isUserAnswerCorrect =  this.compareAnswer(item.ans, item.userAnswer);
+            item.isUserAnswerCorrect = this.compareAnswer(item.ans, item.userAnswer);
             return item;
         });
-        this.setState({ 
+        this.setState({
             isQuizEnded: true,
-            quiz: quizWithAns })
+            quiz: quizWithAns
+        })
     }
 
-    compareAnswer = (correctAns, userAns)=>{
+    compareAnswer = (correctAns, userAns) => {
+        if (_.isEmpty(userAns)) return false;
         let systemAns = String(correctAns).trim().split(' ').join('').toLowerCase();
         let userInput = String(userAns).trim().split(' ').join('').toLowerCase();
-        
-        let isCorrect = ( systemAns == userInput );
-        if(!isCorrect && systemAns.split('(').length > 1){
+
+        let isCorrect = (systemAns == userInput);
+        if (!isCorrect && systemAns.split('(').length > 1) {
             systemAns = systemAns.split('(');
             userInput = userInput.split('(');
             const firstPartOfAns = systemAns[0] == userInput[0];
@@ -147,24 +152,32 @@ class OfflineQuizScreen extends Component {
     }
 
     renderQuizReview = () => {
-        return this.state.quiz.map((item, index) => {
-            const answerStyle = [styles.reviewUserAnswerText];
-            item.isUserAnswerCorrect ?  answerStyle.push( styles.corrrectUserAnswerText ) : 
-                answerStyle.push( styles.errorUserAnswerText );
-
-            return(
+        return (
             <View>
-                <Text style={styles.reviewQuestionText}>{index+1}. {item.ques}</Text>
-                <Text style={styles.reviewAnswerText}>Ans. {item.ans}</Text>
-                <Text style={answerStyle}>Your Ans. {item.userAnswer}</Text>
+                {this.state.quiz.map((item, index) => {
+                    const answerStyle = [styles.reviewUserAnswerText];
+                    item.isUserAnswerCorrect ? answerStyle.push(styles.corrrectUserAnswerText) :
+                        answerStyle.push(styles.errorUserAnswerText);
+
+                    return (
+                        <View>
+                            <Text style={styles.reviewQuestionText}>{index + 1}. {item.ques} : {item.questParam}</Text>
+                            <Text style={styles.reviewAnswerText}>Ans. {item.ans}</Text>
+                            <Text style={answerStyle}>Your Ans. {item.userAnswer}</Text>
+                        </View>
+                    )
+                })}
+                <Button
+                    onPress={() => this.props.navigation.navigate('LeadersBoardScreen')}
+                    text={'See Leaders Board'} />
             </View>
-        )})
+        )
     }
 
     renderQuizSection = () => (
         <View>
             <CountDown
-                until={30 * 60}
+                until={1.5 * 60}
                 onFinish={this.submitQuiz}
                 onPress={() => { }}
                 timeToShow={['M', 'S']}
@@ -175,7 +188,6 @@ class OfflineQuizScreen extends Component {
                 showSeparator
                 size={30}
             />
-
             {this.renderQuestionAndAnswer()}
             <View style={styles.switchQuestionSection}>
                 {this.renderPreviousButton()}
@@ -188,7 +200,7 @@ class OfflineQuizScreen extends Component {
     )
 
     renderScoreBoxContainer = () => {
-        const score = this.state.quiz.filter( item => item.isUserAnswerCorrect).length;
+        const score = this.state.quiz.filter(item => item.isUserAnswerCorrect).length;
         return (
             <>
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
@@ -213,10 +225,10 @@ class OfflineQuizScreen extends Component {
     }
 
     render() {
-        const comp = this.state.isQuizEnded ? 
-            (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer()) :
-            this.renderQuizSection();
-        // const comp = this.renderQuizReview();
+        // const comp = this.state.isQuizEnded ?
+        //     (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer()) :
+        //     this.renderQuizSection();
+        const comp = this.renderQuizReview();
 
         return (
             <ScrollView keyboardShouldPersistTaps={'always'}>
@@ -245,6 +257,7 @@ const mapStateToProps = state => {
         name: state.login.userData && state.login.userData.name,
         grade: state.login.userData && state.login.userData.grade,
         school: state.login.userData && state.login.userData.school,
+        competencyLevel: state.login.userData && state.login.userData.competencyLevel,
         isLoggedIn: state.login.isLoggedIn
     }
 }

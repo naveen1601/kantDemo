@@ -16,7 +16,7 @@ class QuestionAnswer extends Component {
         return (
             <View key={this.props.quesIndex}>
                 <View style={styles.questionBoxContainer}>
-                    <Text style={styles.questionBoxText}>{this.props.question}</Text>            
+                    <Text style={styles.questionBoxText}>{this.props.question}: {this.props.questionParam} </Text>            
                 </View>
                 <View style={styles.answerBoxContainer}>
                         {/* <Text style={styles.nameLabelText}>Please enter your answer</Text> */}

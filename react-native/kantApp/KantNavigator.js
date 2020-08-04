@@ -13,13 +13,14 @@ import LoginScreen from '../containers/loginScreen/LoginScreen';
 import GuestScreen from '../containers/guestScreen/GuestScreen'
 import QuizOptionScreen from '../containers/quizOptionScreen/QuizOptionScreen';
 import OfflineQuizScreen from '../containers/offlineQuizScreen/OfflineQuizScreen';
+import LeadersBoardScreen from '../containers/leadersBoardScreen/LeadersBoardScreen';
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator mode='card' screenOptions={{
-        gestureEnabled: true,
+        gestureEnabled: false,
         headerBackTitleVisible: false
       }}>
         <Stack.Screen name="LoginOption" 
@@ -40,6 +41,9 @@ function MyStack() {
         <Stack.Screen name="OfflineQuizScreen" 
             component={OfflineQuizScreen} 
             options={{ headerShown: false}}/>
+        <Stack.Screen name="LeadersBoardScreen" 
+            component={LeadersBoardScreen} 
+            options={{ title: "Leaders Board"}}/>
       {/* headerShown: false  // to hide header
             headerLeft: null //to hide back button*/}
       {/* <Stack.Screen name="Profile" component={ProfileScreen} />

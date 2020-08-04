@@ -5,15 +5,20 @@ import { create } from '../../helpers/PlatformSpecificStyles';
 import QuizOptionScreenStyles from './QuizOptionScreenStyles'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
 import { connect } from 'react-redux';
+import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions'
+
 
 class QuizOptionScreen extends Component {
     state = {
         isQuizInstructionEnabled: false
     };
 
-    handlePractiseOffline = () => this.setState({
-        isQuizInstructionEnabled: true
-    });
+    handlePractiseOffline = () => {
+        this.setState({
+            isQuizInstructionEnabled: true
+        });
+        this.props.clearLeadersBoard();
+    }
 
     renderInstructions = () => (
         <View style={styles.instructionContainer}>
@@ -37,14 +42,14 @@ class QuizOptionScreen extends Component {
                 text="Schedule Class"
                 disabled={!this.props.isLoggedIn}
                 secondaryButton={!this.props.isLoggedIn}
-                
+
 
             />
             <Button
                 onPress={() => { }}
                 text="Virtual Class"
                 disabled={!this.props.isLoggedIn}
-                secondaryButton={!this.props.isLoggedIn}                
+                secondaryButton={!this.props.isLoggedIn}
             />
 
             <Button
@@ -77,8 +82,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        dispatch1: () => {
-            //dispatch(actionCreator)
+        clearLeadersBoard: function () {
+            dispatch(LeadersBoardAction.clearLeadersBoard());
         }
     }
 }

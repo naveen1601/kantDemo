@@ -3359,732 +3359,127 @@
    "competency": 530,
    "level": 8
  },
- {
-   "id": 17483,
-   "subject": "PPT-Math05",
-   "competency": 470,
-   "level": 0
- },
- {
-   "id": 17484,
-   "subject": "PPT-Math05",
-   "competency": 480,
-   "level": 0
- },
- {
-   "id": 17485,
-   "subject": "PPT-Math05",
-   "competency": 490,
-   "level": 1
- },
- {
-   "id": 17486,
-   "subject": "PPT-Math05",
-   "competency": 500,
-   "level": 1
- },
- {
-   "id": 17487,
-   "subject": "PPT-Math05",
-   "competency": 510,
-   "level": 2
- },
- {
-   "id": 17488,
-   "subject": "PPT-Math05",
-   "competency": 520,
-   "level": 2
- },
- {
-   "id": 17489,
-   "subject": "PPT-Math05",
-   "competency": 530,
-   "level": 3
- },
- {
-   "id": 17490,
-   "subject": "PPT-Math05",
-   "competency": 540,
-   "level": 3
- },
- {
-   "id": 17491,
-   "subject": "PPT-Math05",
-   "competency": 550,
-   "level": 4
- },
- {
-   "id": 17492,
-   "subject": "PPT-Math05",
-   "competency": 560,
-   "level": 4
- },
- {
-   "id": 17493,
-   "subject": "PPT-Math05",
-   "competency": 570,
-   "level": 5
- },
- {
-   "id": 17494,
-   "subject": "PPT-Math05",
-   "competency": 580,
-   "level": 5
- },
- {
-   "id": 17495,
-   "subject": "PPT-Math05",
-   "competency": 590,
-   "level": 6
- },
- {
-   "id": 17496,
-   "subject": "PPT-Math05",
-   "competency": 600,
-   "level": 6
- },
- {
-   "id": 17497,
-   "subject": "PPT-Math05",
-   "competency": 610,
-   "level": 7
- },
- {
-   "id": 17498,
-   "subject": "PPT-Math05",
-   "competency": 620,
-   "level": 7
- },
- {
-   "id": 17499,
-   "subject": "PPT-Math05",
-   "competency": 630,
-   "level": 8
- },
- {
-   "id": 17500,
-   "subject": "PPT-GK",
-   "competency": 400,
-   "level": 0
- },
- {
-   "id": 17501,
-   "subject": "PPT-GK",
-   "competency": 425,
-   "level": 0
- },
- {
-   "id": 17502,
-   "subject": "PPT-GK",
-   "competency": 450,
-   "level": 1
- },
- {
-   "id": 17503,
-   "subject": "PPT-GK",
-   "competency": 475,
-   "level": 1
- },
- {
-   "id": 17504,
-   "subject": "PPT-GK",
-   "competency": 500,
-   "level": 2
- },
- {
-   "id": 17505,
-   "subject": "PPT-GK",
-   "competency": 525,
-   "level": 2
- },
- {
-   "id": 17506,
-   "subject": "PPT-GK",
-   "competency": 550,
-   "level": 3
- },
- {
-   "id": 17507,
-   "subject": "PPT-GK",
-   "competency": 575,
-   "level": 3
- },
- {
-   "id": 17508,
-   "subject": "PPT-GK",
-   "competency": 600,
-   "level": 4
- },
- {
-   "id": 17509,
-   "subject": "PPT-GK",
-   "competency": 625,
-   "level": 4
- },
- {
-   "id": 17510,
-   "subject": "PPT-GK",
-   "competency": 650,
-   "level": 5
- },
- {
-   "id": 17511,
-   "subject": "PPT-GK",
-   "competency": 675,
-   "level": 5
- },
- {
-   "id": 17512,
-   "subject": "PPT-GK",
-   "competency": 700,
-   "level": 6
- },
- {
-   "id": 17513,
-   "subject": "PPT-GK",
-   "competency": 725,
-   "level": 6
- },
- {
-   "id": 17514,
-   "subject": "PPT-GK",
-   "competency": 750,
-   "level": 7
- },
- {
-   "id": 17515,
-   "subject": "PPT-GK",
-   "competency": 775,
-   "level": 7
- },
- {
-   "id": 17516,
-   "subject": "PPT-GK",
-   "competency": 800,
-   "level": 8
- },
- {
-   "id": 17517,
-   "subject": "PPT-Science06",
-   "competency": 570,
-   "level": 0
- },
- {
-   "id": 17518,
-   "subject": "PPT-Science06",
-   "competency": 580,
-   "level": 0
- },
- {
-   "id": 17519,
-   "subject": "PPT-Science06",
-   "competency": 590,
-   "level": 1
- },
- {
-   "id": 17520,
-   "subject": "PPT-Science06",
-   "competency": 600,
-   "level": 1
- },
- {
-   "id": 17521,
-   "subject": "PPT-Science06",
-   "competency": 610,
-   "level": 2
- },
- {
-   "id": 17522,
-   "subject": "PPT-Science06",
-   "competency": 620,
-   "level": 2
- },
- {
-   "id": 17523,
-   "subject": "PPT-Science06",
-   "competency": 630,
-   "level": 3
- },
- {
-   "id": 17524,
-   "subject": "PPT-Science06",
-   "competency": 640,
-   "level": 3
- },
- {
-   "id": 17525,
-   "subject": "PPT-Science06",
-   "competency": 650,
-   "level": 4
- },
- {
-   "id": 17526,
-   "subject": "PPT-Science06",
-   "competency": 660,
-   "level": 4
- },
- {
-   "id": 17527,
-   "subject": "PPT-Science06",
-   "competency": 670,
-   "level": 5
- },
- {
-   "id": 17528,
-   "subject": "PPT-Science06",
-   "competency": 680,
-   "level": 5
- },
- {
-   "id": 17529,
-   "subject": "PPT-Science06",
-   "competency": 690,
-   "level": 6
- },
- {
-   "id": 17530,
-   "subject": "PPT-Science06",
-   "competency": 700,
-   "level": 6
- },
- {
-   "id": 17531,
-   "subject": "PPT-Science06",
-   "competency": 710,
-   "level": 7
- },
- {
-   "id": 17532,
-   "subject": "PPT-Science06",
-   "competency": 720,
-   "level": 7
- },
- {
-   "id": 17533,
-   "subject": "PPT-Science06",
-   "competency": 730,
-   "level": 8
- },
- {
-   "id": 17534,
-   "subject": "PPT-Science07",
-   "competency": 670,
-   "level": 0
- },
- {
-   "id": 17535,
-   "subject": "PPT-Science07",
-   "competency": 680,
-   "level": 0
- },
- {
-   "id": 17536,
-   "subject": "PPT-Science07",
-   "competency": 690,
-   "level": 1
- },
- {
-   "id": 17537,
-   "subject": "PPT-Science07",
-   "competency": 700,
-   "level": 1
- },
- {
-   "id": 17538,
-   "subject": "PPT-Science07",
-   "competency": 710,
-   "level": 2
- },
- {
-   "id": 17539,
-   "subject": "PPT-Science07",
-   "competency": 720,
-   "level": 2
- },
- {
-   "id": 17540,
-   "subject": "PPT-Science07",
-   "competency": 730,
-   "level": 3
- },
- {
-   "id": 17541,
-   "subject": "PPT-Science07",
-   "competency": 740,
-   "level": 3
- },
- {
-   "id": 17542,
-   "subject": "PPT-Science07",
-   "competency": 750,
-   "level": 4
- },
- {
-   "id": 17543,
-   "subject": "PPT-Science07",
-   "competency": 760,
-   "level": 4
- },
- {
-   "id": 17544,
-   "subject": "PPT-Science07",
-   "competency": 770,
-   "level": 5
- },
- {
-   "id": 17545,
-   "subject": "PPT-Science07",
-   "competency": 780,
-   "level": 5
- },
- {
-   "id": 17546,
-   "subject": "PPT-Science07",
-   "competency": 790,
-   "level": 6
- },
- {
-   "id": 17547,
-   "subject": "PPT-Science07",
-   "competency": 800,
-   "level": 6
- },
- {
-   "id": 17548,
-   "subject": "PPT-Science07",
-   "competency": 810,
-   "level": 7
- },
- {
-   "id": 17549,
-   "subject": "PPT-Science07",
-   "competency": 820,
-   "level": 7
- },
- {
-   "id": 17550,
-   "subject": "PPT-Science07",
-   "competency": 830,
-   "level": 8
- },
- {
-   "id": 17585,
-   "subject": "PPT-English02",
-   "competency": 170,
-   "level": 0
- },
- {
-   "id": 17586,
-   "subject": "PPT-English02",
-   "competency": 190,
-   "level": 1
- },
- {
-   "id": 17587,
-   "subject": "PPT-English02",
-   "competency": 210,
-   "level": 2
- },
- {
-   "id": 17588,
-   "subject": "PPT-English02",
-   "competency": 230,
-   "level": 3
- },
- {
-   "id": 17589,
-   "subject": "PPT-English02",
-   "competency": 250,
-   "level": 4
- },
- {
-   "id": 17590,
-   "subject": "PPT-English02",
-   "competency": 270,
-   "level": 5
- },
- {
-   "id": 17591,
-   "subject": "PPT-English02",
-   "competency": 290,
-   "level": 6
- },
- {
-   "id": 17592,
-   "subject": "PPT-English02",
-   "competency": 310,
-   "level": 7
- },
- {
-   "id": 17593,
-   "subject": "PPT-English02",
-   "competency": 330,
-   "level": 8
- },
- {
-   "id": 17628,
-   "subject": "PPT-Science08",
-   "competency": 770,
-   "level": 0
- },
- {
-   "id": 17629,
-   "subject": "PPT-Science08",
-   "competency": 780,
-   "level": 0
- },
- {
-   "id": 17630,
-   "subject": "PPT-Science08",
-   "competency": 790,
-   "level": 1
- },
- {
-   "id": 17631,
-   "subject": "PPT-Science08",
-   "competency": 800,
-   "level": 1
- },
- {
-   "id": 17632,
-   "subject": "PPT-Science08",
-   "competency": 810,
-   "level": 2
- },
- {
-   "id": 17633,
-   "subject": "PPT-Science08",
-   "competency": 820,
-   "level": 2
- },
- {
-   "id": 17634,
-   "subject": "PPT-Science08",
-   "competency": 830,
-   "level": 3
- },
- {
-   "id": 17635,
-   "subject": "PPT-Science08",
-   "competency": 840,
-   "level": 3
- },
- {
-   "id": 17636,
-   "subject": "PPT-Science08",
-   "competency": 850,
-   "level": 4
- },
- {
-   "id": 17637,
-   "subject": "PPT-Science08",
-   "competency": 860,
-   "level": 4
- },
- {
-   "id": 17638,
-   "subject": "PPT-Science08",
-   "competency": 870,
-   "level": 5
- },
- {
-   "id": 17639,
-   "subject": "PPT-Science08",
-   "competency": 880,
-   "level": 5
- },
- {
-   "id": 17640,
-   "subject": "PPT-Science08",
-   "competency": 890,
-   "level": 6
- },
- {
-   "id": 17641,
-   "subject": "PPT-Science08",
-   "competency": 900,
-   "level": 6
- },
- {
-   "id": 17642,
-   "subject": "PPT-Science08",
-   "competency": 910,
-   "level": 7
- },
- {
-   "id": 17643,
-   "subject": "PPT-Science08",
-   "competency": 920,
-   "level": 7
- },
- {
-   "id": 17644,
-   "subject": "PPT-Science08",
-   "competency": 930,
-   "level": 8
- },
- {
-   "id": 17730,
-   "subject": "PPT-English03",
-   "competency": 270,
-   "level": 0
- },
- {
-   "id": 17731,
-   "subject": "PPT-English03",
-   "competency": 290,
-   "level": 1
- },
- {
-   "id": 17732,
-   "subject": "PPT-English03",
-   "competency": 310,
-   "level": 2
- },
- {
-   "id": 17733,
-   "subject": "PPT-English03",
-   "competency": 330,
-   "level": 3
- },
- {
-   "id": 17734,
-   "subject": "PPT-English03",
-   "competency": 350,
-   "level": 4
- },
- {
-   "id": 17735,
-   "subject": "PPT-English03",
-   "competency": 370,
-   "level": 5
- },
- {
-   "id": 17736,
-   "subject": "PPT-English03",
-   "competency": 390,
-   "level": 6
- },
- {
-   "id": 17737,
-   "subject": "PPT-English03",
-   "competency": 410,
-   "level": 7
- },
- {
-   "id": 17738,
-   "subject": "PPT-English03",
-   "competency": 430,
-   "level": 8
- },
- {
-   "id": 17739,
-   "subject": "PPT-English04",
-   "competency": 370,
-   "level": 0
- },
- {
-   "id": 17740,
-   "subject": "PPT-English04",
-   "competency": 390,
-   "level": 1
- },
- {
-   "id": 17741,
-   "subject": "PPT-English04",
-   "competency": 410,
-   "level": 2
- },
- {
-   "id": 17742,
-   "subject": "PPT-English04",
-   "competency": 430,
-   "level": 3
- },
- {
-   "id": 17743,
-   "subject": "PPT-English04",
-   "competency": 450,
-   "level": 4
- },
- {
-   "id": 17744,
-   "subject": "PPT-English04",
-   "competency": 470,
-   "level": 5
- },
- {
-   "id": 17745,
-   "subject": "PPT-English04",
-   "competency": 490,
-   "level": 6
- },
- {
-   "id": 17746,
-   "subject": "PPT-English04",
-   "competency": 510,
-   "level": 7
- },
- {
-   "id": 17747,
-   "subject": "PPT-English04",
-   "competency": 530,
-   "level": 8
- },
- {
-   "id": 17748,
-   "subject": "PPT-English05",
-   "competency": 470,
-   "level": 0
- },
- {
-   "id": 17749,
-   "subject": "PPT-English05",
-   "competency": 490,
-   "level": 1
- },
- {
-   "id": 17750,
-   "subject": "PPT-English05",
-   "competency": 510,
-   "level": 2
- },
- {
-   "id": 17751,
-   "subject": "PPT-English05",
-   "competency": 530,
-   "level": 3
- },
- {
-   "id": 17752,
-   "subject": "PPT-English05",
-   "competency": 550,
-   "level": 4
- },
- {
-   "id": 17753,
-   "subject": "PPT-English05",
-   "competency": 570,
-   "level": 5
- },
- {
-   "id": 17754,
-   "subject": "PPT-English05",
-   "competency": 590,
-   "level": 6
- },
- {
-   "id": 17755,
-   "subject": "PPT-English05",
-   "competency": 610,
-   "level": 7
- },
- {
-   "id": 17756,
-   "subject": "PPT-English05",
-   "competency": 630,
-   "level": 8
- },
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  {
    "id": 17757,
    "subject": "TXT-Physics12",
@@ -4390,330 +3785,6 @@
    "subject": "TXT-Math12",
    "competency": 1330,
    "level": 8
- },
- {
-   "id": 17932,
-   "subject": "PPT-Class01",
-   "competency": 70,
-   "level": 0
- },
- {
-   "id": 17933,
-   "subject": "PPT-Class01",
-   "competency": 73,
-   "level": 0
- },
- {
-   "id": 17934,
-   "subject": "PPT-Class01",
-   "competency": 76,
-   "level": 0
- },
- {
-   "id": 17935,
-   "subject": "PPT-Class01",
-   "competency": 79,
-   "level": 0
- },
- {
-   "id": 17936,
-   "subject": "PPT-Class01",
-   "competency": 82,
-   "level": 0
- },
- {
-   "id": 17937,
-   "subject": "PPT-Class01",
-   "competency": 85,
-   "level": 1
- },
- {
-   "id": 17938,
-   "subject": "PPT-Class01",
-   "competency": 88,
-   "level": 1
- },
- {
-   "id": 17939,
-   "subject": "PPT-Class01",
-   "competency": 91,
-   "level": 1
- },
- {
-   "id": 17940,
-   "subject": "PPT-Class01",
-   "competency": 94,
-   "level": 1
- },
- {
-   "id": 17941,
-   "subject": "PPT-Class01",
-   "competency": 97,
-   "level": 1
- },
- {
-   "id": 17942,
-   "subject": "PPT-Class01",
-   "competency": 100,
-   "level": 2
- },
- {
-   "id": 17943,
-   "subject": "PPT-Class01",
-   "competency": 103,
-   "level": 2
- },
- {
-   "id": 17944,
-   "subject": "PPT-Class01",
-   "competency": 106,
-   "level": 2
- },
- {
-   "id": 17945,
-   "subject": "PPT-Class01",
-   "competency": 109,
-   "level": 2
- },
- {
-   "id": 17946,
-   "subject": "PPT-Class01",
-   "competency": 112,
-   "level": 2
- },
- {
-   "id": 17947,
-   "subject": "PPT-Class01",
-   "competency": 115,
-   "level": 3
- },
- {
-   "id": 17948,
-   "subject": "PPT-Class01",
-   "competency": 118,
-   "level": 3
- },
- {
-   "id": 17949,
-   "subject": "PPT-Class01",
-   "competency": 121,
-   "level": 3
- },
- {
-   "id": 17950,
-   "subject": "PPT-Class01",
-   "competency": 124,
-   "level": 3
- },
- {
-   "id": 17951,
-   "subject": "PPT-Class01",
-   "competency": 127,
-   "level": 3
- },
- {
-   "id": 17952,
-   "subject": "PPT-Class01",
-   "competency": 130,
-   "level": 4
- },
- {
-   "id": 17953,
-   "subject": "PPT-Class01",
-   "competency": 133,
-   "level": 4
- },
- {
-   "id": 17954,
-   "subject": "PPT-Class01",
-   "competency": 136,
-   "level": 4
- },
- {
-   "id": 17955,
-   "subject": "PPT-Class01",
-   "competency": 139,
-   "level": 4
- },
- {
-   "id": 17956,
-   "subject": "PPT-Class01",
-   "competency": 142,
-   "level": 4
- },
- {
-   "id": 17957,
-   "subject": "PPT-Class01",
-   "competency": 145,
-   "level": 5
- },
- {
-   "id": 17958,
-   "subject": "PPT-Class01",
-   "competency": 148,
-   "level": 5
- },
- {
-   "id": 17959,
-   "subject": "PPT-Class01",
-   "competency": 151,
-   "level": 5
- },
- {
-   "id": 17960,
-   "subject": "PPT-Class01",
-   "competency": 154,
-   "level": 5
- },
- {
-   "id": 17961,
-   "subject": "PPT-Class01",
-   "competency": 157,
-   "level": 5
- },
- {
-   "id": 17962,
-   "subject": "PPT-Class01",
-   "competency": 160,
-   "level": 6
- },
- {
-   "id": 17963,
-   "subject": "PPT-Class01",
-   "competency": 163,
-   "level": 6
- },
- {
-   "id": 17964,
-   "subject": "PPT-Class01",
-   "competency": 166,
-   "level": 6
- },
- {
-   "id": 17965,
-   "subject": "PPT-Class01",
-   "competency": 169,
-   "level": 6
- },
- {
-   "id": 17966,
-   "subject": "PPT-Class01",
-   "competency": 172,
-   "level": 6
- },
- {
-   "id": 17967,
-   "subject": "PPT-Class01",
-   "competency": 175,
-   "level": 7
- },
- {
-   "id": 17968,
-   "subject": "PPT-Class01",
-   "competency": 178,
-   "level": 7
- },
- {
-   "id": 17969,
-   "subject": "PPT-Class01",
-   "competency": 181,
-   "level": 7
- },
- {
-   "id": 17970,
-   "subject": "PPT-Class01",
-   "competency": 184,
-   "level": 7
- },
- {
-   "id": 17971,
-   "subject": "PPT-Class01",
-   "competency": 187,
-   "level": 7
- },
- {
-   "id": 17972,
-   "subject": "PPT-Class01",
-   "competency": 190,
-   "level": 8
- },
- {
-   "id": 17973,
-   "subject": "PPT-Class01",
-   "competency": 193,
-   "level": 8
- },
- {
-   "id": 17974,
-   "subject": "PPT-Class01",
-   "competency": 196,
-   "level": 8
- },
- {
-   "id": 17975,
-   "subject": "PPT-Class01",
-   "competency": 199,
-   "level": 8
- },
- {
-   "id": 17976,
-   "subject": "PPT-Class01",
-   "competency": 202,
-   "level": 8
- },
- {
-   "id": 17977,
-   "subject": "PPT-Class01",
-   "competency": 205,
-   "level": 9
- },
- {
-   "id": 17978,
-   "subject": "PPT-Class01",
-   "competency": 208,
-   "level": 9
- },
- {
-   "id": 17979,
-   "subject": "PPT-Class01",
-   "competency": 211,
-   "level": 9
- },
- {
-   "id": 17980,
-   "subject": "PPT-Class01",
-   "competency": 214,
-   "level": 9
- },
- {
-   "id": 17981,
-   "subject": "PPT-Class01",
-   "competency": 217,
-   "level": 9
- },
- {
-   "id": 17982,
-   "subject": "PPT-Class01",
-   "competency": 220,
-   "level": 9
- },
- {
-   "id": 17983,
-   "subject": "PPT-Class01",
-   "competency": 223,
-   "level": 9
- },
- {
-   "id": 17984,
-   "subject": "PPT-Class01",
-   "competency": 226,
-   "level": 9
- },
- {
-   "id": 17985,
-   "subject": "PPT-Class01",
-   "competency": 229,
-   "level": 9
  },
  {
    "id": 17986,

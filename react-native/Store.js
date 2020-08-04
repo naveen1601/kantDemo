@@ -6,6 +6,7 @@ import { persistStore, persistCombineReducers, createMigrate } from 'redux-persi
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import getStoredStateMigrateV4 from 'redux-persist/lib/integration/getStoredStateMigrateV4';
 import login from './containers/loginScreen/LoginReducer';
+import leadersBoard from './containers/leadersBoardScreen/LeadersBoardReducer'
 
 const oldConfig = {
     storage: AsyncStorage
@@ -21,7 +22,7 @@ function getStore() {
         getStoredState: getStoredStateMigrateV4(oldConfig)
     };
 
-    let reducers = persistCombineReducers(config, { login });
+    let reducers = persistCombineReducers(config, { login, leadersBoard });
 
     let store = createStore(
         reducers,

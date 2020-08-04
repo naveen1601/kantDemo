@@ -10,15 +10,19 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import GuestActions from './GuestActions';
+import { CompetencyAndGradeArray } from '../../helpers/CommonHelper';
+//temp
+
 class GuestScreen extends Component {
     state = {
-        name: _.get(this.props.userData, "name" ),
-        grade: _.get( this.props.userData, "grade"),
+        name: _.get(this.props.userData, "name"),
+        grade: _.get(this.props.userData, "grade"),
         nameHasErrors: false,
         gradeSelected: false
     };
 
-    handleNameChange = (name) => {
+    handleNameChange = (fname) => {
+        const name = this.state.name ? fname :  String(fname).trim();
         this.setState({
             name
         });
@@ -30,7 +34,7 @@ class GuestScreen extends Component {
     }
 
     isNameValid = (name) => {
-        return !_.isEmpty(name)
+        return !_.isEmpty(String(name).trim())
     }
     isGradeValid = (grade) => {
         return grade > 0;
@@ -48,9 +52,11 @@ class GuestScreen extends Component {
 
     handleGuestSubmit = () => {
         if (this.areUserInputValid()) {
+
             this.props.saveGuestUser({
-                name: this.state.name,
-                grade: this.state.grade
+                name: this.state.name.charAt(0).toUpperCase() + this.state.name.slice(1),
+                grade: this.state.grade,
+                competencyLevel: CompetencyAndGradeArray[this.state.grade],
             })
             this.props.navigation.navigate('QuizOptionScreen');
         }
@@ -69,7 +75,7 @@ class GuestScreen extends Component {
                     <GradeOption options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
                         onSelect={this.handleGradeSelection}
                         value={this.state.grade} />
-                    
+
                     <View style={styles.nameContainer}>
                         <Text style={styles.nameLabelText}>Enter Name</Text>
                         <View style={styles.nameInputBox}>
@@ -82,7 +88,7 @@ class GuestScreen extends Component {
                             }
                         </View>
                     </View>
-                    
+
                     <Button
                         onPress={this.handleGuestSubmit}
                         text="Submit"
@@ -103,7 +109,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        saveGuestUser: function(userData) { 
+        saveGuestUser: function (userData) {
             dispatch(GuestActions.saveGuestUser(userData));
         }
     };

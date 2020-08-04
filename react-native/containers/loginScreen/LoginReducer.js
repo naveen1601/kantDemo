@@ -6,7 +6,7 @@ let initialState = {
     showLoader: false,
     isLoggedIn: false,
     isGuest: false,
-    userData: null
+    userData: {competencyLevel : [], grade: '', name:''}
 };
 
 export default function LoginReducer(state = initialState, action) {
