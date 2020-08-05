@@ -38,7 +38,6 @@ export function findQuestionsForQuiz(competencyArray, numberOfQuestions = 7) {
         return allCompetencyNumbers.indexOf(item)== index; 
       });
 
-    // console.log('competencyList ',competencyList);
 
     //Select one Subject for each compentency
     finalCompetencyListFromMaster = competencyList.map(item => {
@@ -47,9 +46,6 @@ export function findQuestionsForQuiz(competencyArray, numberOfQuestions = 7) {
 
 
     Config.COMPETENCY_LIST = allCompetencyNumbers.sort(compare);
-    console.log('comp sort ',AllCompetencyArray);
-    
-    console.log('finalCompetencyListFromMaster ', finalCompetencyListFromMaster);
 
     return findQuestionsFromQuestionFile(finalCompetencyListFromMaster);
 }
@@ -94,8 +90,6 @@ export function findQuestionsFromQuestionFile(competencyAndLevelList) {
         }
     });
     
-    console.log('final List without G ', finalQuestionList);
-    // console.log('questions Array ', masterListOfCompetency);
     //if questionList has Group question, find group ques.
     finalQuestionList = finalQuestionList.map((question)=>{
         const ques = question.group == 'G' ? findSubQuestion(question) : question;

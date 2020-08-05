@@ -11,9 +11,10 @@ import FlatButton from '../../baseComponents/button/FlatButton';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer';
 import _ from 'lodash'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
-import { AllCompetencyArray, randomNumberBetweenTwoNum } from '../../helpers/CommonHelper';
+import { AllCompetencyArray, randomNumberBetweenTwoNum, updatePairsWithScore } from '../../helpers/CommonHelper';
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
 import {Screens, resetScreen} from '../../helpers/screenHelpers';
+import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
 
 
 class OfflineQuizScreen extends Component {
@@ -28,7 +29,8 @@ class OfflineQuizScreen extends Component {
                     ({ ...item, index, showEmptyWarning: false, userAnswer: '', isUserAnswerCorrect: false })),
             currentQuestionIndex: 0,
             isQuizEnded: false,
-            isReviewAnswerClicked: false
+            isReviewAnswerClicked: false,
+            userScore: 0
         };
     }
 
@@ -80,10 +82,14 @@ class OfflineQuizScreen extends Component {
             item.isUserAnswerCorrect = this.compareAnswer(item.ans, item.userAnswer);
             return item;
         });
+        const userScore = quizWithAns.filter(item => item.isUserAnswerCorrect).length;
+        let botsWithScore = updatePairsWithScore(userScore, this.props.botsPair, this.state.quiz.length);
+        this.props.updateScore(botsWithScore);
         this.setState({
             isQuizEnded: true,
-            quiz: quizWithAns
-        })
+            quiz: quizWithAns,
+            userScore
+        });
     }
 
     compareAnswer = (correctAns, userAns) => {
@@ -184,7 +190,7 @@ class OfflineQuizScreen extends Component {
     renderQuizSection = () => (
         <View>
             <CountDown
-                until={5}
+                until={2}
                 onFinish={this.submitQuiz}
                 onPress={() => { }}
                 timeToShow={['M', 'S']}
@@ -206,20 +212,26 @@ class OfflineQuizScreen extends Component {
         </View>
     )
 
-    renderScoreBoxContainer = () => {
-        const score = this.state.quiz.filter(item => item.isUserAnswerCorrect).length;
+    getBotObjectFromPairObject=()=>{
+        return this.props.botsPair.flat().find(bot => bot.id == this.props.botIdPairedWithUser);
+    }
+
+    renderScoreBoxContainer = (botObject) => {
+
+        const quizLength = this.state.quiz.length;
+
         return (
             <>
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
                 <View style={styles.scoreBoxContainer}>
                     <View style={styles.scoreBox}>
                         <Text style={styles.displayScoreText}>{this.props.name}</Text>
-                        <Text style={styles.displayScoreText}>{score}/{this.state.quiz.length}</Text>
+                        <Text style={styles.displayScoreText}>{this.state.userScore}/{quizLength}</Text>
                         <Text style={styles.displayScoreText}>Correct</Text>
                     </View>
                     <View style={styles.scoreBox}>
-                        <Text style={styles.displayScoreText}>{this.props.botNamePairedWithUser}</Text>
-                        <Text style={styles.displayScoreText}>2/{this.state.quiz.length}</Text>
+                        <Text style={styles.displayScoreText}>{botObject.name}</Text>
+                        <Text style={styles.displayScoreText}>{botObject.score}/{quizLength}</Text>
                         <Text style={styles.displayScoreText}>Correct</Text>
                     </View>
                 </View>
@@ -232,8 +244,9 @@ class OfflineQuizScreen extends Component {
     }
 
     render() {
-        const comp = this.state.isQuizEnded ?
-            (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer()) :
+        let botObject = this.getBotObjectFromPairObject();        
+        let comp = this.state.isQuizEnded ?
+            (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer(botObject)) :
             this.renderQuizSection();
         //const comp = this.renderQuizReview();
 
@@ -246,7 +259,7 @@ class OfflineQuizScreen extends Component {
                         school={this.props.school}
                         isSmall />
                     <StudentInfoDisplay
-                        name={this.props.botNamePairedWithUser}
+                        name={botObject.name}
                         grade={this.props.grade}
                         school={this.props.school}
                         isSmall />
@@ -266,14 +279,15 @@ const mapStateToProps = state => {
         school: state.login.userData && state.login.userData.school,
         competencyLevel: state.login.userData && state.login.userData.competencyLevel,
         isLoggedIn: state.login.isLoggedIn,
-        botNamePairedWithUser: state.leadersBoard.botNamePairedWithUser,
+        botIdPairedWithUser: state.leadersBoard.botIdPairedWithUser,
+        botsPair: state.leadersBoard.botsPair,
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        dispatch1: () => {
-            //dispatch(actionCreator)
+        updateScore: function (scoreData) {
+            dispatch(LeadersBoardAction.updateScore(scoreData));
         }
     }
 }

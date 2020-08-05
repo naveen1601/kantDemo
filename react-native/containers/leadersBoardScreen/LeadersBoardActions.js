@@ -10,6 +10,14 @@ export default {
             });
         };
     },
+    updateScore: function (leadersBoardDataWithScore) {
+        return function (dispatch) {
+            dispatch({ 
+                type: Constants.ACTIONS.UPDATE_SCORE,
+                data: leadersBoardDataWithScore
+            });
+        };
+    },
     clearLeadersBoard: function () {
         return function (dispatch) {
             dispatch({ 

@@ -6,7 +6,7 @@ let initialState = {
     botsPair: [],
     evenPairDirection: true,
     isRenderedOnce: false,
-    botNamePairedWithUser: '' 
+    botIdPairedWithUser: 0 
 };
 
 export default function LoginReducer(state = initialState, action) {
@@ -19,8 +19,11 @@ export default function LoginReducer(state = initialState, action) {
         case Constants.ACTIONS.SAVE_LEADERSBOARD_DATA:
             newState.botsPair= action.data.botsPair;
             newState.evenPairDirection = action.data.evenPairDirection;
-            newState.botNamePairedWithUser = action.data.botNamePairedWithUser;            
+            newState.botIdPairedWithUser = action.data.botIdPairedWithUser;            
             newState.isRenderedOnce= true;
+            break;
+        case Constants.ACTIONS.UPDATE_SCORE:
+            newState.botsPair= action.data;
             break;
         case Constants.ACTIONS.CLEAR_DATA:
             newState= initialState;

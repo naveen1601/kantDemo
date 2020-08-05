@@ -24,7 +24,7 @@ class LeadersBoardScreen extends Component {
             quizOver: false,
             newPairingRequired: false,
         };
-        let botNamePairedWithUser= ''; 
+        let botIdPairedWithUser= ''; 
     }
 
 
@@ -73,7 +73,7 @@ class LeadersBoardScreen extends Component {
         const leaderPairData = {
             botsPair: botsPairFirstTime,
             evenPairDirection: this.props.evenPairDirection,
-            botNamePairedWithUser : this.botNamePairedWithUser
+            botIdPairedWithUser : this.botIdPairedWithUser
         }
         this.props.saveLeadersBoard(leaderPairData);
 
@@ -91,8 +91,8 @@ class LeadersBoardScreen extends Component {
             if (users[startingBot + 1] !== undefined) {
                 pairArray.push([users[startingBot], users[startingBot + 1]]);
 
-                if(users[startingBot].id == 100) this.botNamePairedWithUser = users[startingBot + 1].name;
-                else if(users[startingBot + 1].id == 100) this.botNamePairedWithUser =  users[startingBot].name;
+                if(users[startingBot].id == 100) this.botIdPairedWithUser = users[startingBot + 1].id;
+                else if(users[startingBot + 1].id == 100) this.botIdPairedWithUser =  users[startingBot].id;
 
                 
             } else {
@@ -134,7 +134,7 @@ class LeadersBoardScreen extends Component {
         const leaderPairData = {
             botsPair: pairArray,
             evenPairDirection: this.state.evenPairDirection,
-            botNamePairedWithUser : this.botNamePairedWithUser
+            botIdPairedWithUser : this.botIdPairedWithUser
         }
         this.props.saveLeadersBoard(leaderPairData);
     }

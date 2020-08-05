@@ -38,4 +38,15 @@ export function randomNumberOfValues(listOfValues, numbersRequired) {
     return valuesArr;
 }
 
+export function updatePairsWithScore(userScore, botsPair, quizLength){
+
+    botsPair.forEach(pair => {
+        pair.forEach(bot => {
+            bot.score = bot.id ==100 ? userScore : randomNumberBetweenTwoNum(quizLength - 6, quizLength);
+        });
+    });
+
+    return botsPair
+}
+
 
