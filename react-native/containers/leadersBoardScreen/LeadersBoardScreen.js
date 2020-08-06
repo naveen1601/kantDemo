@@ -166,7 +166,7 @@ class LeadersBoardScreen extends Component {
                 <Text style={styles.quizText}>Quiz is going to start in </Text>
 
                 <CountDown
-                    until={4}
+                    until={10}
                     onFinish={this.onTimeOutNavigateToQuiz}
                     onPress={() => { }}
                     timeToShow={['S']}
