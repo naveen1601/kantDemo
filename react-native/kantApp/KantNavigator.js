@@ -21,7 +21,7 @@ const Stack = createStackNavigator();
 
 quitQuizAndMoveToHome= (navigation)=> (<FlatButton
     onPress={() => resetScreen(navigation,Screens.LoginOption)}
-    text='Return to home'
+    text='Home'
 />);
 
 function MyStack() {
@@ -58,7 +58,6 @@ function MyStack() {
             options={({ navigation }) => { 
                 return{
                     headerTitle: 'Leaders Board',
-                    headerLeft: null,
                     headerRight: () => quitQuizAndMoveToHome(navigation)
                 }}
             }/>

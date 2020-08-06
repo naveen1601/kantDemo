@@ -5,7 +5,7 @@ const isX = Platform.OS === 'ios' && (d.height > 800 || d.width > 800) ? true : 
 
 export default {
     loginModalBackground: {
-        backgroundColor: $_.loginPageBackgroundColor,
+        //backgroundColor: $_.loginPageBackgroundColor,
         height: '100%'
     },
     loginContainer: {
@@ -15,7 +15,10 @@ export default {
         height: '40%',
         borderTopColor: $_.loginOptionBorderColor,
         borderTopWidth: 1,
-        bottom: 0,
+        bottom: 0,        
+        // borderTopLeftRadius: 30,
+        // borderTopRightRadius: 30,
+        
         ios: {
             shadowColor: '#333',
             paddingBottom: isX ? 14 : 0,

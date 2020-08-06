@@ -11,6 +11,7 @@ import {
     Animated
 } from 'react-native';
 import {Screens} from '../../helpers/screenHelpers'
+import BackgroundImage from '../../components/backgroundImage/BackgroundImage';
 
 
 class LoginOptionScreen extends Component {
@@ -81,7 +82,7 @@ class LoginOptionScreen extends Component {
     //     );
     // }
 
-    // handleLoginButton = () => this.props.navigation.navigate(Screens.LoginScreen);
+    //handleLoginButton = () => this.props.navigation.navigate(Screens.LoginScreen);
     handleLoginButton = () => alert('Login is not available, plese use Guest Mode');   
     handleGuestLogin = () => this.props.navigation.navigate(Screens.GuestScreen);
 
@@ -110,7 +111,11 @@ class LoginOptionScreen extends Component {
     }
 
     render() {
-        return this.renderLoginOption();
+        return (
+            <BackgroundImage>
+                {this.renderLoginOption()}
+            </BackgroundImage>
+        );
     }
 }
 

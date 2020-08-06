@@ -42,7 +42,7 @@ class LeadersBoardScreen extends Component {
     }
 
     onTimeOutNavigateToQuiz=()=>{
-        resetScreen(this.props.navigation,Screens.OfflineQuizScreen);          
+        this.props.navigation.replace(Screens.OfflineQuizScreen);          
         // this.props.navigation.push(Screens.OfflineQuizScreen);
     }
 
@@ -166,7 +166,7 @@ class LeadersBoardScreen extends Component {
                 <Text style={styles.quizText}>Quiz is going to start in </Text>
 
                 <CountDown
-                    until={10}
+                    until={4}
                     onFinish={this.onTimeOutNavigateToQuiz}
                     onPress={() => { }}
                     timeToShow={['S']}

@@ -13,6 +13,12 @@ class QuizOptionScreen extends Component {
         isQuizInstructionEnabled: false
     };
 
+    componentDidMount() {
+        this.focusListener = this.props.navigation.addListener('focus', () => {
+            this.setState({ isQuizInstructionEnabled: false });
+          });
+    }
+
     handlePractiseOffline = () => {
         this.setState({
             isQuizInstructionEnabled: true
