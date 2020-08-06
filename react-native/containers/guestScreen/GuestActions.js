@@ -9,5 +9,14 @@ export default {
                 userData
             });
         };
-    }
+    },
+
+    updatecompetencyLevel: function (newCompetencyLevel) {
+        return function (dispatch) {
+            dispatch({ 
+                type: Constants.ACTIONS.UPDATE_COMPETENCY_LEVEL,
+                newCompetencyLevel
+            });
+        };
+    },
 }

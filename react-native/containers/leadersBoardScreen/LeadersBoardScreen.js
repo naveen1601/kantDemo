@@ -13,6 +13,7 @@ import LeadersBoardScreenStyle from './LeadersBoardScreenStyles';
 import AlertInfo from '../../baseComponents/alert/Alert';
 import CountDown from 'react-native-countdown-component';
 import {Screens, resetScreen} from '../../helpers/screenHelpers'
+import _ from 'lodash';
 
 class LeadersBoardScreen extends Component {
 
@@ -21,18 +22,18 @@ class LeadersBoardScreen extends Component {
         this.state = {
             botsPair: [],
             evenPairDirection: this.props.evenPairDirection,
-            quizOver: false,
-            newPairingRequired: false,
+            isQuizOver: false,
+            isNewPairingRequired: false,
+            isReshuffleRequire: false
         };
         let botIdPairedWithUser= ''; 
     }
 
 
     componentDidMount() {
-        const totalBots = randomValueFromArray(Config.BOTS_NUMBER_ARRAY);
         this.setState({
             botsPair: !this.props.isRenderedOnce ?
-                this.initialPairingMatrix(randomNumberOfValues(DummyUsers, totalBots)) :
+                this.initialPairingMatrix(true) :
                 this.props.leadersBoardData
         });
 
@@ -47,7 +48,7 @@ class LeadersBoardScreen extends Component {
 
     switchUserAfterQuiz_TimeOut = () => {
         this.setState({
-            quizOver: true
+            isQuizOver: true
         });
 
         setTimeout(() => {
@@ -59,26 +60,30 @@ class LeadersBoardScreen extends Component {
 
     createNewPairAfterQuiz_Timeout = () => {
         setTimeout(() => {
-            this.createNewPairMatrixBasedOnScore();
+            this.createNewPairMatrixBasedOnEvenOddParing();
         }, 3000);
     }
 
+    initialPairingMatrix = () => {
 
-
-    initialPairingMatrix = (dummyUsers) => {
-        dummyUsers[Math.floor(dummyUsers.length / 2)] = { id: 100, name: this.props.name, score: 0 };
-
-        const botsPairFirstTime = this.createPair(dummyUsers);;
+        const botsPairFirstTime = this.initializeRandomBotsAndPair();
 
         const leaderPairData = {
             botsPair: botsPairFirstTime,
-            evenPairDirection: this.props.evenPairDirection,
+            evenPairDirection: true,
             botIdPairedWithUser : this.botIdPairedWithUser
         }
         this.props.saveLeadersBoard(leaderPairData);
 
         return botsPairFirstTime;
+    }
 
+    initializeRandomBotsAndPair = () =>{
+        const totalBots = randomValueFromArray(Config.BOTS_NUMBER_ARRAY);        
+        let dummyUsers = randomNumberOfValues(DummyUsers, totalBots);
+        dummyUsers[Math.floor(dummyUsers.length / 2)] = { id: 100, name: this.props.name, score: 0 };
+
+        return this.createPair(dummyUsers);;
     }
 
     createPair = users => {
@@ -116,24 +121,40 @@ class LeadersBoardScreen extends Component {
         this.setState({
             botsPair: newPairMatrix,
             evenPairDirection: !this.state.evenPairDirection,
-            newPairingRequired: true,
-            quizOver: false
+            isNewPairingRequired: true,
+            isQuizOver: false
         })
     }
 
-    createNewPairMatrixBasedOnScore = () => {
+    createNewPairMatrixBasedOnEvenOddParing = () => {
         let pairArray = [];
+        let evenPairDirection = this.state.evenPairDirection;
+        let isReshuffleRequire = false;
+
         this.state.botsPair.map(pair => {
             pair.map(bot => pairArray.push(bot));
         });
-        pairArray = this.createPair(pairArray);
+
+        const totalParticipantSize = pairArray.length;
+        const userIndex = _.findIndex(pairArray, { 'id': 100 });
+
+        //checking user position, if last or first introducing new users.
+        if (userIndex == totalParticipantSize - 1 || userIndex == 0){
+            pairArray = this.initializeRandomBotsAndPair();
+            isReshuffleRequire = true;
+        }
+        else {
+            pairArray = this.createPair(pairArray);
+        }
         this.setState({
             botsPair: pairArray,
-            newPairingRequired: false
+            isNewPairingRequired: false,
+            isReshuffleRequire
         })
+
         const leaderPairData = {
             botsPair: pairArray,
-            evenPairDirection: this.state.evenPairDirection,
+            evenPairDirection,
             botIdPairedWithUser : this.botIdPairedWithUser
         }
         this.props.saveLeadersBoard(leaderPairData);
@@ -145,7 +166,7 @@ class LeadersBoardScreen extends Component {
                 <Text style={styles.quizText}>Quiz is going to start in </Text>
 
                 <CountDown
-                    until={4}
+                    until={10}
                     onFinish={this.onTimeOutNavigateToQuiz}
                     onPress={() => { }}
                     timeToShow={['S']}
@@ -164,19 +185,21 @@ class LeadersBoardScreen extends Component {
     renderBots = () => (
         <View style={styles.leadersBoardContainer}>
             {this.renderNextQuizTextAndTime()}
-            {this.state.quizOver && !this.state.newPairingRequired &&
+            {this.state.isQuizOver && !this.state.isNewPairingRequired &&
                 <AlertInfo type="alertInfo"
                     message={'Switching users based on quiz result'} />
-
             }
-            {this.state.newPairingRequired &&
+            {this.state.isNewPairingRequired &&
                 <AlertInfo type="alertInfo"
                     message={'Creating new pair for next quiz'} />
+            }
+            {this.state.isReshuffleRequire &&
+                <AlertInfo type="alertInfo"
+                    message={'New Participants Joined the Quiz, Quiz Reshuffled'} />
             }
             <LeaderBoard
                 leaderBoardMatrix={this.state.botsPair}
             />
-
         </View>
     )
 

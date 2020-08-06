@@ -1,6 +1,6 @@
 
 export const CompetencyAndGradeArray = {
-    1: [70, 90, 110, 130, 150],
+    1: [170, 180, 190, 200, 210],
     2: [180, 190, 200, 210, 220],
     3: [280, 290, 300, 310, 320],
     4: [380, 390, 400, 410, 420],
@@ -15,7 +15,7 @@ export const CompetencyAndGradeArray = {
 };
 
 export function findCompetencyList(grade) {
-    return CompetencyArray[grade];
+    return CompetencyAndGradeArray[grade];
 }
 
 export function randomValueFromArray(valueArray) {
@@ -45,7 +45,6 @@ export function updatePairsWithScore(userScore, botsPair, quizLength){
             bot.score = bot.id ==100 ? userScore : randomNumberBetweenTwoNum(quizLength - 6, quizLength);
         });
     });
-
     return botsPair
 }
 

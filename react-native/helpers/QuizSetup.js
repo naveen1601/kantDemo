@@ -89,10 +89,12 @@ export function findQuestionsFromQuestionFile(competencyAndLevelList) {
             return que;
         }
     });
+
+    console.log('finalQuestionList ',finalQuestionList)
     
-    //if questionList has Group question, find group ques.
+    // if questionList has Group question, find group ques.
     finalQuestionList = finalQuestionList.map((question)=>{
-        const ques = question.group == 'G' ? findSubQuestion(question) : question;
+        const ques = question && (question.group == 'G' ? findSubQuestion(question) : question);
         return ques;
     });
     

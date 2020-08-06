@@ -14,9 +14,15 @@ import GuestScreen from '../containers/guestScreen/GuestScreen'
 import QuizOptionScreen from '../containers/quizOptionScreen/QuizOptionScreen';
 import OfflineQuizScreen from '../containers/offlineQuizScreen/OfflineQuizScreen';
 import LeadersBoardScreen from '../containers/leadersBoardScreen/LeadersBoardScreen';
-import { Screens } from '../helpers/screenHelpers';
+import { Screens, resetScreen } from '../helpers/screenHelpers';
+import FlatButton from '../baseComponents/button/FlatButton';
 
 const Stack = createStackNavigator();
+
+quitQuizAndMoveToHome= (navigation)=> (<FlatButton
+    onPress={() => resetScreen(navigation,Screens.LoginOption)}
+    text='Return to home'
+/>);
 
 function MyStack() {
   return (
@@ -34,19 +40,52 @@ function MyStack() {
             
         <Stack.Screen name={Screens.GuestScreen }
             component={GuestScreen} 
-            options={{ headerTitle: 'Guest Login Screen'}}/>
+            options={{ headerTitle: 'Guest Login '}}/>
 
         <Stack.Screen name={Screens.QuizOptionScreen }
             component={QuizOptionScreen} 
-            options={{ title: "",}}/>
+            options={{ title: "Quiz Options",}}/>
         <Stack.Screen name={Screens.OfflineQuizScreen }
             component={OfflineQuizScreen} 
-            options={{ headerShown: false}}/>
+            options={({ navigation }) => { 
+                return{
+                    headerTitle: 'Quiz',
+                    headerRight: () => quitQuizAndMoveToHome(navigation)
+                }}
+            }/>
         <Stack.Screen name={Screens.LeadersBoardScreen }
             component={LeadersBoardScreen} 
-            options={{ title: "Leaders Board", headerLeft: null}}/>
+            options={({ navigation }) => { 
+                return{
+                    headerTitle: 'Leaders Board',
+                    headerLeft: null,
+                    headerRight: () => quitQuizAndMoveToHome(navigation)
+                }}
+            }/>
       {/* headerShown: false  // to hide header
-            headerLeft: null //to hide back button*/}
+            headerLeft: null //to hide back button
+            
+            //Imp for navigation in header
+            options={({ navigation }) => { 
+                return{
+                    headerTitle: 'login Option',
+                    headerRight: () => (
+                        <FlatButton
+                          onPress={() => resetScreen(navigation,Screens.GuestScreen)}
+                          text="Info"
+                        />)
+                }}
+                }
+            //change option/header from comp
+            this.props.navigation.setParams({
+                headerRight: () => (
+                        <FlatButton
+                          onPress={() => resetScreen(this.props.navigation,Screens.GuestScreen)}
+                          text="Info"
+                        />)
+            });
+            
+            */}
       {/* <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} /> */}
     </Stack.Navigator>

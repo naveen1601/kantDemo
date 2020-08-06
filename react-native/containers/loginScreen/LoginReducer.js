@@ -22,6 +22,8 @@ export default function LoginReducer(state = initialState, action) {
             newState.isGuest= true;
             newState.userData = action.userData;
             break;
+        case Constants.ACTIONS.UPDATE_COMPETENCY_LEVEL:
+            newState.userData.competencyLevel = action.newCompetencyLevel
         default:
             break;
     }

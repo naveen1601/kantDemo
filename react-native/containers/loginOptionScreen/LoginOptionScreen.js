@@ -15,8 +15,6 @@ import {Screens} from '../../helpers/screenHelpers'
 
 class LoginOptionScreen extends Component {
 
-    
-
     constructor(props){
         super(props)
         this.state = {
@@ -31,7 +29,7 @@ class LoginOptionScreen extends Component {
             this.state.animBottom, {
                 toValue: 0,
                 useNativeDriver: true,
-                delay: 1000,
+                delay: 500,
                 bounciness: 1
             }
         ).start();
@@ -83,7 +81,8 @@ class LoginOptionScreen extends Component {
     //     );
     // }
 
-    handleLoginButton = () => this.props.navigation.navigate(Screens.LoginScreen);
+    // handleLoginButton = () => this.props.navigation.navigate(Screens.LoginScreen);
+    handleLoginButton = () => alert('Login is not available, plese use Guest Mode');   
     handleGuestLogin = () => this.props.navigation.navigate(Screens.GuestScreen);
 
     renderLoginOption = () => {

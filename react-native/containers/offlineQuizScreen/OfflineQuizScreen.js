@@ -15,6 +15,9 @@ import { AllCompetencyArray, randomNumberBetweenTwoNum, updatePairsWithScore } f
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
 import {Screens, resetScreen} from '../../helpers/screenHelpers';
 import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
+import Config from '../../Configs';
+import GuestActions from '../guestScreen/GuestActions';
+
 
 
 class OfflineQuizScreen extends Component {
@@ -77,13 +80,41 @@ class OfflineQuizScreen extends Component {
         )
     }
 
+    getNewCompetency=(score)=>{
+        const newList = this.props.competencyLevel;
+        const percent = (score/this.state.quiz.length)*100;
+        let newCompValue;
+        try{
+            if( percent > 50 ){
+                const lastCompIndex = Config.COMPETENCY_LIST.indexOf(this.props.competencyLevel[this.props.competencyLevel.length -1]);
+                newCompValue = Config.COMPETENCY_LIST[lastCompIndex +1];
+                if(newCompValue){
+                    newList.push(newCompValue);
+                    newList.shift();
+                }
+            }
+            else{
+                const firstCompIndex = Config.COMPETENCY_LIST.indexOf(this.props.competencyLevel[0]);
+                newCompValue = Config.COMPETENCY_LIST[firstCompIndex - 1];
+                if(newCompValue){
+                    newList.unshift(newCompValue);
+                    newList.pop();
+                }
+            }
+        }
+        catch(e){};
+        return newList;
+    }
+
     submitQuiz = () => {
         const quizWithAns = this.state.quiz.map(item => {
             item.isUserAnswerCorrect = this.compareAnswer(item.ans, item.userAnswer);
             return item;
         });
-        const userScore = quizWithAns.filter(item => item.isUserAnswerCorrect).length;
+        const userScore = quizWithAns.filter(item => item.isUserAnswerCorrect).length
         let botsWithScore = updatePairsWithScore(userScore, this.props.botsPair, this.state.quiz.length);
+
+        this.props.updatecompetencyLevel(this.getNewCompetency(userScore));
         this.props.updateScore(botsWithScore);
         this.setState({
             isQuizEnded: true,
@@ -190,7 +221,7 @@ class OfflineQuizScreen extends Component {
     renderQuizSection = () => (
         <View>
             <CountDown
-                until={2}
+                until={2 * 60}
                 onFinish={this.submitQuiz}
                 onPress={() => { }}
                 timeToShow={['M', 'S']}
@@ -288,6 +319,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         updateScore: function (scoreData) {
             dispatch(LeadersBoardAction.updateScore(scoreData));
+        },
+        updatecompetencyLevel: function (newCompetencyLevel) {
+            dispatch(GuestActions.updatecompetencyLevel);
         }
     }
 }
