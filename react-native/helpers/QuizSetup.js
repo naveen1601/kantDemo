@@ -78,6 +78,8 @@ export function findQuestionsFromQuestionFile(competencyAndLevelList) {
     });
     
     const quesIds = [];
+    //console.log('masterListOfCompetency ',masterListOfCompetency)
+    
     //find one question from each competency
     finalQuestionList = masterListOfCompetency.map(item => {
         // remove already picked ques
@@ -90,7 +92,7 @@ export function findQuestionsFromQuestionFile(competencyAndLevelList) {
         }
     });
 
-    console.log('finalQuestionList ',finalQuestionList)
+    //console.log('finalQuestionList ',finalQuestionList)
     
     // if questionList has Group question, find group ques.
     finalQuestionList = finalQuestionList.map((question)=>{
