@@ -11,7 +11,10 @@ export default {
         borderWidth: 1,
         padding: 10,
         borderRadius: 10,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+        
     },
     userBox:{
         backgroundColor: '#e9f4f7'
@@ -19,10 +22,11 @@ export default {
     nameBox:{
         color: '#255166',
         fontSize: 22
+    },
+    arrowBox: {
+        width: 28,
+        height:28,
+        color: '#255166'
     }
 
-
-
-    
-//*/
 }

@@ -9,8 +9,8 @@ export default {
 
     nextQuizTextContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        //flex: 1
+        justifyContent: 'space-between',
+        paddingBottom: 5
     },
     quizText: {
         marginTop: 16,

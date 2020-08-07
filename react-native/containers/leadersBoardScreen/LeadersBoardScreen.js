@@ -61,7 +61,7 @@ class LeadersBoardScreen extends Component {
     createNewPairAfterQuiz_Timeout = () => {
         setTimeout(() => {
             this.createNewPairMatrixBasedOnEvenOddParing();
-        }, 3000);
+        }, 5000);
     }
 
     initialPairingMatrix = () => {
@@ -114,6 +114,7 @@ class LeadersBoardScreen extends Component {
                 let tempObj = userPair[0];
                 userPair[0] = userPair[1];
                 userPair[1] = tempObj;
+                userPair[0].isGoingUp = true;
             }
             return userPair;
         });
@@ -132,7 +133,10 @@ class LeadersBoardScreen extends Component {
         let isReshuffleRequire = false;
 
         this.state.botsPair.map(pair => {
-            pair.map(bot => pairArray.push(bot));
+            pair.map(bot => {
+                bot.isGoingUp = false;
+                pairArray.push(bot)
+            });
         });
 
         const totalParticipantSize = pairArray.length;

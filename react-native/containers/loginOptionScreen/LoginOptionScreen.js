@@ -13,7 +13,6 @@ import {
 import {Screens} from '../../helpers/screenHelpers'
 import BackgroundImage from '../../components/backgroundImage/BackgroundImage';
 
-
 class LoginOptionScreen extends Component {
 
     constructor(props){
@@ -30,7 +29,7 @@ class LoginOptionScreen extends Component {
             this.state.animBottom, {
                 toValue: 0,
                 useNativeDriver: true,
-                delay: 500,
+                delay: 1000,
                 bounciness: 1
             }
         ).start();

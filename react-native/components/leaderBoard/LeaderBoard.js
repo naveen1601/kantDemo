@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../baseComponents/button/Button'
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import LeaderBoardStyles from './LeaderBoardStyles'
 import { create } from '../../helpers/PlatformSpecificStyles';
 import Text from '../../baseComponents/text/Text';
@@ -11,16 +11,22 @@ class LeaderBoard extends Component {
     renderLeaderBoard = () => this.props.leaderBoardMatrix.map((userPair, i) =>
         (<View key={i}>
             {userPair.map(bot => {
-                
+
                 const userContainerStyle = [styles.botBox];
 
-                bot.id ==100 && userContainerStyle.push(styles.userBox)
-                return(
-                <View style={userContainerStyle}>
-                    <Text style={styles.nameBox}>{bot.name}</Text>
-                </View>
-            )}
-            
+                bot.id == 100 && userContainerStyle.push(styles.userBox)
+                return (
+                    <View style={userContainerStyle}>
+                        <Text style={styles.nameBox}>{bot.name}</Text>
+                        {bot.isGoingUp &&
+                            <Image source={require('../../staticData/assests/upArrow.png')}
+                                style={styles.arrowBox} />
+                        }
+
+                    </View>
+                )
+            }
+
             )}
             <Text></Text>
 

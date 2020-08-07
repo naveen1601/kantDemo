@@ -57,7 +57,7 @@ function MyStack() {
             component={LeadersBoardScreen} 
             options={({ navigation }) => { 
                 return{
-                    headerTitle: 'Leaders Board',
+                    headerTitle: 'Leaderboard',
                     headerRight: () => quitQuizAndMoveToHome(navigation)
                 }}
             }/>

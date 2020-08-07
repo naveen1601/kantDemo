@@ -214,7 +214,7 @@ class OfflineQuizScreen extends Component {
                 <Button
                     //onPress={() => resetScreen(this.props.navigation,Screens.LeadersBoardScreen)}
                     onPress={() => this.props.navigation.replace(Screens.LeadersBoardScreen)}                    
-                    text={'See Leaders Board'} />
+                    text={'See Leaderboard'} />
             </View>
         )
     }
