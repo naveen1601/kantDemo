@@ -55,8 +55,8 @@ export default {
         fontSize: 36
     },
     displayName_small: {
-        paddingTop: 4,
-        fontSize: 16   
+        paddingTop: 18,
+        fontSize: 18   
     },
     userInfoDivision_small: {
         paddingLeft: 8,

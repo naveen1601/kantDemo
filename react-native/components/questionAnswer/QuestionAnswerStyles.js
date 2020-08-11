@@ -6,11 +6,14 @@ export default {
         borderRadius: 5,
         justifyContent: 'space-around',
         borderColor: '#255166',
-        marginTop: 30,
-        backgroundColor: 'white'
+        marginTop: 10,
+        backgroundColor: 'white',
+        paddingBottom: 12,
+        paddingLeft: 12,  
+        paddingRight: 12, 
     },
     questionBoxText:{
-        padding: 12,  
+        paddingTop: 10,
         fontSize: 18,
         textAlign: 'justify'
     },

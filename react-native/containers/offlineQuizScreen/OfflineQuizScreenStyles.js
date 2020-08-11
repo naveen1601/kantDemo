@@ -2,12 +2,21 @@ import $_ from './OfflineQuizScreenSettings';
 
 export default {
 
+    reviewContainer: {
+        flex: 1,
+        alignItems: 'stretch',
+    },
+    heightPatch: {
+        height: 100,
+    },
     OfflineQuizScreen: {
         padding: 20
     },
     switchQuestionSection: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingTop: 10
+        
     },
     questionNumberDisplay: {
         paddingTop: 12

@@ -62,13 +62,13 @@ class TextInput extends Component {
                     ref={rntextinput => this.rntextinput = rntextinput}
                     accessible
                     accessibilityLabel={this.props.testID}
-                    secureTextEntry={this.props.secureTextEntry}
                     onChangeText={this.props.onChangeText}
                     placeholder={this.props.placeholder}
                     placeholderTextColor={PropStyles.textInputPlaceholderTextColor}
                     editable={this.props.editable}
-                    autoCapitalize={this.props.autoCapitalize}
-                    autoCorrect={this.props.autoCorrect}
+                    autoCapitalize = {'none'}
+                    autoCompleteType = {'off'}
+                    textContentType={'none'}
                     maxLength={this.props.maxLength}
                     onFocus={() => this.setState({ isFocused: true })}
                     onBlur={() => this.setState({ isFocused: false })}

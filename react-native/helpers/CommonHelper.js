@@ -1,3 +1,4 @@
+import Config from '../Configs';
 
 export const CompetencyAndGradeArray = {
     1: [170, 180, 190, 200, 210],
@@ -48,4 +49,14 @@ export function updatePairsWithScore(userScore, botsPair, quizLength){
     return botsPair
 }
 
+export function getTimerBasedOnGrade(grade){
+    let timerValue = 120;
+    Config.GRADE_TIMER && Config.GRADE_TIMER.map(item=>{
+        if(grade <= item.maxGrade){
+            timerValue = item.timer
+        }
+
+    });
+    return timerValue;
+}
 

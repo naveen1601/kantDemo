@@ -16,9 +16,6 @@ export default {
         borderTopColor: $_.loginOptionBorderColor,
         borderTopWidth: 1,
         bottom: 0,        
-        // borderTopLeftRadius: 30,
-        // borderTopRightRadius: 30,
-        
         ios: {
             shadowColor: '#333',
             paddingBottom: isX ? 14 : 0,

@@ -42,8 +42,7 @@ class LeadersBoardScreen extends Component {
     }
 
     onTimeOutNavigateToQuiz=()=>{
-        this.props.navigation.replace(Screens.OfflineQuizScreen);          
-        // this.props.navigation.push(Screens.OfflineQuizScreen);
+        this.props.navigation.replace(Screens.OfflineQuizScreen);
     }
 
     switchUserAfterQuiz_TimeOut = () => {
@@ -88,6 +87,9 @@ class LeadersBoardScreen extends Component {
 
     createPair = users => {
         const pairArray = [];
+        users.forEach((element,index) => {
+            element.serialNum = index+1;
+        });
         let startingBot = this.state.evenPairDirection ? 0 : 1;
         for (startingBot; startingBot < users.length; startingBot += 2) {
             if (!this.state.evenPairDirection && startingBot == 1) {
@@ -170,7 +172,7 @@ class LeadersBoardScreen extends Component {
                 <Text style={styles.quizText}>Quiz is going to start in </Text>
 
                 <CountDown
-                    until={10}
+                    until={Config.LEADERBOARD_TIMER}
                     onFinish={this.onTimeOutNavigateToQuiz}
                     onPress={() => { }}
                     timeToShow={['S']}
@@ -184,7 +186,6 @@ class LeadersBoardScreen extends Component {
             </View>
         )
     }
-
 
     renderBots = () => (
         <View style={styles.leadersBoardContainer}>

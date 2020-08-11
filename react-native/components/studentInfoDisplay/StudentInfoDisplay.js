@@ -19,7 +19,7 @@ StudentInfoDisplay = (props) => {
     const displayGradeValue = [styles.displayGradeValue];
     const diplaySchool = [styles.diplaySchool];
 
-    if(props.isSmall){
+    if (props.isSmall) {
 
         userInfoDivision.push(styles.userInfoDivision_small);
         displayName.push(styles.displayName_small)
@@ -28,7 +28,7 @@ StudentInfoDisplay = (props) => {
         studentInfoContainer.push(styles.studentInfoContainer_small)
 
     }
-    
+
     renderIcon = () => {
         let initial = name ? name.charAt(0) : "";
         return (
@@ -44,7 +44,9 @@ StudentInfoDisplay = (props) => {
             {renderIcon()}
             <View style={userInfoDivision}>
                 <Text style={displayName}>{name}</Text>
-                <Text style={displayGradeLabel}>Grade: <Text style={displayGradeValue}>{props.grade}</Text></Text>
+                {props.grade &&
+                    <Text style={displayGradeLabel}>Grade: <Text style={displayGradeValue}>{props.grade}</Text></Text>
+                }
                 {props.school &&
                     <Text style={diplaySchool}>{props.school}</Text>
                 }
@@ -59,9 +61,9 @@ StudentInfoDisplay.propTypes = {
     grade: PropTypes.number,
     school: PropTypes.string,
     isSmall: PropTypes.bool
-    
+
 };
 
-let styles = create(StudentInfoDisplayStyles) 
+let styles = create(StudentInfoDisplayStyles)
 
 export default StudentInfoDisplay;

@@ -8,8 +8,8 @@ import Text from '../../baseComponents/text/Text';
 
 class LeaderBoard extends Component {
 
-    renderLeaderBoard = () => this.props.leaderBoardMatrix.map((userPair, i) =>
-        (<View key={i}>
+    renderLeaderBoard = () => this.props.leaderBoardMatrix.map((userPair, index) =>
+        (<View key={index}>
             {userPair.map(bot => {
 
                 const userContainerStyle = [styles.botBox];
@@ -17,10 +17,12 @@ class LeaderBoard extends Component {
                 bot.id == 100 && userContainerStyle.push(styles.userBox)
                 return (
                     <View style={userContainerStyle}>
-                        <Text style={styles.nameBox}>{bot.name}</Text>
+                        <Text style={styles.nameBox}>{bot.serialNum}. {bot.name}</Text>
                         {bot.isGoingUp &&
+                           <View style={styles.arrowContainer}> 
                             <Image source={require('../../staticData/assests/upArrow.png')}
                                 style={styles.arrowBox} />
+                            </View>
                         }
 
                     </View>

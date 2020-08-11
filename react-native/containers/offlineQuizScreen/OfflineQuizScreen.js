@@ -11,19 +11,19 @@ import FlatButton from '../../baseComponents/button/FlatButton';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer';
 import _ from 'lodash'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
-import { AllCompetencyArray, randomNumberBetweenTwoNum, updatePairsWithScore } from '../../helpers/CommonHelper';
+import { AllCompetencyArray, randomNumberBetweenTwoNum, updatePairsWithScore, getTimerBasedOnGrade } from '../../helpers/CommonHelper';
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
-import {Screens, resetScreen} from '../../helpers/screenHelpers';
+import { Screens, resetScreen } from '../../helpers/screenHelpers';
 import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
 import Config from '../../Configs';
 import GuestActions from '../guestScreen/GuestActions';
-
+import BounceButton from '../../components/bounceButton/BounceButton';
 
 
 class OfflineQuizScreen extends Component {
-    
 
-    constructor(props){
+
+    constructor(props) {
         super(props);
         this.state = {
             isAnswerEmpty: false,
@@ -35,6 +35,8 @@ class OfflineQuizScreen extends Component {
             isReviewAnswerClicked: false,
             userScore: 0
         };
+        this.timer = getTimerBasedOnGrade(this.props.grade);
+        
     }
 
     handleUserInput = ({ userAnswer, key }) => {
@@ -80,29 +82,29 @@ class OfflineQuizScreen extends Component {
         )
     }
 
-    getNewCompetency=(score)=>{
+    getNewCompetency = (score) => {
         const newList = this.props.competencyLevel;
-        const percent = (score/this.state.quiz.length)*100;
+        const percent = (score / this.state.quiz.length) * 100;
         let newCompValue;
-        try{
-            if( percent > 50 ){
-                const lastCompIndex = Config.COMPETENCY_LIST.indexOf(this.props.competencyLevel[this.props.competencyLevel.length -1]);
-                newCompValue = Config.COMPETENCY_LIST[lastCompIndex +1];
-                if(newCompValue){
+        try {
+            if (percent > 50) {
+                const lastCompIndex = Config.COMPETENCY_LIST.indexOf(this.props.competencyLevel[this.props.competencyLevel.length - 1]);
+                newCompValue = Config.COMPETENCY_LIST[lastCompIndex + 1];
+                if (newCompValue) {
                     newList.push(newCompValue);
                     newList.shift();
                 }
             }
-            else{
+            else {
                 const firstCompIndex = Config.COMPETENCY_LIST.indexOf(this.props.competencyLevel[0]);
                 newCompValue = Config.COMPETENCY_LIST[firstCompIndex - 1];
-                if(newCompValue){
+                if (newCompValue) {
                     newList.unshift(newCompValue);
                     newList.pop();
                 }
             }
         }
-        catch(e){};
+        catch (e) { };
         return newList;
     }
 
@@ -141,63 +143,31 @@ class OfflineQuizScreen extends Component {
         return isCorrect;
     }
 
-    showEmptyBoxWarning = () => {
-        let quizWithUserInput = this.state.quiz;
-        quizWithUserInput[this.state.currentQuestionIndex].showEmptyWarning = true
-        this.setState({
-            quiz: quizWithUserInput
-        })
-    }
-
-    hideEmptyBoxWarning = () => {
-        let quizWithUserInput = this.state.quiz;
-
-        if (quizWithUserInput[this.state.currentQuestionIndex].userAnswer &&
-            quizWithUserInput[this.state.currentQuestionIndex].showEmptyWarning) {
-
-            quizWithUserInput[this.state.currentQuestionIndex].showEmptyWarning = false;
-            this.setState({
-                quiz: quizWithUserInput
-            })
-        }
-    }
-
     renderSubmitButton = () => {
         const isLastQuestion = !(this.state.currentQuestionIndex < this.state.quiz.length - 1);
-        const buttonText = isLastQuestion ? "Submit Quiz" : "Submit Answer";
-        const onSubmitAns = () => {
-            if (this.state.quiz[this.state.currentQuestionIndex].userAnswer != "") {
-                this.hideEmptyBoxWarning();
-                this.renderNextQuestion();
-            }
-            else {
-                this.showEmptyBoxWarning();
-            }
-        };
-        const onSubmit = isLastQuestion ? this.submitQuiz : onSubmitAns.bind(this);
-
-        return (
-            <Button
-                onPress={onSubmit}
-                text={buttonText}
-            />
-        );
+        const buttonText = "Submit Quiz";
+        if (isLastQuestion) {
+            return (
+                <Button
+                    onPress={this.submitQuiz}
+                    text={buttonText}
+                />
+            );
+        }
 
     }
 
     renderNextQuestion = () => {
-        this.hideEmptyBoxWarning();
         this.setState({ currentQuestionIndex: ++this.state.currentQuestionIndex });
     }
 
     renderPreviousQuestion = () => {
-        this.hideEmptyBoxWarning();
         this.setState({ currentQuestionIndex: --this.state.currentQuestionIndex });
     }
 
     renderQuizReview = () => {
         return (
-            <View>
+            <View >
                 {this.state.quiz.map((item, index) => {
                     const answerStyle = [styles.reviewUserAnswerText];
                     item.isUserAnswerCorrect ? answerStyle.push(styles.corrrectUserAnswerText) :
@@ -211,10 +181,10 @@ class OfflineQuizScreen extends Component {
                         </View>
                     )
                 })}
-                <Button
-                    //onPress={() => resetScreen(this.props.navigation,Screens.LeadersBoardScreen)}
-                    onPress={() => this.props.navigation.replace(Screens.LeadersBoardScreen)}                    
-                    text={'See Leaderboard'} />
+                <View style={styles.heightPatch} />
+                {/* <BounceButton
+                    onPress={() => this.props.navigation.replace(Screens.LeadersBoardScreen)}
+                    value={'See Leaderboard22'} /> */}
             </View>
         )
     }
@@ -222,29 +192,27 @@ class OfflineQuizScreen extends Component {
     renderQuizSection = () => (
         <View>
             <CountDown
-                until={2 * 60}
+                until={this.timer}
                 onFinish={this.submitQuiz}
                 onPress={() => { }}
                 timeToShow={['M', 'S']}
                 digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                 digitTxtStyle={{ color: '#255166' }}
-                //timeLabelStyle={{color: 'red', fontWeight: 'bold'}}
                 separatorStyle={{ color: '#255166', paddingBottom: 25 }}
                 showSeparator
                 size={30}
             />
-            {this.renderQuestionAndAnswer()}
             <View style={styles.switchQuestionSection}>
                 {this.renderPreviousButton()}
                 <Text style={styles.questionNumberDisplay}>Que. {this.state.currentQuestionIndex + 1} of {this.state.quiz.length} </Text>
                 {this.renderNextButton()}
             </View>
-
+            {this.renderQuestionAndAnswer()}
             {this.renderSubmitButton()}
         </View>
     )
 
-    getBotObjectFromPairObject=()=>{
+    getBotObjectFromPairObject = () => {
         return this.props.botsPair.flat().find(bot => bot.id == this.props.botIdPairedWithUser);
     }
 
@@ -276,30 +244,35 @@ class OfflineQuizScreen extends Component {
     }
 
     render() {
-        let botObject = this.getBotObjectFromPairObject();        
+        let botObject = this.getBotObjectFromPairObject();
+        let isrenderQuizReviewEnabled = this.state.isQuizEnded && this.state.isReviewAnswerClicked;
         let comp = this.state.isQuizEnded ?
             (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer(botObject)) :
             this.renderQuizSection();
-        //const comp = this.renderQuizReview();
+        // const comp = this.renderQuizReview();
 
         return (
-            <ScrollView keyboardShouldPersistTaps={'always'}>
-                <View style={styles.userInfoBox}>
-                    <StudentInfoDisplay
-                        name={this.props.name}
-                        grade={this.props.grade}
-                        school={this.props.school}
-                        isSmall />
-                    <StudentInfoDisplay
-                        name={botObject.name}
-                        grade={this.props.grade}
-                        school={this.props.school}
-                        isSmall />
-                </View>
-                <View style={styles.OfflineQuizScreen}>
-                    {comp}
-                </View>
-            </ScrollView>
+            <View style={styles.reviewContainer}>
+                <ScrollView keyboardShouldPersistTaps={'always'}>
+                    <View style={styles.userInfoBox}>
+                        <StudentInfoDisplay
+                            name={this.props.name}
+                            school={this.props.school}
+                            isSmall />
+                        <StudentInfoDisplay
+                            name={botObject.name}
+                            school={this.props.school}
+                            isSmall />
+                    </View>
+                    <View style={styles.OfflineQuizScreen}>
+                        {comp}
+                    </View>
+                </ScrollView>
+                {isrenderQuizReviewEnabled && <BounceButton
+                    onPress={() => this.props.navigation.replace(Screens.LeadersBoardScreen)}
+                    value={'See Leaderboard'} />
+                }
+            </View>
         );
     }
 }
