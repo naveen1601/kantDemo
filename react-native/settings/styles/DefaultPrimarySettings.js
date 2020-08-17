@@ -1,5 +1,5 @@
 export default {
-    productName: 'TOC Product',
+    productName: 'Kant Learning',
     primaryColor: '#e9f4f7',
     secondaryColor: '#255166',
     tertiaryColor: '#A7B9C9',
