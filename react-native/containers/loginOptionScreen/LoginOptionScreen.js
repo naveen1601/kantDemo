@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import LoginStyles, { PropStyles } from './LoginOptionStyles';
 import { create } from '../../helpers/PlatformSpecificStyles';
 import TextInput from '../../baseComponents/textInput/TextInput'

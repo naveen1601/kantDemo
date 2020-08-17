@@ -1,5 +1,4 @@
 import $primary from '../../settings/styles/DefaultPrimarySettings';
-import color from 'color';
 
 let $_ = {
     buttonPaddingTop: $primary.baseGridUnit + 10,
@@ -16,7 +15,7 @@ let $_ = {
     buttonQuaternaryShadowColor: '#8695A2',
     buttonQuaternaryColor: $primary.interfaceColors._2,
     buttonPrimaryColor: $primary.white,
-    buttonPrimaryShadowColor: color($primary.secondaryColor).darken(.12),
+    buttonPrimaryShadowColor: $primary.secondaryColor,
     buttonPrimaryDisabled: $primary.disabledColor,
     buttonPrimaryFontSize: $primary.baseFontSize+4,
     buttonPrimaryFontWeightAndroid: $primary.fontFamilyAndroid.regular,
