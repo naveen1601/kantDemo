@@ -2,7 +2,7 @@
 // import KantNavigator from './KantNavigator';
 // import { NavigationActions, StackActions } from '@react-navigation/native';
 
-// import { setupHelper } from '../helpers/screenHelpers';
+// import { setupHelper } from '../helpers/ScreenHelpers';
 
 
 // class KantRouter extends Component {

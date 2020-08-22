@@ -6,7 +6,7 @@ import QuizOptionScreenStyles from './QuizOptionScreenStyles'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
 import { connect } from 'react-redux';
 import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
-import { Screens } from '../../helpers/screenHelpers';
+import { Screens } from '../../helpers/ScreenHelpers';
 
 class QuizOptionScreen extends Component {
     state = {

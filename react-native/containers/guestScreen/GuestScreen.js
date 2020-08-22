@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import GuestActions from './GuestActions';
 import { CompetencyAndGradeArray } from '../../helpers/CommonHelper';
 //temp
-import {Screens} from '../../helpers/screenHelpers'
+import {Screens} from '../../helpers/ScreenHelpers'
 class GuestScreen extends Component {
     state = {
         name: _.get(this.props.userData, "name"),

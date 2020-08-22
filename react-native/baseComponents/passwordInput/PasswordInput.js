@@ -41,7 +41,7 @@ class PasswordInput extends Component {
         let passwordVisibiltyText = this.state.showPassword ? 'Hide' : 'Show';
         let passwordVisibiltyTextColor = this.state.isTogglePassword ? PropStyles.showPasswordColor : PropStyles.hidePasswordColor;
         return (
-            <View style={styles.passwordInputWrapper}
+            <View style={[styles.passwordInputWrapper, this.props.style]}
                 testID={'passwordInputComponent'}>
                 <TextInput
                     style={styles.passwordTextinput}
@@ -77,6 +77,7 @@ PasswordInput.propTypes = {
     stacked: PropTypes.bool,
     testID: PropTypes.string,
     value: PropTypes.string,
+    style: PropTypes.object
 };
 
 PasswordInput.defaultProps = {

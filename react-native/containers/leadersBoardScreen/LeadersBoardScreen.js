@@ -12,7 +12,7 @@ import LeaderBoard from '../../components/leaderBoard/LeaderBoard'
 import LeadersBoardScreenStyle from './LeadersBoardScreenStyles';
 import AlertInfo from '../../baseComponents/alert/Alert';
 import CountDown from 'react-native-countdown-component';
-import {Screens, resetScreen} from '../../helpers/screenHelpers'
+import {Screens, resetScreen} from '../../helpers/ScreenHelpers'
 import _ from 'lodash';
 
 class LeadersBoardScreen extends Component {

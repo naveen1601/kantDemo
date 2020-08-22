@@ -14,8 +14,10 @@ import GuestScreen from '../containers/guestScreen/GuestScreen'
 import QuizOptionScreen from '../containers/quizOptionScreen/QuizOptionScreen';
 import OfflineQuizScreen from '../containers/offlineQuizScreen/OfflineQuizScreen';
 import LeadersBoardScreen from '../containers/leadersBoardScreen/LeadersBoardScreen';
-import { Screens, resetScreen } from '../helpers/screenHelpers';
+import { Screens, resetScreen } from '../helpers/ScreenHelpers';
 import FlatButton from '../baseComponents/button/FlatButton';
+import AppLevelSpinner from '../kantApp/AppLevelSpinner'
+
 
 const Stack = createStackNavigator();
 
@@ -100,6 +102,7 @@ export default KantNavigator=()=> {
         <NavigationContainer>
             <MyStack />
         </NavigationContainer>
+        <AppLevelSpinner />
     </>
     );
 }

@@ -50,9 +50,9 @@ class TextInput extends Component {
 
         const reactTextInputStyles = styles.textInput;
         return (
-            <View style={textInputStyle}>
+            <View style={[textInputStyle,this.props.style]}>
                 <ReactTextInput 
-                    style={[reactTextInputStyles, this.props.style]}
+                    style={[reactTextInputStyles]}
                     allowFontScaling={false}
                     autoFocus={this.props.autoFocus}
                     returnKeyType={this.props.returnKeyType}
@@ -66,6 +66,7 @@ class TextInput extends Component {
                     placeholder={this.props.placeholder}
                     placeholderTextColor={PropStyles.textInputPlaceholderTextColor}
                     editable={this.props.editable}
+                    secureTextEntry={this.props.secureTextEntry}
                     autoCapitalize = {'none'}
                     autoCompleteType = {'off'}
                     textContentType={'none'}

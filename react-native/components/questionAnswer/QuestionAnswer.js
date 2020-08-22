@@ -27,7 +27,9 @@ class QuestionAnswer extends Component {
                     <TextInput value={this.props.userAnswer}
                         placeholder="Please write your answer"
                         onChangeText={this.handleUserInput}
-                        hasErrors={this.props.isEmptyWarning} />
+                        hasErrors={this.props.isEmptyWarning}
+                        keyboardType="email-address"
+                        />
                     {this.props.isEmptyWarning &&
                         <Text style={styles.validationErrorText}>Please enter your answer</Text>
                     }

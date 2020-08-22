@@ -13,7 +13,7 @@ import _ from 'lodash'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
 import { AllCompetencyArray, randomNumberBetweenTwoNum, updatePairsWithScore, getTimerBasedOnGrade } from '../../helpers/CommonHelper';
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
-import { Screens, resetScreen } from '../../helpers/screenHelpers';
+import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
 import Config from '../../Configs';
 import GuestActions from '../guestScreen/GuestActions';
