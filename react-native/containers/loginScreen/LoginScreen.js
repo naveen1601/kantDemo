@@ -153,7 +153,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         doLogin: (schoolCode, userName, password) => {
-            dispatch(LoginAction.doLogin(schoolCode, userName, password));
+            dispatch(LoginAction.doLogin(schoolCode, userName, password, ownProps.navigation));
         },
         resetErrorMessage: () => {
             dispatch(LoginAction.resetErrorMessage());

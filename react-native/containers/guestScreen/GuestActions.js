@@ -19,4 +19,13 @@ export default {
             });
         };
     },
+
+    updateVirtualCompetency: function (newVirtualCompetencyLevel) {
+        return function (dispatch) {
+            dispatch({ 
+                type: Constants.ACTIONS.UPDATE_VIRTUAL_COMPETENCY_LEVEL,
+                newVirtualCompetencyLevel
+            });
+        };
+    },
 }

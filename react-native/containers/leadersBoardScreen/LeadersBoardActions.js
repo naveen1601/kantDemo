@@ -21,7 +21,7 @@ export default {
     clearLeadersBoard: function () {
         return function (dispatch) {
             dispatch({ 
-                type: Constants.ACTIONS.CLEAR_DATA
+                type: Constants.ACTIONS.CLEAR_LEADERSBOARD_DATA
             });
         };
     }

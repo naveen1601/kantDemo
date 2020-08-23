@@ -25,7 +25,7 @@ export default {
     }
   },
   buttonPrimaryContainerPressedStyle: {
-    backgroundColor: $_.buttonPrimaryShadowColor,
+    backgroundColor: $_.floatingButtonBackgroundColor,
     borderBottomColor: $_.buttonPrimaryShadowColor,
     borderBottomWidth: $_.buttonShadowWidth,
     paddingTop: $_.buttonPaddingTop,
@@ -62,8 +62,8 @@ export default {
     }
   },
   buttonSecondaryPressedStyle: {
-    backgroundColor: $_.buttonSecondaryBackgroundColor,
-    borderBottomColor: $_.buttonSecondaryBackgroundColor,
+    backgroundColor: $_.floatingButtonBackgroundColor,
+    borderBottomColor: $_.floatingButtonBackgroundColor,
     paddingTop: $_.buttonSecondaryPaddingTop,
     paddingBottom: $_.buttonSecondaryPaddingBottom,
     android: {

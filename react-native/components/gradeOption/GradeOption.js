@@ -9,7 +9,6 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Text from '../../baseComponents/text/Text';
 
 class GradeOption extends Component {
-    
     state = {
         value: 0,
     };

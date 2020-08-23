@@ -25,6 +25,7 @@ export default function LoginReducer(state = initialState, action) {
         case Constants.ACTIONS.UPDATE_SCORE:
             newState.botsPair= action.data;
             break;
+        case Constants.ACTIONS.CLEAR_LEADERSBOARD_DATA:
         case Constants.ACTIONS.CLEAR_DATA:
             newState= initialState;
             break;

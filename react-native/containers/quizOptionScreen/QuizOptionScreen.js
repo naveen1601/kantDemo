@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import {
+    View,
+    Text,
+    ScrollView
+} from 'react-native';
 import Button from '../../baseComponents/button/Button';
 import { create } from '../../helpers/PlatformSpecificStyles';
 import QuizOptionScreenStyles from './QuizOptionScreenStyles'
@@ -7,22 +11,38 @@ import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoD
 import { connect } from 'react-redux';
 import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
 import { Screens } from '../../helpers/ScreenHelpers';
+import { CompetencyAndGradeArray } from '../../helpers/CommonHelper';
+import GradeOption from '../../components/gradeOption/GradeOption'
+import GuestActions from '../guestScreen/GuestActions';
+import QuizAction from './QuizAction';
+import QuizConstants from './QuizConstants';
 
 class QuizOptionScreen extends Component {
     state = {
-        isQuizInstructionEnabled: false
+        isQuizInstructionEnabled: false,
+        isOfflineClickedForLoggedinUser: false,
+        offlineGradeSelection: 0,
     };
 
     componentDidMount() {
+        this.props.clearQuizOption();
         this.focusListener = this.props.navigation.addListener('focus', () => {
             this.setState({ isQuizInstructionEnabled: false });
-          });
+        });
     }
 
     handlePractiseOffline = () => {
-        this.setState({
-            isQuizInstructionEnabled: true
-        });
+        if (!this.props.isLoggedIn) {
+            this.setState({
+                isQuizInstructionEnabled: true
+            });
+            this.props.updateQuizSelection( QuizConstants.QUIZOPTIONS.OFFLINE )        
+        }
+        else {
+            this.setState({
+                isOfflineClickedForLoggedinUser: true
+            });
+        }
         this.props.clearLeadersBoard();
     }
 
@@ -38,21 +58,27 @@ class QuizOptionScreen extends Component {
                 onPress={() => this.props.navigation.navigate(Screens.LeadersBoardScreen)}
                 text="Start Quiz"
             />
+            {this.props.isLoggedIn &&
+                <Button
+                    onPress={() => this.setState({
+                        isQuizInstructionEnabled: false,
+                        offlineGradeSelection: 0
+                    })}
+                    text="Back To Quiz Option"
+                />}
         </View>);
 
 
     renderQuizOptionButtonsConatiner = () => (
         <View style={styles.quizOptionButtonContainer}>
             <Button
-                onPress={() => { }}
+                onPress={() => { alert('Schedule not avialble')}}
                 text="Schedule Class"
                 disabled={!this.props.isLoggedIn}
                 secondaryButton={!this.props.isLoggedIn}
-
-
             />
             <Button
-                onPress={() => { }}
+                onPress={this.handleVirtualSection}
                 text="Virtual Class"
                 disabled={!this.props.isLoggedIn}
                 secondaryButton={!this.props.isLoggedIn}
@@ -64,25 +90,69 @@ class QuizOptionScreen extends Component {
             />
         </View>);
 
-    render() {
-        const comp = this.state.isQuizInstructionEnabled ? this.renderInstructions() : this.renderQuizOptionButtonsConatiner()
+    handleVirtualSection = () =>{
+        const competencyArray = (this.props.competencyLevelVirtual?.length >1) ? this.props.competencyLevelVirtual : CompetencyAndGradeArray[this.props.grade]
+        this.props.updateVirtualCompetency(competencyArray,QuizConstants.QUIZOPTIONS.VIRTUAL);
+        this.props.clearLeadersBoard();
+
+        this.setState({
+            isQuizInstructionEnabled: true,
+            isOfflineClickedForLoggedinUser: false
+
+        });
+    }
+
+    handleOfflineGradeSelection = (offlineGradeSelection) => {
+        this.props.updatecompetencyLevel(CompetencyAndGradeArray[offlineGradeSelection],QuizConstants.QUIZOPTIONS.OFFLINE);
+
+        this.setState({
+            offlineGradeSelection,
+            isQuizInstructionEnabled: true,
+            isOfflineClickedForLoggedinUser: false
+        })
+    }
+
+    renderOfflineSection = () => {
         return (
-            <View>
+            <View style={styles.offlineGrade}>
+                <GradeOption options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+                    onSelect={this.handleOfflineGradeSelection}
+                    value={this.state.offlineGradeSelection} />
+            </View>
+        );
+    }
+
+    render() {
+        const comp = this.state.isQuizInstructionEnabled ? this.renderInstructions() : this.renderQuizOptionButtonsConatiner();
+
+        const gradeSection = this.props.grade + '' + (this.props.section ? this.props.section : '');
+        return (
+            <ScrollView keyboardShouldPersistTaps={'always'}
+                ref={c => (this.scrollView = c)}
+                onContentSizeChange={() => {
+                    this.scrollView.scrollToEnd({ animated: true });
+                }}
+            >
                 <StudentInfoDisplay name={this.props.name}
-                    grade={this.props.grade}
+                    grade={gradeSection}
                     school={this.props.school} />
                 {comp}
-            </View>
+                {this.state.isOfflineClickedForLoggedinUser &&
+                    this.renderOfflineSection()}
+            </ScrollView>
         );
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        name: state.login.userData && state.login.userData.name,
-        grade: state.login.userData && state.login.userData.grade,
-        school: state.login.userData && state.login.userData.school,
-        isLoggedIn: state.login.isLoggedIn
+        name: state.login.userData?.name,
+        grade: state.login.userData?.grade,
+        section: state.login.userData?.section,
+        school: state.login.userData?.schoolName,
+        isLoggedIn: state.login?.isLoggedIn,
+        competencyLevel: state.login.userData?.competencyLevel,
+        competencyLevelVirtual : state.login.userData?.competencyLevelVirtual
     }
 }
 
@@ -90,7 +160,21 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         clearLeadersBoard: function () {
             dispatch(LeadersBoardAction.clearLeadersBoard());
-        }
+        },
+        updatecompetencyLevel: function (newCompetencyLevel, selectedQuiz) {
+            dispatch(GuestActions.updatecompetencyLevel(newCompetencyLevel));
+            dispatch(QuizAction.updateQuizSelection(selectedQuiz));
+        },
+        updateQuizSelection: function ( selectedQuiz) {
+            dispatch(QuizAction.updateQuizSelection(selectedQuiz));
+        },
+        updateVirtualCompetency : function (newCompetencyLevel, selectedQuiz) {
+            dispatch(GuestActions.updateVirtualCompetency(newCompetencyLevel));
+            dispatch(QuizAction.updateQuizSelection(selectedQuiz));
+        },
+        clearQuizOption: function () {
+            dispatch(QuizAction.clearQuizOption());
+        },
     }
 }
 

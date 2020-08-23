@@ -14,6 +14,8 @@ export default function SpinnerReducer(state = initialState, action) {
             }
             newState.isSpinnerVisible = true;
             break;
+            
+        case Constants.ACTIONS.CLEAR_DATA:
         case Constants.ACTIONS.HIDE_SPINNER_MODAL:
             newState.isSpinnerVisible = false;
             newState.spinnerText = '';

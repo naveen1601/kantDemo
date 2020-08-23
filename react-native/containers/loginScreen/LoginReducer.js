@@ -10,20 +10,17 @@ let initialState = {
         competencyLevel: [],
         grade: '',
         name: '',
-    },
-    loggedInUserData: {
-        name: '',
         surName: '',
         schoolName: '',
-        grade: '',
         section: '',
-        competencylevel: '',
+        competencylevelFromAPI: '',
         userId: '',
         userName: '',
-        token: ''
+        token: '',
+        competencyLevelVirtual: []
+
     },
     loginErrorMessage: ''
-
 };
 
 export default function LoginReducer(state = initialState, action) {
@@ -43,23 +40,30 @@ export default function LoginReducer(state = initialState, action) {
         case Constants.ACTIONS.UPDATE_COMPETENCY_LEVEL:
             newState.userData.competencyLevel = action.newCompetencyLevel;
             break;
+        case Constants.ACTIONS.UPDATE_VIRTUAL_COMPETENCY_LEVEL:
+            newState.userData.competencyLevelVirtual = action.newVirtualCompetencyLevel;
+            break;
         case Constants.ACTIONS.SAVE_LOGGEDIN_USER_DATA:
             newState.userData.isGuest = false;
-            newState.userData.isLoggedIn = true;
-            newState.loggedInUserData = action.loginUserData;
-            mewState.loginErrorMessage = '';
+            newState.isLoggedIn = true;
+            newState.isGuest = false;
+            newState.userData = action.loginUserData;
+            newState.loginErrorMessage = '';
             break;
 
         case Constants.ACTIONS.LOGIN_GENERAL_ERROR:
         case Constants.ACTIONS.UNAUTHORIZED_REQUEST:
             newState.isLoggedIn = false;
-            newState.loggedInUserData = initialState.loggedInUserData;
+            newState.userData = initialState.userData;
             newState.loginErrorMessage = action.message;
             break;
-
         case Constants.ACTIONS.RESET_ERROR_MESSAGE:
         case Constants.ACTIONS.SHOW_SPINNER_MODAL:
             newState.loginErrorMessage = '';
+            break;
+            
+        case Constants.ACTIONS.CLEAR_DATA:
+            newState = initialState;
             break;
 
         default:

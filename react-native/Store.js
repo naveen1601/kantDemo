@@ -8,6 +8,8 @@ import getStoredStateMigrateV4 from 'redux-persist/lib/integration/getStoredStat
 import login from './containers/loginScreen/LoginReducer';
 import leadersBoard from './containers/leadersBoardScreen/LeadersBoardReducer'
 import spinner from './containers/spinner/SpinnerReducer'
+import quiz from './containers/quizOptionScreen/QuizReducer';
+
 
 const oldConfig = {
     storage: AsyncStorage
@@ -23,7 +25,7 @@ function getStore() {
         getStoredState: getStoredStateMigrateV4(oldConfig)
     };
 
-    let reducers = persistCombineReducers(config, { login, leadersBoard, spinner });
+    let reducers = persistCombineReducers(config, { login, leadersBoard, spinner, quiz });
 
     let store = createStore(
         reducers,

@@ -25,8 +25,7 @@ export default {
     },
     arrowBox: {
         width: 28,
-        height:28,
-        color: '#255166'
+        height:28
     }
 
 }

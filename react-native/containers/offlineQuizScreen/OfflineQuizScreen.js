@@ -11,13 +11,14 @@ import FlatButton from '../../baseComponents/button/FlatButton';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer';
 import _ from 'lodash'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
-import { AllCompetencyArray, randomNumberBetweenTwoNum, updatePairsWithScore, getTimerBasedOnGrade } from '../../helpers/CommonHelper';
+import { randomNumberBetweenTwoNum, updatePairsWithScore, getTimerBasedOnGrade } from '../../helpers/CommonHelper';
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
 import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
 import Config from '../../Configs';
 import GuestActions from '../guestScreen/GuestActions';
 import BounceButton from '../../components/bounceButton/BounceButton';
+import QuizConstants from '../quizOptionScreen/QuizConstants';
 
 
 class OfflineQuizScreen extends Component {
@@ -25,6 +26,8 @@ class OfflineQuizScreen extends Component {
 
     constructor(props) {
         super(props);
+        // this.competencyLevelBasedOnQuiz = this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.OFFLINE ? this.props.competencyLevel :
+        //     this.props.competencyLevelVirtual
         this.state = {
             isAnswerEmpty: false,
             quiz: findQuestionsForQuiz(this.props.competencyLevel, randomNumberBetweenTwoNum(6, 10))
@@ -36,7 +39,7 @@ class OfflineQuizScreen extends Component {
             userScore: 0
         };
         this.timer = getTimerBasedOnGrade(this.props.grade);
-        
+
     }
 
     handleUserInput = ({ userAnswer, key }) => {
@@ -116,7 +119,9 @@ class OfflineQuizScreen extends Component {
         const userScore = quizWithAns.filter(item => item.isUserAnswerCorrect).length
         let botsWithScore = updatePairsWithScore(userScore, this.props.botsPair, this.state.quiz.length);
 
-        this.props.updatecompetencyLevel(this.getNewCompetency(userScore));
+        if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.OFFLINE) { this.props.updatecompetencyLevel(this.getNewCompetency(userScore)); }
+        else if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.VIRTUAL) { this.props.updatecompetencyLevelVirtual(this.getNewCompetency(userScore)); }
+
         this.props.updateScore(botsWithScore);
         this.setState({
             isQuizEnded: true,
@@ -127,8 +132,8 @@ class OfflineQuizScreen extends Component {
 
     compareAnswer = (correctAns, userAns) => {
         if (_.isEmpty(userAns)) return false;
-        let systemAns = String(correctAns).trim().split(' ').join('').toLowerCase();
-        let userInput = String(userAns).trim().split(' ').join('').toLowerCase();
+        let systemAns = String(correctAns).trim().split(' ').join('');
+        let userInput = String(userAns).trim().split(' ').join('');
 
         let isCorrect = (systemAns == userInput);
         if (!isCorrect && systemAns.split('(').length > 1) {
@@ -278,14 +283,17 @@ class OfflineQuizScreen extends Component {
 }
 
 const mapStateToProps = state => {
+    let selectCompLevel = (state.quiz.selectedQuiz == QuizConstants.QUIZOPTIONS.OFFLINE) ? state.login.userData?.competencyLevel :
+        state.login.userData?.competencyLevelVirtual
     return {
-        name: state.login.userData && state.login.userData.name,
-        grade: state.login.userData && state.login.userData.grade,
-        school: state.login.userData && state.login.userData.school,
-        competencyLevel: state.login.userData && state.login.userData.competencyLevel,
+        name: state.login.userData?.name,
+        grade: state.login.userData?.grade,
+        school: state.login.userData?.school,
+        competencyLevel: selectCompLevel,
         isLoggedIn: state.login.isLoggedIn,
         botIdPairedWithUser: state.leadersBoard.botIdPairedWithUser,
         botsPair: state.leadersBoard.botsPair,
+        selectedQuiz: state.quiz.selectedQuiz
     }
 }
 
@@ -295,7 +303,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(LeadersBoardAction.updateScore(scoreData));
         },
         updatecompetencyLevel: function (newCompetencyLevel) {
-            dispatch(GuestActions.updatecompetencyLevel);
+            dispatch(GuestActions.updatecompetencyLevel(newCompetencyLevel));
         }
     }
 }

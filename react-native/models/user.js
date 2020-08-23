@@ -9,7 +9,7 @@ export default class user {
         this.grade= loginResponse?.user?.gradesections[0]?.grade?.name;
         this.section = loginResponse?.user?.gradesections[0]?.section?.name;
 
-        this.competencylevel= loginResponse?.user?.competencylevel.level;
+        this.competencylevelFromAPI= loginResponse?.user?.competencylevel.level;
         this.userName= loginResponse?.user?.username;
         this.token= loginResponse?.token;
     }

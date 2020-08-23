@@ -2,53 +2,23 @@ import SpinnerAction from '../spinner/SpinnerActions';
 import Api from '../../helpers/Api';
 import Locations from '../../helpers/Locations';
 import Constants from './LoginConstants';
-import UserModel from '../../models/user'
+import UserModel from '../../models/user';
+import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 
 export default {
-    doLogin: function (schoolCode, username, password) {
+    doLogin: function (schoolCode, username, password, navigation) {
 
         return function (dispatch) {
             const userCredentials = { username, password, schoolCode }
             dispatch(SpinnerAction.showSpinner('Validating'));
-            // dispatch(SpinnerAction.hideSpinner('Validating'));
 
-            //dispatch({ type: Constants.ACTIONS.SHOW_LOGIN_MODAL_SPINNER });
-            // let loginSuccess = (responseJson) => {
-            //     dispatch({ type: Constants.ACTIONS.HIDE_LOGIN_MODAL_SPINNER });
-            //     dispatch({ type: Constants.ACTIONS.LOGIN_SUCCESS });
-            //     storeUserData(dispatch, responseJson, username);
-            //     CredentialManagement.storeCredential(Constants.SERVER_URL, username, password);
-            //     logUserId(responseJson.Customer.CustomerId);
-            //     parentSuccessCallback();
-            //     TrackActions.trackEvent([TuneAnalyticsEventConstants.TUNE_LOGIN]);
-            // };
-            // let errorCallback = (errorResponse) => {
-            //     dispatch({ type: Constants.ACTIONS.HIDE_LOGIN_MODAL_SPINNER });
-            //     let error = getErrorToHandle(errorResponse);
-            //     if (error) {
-            //         dispatch({
-            //             type: Constants.ACTIONS.LOGIN_ERROR,
-            //             errorMessage: error.Message,
-            //             errorCode: error.Code,
-            //             statusCode: errorResponse.status
-            //         });
-            //         TrackActions.trackErrorEvent(TrackerConstants.TRACK.LOGIN_ERROR, error.Code, error.Message);
-            //     } else {
-            //         dispatch({
-            //             type: Constants.ACTIONS.LOGIN_ERROR,
-            //             errorMessage: Constants.GENERIC_ERROR_MESSAGE,
-            //             statusCode: errorResponse.status
-            //         });
-            //         TrackActions.trackApiErrorEvent(TrackerConstants.TRACK.LOGIN_ERROR, errorResponse);
-            //     }
-            // };
             let loginSuccess = (response) => {
                 dispatch(SpinnerAction.hideSpinner());
                 dispatch({
                     type: Constants.ACTIONS.SAVE_LOGGEDIN_USER_DATA,
                     loginUserData : new UserModel(response)
                 })
-                console.log('succc')
+                resetScreen(navigation,Screens.QuizOptionScreen)
             };
 
             let errorCallback = (errorResponse) => {

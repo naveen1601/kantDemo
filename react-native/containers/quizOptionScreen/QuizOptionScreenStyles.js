@@ -23,7 +23,13 @@ export default {
     instructionTextContainer:{
         marginBottom:36,
         marginTop:36      
-    }
+    },
+
+    offlineGrade: {
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 20
+     },
 
 
 
