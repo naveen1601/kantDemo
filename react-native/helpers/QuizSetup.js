@@ -99,7 +99,10 @@ export function findQuestionsFromQuestionFile(competencyAndLevelList) {
         const ques = question && (question.group == 'G' ? findSubQuestion(question) : question);
         return ques;
     });
-    
+
+    finalQuestionList = finalQuestionList.filter(function( element ) {
+        return element !== undefined;
+     });
     // console.log('final List ', finalQuestionList);
     return finalQuestionList;
     
