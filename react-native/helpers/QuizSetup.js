@@ -46,6 +46,7 @@ export function findQuestionsForQuiz(competencyArray, numberOfQuestions = 7) {
 
 
     Config.COMPETENCY_LIST = allCompetencyNumbers.sort(compare);
+    // console.log(Config.COMPETENCY_LIST);
 
     return findQuestionsFromQuestionFile(finalCompetencyListFromMaster);
 }

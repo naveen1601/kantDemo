@@ -16,6 +16,7 @@ import GradeOption from '../../components/gradeOption/GradeOption'
 import GuestActions from '../guestScreen/GuestActions';
 import QuizAction from './QuizAction';
 import QuizConstants from './QuizConstants';
+import ScheduleQuizAction from '../scheduleQuizScreen/ScheduleQuizAction';
 
 class QuizOptionScreen extends Component {
     state = {
@@ -36,7 +37,7 @@ class QuizOptionScreen extends Component {
             this.setState({
                 isQuizInstructionEnabled: true
             });
-            this.props.updateQuizSelection( QuizConstants.QUIZOPTIONS.OFFLINE )        
+            this.props.updateQuizSelection(QuizConstants.QUIZOPTIONS.OFFLINE)
         }
         else {
             this.setState({
@@ -68,11 +69,10 @@ class QuizOptionScreen extends Component {
                 />}
         </View>);
 
-
     renderQuizOptionButtonsConatiner = () => (
         <View style={styles.quizOptionButtonContainer}>
             <Button
-                onPress={() => { alert('Schedule not avialble')}}
+                onPress={() => this.props.fetchScheduleQuiz(this.props.token)}
                 text="Schedule Class"
                 disabled={!this.props.isLoggedIn}
                 secondaryButton={!this.props.isLoggedIn}
@@ -90,9 +90,10 @@ class QuizOptionScreen extends Component {
             />
         </View>);
 
-    handleVirtualSection = () =>{
-        const competencyArray = (this.props.competencyLevelVirtual?.length >1) ? this.props.competencyLevelVirtual : CompetencyAndGradeArray[this.props.grade]
-        this.props.updateVirtualCompetency(competencyArray,QuizConstants.QUIZOPTIONS.VIRTUAL);
+
+    handleVirtualSection = () => {
+        const competencyArray = (this.props.competencyLevelVirtual?.length > 1) ? this.props.competencyLevelVirtual : CompetencyAndGradeArray[this.props.grade]
+        this.props.updateVirtualCompetency(competencyArray, QuizConstants.QUIZOPTIONS.VIRTUAL);
         this.props.clearLeadersBoard();
 
         this.setState({
@@ -103,7 +104,7 @@ class QuizOptionScreen extends Component {
     }
 
     handleOfflineGradeSelection = (offlineGradeSelection) => {
-        this.props.updatecompetencyLevel(CompetencyAndGradeArray[offlineGradeSelection],QuizConstants.QUIZOPTIONS.OFFLINE);
+        this.props.updatecompetencyLevel(CompetencyAndGradeArray[offlineGradeSelection], QuizConstants.QUIZOPTIONS.OFFLINE);
 
         this.setState({
             offlineGradeSelection,
@@ -151,8 +152,9 @@ const mapStateToProps = (state) => {
         section: state.login.userData?.section,
         school: state.login.userData?.schoolName,
         isLoggedIn: state.login?.isLoggedIn,
+        token: state.login.userData?.token,
         competencyLevel: state.login.userData?.competencyLevel,
-        competencyLevelVirtual : state.login.userData?.competencyLevelVirtual
+        competencyLevelVirtual: state.login.userData?.competencyLevelVirtual
     }
 }
 
@@ -165,16 +167,19 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(GuestActions.updatecompetencyLevel(newCompetencyLevel));
             dispatch(QuizAction.updateQuizSelection(selectedQuiz));
         },
-        updateQuizSelection: function ( selectedQuiz) {
+        updateQuizSelection: function (selectedQuiz) {
             dispatch(QuizAction.updateQuizSelection(selectedQuiz));
         },
-        updateVirtualCompetency : function (newCompetencyLevel, selectedQuiz) {
+        updateVirtualCompetency: function (newCompetencyLevel, selectedQuiz) {
             dispatch(GuestActions.updateVirtualCompetency(newCompetencyLevel));
             dispatch(QuizAction.updateQuizSelection(selectedQuiz));
         },
         clearQuizOption: function () {
             dispatch(QuizAction.clearQuizOption());
         },
+        fetchScheduleQuiz: function(token){
+            dispatch(ScheduleQuizAction.getQuizList(token, ownProps.navigation))
+        }
     }
 }
 

@@ -70,7 +70,6 @@ class LoginScreen extends Component {
     }
 
     renderLoginModal = () => {
-        let errorMessage = this.props.errorMessage || '';
         return (
             <ScrollView keyboardShouldPersistTaps={'always'}>
                 <View style={styles.loginBox}>

@@ -18,6 +18,8 @@ import { Screens } from '../helpers/ScreenHelpers';
 import AppLevelSpinner from '../kantApp/AppLevelSpinner'
 import HomeButton from '../containers/homeButton/HomeButton';
 import { connect } from 'react-redux';
+import ScheduleQuizScreen from '../containers/scheduleQuizScreen/ScheduleQuizScreen';
+import ScheduleLeaderBoardScreen from '../containers/scheduleLeaderBoardScreen/ScheduleLeaderBoardScreen';
 
 
 const Stack = createStackNavigator();
@@ -25,7 +27,7 @@ const Stack = createStackNavigator();
 quitQuizAndMoveToHome = (navigation) => (<HomeButton navigation={navigation} />);
 
 function MyStack(props) {
-    const defaultScree = props.isLoggedIn ? Screens.QuizOptionScreen : Screens.LoginOption 
+    const defaultScree = props.isLoggedIn ? Screens.QuizOptionScreen : Screens.LoginOption
     return (
         <Stack.Navigator mode='card'
             initialRouteName={defaultScree}
@@ -57,6 +59,7 @@ function MyStack(props) {
                     }
                 }
                 } />
+
             <Stack.Screen name={Screens.LeadersBoardScreen}
                 component={LeadersBoardScreen}
                 options={({ navigation }) => {
@@ -66,6 +69,15 @@ function MyStack(props) {
                     }
                 }
                 } />
+
+            <Stack.Screen name={Screens.ScheduleQuizScreen}
+                component={ScheduleQuizScreen}
+                options={{ headerTitle: 'Schedule Quiz' }} />
+
+            <Stack.Screen name={Screens.ScheduleLeaderBoardScreen}
+                component={ScheduleLeaderBoardScreen}
+                options={{ headerTitle: 'Leaderboard' }} />
+
             {/* headerShown: false  // to hide header
             headerLeft: null //to hide back button
             
@@ -90,8 +102,6 @@ function MyStack(props) {
             });
             
             */}
-            {/* <Stack.Screen name="Profile" component={ProfileScreen} />
-      <Stack.Screen name="Settings" component={SettingsScreen} /> */}
         </Stack.Navigator>
     );
 }

@@ -43,7 +43,7 @@ let Api = {
             }));
     },
 
-    doPost(location, body, successCallback, errorCallback, token, tocIdentifier) {
+    doPost(location, body, successCallback, errorCallback, token) {
         let url = getLocation(location);
         let headers = {
             "Content-Type": "application/json"

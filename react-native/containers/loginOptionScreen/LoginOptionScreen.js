@@ -39,47 +39,6 @@ class LoginOptionScreen extends Component {
         //this.updateLoginButtonState(text, this.state.password);
     }
 
-    // handlePasswordChange(text) {
-    //     this.setState({ password: text });
-    //     this.updateLoginButtonState(this.state.userName, text);
-    // }
-
-
-    // renderLoginModal = () => {
-    //     return (
-    //         <Animated.View testID="buyTicketsButtonContainer"
-    //             style={[styles.loginContainer, { transform: [{ translateY: this.state.animBottom }] }]} >
-    //             <View style={styles.login}>
-    //                 <KeyboardAwareScrollView keyboardShouldPersistTaps="always">
-    //                     <View style={styles.loginInputFieldsContainer}>
-    //                         <Text style={styles.loginLabel}>Enter your details below</Text>
-    //                         <View style={styles.loginFields}>
-    //                             <TextInput
-    //                                 testId="userNameTextInput"
-    //                                 onChangeText={this.handleUserNameChange}
-    //                                 value={this.state.userName}
-    //                                 placeholder="Enter Your User Id"
-    //                                 keyboardType="email-address"
-    //                                 hasErrors={false}
-    //                                 autoCapitalize="none"
-    //                                 autoCorrect={false}
-    //                             />
-    //                             {/* <PasswordInput onChangeText={this.handlePasswordChange}
-    //                                 testID="passwordTextInput"
-    //                                 placeholder={'Password'}
-    //                                 hasErrors={hasErrors}
-    //                                 maxLength={Constants.PASSWORD_MAX_CHARACTERS}
-    //                                 value={this.state.password}
-    //                                 stacked /> */}
-    //                         </View>
-    //                     </View>
-    //                 </KeyboardAwareScrollView>
-    //             </View>
-    //         </Animated.View>
-
-    //     );
-    // }
-
     handleLoginButton = () => this.props.navigation.navigate(Screens.LoginScreen);
     // handleLoginButton = () => alert('Login is not available, plese use Guest Mode');   
     handleGuestLogin = () => this.props.navigation.navigate(Screens.GuestScreen);

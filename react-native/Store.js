@@ -9,7 +9,7 @@ import login from './containers/loginScreen/LoginReducer';
 import leadersBoard from './containers/leadersBoardScreen/LeadersBoardReducer'
 import spinner from './containers/spinner/SpinnerReducer'
 import quiz from './containers/quizOptionScreen/QuizReducer';
-
+import scheduleQuiz from './containers/scheduleQuizScreen/ScheduleQuizReducer';
 
 const oldConfig = {
     storage: AsyncStorage
@@ -25,7 +25,7 @@ function getStore() {
         getStoredState: getStoredStateMigrateV4(oldConfig)
     };
 
-    let reducers = persistCombineReducers(config, { login, leadersBoard, spinner, quiz });
+    let reducers = persistCombineReducers(config, { login, leadersBoard, spinner, quiz, scheduleQuiz});
 
     let store = createStore(
         reducers,

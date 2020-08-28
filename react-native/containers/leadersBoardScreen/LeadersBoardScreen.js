@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
 import { create } from '../../helpers/PlatformSpecificStyles';
-import Button from '../../baseComponents/button/Button';
 import DummyUsers from '../../staticData/offlineUsersData.json'
 import { randomValueFromArray, randomNumberOfValues } from '../../helpers/CommonHelper';
 import Config from '../../Configs';
