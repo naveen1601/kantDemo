@@ -4,6 +4,7 @@ import Api from "../../helpers/Api";
 import Locations from "../../helpers/Locations";
 import schedule from "../../models/schedule";
 import { Screens } from "../../helpers/ScreenHelpers";
+import ScheduleLeaderBoardConstants from "../scheduleLeaderBoardScreen/ScheduleLeaderBoardConstants";
 
 
 export default {
@@ -48,6 +49,9 @@ export default {
 
             const apiParam = Locations.ATTENDANCE + innerQuizId;
             dispatch(SpinnerActions.showSpinner('Entering in quiz'));
+            dispatch({
+                type: ScheduleLeaderBoardConstants.ACTIONS.CLEAR_SCHEDULE_LEADERBOARD
+            });
 
             let successCallback = (response) => {
                 dispatch({

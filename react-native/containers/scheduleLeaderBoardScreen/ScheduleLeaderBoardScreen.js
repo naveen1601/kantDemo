@@ -8,7 +8,7 @@ import ScheduleLeaderBoardStyles from './ScheduleLeaderBoardStyles';
 import { connect } from 'react-redux';
 import Text from '../../baseComponents/text/Text';
 import ScheduleLeaderBoardAction from './ScheduleLeaderBoardAction';
-
+import LeaderBoard from '../../components/leaderBoard/LeaderBoard';
 
 class ScheduleLeaderBoardScreen extends Component {
     
@@ -26,6 +26,10 @@ class ScheduleLeaderBoardScreen extends Component {
         return (
             <ScrollView keyboardShouldPersistTaps={'always'}>
                 <Text>Leaders Board Page</Text>
+                {
+                    this.props.leaderBoardData.map(matrix => 
+                        <LeaderBoard leaderBoardMatrix= {matrix}/>)
+                }
             </ScrollView>
         );
     }
@@ -36,8 +40,9 @@ const mapStateToProps = (state) => {
         name: state.login.userData?.name,
         id: state.login.userData?.id,
         token: state.login.userData?.token,
-        quizId: state.scheduleQuiz.currentQuiz?.innerQuizId
-        //quizError: state.ScheduleLeaderBoard?.errorMessage
+        quizId: state.scheduleQuiz.currentQuiz?.innerQuizId,
+        leaderBoardData: state.scheduleLeaderBoard?.pairingMatrix,
+        errorMessage: state.scheduleLeaderBoard?.errorMessage
     }
 }
 

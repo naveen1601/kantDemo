@@ -14,7 +14,7 @@ import CountDown from 'react-native-countdown-component';
 import moment from 'moment'
 import Text from '../../baseComponents/text/Text'
 
-class QuizOptionScreen extends Component {
+class ScheduleQuizScreen extends Component {
     state = {
         isQuizAvailable: false,
         secondsLeft: 0,
@@ -79,11 +79,12 @@ class QuizOptionScreen extends Component {
     }
 
     renderCountDown = () => {
-        let countComp = (
+        const timerValue = this.state.secondsLeft;
+        let comp = this.state.isQuizAvailable ? (
             <View style={styles.timerConatiner}>
                 <Text style={styles.quizText}>Quiz will start in </Text>
                 <CountDown
-                    until={this.state.secondsLeft}
+                    until={parseInt(timerValue)}
                     onFinish={() => { }}
                     onPress={this.startQuiz}
                     digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
@@ -93,13 +94,10 @@ class QuizOptionScreen extends Component {
                     size={25}
                 />
             </View >
-        );
-
-        let notFoundComp = ( <View style={styles.alertContainer}><AlertInfo type="alertInfo"
+        ) :
+        ( <View style={styles.alertContainer}><AlertInfo type="alertInfo"
             message={'No Active Quiz Found'} /> 
             </View>);
-
-        let comp = this.state.isQuizAvailable ? countComp : notFoundComp;
 
         return comp;
     }
@@ -170,4 +168,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 let styles = create(ScheduleQuizStyles);
 
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(QuizOptionScreen);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ScheduleQuizScreen);

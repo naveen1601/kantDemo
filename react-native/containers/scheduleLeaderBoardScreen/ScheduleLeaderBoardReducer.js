@@ -3,14 +3,8 @@ import Constants from './ScheduleLeaderBoardConstants';
 
 
 let initialState = {
-
-    // scheduleQuizList: [],
-    // currentQuiz: {
-    //     outerQuizId: '',
-    //     innerQuizId: '',
-    //     sequence: 0
-    // },
-    // errorMessage: ''
+    pairingMatrix: [],
+    errorMessage: ''
 };
 
 
@@ -19,15 +13,18 @@ export default (state = initialState, action) => {
 
     switch (action.type) {
         case REHYDRATE:
-            newState = action.payload && action.payload.scheduleQuiz ?
-                Object.assign(action.payload.scheduleQuiz) : newState;
+            newState = action.payload && action.payload.scheduleLeaderBoard ?
+                Object.assign(action.payload.scheduleLeaderBoard) : newState;
             break;
 
 
-        // case Constants.ACTIONS.UPDATE_SEQUENCE:
-        //     newState.currentSequence = action.sequence;
-        //     break;
-
+        case Constants.ACTIONS.UPDATE_SCHEDULE_LEADERBOARD:
+            newState.pairingMatrix = action.pairingMatrix;
+            break;
+        case Constants.ACTIONS.GENERAL_ERROR_LEADERBOARD:
+            newState.errorMessage = action.errorMessage;
+            break;
+        case Constants.ACTIONS.CLEAR_SCHEDULE_LEADERBOARD:
         case Constants.ACTIONS.CLEAR_DATA:
             newState = initialState;
             break;
