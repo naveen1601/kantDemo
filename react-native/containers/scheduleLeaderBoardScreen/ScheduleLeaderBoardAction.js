@@ -13,7 +13,7 @@ export default {
 
         return function (dispatch) {
 
-            //const apiParam = Locations.LEADERBOARD + quizId;
+            // const apiParam = Locations.LEADERBOARD + quizId;
             const apiParam = Locations.LEADERBOARD + '5f43d6111634660008074cf2';
             dispatch(SpinnerActions.showSpinner('Looking for other opponents '));
 

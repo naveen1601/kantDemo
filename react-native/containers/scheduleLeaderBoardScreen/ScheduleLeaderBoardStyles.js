@@ -1,13 +1,17 @@
 
 export default {
     
-    quizText:{
-        padding:15,
-        fontSize: 22,
-        textAlign:'center' 
+    leadersBoardContainer: {
+        margin: 25
     },
-    timerConatiner:{
-        marginBottom:15,
+    nextQuizTextContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingBottom: 5
+    },
+    quizText: {
+        marginTop: 16,
+        fontSize: 20
     }
 
 }

@@ -1,4 +1,3 @@
-//import $_ from './OfflineQuizScreenSettings';
 
 export default {
 
