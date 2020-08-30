@@ -1,21 +1,28 @@
 
 
-export function getleaderBoardPairingMatrix(res) {
+export function getleaderBoardPairingMatrix(res, userId) {
     const sortedLeaderboardBySequence = res.leaderboard_data.sort((a, b) => parseFloat(a.sequence_value) - parseFloat(b.sequence_value));
     //const counterSequenceArray = sortedLeaderboardBySequence.map(item => item.counterPlayer?.id).filter(item => item != undefined);
-    const counterSequenceArray = []
 
-    const pairingStudentsArray = [];
+    let userOponentId = '';
+    const counterSequenceArray = [];
+
+    const pairingMatrix = [];
     sortedLeaderboardBySequence.map(studentApiPairObj => {
-        // const studentId = studentApiPairObj.student.id;
+
+        //gettingOponent Id of the user
+        if (studentApiPairObj.student.id == userId) {
+            userOponentId = studentApiPairObj.counterPlayer?.id;
+        }
+
         if (counterSequenceArray.indexOf(studentApiPairObj.student.id) < 0) {
-            pairingStudentsArray.push(getPair(studentApiPairObj));
+            pairingMatrix.push(getPair(studentApiPairObj));
             studentApiPairObj.counterPlayer &&
                 counterSequenceArray.push(studentApiPairObj.counterPlayer?.id);
         }
     });
 
-    return pairingStudentsArray;
+    return { pairingMatrix, userOponentId };
 }
 
 
@@ -24,6 +31,7 @@ function getPair(studentPairObj) {
     const pairValue = [];
     const studentObj = getStudentDetail(studentPairObj.student);
     studentObj.sequence = studentPairObj.sequence_value;
+    studentObj.position = studentPairObj.positionChanged;
 
     pairValue.push(studentObj);
 
@@ -49,6 +57,6 @@ function getStudentDetail(student) {
         return {
             name: student.name,
             rollNumber: student.rollNumber,
-            studentId: student.id,
+            studentId: student.id
         }
 }

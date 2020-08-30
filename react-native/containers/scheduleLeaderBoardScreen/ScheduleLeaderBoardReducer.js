@@ -4,7 +4,8 @@ import Constants from './ScheduleLeaderBoardConstants';
 
 let initialState = {
     pairingMatrix: [],
-    errorMessage: ''
+    errorMessage: '',
+    userOponentId: ''
 };
 
 
@@ -17,9 +18,9 @@ export default (state = initialState, action) => {
                 Object.assign(action.payload.scheduleLeaderBoard) : newState;
             break;
 
-
         case Constants.ACTIONS.UPDATE_SCHEDULE_LEADERBOARD:
-            newState.pairingMatrix = action.pairingMatrix;
+            newState.pairingMatrix = action.pairingData.pairingMatrix;
+            newState.userOponentId = action.pairingData.userOponentId;
             break;
         case Constants.ACTIONS.GENERAL_ERROR_LEADERBOARD:
             newState.errorMessage = action.errorMessage;

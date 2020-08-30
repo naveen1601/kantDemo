@@ -9,7 +9,8 @@ export const Screens = {
     OfflineQuizScreen: 'OfflineQuizScreen',
     LeadersBoardScreen: 'LeadersBoardScreen',
     ScheduleQuizScreen: 'ScheduleQuizScreen',
-    ScheduleLeaderBoardScreen: 'ScheduleLeaderBoardScreen'
+    ScheduleLeaderBoardScreen: 'ScheduleLeaderBoardScreen',
+    OnlineQuizScreen: 'OnlineQuizScreen'
 };
 
 export const resetScreen = (navigation,screenName) => {

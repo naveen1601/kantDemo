@@ -8,8 +8,11 @@ let initialState = {
     currentQuiz: {
         outerQuizId: '',
         innerQuizId: '',
-        sequence: 0
+        quizData: {},
+        sequence: 0,
+        highestSequence: 0
     },
+    opponentScore: 0,
     errorMessage: ''
 };
 
@@ -28,15 +31,18 @@ export default (state = initialState, action) => {
             newState.errorMessage = ''
             break;
 
+        case Constants.ACTIONS.UPDATE_OPPONENT_SCORE:
+            newState.opponentScore = action.opponentScore;
+            break;
         // case Constants.ACTIONS.UPDATE_SEQUENCE:
         //     newState.currentSequence = action.sequence;
         //     break;
 
-        case Constants.ACTIONS.UPDATE_CURRENT_QUIZ_ID:
+        case Constants.ACTIONS.UPDATE_CURRENT_QUIZ:
             newState.currentQuiz = action.currentQuiz;
             break;
 
-        case Constants.ACTIONS.GENERAL_ERROR:
+        case Constants.ACTIONS.GENERAL_ERROR_QUIZLIST:
             newState.errorMessage = action.message;
             break;
         case Constants.ACTIONS.CLEAR_SCHEDULE:

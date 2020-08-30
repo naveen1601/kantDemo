@@ -13,7 +13,7 @@ let initialState = {
         surName: '',
         schoolName: '',
         section: '',
-        competencylevelFromAPI: '',
+        competencylevelFromAPI: 0,
         userId: '',
         userName: '',
         token: '',

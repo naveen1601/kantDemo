@@ -11,34 +11,50 @@ import ScheduleLeaderBoardAction from './ScheduleLeaderBoardAction';
 import LeaderBoard from '../../components/leaderBoard/LeaderBoard';
 import Configs from '../../Configs';
 import CountDown from 'react-native-countdown-component';
+import { Screens } from '../../helpers/ScreenHelpers';
 
 class ScheduleLeaderBoardScreen extends Component {
 
-    state = {
-
-    };
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            isQuizEnded: this.props.route.params?.isQuizEnded,
+            startTimer: false,
+        };
+    }
     componentDidMount() {
-        this.props.getLeadersBoardBeforeQuiz();
+        if (this.state.isQuizEnded) {
+            this.props.getLeadersBoardAfterQuiz(this.startTimerAfterAPIFetch);
+        } else {
+            this.props.getLeadersBoardBeforeQuiz(this.startTimerAfterAPIFetch);
+        }
     }
 
+    startTimerAfterAPIFetch = () => this.setState({ startTimer: true });
+
     renderNextQuizTextAndTime = () => {
+        const quizText = this.state.isQuizEnded ? 'Moving to schedule page in' : 'Quiz is going to start in';
+        const timer = this.state.isQuizEnded ? 5 : 5;
+        const screenName = this.state.isQuizEnded ? Screens.ScheduleQuizScreen : Screens.OnlineQuizScreen;
         return (
             <View style={styles.nextQuizTextContainer}>
-                <Text style={styles.quizText}>Quiz is going to start in </Text>
+                {this.state.startTimer &&
+                    <>
+                        <Text style={styles.quizText}>{quizText}</Text>
 
-                <CountDown
-                    until={Configs.LEADERBOARD_TIMER}
-                    onFinish={() => { }}
-                    onPress={() => { }}
-                    timeToShow={['S']}
-                    digitStyle={{ backgroundColor: '#FFF' }}
-                    digitTxtStyle={{ color: '#255166' }}
-                    // timeLabelStyle={{color: 'black', fontWeight: 'bold'}}
-                    separatorStyle={{ color: '#255166', paddingBottom: 25 }}
-                    showSeparator
-                    size={20}
-                />
+                        <CountDown
+                            //until={Configs.LEADERBOARD_TIMER}
+                            until={timer}
+                            onFinish={() => this.props.navigation.replace(screenName)}
+                            onPress={() => this.props.navigation.replace(screenName)}
+                            timeToShow={['S']}
+                            digitStyle={{ backgroundColor: '#FFF' }}
+                            digitTxtStyle={{ color: '#255166' }}
+                            separatorStyle={{ color: '#255166', paddingBottom: 25 }}
+                            showSeparator
+                            size={20}
+                        />
+                    </>}
             </View>
         )
     }
@@ -71,12 +87,12 @@ const mapStateToProps = (state) => {
 export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
     let actionProps = Object.assign({}, dispatchProps, {
-        getLeadersBoardBeforeQuiz: () => {
-            dispatchProps.getLeadersBoardBeforeQuiz(stateProps.quizId, stateProps.token);
+        getLeadersBoardBeforeQuiz: (successCall) => {
+            dispatchProps.getLeadersBoardBeforeQuiz(stateProps.quizId, stateProps.userId, stateProps.token, successCall);
         },
-        // getQuizList: (successCallback) => {
-        //     dispatchProps.getQuizList(successCallback, stateProps.token);
-        // }
+        getLeadersBoardAfterQuiz: (successCall) => {
+            dispatchProps.getLeadersBoardAfterQuiz(stateProps.quizId, stateProps.userId, stateProps.token, successCall);
+        }
 
     });
 
@@ -85,11 +101,11 @@ export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        // getQuizList: function (successCallback, token) {
-        //     dispatch(ScheduleLeaderBoardAction.getQuizList(successCallback, token, ownProps.navigation));
-        // },
-        getLeadersBoardBeforeQuiz: function (quizId, token) {
-            dispatch(ScheduleLeaderBoardAction.getLeadersBoardBeforeQuiz(quizId, token, ownProps.navigation));
+        getLeadersBoardAfterQuiz: function (quizId, userId, token, successCall) {
+            dispatch(ScheduleLeaderBoardAction.getLeadersBoardAfterQuiz(quizId, userId, token, successCall, ownProps.navigation));
+        },
+        getLeadersBoardBeforeQuiz: function (quizId, userId, token, successCall) {
+            dispatch(ScheduleLeaderBoardAction.getLeadersBoardBeforeQuiz(quizId, userId, token, successCall, ownProps.navigation));
         }
 
     }

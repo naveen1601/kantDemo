@@ -20,7 +20,7 @@ import HomeButton from '../containers/homeButton/HomeButton';
 import { connect } from 'react-redux';
 import ScheduleQuizScreen from '../containers/scheduleQuizScreen/ScheduleQuizScreen';
 import ScheduleLeaderBoardScreen from '../containers/scheduleLeaderBoardScreen/ScheduleLeaderBoardScreen';
-
+import OnlineQuizScreen from '../containers/onlineQuizScreen/OnlineQuizScreen';
 
 const Stack = createStackNavigator();
 
@@ -67,8 +67,7 @@ function MyStack(props) {
                         headerTitle: 'Leaderboard',
                         headerRight: () => quitQuizAndMoveToHome(navigation)
                     }
-                }
-                } />
+                }} />
 
             <Stack.Screen name={Screens.ScheduleQuizScreen}
                 component={ScheduleQuizScreen}
@@ -76,8 +75,23 @@ function MyStack(props) {
 
             <Stack.Screen name={Screens.ScheduleLeaderBoardScreen}
                 component={ScheduleLeaderBoardScreen}
-                options={{ headerTitle: 'Leaderboard' }} />
+                options={({ navigation }) => {
+                    return {
+                        headerTitle: 'Leaderboard',
+                        // headerLeft: null,
+                        headerRight: () => quitQuizAndMoveToHome(navigation)
+                    }
+                }} />
 
+            <Stack.Screen name={Screens.OnlineQuizScreen}
+                component={OnlineQuizScreen}
+                options={({ navigation }) => {
+                    return {
+                        headerTitle: 'Quiz',
+                        // headerLeft: null,
+                        headerRight: () => quitQuizAndMoveToHome(navigation)
+                    }
+                }} />
             {/* headerShown: false  // to hide header
             headerLeft: null //to hide back button
             

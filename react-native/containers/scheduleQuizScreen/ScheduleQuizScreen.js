@@ -20,8 +20,10 @@ class ScheduleQuizScreen extends Component {
         secondsLeft: 0,
         sequence: 0,
         innerQuizId: '',
-        outerQuizId: ''
+        outerQuizId: '',
+        innerQuiz: {}
     };
+    
 
     componentDidMount() {
         this.checkQuizAvailable();
@@ -29,7 +31,7 @@ class ScheduleQuizScreen extends Component {
 
 
     checkQuizAvailable = () => {
-        const currentUtcTime = new moment.utc();
+        const currentUtcTime = new moment();
         const outerQuiz = this.props.quizSchedule;
         let i = outerQuiz?.length - 1;
         let secondsLeft = 0;
@@ -37,19 +39,21 @@ class ScheduleQuizScreen extends Component {
         let outerQuizId = '';
         let sequence = 0;
         let isQuizAvailable = false
+        let nextScheduleQuiz ={}
 
         for (; i >= 0; i--) {
-            const quizEndTime = moment.utc(outerQuiz[i].endDate);
+            const quizEndTime = moment(outerQuiz[i].endDate);
             const durationbwEndandCurrent = moment.duration(quizEndTime.diff(currentUtcTime));
             if (parseInt(durationbwEndandCurrent.asSeconds()) > 45) { //checking for 1 quiz if endtime of quiz > current time
 
                 const innerQuiz = outerQuiz[i].quizList;
                 let j = 0;
                 for (; j < innerQuiz.length; j++) {
-                    const innerQuizStartTime = moment.utc(innerQuiz[j].startDate);
-                    const durationbwStartandCurrent = moment.duration(currentUtcTime.diff(innerQuizStartTime));
-                    const differenceInteger = parseInt(durationbwEndandCurrent.asSeconds());
-                    if (parseInt(durationbwEndandCurrent.asSeconds()) > 2) {
+                    const innerQuizStartTime = moment(innerQuiz[j].startDate);
+                    const durationbwStartandCurrent = moment.duration(innerQuizStartTime.diff(currentUtcTime));
+                    const differenceInteger = parseInt(durationbwStartandCurrent.asSeconds());
+                    if (differenceInteger > 2) {
+                        nextScheduleQuiz = innerQuiz[j];
                         secondsLeft = differenceInteger;
                         innerQuizId = innerQuiz[j].id;
                         outerQuizId = innerQuiz[j].quizSchedule;
@@ -68,14 +72,16 @@ class ScheduleQuizScreen extends Component {
             innerQuizId,
             outerQuizId,
             sequence,
-            isQuizAvailable
+            isQuizAvailable,
+            innerQuiz : nextScheduleQuiz
         });
     }
 
     startQuiz = () => {
-        this.props.updateQuizSelection(this.state.outerQuizId,
+
+        this.props.markAttendanceOfQuiz(this.state.outerQuizId,
             this.state.innerQuizId,
-            this.state.sequence);
+            this.state.sequence, this.state.innerQuiz);
     }
 
     renderCountDown = () => {
@@ -85,7 +91,7 @@ class ScheduleQuizScreen extends Component {
                 <Text style={styles.quizText}>Quiz will start in </Text>
                 <CountDown
                     until={parseInt(timerValue)}
-                    onFinish={() => { }}
+                    onFinish={this.startQuiz}
                     onPress={this.startQuiz}
                     digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                     digitTxtStyle={{ color: '#255166' }}
@@ -106,7 +112,6 @@ class ScheduleQuizScreen extends Component {
         <View>
             {this.props.quizSchedule.map(item => <QuizInfo
                 quizDetail={item}
-            // onPress={(quizId) => this.props.updateQuizSelection(quizId)} 
             />)}
         </View>
     )
@@ -141,8 +146,8 @@ const mapStateToProps = (state) => {
 export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
     let actionProps = Object.assign({}, dispatchProps, {
-        updateQuizSelection: (outerQuizId, innerQuizId, sequence) => {
-            dispatchProps.updateQuizSelection(outerQuizId, innerQuizId, sequence, stateProps.token);
+        markAttendanceOfQuiz: (outerQuizId, innerQuizId, sequence, innerQuiz) => {
+            dispatchProps.markAttendanceOfQuiz(outerQuizId, innerQuizId, sequence, innerQuiz, stateProps.token);
         },
         getQuizList: (successCallback) => {
             dispatchProps.getQuizList(successCallback, stateProps.token);
@@ -158,8 +163,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         getQuizList: function (successCallback, token) {
             dispatch(ScheduleQuizAction.getQuizList(successCallback, token, ownProps.navigation));
         },
-        updateQuizSelection: function (outerQuizId, innerQuizId, sequence, token) {
-            dispatch(ScheduleQuizAction.updateQuizSelection(outerQuizId, innerQuizId, sequence, token, ownProps.navigation));
+        markAttendanceOfQuiz: function (outerQuizId, innerQuizId, sequence, innerQuiz, token) {
+            dispatch(ScheduleQuizAction.markAttendanceOfQuiz(outerQuizId, innerQuizId, sequence, innerQuiz, token, ownProps.navigation));
         }
 
     }

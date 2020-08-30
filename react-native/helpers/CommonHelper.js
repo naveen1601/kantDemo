@@ -1,4 +1,6 @@
 import Config from '../Configs';
+import CompetencyList from '../staticData/competencyList';
+import moment from 'moment';
 
 export const CompetencyAndGradeArray = {
     1: [170, 180, 190, 200, 210],
@@ -17,6 +19,36 @@ export const CompetencyAndGradeArray = {
 
 export function findCompetencyList(grade) {
     return CompetencyAndGradeArray[grade];
+}
+
+export function getCompetencyListForOnline(competency, grade) {
+    const competencyArray = []
+    const compIndex = CompetencyList.indexOf(competency);
+    let min=0, max=0;
+    if(compIndex<0) return findCompetencyList(grade);
+
+    if(compIndex >=2){
+        min = 2;
+        max = 2
+    }
+    else if(compIndex == 1){
+        min = 1;
+        max = 3;
+    }
+    else if(compIndex == 0){
+        min =0;
+        max = 4;
+    }
+    
+    for(let i= min; i > 0 ; i++){
+        competencyArray.push(CompetencyList[compIndex-i]);
+    }
+    competencyArray.push(CompetencyList[compIndex]);
+    for(let i= max; i > 0 ; i++){
+        competencyArray.push(CompetencyList[compIndex+i]);
+    }
+
+    return competencyArray;
 }
 
 export function randomValueFromArray(valueArray) {
@@ -59,4 +91,17 @@ export function getTimerBasedOnGrade(grade){
     });
     return timerValue;
 }
+
+export function getTimeDifferenceInSeconds (startTime, endTime){
+
+    if (!(startTime || endTime)) return 0;
+    
+    const start = moment(startTime);
+    const end = moment(endTime);
+    const durationbwEndandStart = moment.duration(end.diff(start))
+    
+    return parseInt(durationbwEndandStart.asSeconds());
+}
+
+
 

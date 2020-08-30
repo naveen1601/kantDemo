@@ -16,10 +16,10 @@ class QuizInfo extends Component {
             return (
                 <View style={styles.quizInfoContainer}>
                     <View style={styles.dateDesc}>
-                        <Text style={styles.dateText}>{moment.utc(this.props.quizDetail.startDate).format('DD MMM YYYY, ddd')}</Text>
+                        <Text style={styles.dateText}>{moment(this.props.quizDetail.startDate).format('DD MMM YYYY, ddd')}</Text>
                     </View>
                     <View style={styles.timeDesc}>
-                        <Text style={styles.timeText}>{moment.utc(this.props.quizDetail.startDate).format('HH:mm')} - {moment.utc(this.props.quizDetail.endDate).format('HH:mm')} </Text>
+                        <Text style={styles.timeText}>{moment(this.props.quizDetail.startDate).format('HH:mm')} - {moment(this.props.quizDetail.endDate).format('HH:mm')} </Text>
                     </View>
                 </View>
             )
