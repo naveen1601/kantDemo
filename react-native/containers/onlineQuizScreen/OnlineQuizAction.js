@@ -1,6 +1,7 @@
 import OnlineQuizConstants from "./OnlineQuizConstants";
 import Locations from "../../helpers/Locations";
 import Api from "../../helpers/Api";
+import SpinnerActions from "../spinner/SpinnerActions";
 
 export default {
     fetchOpponentScore: function (quizId, token) {
@@ -13,7 +14,7 @@ export default {
             let successCallback = (response) => {
                 dispatch(SpinnerActions.hideSpinner());
                 
-                const opponentScore = response.score; //check from Prabhat
+                const opponentScore = response.counterplayer?.numberOfCorrectAnswer; //check from Prabhat
 
                 dispatch({
                     type: OnlineQuizConstants.ACTIONS.UPDATE_OPPONENT_SCORE,

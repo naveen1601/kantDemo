@@ -11,7 +11,7 @@ import FlatButton from '../../baseComponents/button/FlatButton';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer';
 import _ from 'lodash'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
-import { randomNumberBetweenTwoNum, updatePairsWithScore, getTimerBasedOnGrade, getCompetencyListForOnline, getTimeDifference, getTimeDifferenceInSeconds } from '../../helpers/CommonHelper';
+import { getTimerBasedOnGrade, getCompetencyListForOnline } from '../../helpers/CommonHelper';
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
 import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 import OnlineQuizAction from './OnlineQuizAction';
@@ -35,7 +35,9 @@ class OnlineQuizScreen extends Component {
             isReviewAnswerClicked: false,
             userScore: 0
         };
-        this.timer = getTimeDifferenceInSeconds(this.props.quizData.startDate, this.props.quizData.endDate);
+        //this.timer = getTimeDifferenceInSeconds(this.props.quizData.startDate, this.props.quizData.endDate);
+        this.timer = getTimerBasedOnGrade(this.props.grade);
+
         this.botObject = '';
     }
 
@@ -202,7 +204,7 @@ class OnlineQuizScreen extends Component {
 
     fetchOpponentScore = () => {
         this.botObject &&
-            this.props.fetchOpponentScore(token);
+            this.props.fetchOpponentScore(this.props.token);
 
         this.setState({ isReviewAnswerClicked: false });
     }

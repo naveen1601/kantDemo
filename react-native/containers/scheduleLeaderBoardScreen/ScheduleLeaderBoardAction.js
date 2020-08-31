@@ -47,7 +47,7 @@ export default {
             };
             setTimeout(() => {
                 Api.doGet(apiParam, {arranged:true}, successCallback, errorCallback, token);
-            }, 5000);
+            }, 10000);
             
         }
     },

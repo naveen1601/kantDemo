@@ -34,7 +34,7 @@ class ScheduleLeaderBoardScreen extends Component {
 
     renderNextQuizTextAndTime = () => {
         const quizText = this.state.isQuizEnded ? 'Moving to schedule page in' : 'Quiz is going to start in';
-        const timer = this.state.isQuizEnded ? 5 : 5;
+        const timer = this.state.isQuizEnded ? 15 : 15;
         const screenName = this.state.isQuizEnded ? Screens.ScheduleQuizScreen : Screens.OnlineQuizScreen;
         return (
             <View style={styles.nextQuizTextContainer}>
