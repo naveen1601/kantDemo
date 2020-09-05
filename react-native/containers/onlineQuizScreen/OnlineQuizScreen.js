@@ -15,6 +15,7 @@ import { getTimerBasedOnGrade, getCompetencyListForOnline } from '../../helpers/
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
 import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 import OnlineQuizAction from './OnlineQuizAction';
+import ScheduleLeaderBoardAction from '../scheduleLeaderBoardScreen/ScheduleLeaderBoardAction';
 
 
 class OnlineQuizScreen extends Component {
@@ -123,19 +124,19 @@ class OnlineQuizScreen extends Component {
         return isCorrect;
     }
 
-    renderSubmitButton = () => {
-        const isLastQuestion = !(this.state.currentQuestionIndex < this.state.quiz.length - 1);
-        const buttonText = "Submit Quiz";
-        if (isLastQuestion) {
-            return (
-                <Button
-                    onPress={this.submitQuiz}
-                    text={buttonText}
-                />
-            );
-        }
+    // renderSubmitButton = () => {
+    //     const isLastQuestion = !(this.state.currentQuestionIndex < this.state.quiz.length - 1);
+    //     const buttonText = "Submit Quiz";
+    //     if (isLastQuestion) {
+    //         return (
+    //             <Button
+    //                 onPress={this.submitQuiz}
+    //                 text={buttonText}
+    //             />
+    //         );
+    //     }
 
-    }
+    // }
 
     renderNextQuestion = () => {
         this.setState({ currentQuestionIndex: ++this.state.currentQuestionIndex });
@@ -145,12 +146,22 @@ class OnlineQuizScreen extends Component {
         this.setState({ currentQuestionIndex: --this.state.currentQuestionIndex });
     }
 
+    fetchOpponentScore = () => {
+        this.botObject &&
+            this.props.fetchOpponentScore(this.props.token);
+    }
+
+    setParameterToShowScore = () => this.setState({ isReviewAnswerClicked: false });
+
     renderQuizReview = () => {
         this.props.sendScoreToDB(this.state.userScore, this.props.quizData.id, this.props.token);
+        setTimeout(() => {
+            this.fetchOpponentScore();
+        }, 8000);
 
         return (
             <>
-                {this.renderTimer(5, 'Calculating score in', this.fetchOpponentScore)}
+                {this.renderTimer(15, 'Calculating score in', this.setParameterToShowScore)}
                 <View >
                     {this.state.quiz.map((item, index) => {
                         const answerStyle = [styles.reviewUserAnswerText];
@@ -166,9 +177,6 @@ class OnlineQuizScreen extends Component {
                         )
                     })}
                     <View style={styles.heightPatch} />
-                    {/* <BounceButton
-                    onPress={() => this.props.navigation.replace(Screens.LeadersBoardScreen)}
-                    value={'See Leaderboard22'} /> */}
                 </View>
             </>
         )
@@ -179,7 +187,7 @@ class OnlineQuizScreen extends Component {
             <CountDown
                 until={this.timer}
                 onFinish={this.submitQuiz}
-                onPress={this.submitQuiz}
+                onPress={()=>{}}
                 timeToShow={['M', 'S']}
                 digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                 digitTxtStyle={{ color: '#255166' }}
@@ -202,13 +210,6 @@ class OnlineQuizScreen extends Component {
 
     }
 
-    fetchOpponentScore = () => {
-        this.botObject &&
-            this.props.fetchOpponentScore(this.props.token);
-
-        this.setState({ isReviewAnswerClicked: false });
-    }
-
     renderTimer = (timer, message, onFinish) => {
         return (
             <View style={styles.reviewBoxTimerContainer}>
@@ -216,7 +217,7 @@ class OnlineQuizScreen extends Component {
                 <CountDown
                     until={timer}
                     onFinish={onFinish}
-                    onPress={onFinish}
+                    onPress={()=>{}}
                     timeToShow={['S']}
                     digitStyle={{ backgroundColor: '#FFF' }}
                     digitTxtStyle={{ color: '#255166' }}
@@ -229,14 +230,17 @@ class OnlineQuizScreen extends Component {
         )
     }
 
-    redirectAfterQuiz =()=>{
+    redirectAfterQuiz = () => {
         this.props.navigation.replace(Screens.ScheduleLeaderBoardScreen, {
-            isQuizEnded : true
+            isQuizEnded: true
         })
     }
 
-    renderScoreBoxContainer = (botObject) => {       
+    renderScoreBoxContainer = (botObject) => {
         const quizLength = this.state.quiz.length;
+
+        this.props.fetchLeadersBoardAfterQuiz(this.props.quizData.id, this.props.userId, this.props.token);
+
         return (
             <>
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
@@ -258,7 +262,6 @@ class OnlineQuizScreen extends Component {
 
     render() {
         this.botObject = this.getBotObjectFromPairObject();
-        let isrenderQuizReviewEnabled = this.state.isQuizEnded && this.state.isReviewAnswerClicked;
 
         let comp = this.state.isQuizEnded ?
             (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer(this.botObject)) :
@@ -321,6 +324,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         sendScoreToDB: function (score, quizId, token) {
             dispatch(OnlineQuizAction.sendScoreToDB(score, quizId, token));
+        },
+        fetchLeadersBoardAfterQuiz: function (quizId, userId, token) {
+            dispatch(ScheduleLeaderBoardAction.getLeadersBoardAfterQuiz(quizId, userId, token, ownProps.navigation))
         }
     }
 }

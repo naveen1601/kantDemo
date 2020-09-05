@@ -30,6 +30,22 @@ export default {
     loginContainer: {        
         padding:10 
     },
+    sponsorLabelText: {        
+        fontSize:20,
+        color: '#888888',
+        flexWrap: 'wrap',
+    },
+    sponsorNameText: {        
+        fontSize:24,
+        flexWrap: 'wrap',
+
+    },
+    sponsorScreen:{
+        width: '100%',
+        height: '100%',
+        alignItems:'center',
+        justifyContent:'center'   
+    },
     loginBox:{   
         marginVertical:50,
     },

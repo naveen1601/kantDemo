@@ -17,6 +17,7 @@ let initialState = {
         userId: '',
         userName: '',
         token: '',
+        sponsoredBy:'',
         competencyLevelVirtual: []
 
     },
@@ -44,11 +45,15 @@ export default function LoginReducer(state = initialState, action) {
             newState.userData.competencyLevelVirtual = action.newVirtualCompetencyLevel;
             break;
         case Constants.ACTIONS.SAVE_LOGGEDIN_USER_DATA:
-            newState.userData.isGuest = false;
+            newState.isGuest = false;
             newState.isLoggedIn = true;
             newState.isGuest = false;
             newState.userData = action.loginUserData;
             newState.loginErrorMessage = '';
+            break;
+
+        case Constants.ACTIONS.UPDATE_COMPETENCY_LEVEL_FROM_API:
+            newState.userData.competencylevelFromAPI = action.competencylevelFromAPI;
             break;
 
         case Constants.ACTIONS.LOGIN_GENERAL_ERROR:

@@ -12,6 +12,7 @@ import LeaderBoard from '../../components/leaderBoard/LeaderBoard';
 import Configs from '../../Configs';
 import CountDown from 'react-native-countdown-component';
 import { Screens } from '../../helpers/ScreenHelpers';
+import _ from 'lodash';
 
 class ScheduleLeaderBoardScreen extends Component {
 
@@ -24,18 +25,29 @@ class ScheduleLeaderBoardScreen extends Component {
     }
     componentDidMount() {
         if (this.state.isQuizEnded) {
-            this.props.getLeadersBoardAfterQuiz(this.startTimerAfterAPIFetch);
+            this.props.markAttendanceForNextQuiz();
+            this.startTimerAfterAPIFetch();
         } else {
-            this.props.getLeadersBoardBeforeQuiz(this.startTimerAfterAPIFetch);
+            this.props.getLeadersBoardBeforeQuiz();
+            setTimeout(() => {
+                this.props.stopSpinner();
+                this.startTimerAfterAPIFetch();
+            }, 9000);
         }
     }
 
     startTimerAfterAPIFetch = () => this.setState({ startTimer: true });
 
     renderNextQuizTextAndTime = () => {
-        const quizText = this.state.isQuizEnded ? 'Moving to schedule page in' : 'Quiz is going to start in';
-        const timer = this.state.isQuizEnded ? 15 : 15;
-        const screenName = this.state.isQuizEnded ? Screens.ScheduleQuizScreen : Screens.OnlineQuizScreen;
+        let quizText = this.state.isQuizEnded ? 'Moving to next Quiz in' : 'Quiz is going to start in';
+        const timer = this.state.isQuizEnded ? 10 : 10;
+        let screenName = this.props.route.params?.isQuizEnded? Screens.ScheduleLeaderBoardScreen : Screens.OnlineQuizScreen;
+        
+        if(_.isEmpty(this.props.quizId)){
+            screenName = Screens.ScheduleQuizScreen;
+            quizText = 'Quiz over, exit in '
+        }
+        
         return (
             <View style={styles.nextQuizTextContainer}>
                 {this.state.startTimer &&
@@ -46,7 +58,7 @@ class ScheduleLeaderBoardScreen extends Component {
                             //until={Configs.LEADERBOARD_TIMER}
                             until={timer}
                             onFinish={() => this.props.navigation.replace(screenName)}
-                            onPress={() => this.props.navigation.replace(screenName)}
+                            onPress={() => {}}
                             timeToShow={['S']}
                             digitStyle={{ backgroundColor: '#FFF' }}
                             digitTxtStyle={{ color: '#255166' }}
@@ -80,18 +92,24 @@ const mapStateToProps = (state) => {
         token: state.login.userData?.token,
         quizId: state.scheduleQuiz.currentQuiz?.innerQuizId,
         leaderBoardData: state.scheduleLeaderBoard?.pairingMatrix,
-        errorMessage: state.scheduleLeaderBoard?.errorMessage
+        errorMessage: state.scheduleLeaderBoard?.errorMessage,
+        quizScheduleList: state.scheduleQuiz?.scheduleQuizList,
+        currentQuiz: state.scheduleQuiz?.currentQuiz
+
     }
 }
 
 export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
     let actionProps = Object.assign({}, dispatchProps, {
-        getLeadersBoardBeforeQuiz: (successCall) => {
-            dispatchProps.getLeadersBoardBeforeQuiz(stateProps.quizId, stateProps.userId, stateProps.token, successCall);
+        getLeadersBoardBeforeQuiz: () => {
+            dispatchProps.getLeadersBoardBeforeQuiz(stateProps.quizId, stateProps.userId, stateProps.token);
         },
-        getLeadersBoardAfterQuiz: (successCall) => {
-            dispatchProps.getLeadersBoardAfterQuiz(stateProps.quizId, stateProps.userId, stateProps.token, successCall);
+        // getLeadersBoardAfterQuiz: (successCall) => {
+        //     dispatchProps.getLeadersBoardAfterQuiz(stateProps.quizId, stateProps.userId, stateProps.token, successCall);
+        // },
+        markAttendanceForNextQuiz: ()=>{
+            dispatchProps.markAttendanceForNextQuiz(stateProps.quizScheduleList, stateProps.currentQuiz, stateProps.userId, stateProps.token)
         }
 
     });
@@ -101,12 +119,20 @@ export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        getLeadersBoardAfterQuiz: function (quizId, userId, token, successCall) {
-            dispatch(ScheduleLeaderBoardAction.getLeadersBoardAfterQuiz(quizId, userId, token, successCall, ownProps.navigation));
+        // getLeadersBoardAfterQuiz: function (quizId, userId, token, successCall) {
+        //     dispatch(ScheduleLeaderBoardAction.getLeadersBoardAfterQuiz(quizId, userId, token, successCall, ownProps.navigation));
+        // },
+        getLeadersBoardBeforeQuiz: function (quizId, userId, token) {
+            dispatch(ScheduleLeaderBoardAction.getLeadersBoardBeforeQuiz(quizId, userId, token, ownProps.navigation));
         },
-        getLeadersBoardBeforeQuiz: function (quizId, userId, token, successCall) {
-            dispatch(ScheduleLeaderBoardAction.getLeadersBoardBeforeQuiz(quizId, userId, token, successCall, ownProps.navigation));
+        stopSpinner: function(){
+            dispatch(ScheduleLeaderBoardAction.stopSpinner());
+        },
+        markAttendanceForNextQuiz: function(quizScheduleList,currentQuiz, userId, token){
+            dispatch(ScheduleLeaderBoardAction.markAttendanceForNextQuiz(quizScheduleList, currentQuiz, userId, token, ownProps.navigation))
+            
         }
+
 
     }
 }

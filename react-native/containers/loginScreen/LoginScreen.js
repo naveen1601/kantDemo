@@ -7,11 +7,9 @@ import PasswordInput from '../../baseComponents/passwordInput/PasswordInput';
 import Button from '../../baseComponents/button/Button';
 import {
     View,
-    TouchableOpacity,
     ScrollView,
 } from 'react-native';
 import Text from '../../baseComponents/text/Text';
-import FlatButton from '../../baseComponents/button/FlatButton';
 import _ from 'lodash';
 import LoginAction from './LoginAction';
 import Alert from '../../baseComponents/alert/Alert';
@@ -19,12 +17,13 @@ import Alert from '../../baseComponents/alert/Alert';
 class LoginScreen extends Component {
 
     state = {
-        userName: 'a2b33',
-        password: '388745',
-        schoolCode: '5F41337049',
+        userName: '',
+        password: '',
+        schoolCode: '',
         userNameHasError: false,
         passwordHasError: false,
         schoolCodeHasError: false,
+        showSponsorship: false
 
     };
 
@@ -51,21 +50,24 @@ class LoginScreen extends Component {
 
     areUserInputValid = () => {
         const nameValidation = this.isNameValid(this.state.userName);
-        const schoolValidation = this.isNameValid(this.state.schoolCode);
+        //const schoolValidation = this.isNameValid(this.state.schoolCode);
         const passwordValidation = this.isNameValid(this.state.password);
 
         this.setState({
-            schoolCodeHasError: !schoolValidation,
+            //schoolCodeHasError: !schoolValidation,
             passwordHasError: !passwordValidation,
             userNameHasError: !nameValidation
         });
-        return nameValidation && passwordValidation && schoolValidation;
+        return nameValidation && passwordValidation;
+    }
+
+    setSponsorCallback = () => {
+        this.setState({ showSponsorship: true })
     }
 
     handleLoginButton = () => {
-
         if (this.areUserInputValid()) {
-            this.props.doLogin(this.state.schoolCode, this.state.userName, this.state.password);
+            this.props.doLogin(this.state.schoolCode, this.state.userName, this.state.password, this.setSponsorCallback);
         }
     }
 
@@ -73,7 +75,7 @@ class LoginScreen extends Component {
         return (
             <ScrollView keyboardShouldPersistTaps={'always'}>
                 <View style={styles.loginBox}>
-                    <View style={styles.textInputFieldsContainer}>
+                    {/* <View style={styles.textInputFieldsContainer}>
                         <Text style={styles.nameLabelText}>School Code:</Text>
                         <TextInput
                             testId="userNameTextInput"
@@ -86,7 +88,7 @@ class LoginScreen extends Component {
                             autoCorrect={false}
                             style={styles.inputStyle}
                         />
-                    </View>
+                    </View> */}
                     <View style={styles.textInputFieldsContainer}>
                         <Text style={styles.nameLabelText}>User Name:</Text>
                         <TextInput
@@ -129,10 +131,18 @@ class LoginScreen extends Component {
         );
     }
 
+    renderSponsorScreen = () => (
+        <View  style={styles.sponsorScreen}>
+            <Text style={styles.sponsorLabelText}>Sponsered By</Text>
+            <Text style={styles.sponsorNameText}>{this.props.sponsoredBy}</Text>
+        </View>
+    )
+
     render() {
+        const comp = this.state.showSponsorship ? this.renderSponsorScreen() : this.renderLoginModal();
         return (
             <View style={styles.loginContainer}>
-                {this.renderLoginModal()}
+                {comp}
             </View>
         );
     }
@@ -145,14 +155,15 @@ let styles = create(LoginStyles);
 
 const mapStateToProps = (state) => {
     return {
-        loginErrorMessage: state.login.loginErrorMessage
+        loginErrorMessage: state.login.loginErrorMessage,
+        sponsoredBy: state.login?.userData?.sponsoredBy,
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        doLogin: (schoolCode, userName, password) => {
-            dispatch(LoginAction.doLogin(schoolCode, userName, password, ownProps.navigation));
+        doLogin: (schoolCode, userName, password, setSponsorCallback) => {
+            dispatch(LoginAction.doLogin(schoolCode, userName, password, setSponsorCallback, ownProps.navigation));
         },
         resetErrorMessage: () => {
             dispatch(LoginAction.resetErrorMessage());

@@ -14,16 +14,17 @@ class LeaderBoard extends Component {
 
                 const userContainerStyle = [styles.botBox];
 
-                (bot.id == 100 || bot.studentId == this.props.userId) && userContainerStyle.push(styles.userBox)
+                (bot.id == 100 || (bot.studentId && (bot.studentId == this.props.userId))) &&
+                    userContainerStyle.push(styles.userBox)
                 const serialNum = bot.serialNum || bot.sequence;
                 isGoingUp = bot.isGoingUp || bot.position == 'up';
                 return (
                     <View style={userContainerStyle}>
                         <Text style={styles.nameBox}>{serialNum}. {bot.name}</Text>
                         {isGoingUp &&
-                           <View style={styles.arrowContainer}> 
-                            <Image source={require('../../staticData/assests/upArrow.png')}
-                                style={styles.arrowBox} />
+                            <View style={styles.arrowContainer}>
+                                <Image source={require('../../staticData/assests/upArrow.png')}
+                                    style={styles.arrowBox} />
                             </View>
                         }
 

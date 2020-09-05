@@ -6,6 +6,9 @@ import schedule from "../../models/schedule";
 import { Screens } from "../../helpers/ScreenHelpers";
 import ScheduleLeaderBoardConstants from "../scheduleLeaderBoardScreen/ScheduleLeaderBoardConstants";
 import moment from "moment";
+import ScheduleQuizConstants from "./ScheduleQuizConstants";
+import { getCompetencyFromAttendanceAPI } from "../../helpers/CommonHelper";
+import LoginConstants from "../loginScreen/LoginConstants";
 
 
 export default {
@@ -13,6 +16,7 @@ export default {
 
         return function (dispatch) {
 
+            dispatch({type: ScheduleQuizConstants.ACTIONS.CLEAR_SCHEDULE});
             dispatch(SpinnerActions.showSpinner());
             let successCallback = (response) => {
                 const sortByDateValue = response.data.sort(function (a, b) {
@@ -52,17 +56,21 @@ export default {
         }
     },
 
-    markAttendanceOfQuiz: function (outerQuizId, innerQuizId, sequence, quizData, token, navigation) {
+    markAttendanceOfQuiz: function (outerQuizId, innerQuizId, sequence, userId, quizData, token, navigation) {
 
         return function (dispatch) {
 
-            const apiParam = Locations.ATTENDANCE + innerQuizId;
-            dispatch(SpinnerActions.showSpinner('Entering in quiz'));
+            const apiParam = Locations.ATTENDANCE + innerQuizId;            
             dispatch({
                 type: ScheduleLeaderBoardConstants.ACTIONS.CLEAR_SCHEDULE_LEADERBOARD
             });
 
             let successCallback = (response) => {
+                const competencyLevelApi = getCompetencyFromAttendanceAPI(response, userId);
+                dispatch({
+                    type: LoginConstants.ACTIONS.UPDATE_COMPETENCY_LEVEL_FROM_API,
+                    competencylevelFromAPI : competencyLevelApi
+                })
                 dispatch({
                     type: Constants.ACTIONS.UPDATE_CURRENT_QUIZ,
                     currentQuiz: {
@@ -72,11 +80,10 @@ export default {
                         quizData
                     }
                 });
-                navigation.replace(Screens.ScheduleLeaderBoardScreen)
+                //navigation.replace(Screens.ScheduleLeaderBoardScreen)
             };
 
-            let errorCallback = (errorResponse) => {
-                dispatch(SpinnerActions.hideSpinner());
+            let errorCallback = (errorResponse) => {                
                 if (errorResponse.status === 401) {
                     dispatch({
                         type: Constants.ACTIONS.CLEAR_DATA
@@ -94,6 +101,12 @@ export default {
             Api.doGet(apiParam, { attendance: true }, successCallback, errorCallback, token);
         }
     },
+
+    // clearOldQuiz: function(){
+    //     return function (dispatch) {
+            
+    //     }
+    // }
 
 
 }

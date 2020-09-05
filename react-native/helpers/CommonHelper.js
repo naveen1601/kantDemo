@@ -40,11 +40,12 @@ export function getCompetencyListForOnline(competency, grade) {
         max = 4;
     }
     
-    for(let i= min; i > 0 ; i++){
+    for(let i= min; i > 0 ; i--){
         competencyArray.push(CompetencyList[compIndex-i]);
     }
     competencyArray.push(CompetencyList[compIndex]);
-    for(let i= max; i > 0 ; i++){
+
+    for(let i= max; i > 0 ; i--){
         competencyArray.push(CompetencyList[compIndex+i]);
     }
 
@@ -87,9 +88,30 @@ export function getTimerBasedOnGrade(grade){
         if(grade <= item.maxGrade){
             timerValue = item.timer
         }
-
     });
     return timerValue;
+}
+
+export function nextQuizData(quizList, currentScheduleID, currentQuizId){
+
+    let nextQuiz = {
+        outerQuizId: currentScheduleID,
+        innerQuizId: '',
+        sequence: 0,
+        quizData: {},
+
+    }
+    const currentSchedule = quizList.find(schedule=> schedule.quizId == currentScheduleID);
+    const lengthOfQuizList = currentSchedule.quizList.length;
+    const index = currentSchedule?.quizList.map(function(quiz) { return quiz.id; }).indexOf(currentQuizId);
+    if(index >= 0 && index < lengthOfQuizList-1){
+        const newIndex = index+1;
+        nextQuiz.innerQuizId = currentSchedule.quizList[newIndex].id;
+        nextQuiz.sequence = currentSchedule.quizList[newIndex].sequence_value;
+        nextQuiz.quizData = currentSchedule.quizList[newIndex];
+    }
+    return nextQuiz;
+
 }
 
 export function getTimeDifferenceInSeconds (startTime, endTime){
@@ -103,5 +125,11 @@ export function getTimeDifferenceInSeconds (startTime, endTime){
     return parseInt(durationbwEndandStart.asSeconds());
 }
 
+export function getCompetencyFromAttendanceAPI( response, userId){
+    const userData = response.students.find(user => user.student?.id == userId)
+
+    return userData.student?.competencylevel?.level && parseInt (userData.student?.competencylevel?.level);
+    
+}
 
 

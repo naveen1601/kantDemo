@@ -44,10 +44,10 @@ StudentInfoDisplay = (props) => {
             {renderIcon()}
             <View style={userInfoDivision}>
                 <Text style={displayName}>{name}</Text>
-                {props.grade &&
+                {!!props.grade &&
                     <Text style={displayGradeLabel}>Grade: <Text style={displayGradeValue}>{props.grade}</Text></Text>
                 }
-                {props.school &&
+                {!!props.school &&
                     <Text style={diplaySchool}>{props.school}</Text>
                 }
             </View>

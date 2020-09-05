@@ -6,7 +6,7 @@ import UserModel from '../../models/user';
 import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 
 export default {
-    doLogin: function (schoolCode, username, password, navigation) {
+    doLogin: function (schoolCode, username, password, setSponsorCallback, navigation) {
 
         return function (dispatch) {
             const userCredentials = { username, password, schoolCode }
@@ -14,11 +14,18 @@ export default {
 
             let loginSuccess = (response) => {
                 dispatch(SpinnerAction.hideSpinner());
+                const userValue = new UserModel(response)
                 dispatch({
                     type: Constants.ACTIONS.SAVE_LOGGEDIN_USER_DATA,
-                    loginUserData : new UserModel(response)
+                    loginUserData : userValue
                 })
-                resetScreen(navigation,Screens.QuizOptionScreen)
+                if(!!userValue.sponsoredBy){
+                    setSponsorCallback();
+                    setTimeout(() => {
+                        resetScreen(navigation,Screens.QuizOptionScreen);
+                    }, 3000);
+                }
+                else resetScreen(navigation,Screens.QuizOptionScreen)
             };
 
             let errorCallback = (errorResponse) => {

@@ -14,23 +14,37 @@ import GuestScreen from '../containers/guestScreen/GuestScreen'
 import QuizOptionScreen from '../containers/quizOptionScreen/QuizOptionScreen';
 import OfflineQuizScreen from '../containers/offlineQuizScreen/OfflineQuizScreen';
 import LeadersBoardScreen from '../containers/leadersBoardScreen/LeadersBoardScreen';
-import { Screens } from '../helpers/ScreenHelpers';
+import { Screens, resetScreen } from '../helpers/ScreenHelpers';
 import AppLevelSpinner from '../kantApp/AppLevelSpinner'
 import HomeButton from '../containers/homeButton/HomeButton';
 import { connect } from 'react-redux';
 import ScheduleQuizScreen from '../containers/scheduleQuizScreen/ScheduleQuizScreen';
 import ScheduleLeaderBoardScreen from '../containers/scheduleLeaderBoardScreen/ScheduleLeaderBoardScreen';
 import OnlineQuizScreen from '../containers/onlineQuizScreen/OnlineQuizScreen';
+import FlatButton from '../baseComponents/button/FlatButton';
 
 const Stack = createStackNavigator();
 
 quitQuizAndMoveToHome = (navigation) => (<HomeButton navigation={navigation} />);
 
 function MyStack(props) {
-    const defaultScree = props.isLoggedIn ? Screens.QuizOptionScreen : Screens.LoginOption
+    const defaultScreen = props.isLoggedIn ? Screens.QuizOptionScreen : Screens.LoginOption
+
+
+    performLogout = navigation => {
+        const comp = props.isLoggedIn ? (<FlatButton
+            onPress={() => {
+                props.clearAll();
+                resetScreen(navigation, Screens.LoginOption)
+            }}
+            text={'Logout'}
+        />): null
+        return comp;
+    }
+
     return (
         <Stack.Navigator mode='card'
-            initialRouteName={defaultScree}
+            initialRouteName={defaultScreen}
             screenOptions={{
                 gestureEnabled: false,
                 headerBackTitleVisible: false
@@ -49,7 +63,12 @@ function MyStack(props) {
 
             <Stack.Screen name={Screens.QuizOptionScreen}
                 component={QuizOptionScreen}
-                options={{ title: "Quiz Options", }} />
+                options={({ navigation }) => {
+                    return {
+                        headerTitle: 'Quiz Options',
+                        headerRight: () => performLogout(navigation)
+                    }
+                }} />
             <Stack.Screen name={Screens.OfflineQuizScreen}
                 component={OfflineQuizScreen}
                 options={({ navigation }) => {
@@ -57,8 +76,7 @@ function MyStack(props) {
                         headerTitle: 'Quiz',
                         headerRight: () => quitQuizAndMoveToHome(navigation)
                     }
-                }
-                } />
+                }} />
 
             <Stack.Screen name={Screens.LeadersBoardScreen}
                 component={LeadersBoardScreen}
@@ -124,7 +142,15 @@ const mapStateToProps = state => ({
     isLoggedIn: state.login.isLoggedIn,
 });
 
-StackNav = connect(mapStateToProps)(MyStack)
+const mapDispatchToProps = dispatch => {
+    return {
+        clearAll: () => {
+            dispatch({ type: 'CLEAR_DATA' })
+        }
+    }
+}
+
+StackNav = connect(mapStateToProps, mapDispatchToProps)(MyStack)
 
 export default KantNavigator = () => {
     return (
