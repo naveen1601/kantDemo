@@ -32,7 +32,7 @@ class ScheduleLeaderBoardScreen extends Component {
             setTimeout(() => {
                 this.props.stopSpinner();
                 this.startTimerAfterAPIFetch();
-            }, 9000);
+            }, 10000);
         }
     }
 

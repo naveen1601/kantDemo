@@ -47,6 +47,7 @@ export default {
                         type: Constants.ACTIONS.GENERAL_ERROR_LEADERBOARD,
                         message: errorResponse.error.message
                     });
+                    resetScreen(navigation, Screens.ScheduleQuizScreen)
                 }
             };
             Api.doGet(apiParam, { arranged: true }, successCallback, errorCallback, token);
