@@ -1,4 +1,4 @@
-package com.kantdemo;
+package com.kantlearning;
 
 import android.content.Intent;
 import android.os.Bundle;

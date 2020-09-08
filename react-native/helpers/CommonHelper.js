@@ -1,6 +1,7 @@
 import Config from '../Configs';
 import CompetencyList from '../staticData/competencyList';
 import moment from 'moment';
+import axios from "axios";
 
 export const CompetencyAndGradeArray = {
     1: [170, 180, 190, 200, 210],
@@ -24,75 +25,75 @@ export function findCompetencyList(grade) {
 export function getCompetencyListForOnline(competency, grade) {
     const competencyArray = []
     const compIndex = CompetencyList.indexOf(competency);
-    let min=0, max=0;
-    if(compIndex<0) return findCompetencyList(grade);
+    let min = 0, max = 0;
+    if (compIndex < 0) return findCompetencyList(grade);
 
-    if(compIndex >=2){
+    if (compIndex >= 2) {
         min = 2;
         max = 2
     }
-    else if(compIndex == 1){
+    else if (compIndex == 1) {
         min = 1;
         max = 3;
     }
-    else if(compIndex == 0){
-        min =0;
+    else if (compIndex == 0) {
+        min = 0;
         max = 4;
     }
-    
-    for(let i= min; i > 0 ; i--){
-        competencyArray.push(CompetencyList[compIndex-i]);
+
+    for (let i = min; i > 0; i--) {
+        competencyArray.push(CompetencyList[compIndex - i]);
     }
     competencyArray.push(CompetencyList[compIndex]);
 
-    for(let i= max; i > 0 ; i--){
-        competencyArray.push(CompetencyList[compIndex+i]);
+    for (let i = max; i > 0; i--) {
+        competencyArray.push(CompetencyList[compIndex + i]);
     }
 
     return competencyArray;
 }
 
 export function randomValueFromArray(valueArray) {
-    const value= valueArray.length ? valueArray[Math.floor(Math.random() * valueArray.length)] : null;
+    const value = valueArray.length ? valueArray[Math.floor(Math.random() * valueArray.length)] : null;
     return value;
 }
 
-export function randomNumberBetweenTwoNum(min, max) {  
-    return Math.floor(Math.random() * (max - min) + min); 
+export function randomNumberBetweenTwoNum(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
 export function randomNumberOfValues(listOfValues, numbersRequired) {
     let tempList = listOfValues;
     const valuesArr = [];
-    for(let i=0; i<numbersRequired; i++){
+    for (let i = 0; i < numbersRequired; i++) {
         const tempObj = randomValueFromArray(tempList)
         valuesArr.push(tempObj);
-        tempList =tempList.filter(item =>item.id != tempObj.id);
+        tempList = tempList.filter(item => item.id != tempObj.id);
     }
     return valuesArr;
 }
 
-export function updatePairsWithScore(userScore, botsPair, quizLength){
+export function updatePairsWithScore(userScore, botsPair, quizLength) {
 
     botsPair.forEach(pair => {
         pair.forEach(bot => {
-            bot.score = bot.id ==100 ? userScore : randomNumberBetweenTwoNum(quizLength - 6, quizLength);
+            bot.score = bot.id == 100 ? userScore : randomNumberBetweenTwoNum(quizLength - 6, quizLength);
         });
     });
     return botsPair
 }
 
-export function getTimerBasedOnGrade(grade){
+export function getTimerBasedOnGrade(grade) {
     let timerValue = 120;
-    Config.GRADE_TIMER && Config.GRADE_TIMER.map(item=>{
-        if(grade <= item.maxGrade){
+    Config.GRADE_TIMER && Config.GRADE_TIMER.map(item => {
+        if (grade <= item.maxGrade) {
             timerValue = item.timer
         }
     });
     return timerValue;
 }
 
-export function nextQuizData(quizList, currentScheduleID, currentQuizId){
+export function nextQuizData(quizList, currentScheduleID, currentQuizId) {
 
     let nextQuiz = {
         outerQuizId: currentScheduleID,
@@ -101,11 +102,11 @@ export function nextQuizData(quizList, currentScheduleID, currentQuizId){
         quizData: {},
 
     }
-    const currentSchedule = quizList.find(schedule=> schedule.quizId == currentScheduleID);
+    const currentSchedule = quizList.find(schedule => schedule.quizId == currentScheduleID);
     const lengthOfQuizList = currentSchedule.quizList.length;
-    const index = currentSchedule?.quizList.map(function(quiz) { return quiz.id; }).indexOf(currentQuizId);
-    if(index >= 0 && index < lengthOfQuizList-1){
-        const newIndex = index+1;
+    const index = currentSchedule?.quizList.map(function (quiz) { return quiz.id; }).indexOf(currentQuizId);
+    if (index >= 0 && index < lengthOfQuizList - 1) {
+        const newIndex = index + 1;
         nextQuiz.innerQuizId = currentSchedule.quizList[newIndex].id;
         nextQuiz.sequence = currentSchedule.quizList[newIndex].sequence_value;
         nextQuiz.quizData = currentSchedule.quizList[newIndex];
@@ -114,22 +115,41 @@ export function nextQuizData(quizList, currentScheduleID, currentQuizId){
 
 }
 
-export function getTimeDifferenceInSeconds (startTime, endTime){
+export function getTimeDifferenceInSeconds(startTime, endTime) {
 
     if (!(startTime || endTime)) return 0;
-    
+
     const start = moment(startTime);
     const end = moment(endTime);
     const durationbwEndandStart = moment.duration(end.diff(start))
-    
+
     return parseInt(durationbwEndandStart.asSeconds());
 }
 
-export function getCompetencyFromAttendanceAPI( response, userId){
+export function getCompetencyFromAttendanceAPI(response, userId) {
     const userData = response.students.find(user => user.student?.id == userId)
 
-    return userData.student?.competencylevel?.level && parseInt (userData.student?.competencylevel?.level);
-    
+    return userData.student?.competencylevel?.level && parseInt(userData.student?.competencylevel?.level);
 }
 
+export function getTimeFromApi() {
+
+    let apiDate = new Date();
+    let headers = {
+        "Content-Type": "application/json"
+    };
+    const instance = axios.create();
+    instance.defaults.timeout = 5000;
+    instance.get('https://www.google.com', {
+        headers,
+    }).then(function (response) {
+        apiDate = response.headers.get('Date');
+
+    })
+        .catch(function (err) {
+            console.log('Fetch Error', err);
+        });
+
+    return moment(apiDate);
+}
 

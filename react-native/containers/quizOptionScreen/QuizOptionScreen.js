@@ -11,7 +11,7 @@ import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoD
 import { connect } from 'react-redux';
 import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
 import { Screens } from '../../helpers/ScreenHelpers';
-import { CompetencyAndGradeArray } from '../../helpers/CommonHelper';
+import { CompetencyAndGradeArray, getTimeFromApi } from '../../helpers/CommonHelper';
 import GradeOption from '../../components/gradeOption/GradeOption'
 import GuestActions from '../guestScreen/GuestActions';
 import QuizAction from './QuizAction';
@@ -44,6 +44,7 @@ class QuizOptionScreen extends Component {
                 isOfflineClickedForLoggedinUser: true
             });
         }
+        let temp = getTimeFromApi();
         this.props.clearLeadersBoard();
     }
 
@@ -72,7 +73,7 @@ class QuizOptionScreen extends Component {
     renderQuizOptionButtonsConatiner = () => (
         <View style={styles.quizOptionButtonContainer}>
             <Button
-                onPress={() => this.props.fetchScheduleQuiz(this.props.token)}
+                onPress={() => alert('Currently this option is not available ')}
                 text="Schedule Class"
                 disabled={!this.props.isLoggedIn}
                 secondaryButton={!this.props.isLoggedIn}
