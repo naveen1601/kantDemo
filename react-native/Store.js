@@ -11,6 +11,8 @@ import spinner from './containers/spinner/SpinnerReducer'
 import quiz from './containers/quizOptionScreen/QuizReducer';
 import scheduleQuiz from './containers/scheduleQuizScreen/ScheduleQuizReducer';
 import scheduleLeaderBoard from './containers/scheduleLeaderBoardScreen/ScheduleLeaderBoardReducer';
+import networkinfo from './containers/networkInfo/NetworkInfoReducer';
+
 
 const oldConfig = {
     storage: AsyncStorage
@@ -26,7 +28,7 @@ function getStore() {
         getStoredState: getStoredStateMigrateV4(oldConfig)
     };
 
-    let reducers = persistCombineReducers(config, { login, leadersBoard, spinner, quiz, scheduleQuiz, scheduleLeaderBoard});
+    let reducers = persistCombineReducers(config, { login, leadersBoard, spinner, quiz, scheduleQuiz, scheduleLeaderBoard, networkinfo});
 
     let store = createStore(
         reducers,
@@ -39,9 +41,8 @@ function getStore() {
     return { store, persistor };
 }
 
-//Crashlytics.log('Store - creating store ');
+
 let { store, persistor } = getStore();
-//Crashlytics.log('Store - done creating store ');
 
 export function getConfiguredStore() {
     return store;

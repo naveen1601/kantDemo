@@ -1,7 +1,6 @@
 import OnlineQuizConstants from "./OnlineQuizConstants";
 import Locations from "../../helpers/Locations";
 import Api from "../../helpers/Api";
-import SpinnerActions from "../spinner/SpinnerActions";
 
 export default {
     fetchOpponentScore: function (quizId, token) {
@@ -9,10 +8,7 @@ export default {
 
             const apiParam = Locations.LEADERBOARD + quizId;
 
-            dispatch(SpinnerActions.showSpinner('Looking for opponent\'s score '));
-
             let successCallback = (response) => {
-                dispatch(SpinnerActions.hideSpinner());
                 
                 const opponentScore = response.counterplayer?.numberOfCorrectAnswer; //check from Prabhat
 
@@ -24,7 +20,6 @@ export default {
             };
 
             let errorCallback = (errorResponse) => {
-                dispatch(SpinnerActions.hideSpinner());
                 
                     dispatch({
                         type: OnlineQuizConstants.ACTIONS.GENERAL_ERROR_FETCH_SCORE,

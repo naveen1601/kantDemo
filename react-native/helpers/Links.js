@@ -1,3 +1,3 @@
 module.exports = {
-    baseUrl: "https://apidev.kantlearning.com/api/"
+    baseUrl: "https://apitest.kantlearning.com/api/"
 };

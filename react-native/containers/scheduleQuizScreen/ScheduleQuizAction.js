@@ -3,7 +3,7 @@ import SpinnerActions from "../spinner/SpinnerActions";
 import Api from "../../helpers/Api";
 import Locations from "../../helpers/Locations";
 import schedule from "../../models/schedule";
-import { Screens } from "../../helpers/ScreenHelpers";
+import { Screens, resetScreen } from "../../helpers/ScreenHelpers";
 import ScheduleLeaderBoardConstants from "../scheduleLeaderBoardScreen/ScheduleLeaderBoardConstants";
 import moment from "moment";
 import ScheduleQuizConstants from "./ScheduleQuizConstants";
@@ -90,12 +90,19 @@ export default {
                     });
                     resetScreen(navigation, Screens.LoginOption)
                 }
+                else if(errorResponse.status === 408){
+                    dispatch({
+                        type: Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE,
+                        message: errorResponse.error.message
+                    });
+                    navigation.replace(Screens.ScheduleQuizScreen);
+                }
                 else {
                     dispatch({
                         type: Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE,
                         message: errorResponse.error.message
                     });
-                    navigation.replace(Screens.ScheduleQuizScreen)
+                    
                 }
             };
             Api.doGet(apiParam, { attendance: true }, successCallback, errorCallback, token);

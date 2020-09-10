@@ -14,6 +14,8 @@ import CountDown from 'react-native-countdown-component';
 import moment from 'moment'
 import Text from '../../baseComponents/text/Text'
 import { Screens } from '../../helpers/ScreenHelpers';
+import { getTimeFromApi } from '../../helpers/CommonHelper';
+import Screen from '../screen/Screen';
 
 class ScheduleQuizScreen extends Component {
     state = {
@@ -22,15 +24,17 @@ class ScheduleQuizScreen extends Component {
         sequence: 0,
         innerQuizId: '',
         outerQuizId: '',
-        innerQuiz: {}
+        innerQuiz: {},
+        callAttendance: false
     };
 
     componentDidMount() {
         this.checkQuizAvailable();
     }
 
-    checkQuizAvailable = () => {
-        const currentUtcTime = new moment();
+    checkQuizAvailable = async () => {
+        const currentUtcTime = await getTimeFromApi();
+
         const outerQuiz = this.props.quizSchedule;
         let i = outerQuiz?.length - 1;
         let secondsLeft = 0;
@@ -43,7 +47,7 @@ class ScheduleQuizScreen extends Component {
         for (; i >= 0; i--) {
             const quizEndTime = moment(outerQuiz[i].endDate);
             const durationbwEndandCurrent = moment.duration(quizEndTime.diff(currentUtcTime));
-            if (parseInt(durationbwEndandCurrent.asSeconds()) > 45) { //checking for 1 quiz if endtime of quiz > current time
+            if (parseInt(durationbwEndandCurrent.asSeconds()) > 110) { //checking for 1 quiz if endtime of quiz > current time
 
                 const innerQuiz = outerQuiz[i].quizList;
                 let j = 0;
@@ -72,32 +76,36 @@ class ScheduleQuizScreen extends Component {
             outerQuizId,
             sequence,
             isQuizAvailable,
-            innerQuiz: nextScheduleQuiz
+            innerQuiz: nextScheduleQuiz,
+            callAttendance: true
         });
     }
 
-    startQuiz = () => {
+    markAttendance = () => {
         this.props.markAttendanceOfQuiz(this.state.outerQuizId,
             this.state.innerQuizId,
             this.state.sequence, this.state.innerQuiz);
+        this.setState({ callAttendance: false })
     }
 
     renderCountDown = () => {
         const timerValue = parseInt(this.state.secondsLeft);
-        if (this.state.isQuizAvailable && timerValue>0 && timerValue<= 30) {
-            this.startQuiz();
-        } else if (this.state.isQuizAvailable && timerValue>0){
+        if (this.state.callAttendance && timerValue > 0 && timerValue <= 30) {
+            this.markAttendance();
+        } else if (this.state.callAttendance && timerValue > 0) {
+            const markAttendanceTime = (timerValue - 28) * 1000;
             setTimeout(() => {
-                this.startQuiz();
-            }, (timerValue-30)*1000);
+                //alert('marking Attendance'+markAttendanceTime);
+                this.markAttendance();
+            }, markAttendanceTime);
         }
         let comp = this.state.isQuizAvailable ? (
             <View style={styles.timerConatiner}>
                 <Text style={styles.quizText}>Quiz will start in </Text>
                 <CountDown
                     until={timerValue}
-                    onFinish={()=>this.props.navigation.replace(Screens.ScheduleLeaderBoardScreen)}
-                    onPress={()=>{}}
+                    onFinish={() => this.props.navigation.replace(Screens.ScheduleLeaderBoardScreen)}
+                    onPress={() => { }}
                     digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                     digitTxtStyle={{ color: '#255166' }}
                     separatorStyle={{ color: '#255166', paddingBottom: 25 }}
@@ -124,14 +132,16 @@ class ScheduleQuizScreen extends Component {
     render() {
 
         return (
-            <ScrollView keyboardShouldPersistTaps={'always'}>
-                {!!this.props.quizError &&
-                    <AlertInfo type="error"
-                        message={this.props.quizError} />
-                }
-                {this.renderCountDown()}
-                {this.renderQuizList()}
-            </ScrollView>
+            <Screen>
+                <ScrollView keyboardShouldPersistTaps={'always'}>
+                    {!!this.props.quizError &&
+                        <AlertInfo type="error"
+                            message={this.props.quizError} />
+                    }
+                    {this.renderCountDown()}
+                    {this.renderQuizList()}
+                </ScrollView>
+            </Screen>
         );
     }
 }

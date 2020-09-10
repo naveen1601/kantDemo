@@ -6,7 +6,6 @@ import OnlineQuizStyles from './OnlineQuizStyles'
 import { connect } from 'react-redux';
 import CountDown from 'react-native-countdown-component';
 import Text from '../../baseComponents/text/Text';
-import TextInput from '../../baseComponents/textInput/TextInput';
 import FlatButton from '../../baseComponents/button/FlatButton';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer';
 import _ from 'lodash'
@@ -16,6 +15,7 @@ import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
 import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 import OnlineQuizAction from './OnlineQuizAction';
 import ScheduleLeaderBoardAction from '../scheduleLeaderBoardScreen/ScheduleLeaderBoardAction';
+import Screen from '../screen/Screen';
 
 
 class OnlineQuizScreen extends Component {
@@ -34,7 +34,9 @@ class OnlineQuizScreen extends Component {
             currentQuestionIndex: 0,
             isQuizEnded: false,
             isReviewAnswerClicked: false,
-            userScore: 0
+            userScore: 0,
+            fetchedLeaderfterQuiz: false,
+            oponentScoreApiCalled: false
         };
         //this.timer = getTimeDifferenceInSeconds(this.props.quizData.startDate, this.props.quizData.endDate);
         this.timer = getTimerBasedOnGrade(this.props.grade);
@@ -148,20 +150,24 @@ class OnlineQuizScreen extends Component {
 
     fetchOpponentScore = () => {
         this.botObject &&
-            this.props.fetchOpponentScore(this.props.token);
+            this.props.fetchOpponentScore(this.props.quizId, this.props.token);
     }
 
     setParameterToShowScore = () => this.setState({ isReviewAnswerClicked: false });
 
     renderQuizReview = () => {
         this.props.sendScoreToDB(this.state.userScore, this.props.quizData.id, this.props.token);
-        setTimeout(() => {
-            this.fetchOpponentScore();
-        }, 8000);
+
+        if (!this.state.oponentScoreApiCalled) {
+            this.setState({ oponentScoreApiCalled: true })
+            setTimeout(() => {
+                this.fetchOpponentScore();
+            }, 8000);
+        }
 
         return (
             <>
-                {this.renderTimer(15, 'Calculating score in', this.setParameterToShowScore)}
+                {this.renderTimer(12, 'Calculating score in', this.setParameterToShowScore)}
                 <View >
                     {this.state.quiz.map((item, index) => {
                         const answerStyle = [styles.reviewUserAnswerText];
@@ -187,7 +193,7 @@ class OnlineQuizScreen extends Component {
             <CountDown
                 until={this.timer}
                 onFinish={this.submitQuiz}
-                onPress={()=>{}}
+                onPress={() => { }}
                 timeToShow={['M', 'S']}
                 digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                 digitTxtStyle={{ color: '#255166' }}
@@ -217,7 +223,7 @@ class OnlineQuizScreen extends Component {
                 <CountDown
                     until={timer}
                     onFinish={onFinish}
-                    onPress={()=>{}}
+                    onPress={() => { }}
                     timeToShow={['S']}
                     digitStyle={{ backgroundColor: '#FFF' }}
                     digitTxtStyle={{ color: '#255166' }}
@@ -239,8 +245,10 @@ class OnlineQuizScreen extends Component {
     renderScoreBoxContainer = (botObject) => {
         const quizLength = this.state.quiz.length;
 
-        this.props.fetchLeadersBoardAfterQuiz(this.props.quizData.id, this.props.userId, this.props.token);
-
+        if (!this.state.fetchedLeaderfterQuiz) {
+            this.props.fetchLeadersBoardAfterQuiz(this.props.quizData.id, this.props.userId, this.props.token);
+            this.setState({ fetchedLeaderfterQuiz: true })
+        }
         return (
             <>
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
@@ -276,27 +284,25 @@ class OnlineQuizScreen extends Component {
         }
 
         return (
-            <View style={styles.reviewContainer}>
-                <ScrollView keyboardShouldPersistTaps={'always'}>
-                    <View style={styles.userInfoBox}>
-                        <StudentInfoDisplay
-                            name={this.props.name}
-                            grade={grade}
-                            school={school}
-                            isSmall={isSmall} />
-                        {this.botObject && <StudentInfoDisplay
-                            name={this.botObject.name}
-                            isSmall={isSmall} />}
-                    </View>
-                    <View style={styles.OnlineQuizScreen}>
-                        {comp}
-                    </View>
-                </ScrollView>
-                {/* {isrenderQuizReviewEnabled && <BounceButton
-                    onPress={() => this.props.navigation.replace(Screens.LeadersBoardScreen)}
-                    value={'See Leaderboard'} />
-                } */}
-            </View>
+            <Screen>
+                <View style={styles.reviewContainer}>
+                    <ScrollView keyboardShouldPersistTaps={'always'}>
+                        <View style={styles.userInfoBox}>
+                            <StudentInfoDisplay
+                                name={this.props.name}
+                                grade={grade}
+                                school={school}
+                                isSmall={isSmall} />
+                            {this.botObject && <StudentInfoDisplay
+                                name={this.botObject.name}
+                                isSmall={isSmall} />}
+                        </View>
+                        <View style={styles.OnlineQuizScreen}>
+                            {comp}
+                        </View>
+                    </ScrollView>
+                </View>
+            </Screen>
         );
     }
 }
@@ -313,14 +319,15 @@ const mapStateToProps = state => {
         userOponentId: state.scheduleLeaderBoard?.userOponentId,
         token: state.login.userData?.token,
         opponentScore: state.scheduleQuiz.opponentScore,
+        quizId: state.scheduleQuiz.currentQuiz?.innerQuizId
 
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        fetchOpponentScore: function (token) {
-            dispatch(OnlineQuizAction.fetchOpponentScore(token));
+        fetchOpponentScore: function (quizId, token) {
+            dispatch(OnlineQuizAction.fetchOpponentScore(quizId, token));
         },
         sendScoreToDB: function (score, quizId, token) {
             dispatch(OnlineQuizAction.sendScoreToDB(score, quizId, token));

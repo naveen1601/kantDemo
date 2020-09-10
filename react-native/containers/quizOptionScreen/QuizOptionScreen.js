@@ -11,12 +11,13 @@ import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoD
 import { connect } from 'react-redux';
 import LeadersBoardAction from '../leadersBoardScreen/LeadersBoardActions';
 import { Screens } from '../../helpers/ScreenHelpers';
-import { CompetencyAndGradeArray, getTimeFromApi } from '../../helpers/CommonHelper';
+import { CompetencyAndGradeArray } from '../../helpers/CommonHelper';
 import GradeOption from '../../components/gradeOption/GradeOption'
 import GuestActions from '../guestScreen/GuestActions';
 import QuizAction from './QuizAction';
 import QuizConstants from './QuizConstants';
 import ScheduleQuizAction from '../scheduleQuizScreen/ScheduleQuizAction';
+import Screen from '../screen/Screen';
 
 class QuizOptionScreen extends Component {
     state = {
@@ -44,7 +45,6 @@ class QuizOptionScreen extends Component {
                 isOfflineClickedForLoggedinUser: true
             });
         }
-        let temp = getTimeFromApi();
         this.props.clearLeadersBoard();
     }
 
@@ -73,7 +73,7 @@ class QuizOptionScreen extends Component {
     renderQuizOptionButtonsConatiner = () => (
         <View style={styles.quizOptionButtonContainer}>
             <Button
-                onPress={() => alert('Currently this option is not available ')}
+                onPress={() => this.props.fetchScheduleQuiz(this.props.token)}
                 text="Schedule Class"
                 disabled={!this.props.isLoggedIn}
                 secondaryButton={!this.props.isLoggedIn}
@@ -129,19 +129,21 @@ class QuizOptionScreen extends Component {
 
         const gradeSection = this.props.grade + '' + (this.props.section ? this.props.section : '');
         return (
-            <ScrollView keyboardShouldPersistTaps={'always'}
-                ref={c => (this.scrollView = c)}
-                onContentSizeChange={() => {
-                    this.scrollView.scrollToEnd({ animated: true });
-                }}
-            >
-                <StudentInfoDisplay name={this.props.name}
-                    grade={gradeSection}
-                    school={this.props.school} />
-                {comp}
-                {this.state.isOfflineClickedForLoggedinUser &&
-                    this.renderOfflineSection()}
-            </ScrollView>
+            <Screen>
+                <ScrollView keyboardShouldPersistTaps={'always'}
+                    ref={c => (this.scrollView = c)}
+                    onContentSizeChange={() => {
+                        this.scrollView.scrollToEnd({ animated: true });
+                    }}
+                >
+                    <StudentInfoDisplay name={this.props.name}
+                        grade={gradeSection}
+                        school={this.props.school} />
+                    {comp}
+                    {this.state.isOfflineClickedForLoggedinUser &&
+                        this.renderOfflineSection()}
+                </ScrollView>
+            </Screen>
         );
     }
 }
@@ -178,7 +180,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         clearQuizOption: function () {
             dispatch(QuizAction.clearQuizOption());
         },
-        fetchScheduleQuiz: function(token){
+        fetchScheduleQuiz: function (token) {
             dispatch(ScheduleQuizAction.getQuizList(token, ownProps.navigation))
         }
     }

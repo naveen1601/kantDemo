@@ -127,29 +127,27 @@ export function getTimeDifferenceInSeconds(startTime, endTime) {
 }
 
 export function getCompetencyFromAttendanceAPI(response, userId) {
-    const userData = response.students.find(user => user.student?.id == userId)
 
-    return userData.student?.competencylevel?.level && parseInt(userData.student?.competencylevel?.level);
+    return response?.competencylevel?.level && parseInt(response?.competencylevel?.level);
 }
 
-export function getTimeFromApi() {
+export async function getTimeFromApi() {
 
-    let apiDate = new Date();
+    let apiDate = moment();
     let headers = {
         "Content-Type": "application/json"
     };
     const instance = axios.create();
     instance.defaults.timeout = 5000;
-    instance.get('https://www.google.com', {
+    await instance.get('https://www.google.com', {
         headers,
     }).then(function (response) {
-        apiDate = response.headers.get('Date');
-
+        apiDate = moment(response.headers?.date);
     })
         .catch(function (err) {
-            console.log('Fetch Error', err);
+            console.log(err);
+            apiDate = moment()
         });
-
-    return moment(apiDate);
+    return apiDate
 }
 

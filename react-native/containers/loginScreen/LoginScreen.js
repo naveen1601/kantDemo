@@ -13,12 +13,13 @@ import Text from '../../baseComponents/text/Text';
 import _ from 'lodash';
 import LoginAction from './LoginAction';
 import Alert from '../../baseComponents/alert/Alert';
+import Screen from '../screen/Screen';
 
 class LoginScreen extends Component {
 
     state = {
-        userName: 'KL0010_7A_1',
-        password: 'naveen1',
+        userName: 'KL0010_10A_1',
+        password: 'naveen2',
         schoolCode: '',
         userNameHasError: false,
         passwordHasError: false,
@@ -132,7 +133,7 @@ class LoginScreen extends Component {
     }
 
     renderSponsorScreen = () => (
-        <View  style={styles.sponsorScreen}>
+        <View style={styles.sponsorScreen}>
             <Text style={styles.sponsorLabelText}>Sponsered By</Text>
             <Text style={styles.sponsorNameText}>{this.props.sponsoredBy}</Text>
         </View>
@@ -141,9 +142,11 @@ class LoginScreen extends Component {
     render() {
         const comp = this.state.showSponsorship ? this.renderSponsorScreen() : this.renderLoginModal();
         return (
-            <View style={styles.loginContainer}>
-                {comp}
-            </View>
+            <Screen>
+                <View style={styles.loginContainer}>
+                    {comp}
+                </View>
+            </Screen>
         );
     }
 }

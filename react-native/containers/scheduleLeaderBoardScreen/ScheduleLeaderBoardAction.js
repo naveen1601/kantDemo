@@ -3,7 +3,7 @@ import SpinnerActions from "../spinner/SpinnerActions";
 import Api from "../../helpers/Api";
 import Locations from "../../helpers/Locations";
 import schedule from "../../models/schedule";
-import { Screens } from "../../helpers/ScreenHelpers";
+import { Screens, resetScreen } from "../../helpers/ScreenHelpers";
 import { getleaderBoardPairingMatrix } from "../../models/schedulePair";
 import { nextQuizData, getCompetencyFromAttendanceAPI } from "../../helpers/CommonHelper";
 import { func } from "prop-types";
@@ -18,6 +18,13 @@ export default {
         }
     },
 
+    startSpinner: function () {
+        return function (dispatch) {
+            dispatch(SpinnerActions.showSpinner('Looking for other opponents '));
+        }
+    },
+
+
     getLeadersBoardBeforeQuiz: function (quizId, userId, token, navigation) {
 
         return function (dispatch) {
@@ -27,6 +34,8 @@ export default {
             dispatch(SpinnerActions.showSpinner('Looking for other opponents '));
 
             let successCallback = (response) => {
+                console.log('leaderBoard Before ',response?.leaderboard_data)
+                dispatch(SpinnerActions.hideSpinner());
                 const pairingData = getleaderBoardPairingMatrix(response, userId);
 
                 dispatch({
@@ -36,6 +45,7 @@ export default {
             };
 
             let errorCallback = (errorResponse) => {
+                dispatch(SpinnerActions.hideSpinner());
                 if (errorResponse.status === 401) {
                     dispatch({
                         type: Constants.ACTIONS.CLEAR_DATA
@@ -47,7 +57,7 @@ export default {
                         type: Constants.ACTIONS.GENERAL_ERROR_LEADERBOARD,
                         message: errorResponse.error.message
                     });
-                    resetScreen(navigation, Screens.ScheduleQuizScreen)
+                    //resetScreen(navigation, Screens.ScheduleQuizScreen)
                 }
             };
             Api.doGet(apiParam, { arranged: true }, successCallback, errorCallback, token);
@@ -62,7 +72,7 @@ export default {
             // const apiParam = Locations.LEADERBOARD + '5f43d6111634660008074cf2';
 
             let successCallback = (response) => {
-
+                console.log('leaderBoard After',response?.leaderboard_data)
                 const pairingData = getleaderBoardPairingMatrix(response, userId);
 
                 dispatch({
@@ -90,11 +100,8 @@ export default {
         }
     },
 
-    markAttendanceForNextQuiz: function (quizScheduleList, lastQuiz, userId, token, navigation) {
+    markAttendanceForNextQuiz: function (currentQuiz, userId, token, navigation) {
         return function (dispatch) {
-
-            
-            const currentQuiz = nextQuizData(quizScheduleList, lastQuiz.outerQuizId, lastQuiz.innerQuizId)
             
             const apiParam = Locations.ATTENDANCE + currentQuiz?.innerQuizId;
             if (currentQuiz?.innerQuizId == '') {
@@ -129,7 +136,9 @@ export default {
                     //     type: Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE,
                     //     message: errorResponse.error.message
                     // });
-                    navigation.replace(Screens.ScheduleQuizScreen)
+                    alert(errorResponse.error.message);
+                    console.log('old end time ',currentQuiz.innerQuizId);
+                   // navigation.replace(Screens.ScheduleQuizScreen)
                 }
             };
             currentQuiz.innerQuizId &&
