@@ -34,7 +34,7 @@ export default {
             dispatch(SpinnerActions.showSpinner('Looking for other opponents '));
 
             let successCallback = (response) => {
-                console.log('leaderBoard Before ',response?.leaderboard_data)
+                // console.log('leaderBoard Before ',response?.leaderboard_data)
                 dispatch(SpinnerActions.hideSpinner());
                 const pairingData = getleaderBoardPairingMatrix(response, userId);
 
@@ -72,7 +72,7 @@ export default {
             // const apiParam = Locations.LEADERBOARD + '5f43d6111634660008074cf2';
 
             let successCallback = (response) => {
-                console.log('leaderBoard After',response?.leaderboard_data)
+                // console.log('leaderBoard After',response?.leaderboard_data)
                 const pairingData = getleaderBoardPairingMatrix(response, userId);
 
                 dispatch({
@@ -137,7 +137,7 @@ export default {
                     //     message: errorResponse.error.message
                     // });
                     alert(errorResponse.error.message);
-                    console.log('old end time ',currentQuiz.innerQuizId);
+                    // console.log('old end time ',currentQuiz.innerQuizId);
                    // navigation.replace(Screens.ScheduleQuizScreen)
                 }
             };

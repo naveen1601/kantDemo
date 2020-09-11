@@ -54,7 +54,6 @@ class ScheduleLeaderBoardScreen extends Component {
             const nextQuizStartTime = moment(this.state.newQuiz?.quizData?.startDate);
             const durationbwStartandCurrent = this.currentTime && moment.duration(nextQuizStartTime.diff(this.currentTime));
             const timeInSeconds = durationbwStartandCurrent && durationbwStartandCurrent.asSeconds();
-            console.log('Diff: ', timeInSeconds, ' QT: ', nextQuizStartTime, ' CT:', this.currentTime);
             if (timeInSeconds == undefined || timeInSeconds <= 0) {
                 return 1;
             }

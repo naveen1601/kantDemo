@@ -145,7 +145,6 @@ export async function getTimeFromApi() {
         apiDate = moment(response.headers?.date);
     })
         .catch(function (err) {
-            console.log(err);
             apiDate = moment()
         });
     return apiDate

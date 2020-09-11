@@ -19,8 +19,8 @@ class Screen extends Component {
     componentDidMount() {
         //Android, dont get connection info in listener as soon as app opens. So fetching and then adding listener
         this.unsubscribe = NetInfo.addEventListener(state => {
-            console.log("Connection type", state.type);
-            console.log("Is connected?", state.isConnected);
+            // console.log("Connection type", state.type);
+            // console.log("Is connected?", state.isConnected);
             this.handleConnectivityChange(state.isConnected);
           });
     }
