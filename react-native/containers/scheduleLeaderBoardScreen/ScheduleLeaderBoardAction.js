@@ -4,7 +4,7 @@ import Api from "../../helpers/Api";
 import Locations from "../../helpers/Locations";
 import schedule from "../../models/schedule";
 import { Screens, resetScreen } from "../../helpers/ScreenHelpers";
-import { getleaderBoardPairingMatrix } from "../../models/schedulePair";
+import { getFinalleaderBoardMatrix, getleaderBoardPairingMatrix } from "../../models/schedulePair";
 import { nextQuizData, getCompetencyFromAttendanceAPI } from "../../helpers/CommonHelper";
 import { func } from "prop-types";
 import ScheduleQuizConstants from "../scheduleQuizScreen/ScheduleQuizConstants";
@@ -73,7 +73,7 @@ export default {
 
             let successCallback = (response) => {
                 // console.log('leaderBoard After',response?.leaderboard_data)
-                const pairingData = getleaderBoardPairingMatrix(response, userId);
+                const pairingData = getFinalleaderBoardMatrix(response, userId);
 
                 dispatch({
                     type: Constants.ACTIONS.UPDATE_SCHEDULE_LEADERBOARD,

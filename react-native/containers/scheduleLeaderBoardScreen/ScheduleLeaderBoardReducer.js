@@ -20,7 +20,8 @@ export default (state = initialState, action) => {
 
         case Constants.ACTIONS.UPDATE_SCHEDULE_LEADERBOARD:
             newState.pairingMatrix = action.pairingData.pairingMatrix;
-            newState.userOponentId = action.pairingData.userOponentId;
+            action.pairingData.userOponentId  != 'test' &&
+                (newState.userOponentId = action.pairingData.userOponentId);
             break;
         case Constants.ACTIONS.GENERAL_ERROR_LEADERBOARD:
             newState.errorMessage = action.errorMessage;
