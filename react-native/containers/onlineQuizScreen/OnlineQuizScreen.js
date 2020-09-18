@@ -44,6 +44,9 @@ class OnlineQuizScreen extends Component {
         this.botObject = '';
     }
 
+    componentWillUnmount() {
+        clearTimeout(this.fetchScoreTimeId);
+    }
 
     handleUserInput = ({ userAnswer, key }) => {
         let questionWithUserInput = this.state.quiz;
@@ -160,7 +163,7 @@ class OnlineQuizScreen extends Component {
 
         if (!this.state.oponentScoreApiCalled) {
             this.setState({ oponentScoreApiCalled: true })
-            setTimeout(() => {
+            this.fetchScoreTimeId =setTimeout(() => {
                 this.fetchOpponentScore();
             }, 8000);
         }

@@ -31,6 +31,10 @@ class ScheduleQuizScreen extends Component {
     componentDidMount() {
         this.checkQuizAvailable();
     }
+    
+    componentWillUnmount() {
+        clearTimeout(this.attendanceTimeOutId);
+    }
 
     checkQuizAvailable = async () => {
         const currentUtcTime = await getTimeFromApi();
@@ -94,7 +98,7 @@ class ScheduleQuizScreen extends Component {
             this.markAttendance();
         } else if (this.state.callAttendance && timerValue > 0) {
             const markAttendanceTime = (timerValue - 28) * 1000;
-            setTimeout(() => {
+            this.attendanceTimeOutId = setTimeout(() => {
                 //alert('marking Attendance'+markAttendanceTime);
                 this.markAttendance();
             }, markAttendanceTime);

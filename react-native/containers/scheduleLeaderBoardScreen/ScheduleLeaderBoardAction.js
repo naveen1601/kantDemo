@@ -136,9 +136,9 @@ export default {
                     //     type: Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE,
                     //     message: errorResponse.error.message
                     // });
-                    alert(errorResponse.error.message);
+                    alert(errorResponse.error.message+' NxtquizTime '+ currentQuiz?.quizData?.startDate);
                     // console.log('old end time ',currentQuiz.innerQuizId);
-                   // navigation.replace(Screens.ScheduleQuizScreen)
+                    navigation.replace(Screens.ScheduleQuizScreen)
                 }
             };
             currentQuiz.innerQuizId &&

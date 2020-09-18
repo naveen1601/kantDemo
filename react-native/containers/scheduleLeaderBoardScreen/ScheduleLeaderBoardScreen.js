@@ -19,16 +19,14 @@ import Screen from '../screen/Screen';
 
 class ScheduleLeaderBoardScreen extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             isQuizEnded: this.props.route.params?.isQuizEnded,
             startTimer: false,
             calculatedTimeForNextQuiz: false,
             newQuiz: null
-        };
-        this.currentTime = moment();
-    }
+        }
+    currentTime = moment();
+
     async componentDidMount() {
         if (this.state.isQuizEnded) {
             this.currentTime = await getTimeFromApi();
@@ -41,11 +39,15 @@ class ScheduleLeaderBoardScreen extends Component {
             })
         } else {
             this.props.startSpinner();
-            setTimeout(() => {
+            this.leaderBoardTimeId = setTimeout(() => {
                 this.props.getLeadersBoardBeforeQuiz()
                 this.startTimerAfterAPIFetch();
             }, 15000);
         }
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.leaderBoardTimeId);
     }
 
     getTimerForNextQuiz = () => {
