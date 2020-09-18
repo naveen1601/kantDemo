@@ -42,7 +42,7 @@ class ScheduleLeaderBoardScreen extends Component {
             this.leaderBoardTimeId = setTimeout(() => {
                 this.props.getLeadersBoardBeforeQuiz()
                 this.startTimerAfterAPIFetch();
-            }, 15000);
+            }, 13000);
         }
     }
 

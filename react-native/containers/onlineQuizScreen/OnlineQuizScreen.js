@@ -46,6 +46,8 @@ class OnlineQuizScreen extends Component {
 
     componentWillUnmount() {
         clearTimeout(this.fetchScoreTimeId);
+        clearTimeout(this.scoreTimeout);
+
     }
 
     handleUserInput = ({ userAnswer, key }) => {
@@ -252,10 +254,15 @@ class OnlineQuizScreen extends Component {
             this.props.fetchLeadersBoardAfterQuiz(this.props.quizData.id, this.props.userId, this.props.token);
             this.setState({ fetchedLeaderfterQuiz: true })
         }
+        this.scoreTimeout = setTimeout(() => {
+            //redirecting after ScoreBox;
+            this.redirectAfterQuiz();
+        }, 5000);
+
         return (
             <>
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
-                {this.renderTimer(5, 'Updating LeaderBoard', this.redirectAfterQuiz)}
+                {this.renderTimer(5, 'Updating LeaderBoard', ()=>{})}
                 <View style={styles.scoreBoxContainer}>
                     <View style={styles.scoreBox}>
                         <Text style={styles.displayScoreText}>{this.props.name}</Text>
