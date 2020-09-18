@@ -18,6 +18,7 @@ import QuizAction from './QuizAction';
 import QuizConstants from './QuizConstants';
 import ScheduleQuizAction from '../scheduleQuizScreen/ScheduleQuizAction';
 import Screen from '../screen/Screen';
+import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
 
 class QuizOptionScreen extends Component {
     state = {
@@ -31,6 +32,11 @@ class QuizOptionScreen extends Component {
         this.focusListener = this.props.navigation.addListener('focus', () => {
             this.setState({ isQuizInstructionEnabled: false });
         });
+        activateKeepAwake();
+    }
+
+    componentWillUnmount() {
+        deactivateKeepAwake();
     }
 
     handlePractiseOffline = () => {

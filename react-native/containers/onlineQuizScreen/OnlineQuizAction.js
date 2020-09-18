@@ -1,6 +1,7 @@
 import OnlineQuizConstants from "./OnlineQuizConstants";
 import Locations from "../../helpers/Locations";
 import Api from "../../helpers/Api";
+import { Screens } from "../../helpers/ScreenHelpers";
 
 export default {
     fetchOpponentScore: function (quizId, token) {
@@ -30,7 +31,7 @@ export default {
         }
     },
 
-    sendScoreToDB: function(score, quizId, token){
+    sendScoreToDB: function(score, quizId, token, navigation){
 
         return function (dispatch) {
 
@@ -48,18 +49,15 @@ export default {
             };
 
             let errorCallback = (errorResponse) => {
-                // if (errorResponse.status === 401) {
-                //     dispatch({
-                //         type: Constants.ACTIONS.CLEAR_DATA
-                //     });
-                //     resetScreen(navigation, Screens.LoginOption)
-                // }
-                // else {
-                //     dispatch({
-                //         type: Constants.ACTIONS.GENERAL_ERROR_LEADERBOARD,
-                //         message: errorResponse.error.message
-                //     });
-                // }
+                if (errorResponse.status === 401) {
+                    dispatch({
+                        type: OnlineQuizConstants.ACTIONS.CLEAR_DATA
+                    });
+                    resetScreen(navigation, Screens.LoginOption)
+                }
+                else {
+                    navigation.replace(Screens.ScheduleQuizScreen); 
+                }
             };
             Api.doPost(Locations.SUBMITQUIZ, { "numberOfCorrectAnswer" : score, "quiz": quizId}, successCallback, errorCallback, token);
         }

@@ -333,7 +333,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(OnlineQuizAction.fetchOpponentScore(quizId, token));
         },
         sendScoreToDB: function (score, quizId, token) {
-            dispatch(OnlineQuizAction.sendScoreToDB(score, quizId, token));
+            dispatch(OnlineQuizAction.sendScoreToDB(score, quizId, token, ownProps.navigation));
         },
         fetchLeadersBoardAfterQuiz: function (quizId, userId, token) {
             dispatch(ScheduleLeaderBoardAction.getLeadersBoardAfterQuiz(quizId, userId, token, ownProps.navigation))

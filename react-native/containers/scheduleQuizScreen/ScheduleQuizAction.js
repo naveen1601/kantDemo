@@ -90,18 +90,12 @@ export default {
                     });
                     resetScreen(navigation, Screens.LoginOption)
                 }
-                else if(errorResponse.status === 408){
-                    dispatch({
-                        type: Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE,
-                        message: errorResponse.error.message
-                    });
-                    navigation.replace(Screens.ScheduleQuizScreen);
-                }
                 else {
                     dispatch({
                         type: Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE,
                         message: errorResponse.error.message
                     });
+                    navigation.replace(Screens.ScheduleQuizScreen);
                     
                 }
             };

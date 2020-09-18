@@ -57,7 +57,7 @@ export default {
                         type: Constants.ACTIONS.GENERAL_ERROR_LEADERBOARD,
                         message: errorResponse.error.message
                     });
-                    //resetScreen(navigation, Screens.ScheduleQuizScreen)
+                    navigation.replace(Screens.ScheduleQuizScreen)
                 }
             };
             Api.doGet(apiParam, { arranged: true }, successCallback, errorCallback, token);
@@ -93,7 +93,7 @@ export default {
                         type: Constants.ACTIONS.GENERAL_ERROR_LEADERBOARD,
                         message: errorResponse.error.message
                     });
-                    resetScreen(navigation, Screens.ScheduleQuizScreen)
+                    navigation.replace(Screens.ScheduleQuizScreen)
                 }
             };
             Api.doGet(apiParam, {}, successCallback, errorCallback, token);
@@ -136,7 +136,8 @@ export default {
                     //     type: Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE,
                     //     message: errorResponse.error.message
                     // });
-                    alert(errorResponse.error.message+' NxtquizTime '+ currentQuiz?.quizData?.startDate);
+                    //const tempVal= errorResponse.error.message+' NxtquizTime '+ currentQuiz?.quizData?.startDate;
+                    //alert(tempVal);
                     // console.log('old end time ',currentQuiz.innerQuizId);
                     navigation.replace(Screens.ScheduleQuizScreen)
                 }

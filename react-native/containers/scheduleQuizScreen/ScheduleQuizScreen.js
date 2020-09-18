@@ -169,9 +169,6 @@ export const mergeProps = (stateProps, dispatchProps, ownProps) => {
         markAttendanceOfQuiz: (outerQuizId, innerQuizId, sequence, innerQuiz) => {
             dispatchProps.markAttendanceOfQuiz(outerQuizId, innerQuizId, sequence, stateProps.userId, innerQuiz, stateProps.token);
         },
-        getQuizList: (successCallback) => {
-            dispatchProps.getQuizList(successCallback, stateProps.token);
-        }
 
     });
 
@@ -180,9 +177,6 @@ export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        getQuizList: function (successCallback, token) {
-            dispatch(ScheduleQuizAction.getQuizList(successCallback, token, ownProps.navigation));
-        },
         markAttendanceOfQuiz: function (outerQuizId, innerQuizId, sequence, userId, innerQuiz, token) {
             dispatch(ScheduleQuizAction.markAttendanceOfQuiz(outerQuizId, innerQuizId, sequence, userId, innerQuiz, token, ownProps.navigation));
         }
