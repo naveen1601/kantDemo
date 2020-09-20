@@ -26,6 +26,8 @@ export default (state = initialState, action) => {
         case Constants.ACTIONS.GENERAL_ERROR_LEADERBOARD:
             newState.errorMessage = action.errorMessage;
             break;
+        case Constants.ACTIONS.CLEAR_ERROR_MESSAGE:
+            newState.errorMessage ='';
         case Constants.ACTIONS.CLEAR_SCHEDULE_LEADERBOARD:
         case Constants.ACTIONS.CLEAR_DATA:
             newState = initialState;

@@ -42,10 +42,12 @@ export default (state = initialState, action) => {
             newState.currentQuiz = action.currentQuiz;
             newState.errorMessage = ''
             break;
-
+        case Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE:
         case Constants.ACTIONS.GENERAL_ERROR_QUIZLIST:
             newState.errorMessage = action.message;
             break;
+        case Constants.ACTIONS.CLEAR_ERROR_MESSAGE:
+            newState.errorMessage ='';
         case Constants.ACTIONS.CLEAR_SCHEDULE:
         case Constants.ACTIONS.CLEAR_DATA:
             newState = initialState;

@@ -16,6 +16,7 @@ import Text from '../../baseComponents/text/Text'
 import { Screens } from '../../helpers/ScreenHelpers';
 import { getTimeFromApi } from '../../helpers/CommonHelper';
 import Screen from '../screen/Screen';
+import ScheduleQuizConstants from './ScheduleQuizConstants';
 
 class ScheduleQuizScreen extends Component {
     state = {
@@ -92,6 +93,11 @@ class ScheduleQuizScreen extends Component {
         this.setState({ callAttendance: false })
     }
 
+    onFinishTimer=()=>{
+        this.props.clearErrors();
+        this.props.navigation.replace(Screens.ScheduleLeaderBoardScreen)
+    }
+
     renderCountDown = () => {
         const timerValue = parseInt(this.state.secondsLeft);
         if (this.state.callAttendance && timerValue > 0 && timerValue <= 30) {
@@ -108,7 +114,7 @@ class ScheduleQuizScreen extends Component {
                 <Text style={styles.quizText}>Quiz will start in </Text>
                 <CountDown
                     until={timerValue}
-                    onFinish={() => this.props.navigation.replace(Screens.ScheduleLeaderBoardScreen)}
+                    onFinish={this.onFinishTimer}
                     onPress={() => { }}
                     digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                     digitTxtStyle={{ color: '#255166' }}
@@ -142,6 +148,10 @@ class ScheduleQuizScreen extends Component {
                         <AlertInfo type="error"
                             message={this.props.quizError} />
                     }
+                    {!!this.props.leaderBoardError &&
+                        <AlertInfo type="error"
+                            message={this.props.leaderBoardError} />
+                    }
                     {this.renderCountDown()}
                     {this.renderQuizList()}
                 </ScrollView>
@@ -159,7 +169,9 @@ const mapStateToProps = (state) => {
         school: state.login.userData?.schoolName,
         quizSchedule: state.scheduleQuiz?.scheduleQuizList,
         quizError: state.scheduleQuiz?.errorMessage,
-        userId: state.login.userData?.userId
+        userId: state.login.userData?.userId,
+        leaderBoardError: state.scheduleLeaderBoard?.errorMessage,
+        
     }
 }
 
@@ -179,6 +191,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         markAttendanceOfQuiz: function (outerQuizId, innerQuizId, sequence, userId, innerQuiz, token) {
             dispatch(ScheduleQuizAction.markAttendanceOfQuiz(outerQuizId, innerQuizId, sequence, userId, innerQuiz, token, ownProps.navigation));
+        },
+        clearErrors: function(){
+            dispatch({
+                type: ScheduleQuizConstants.ACTIONS.CLEAR_ERROR_MESSAGE
+            })
         }
 
     }

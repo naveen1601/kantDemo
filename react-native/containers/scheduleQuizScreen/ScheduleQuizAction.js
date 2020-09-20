@@ -29,6 +29,9 @@ export default {
                 });
                 dispatch(SpinnerActions.hideSpinner());
                 dispatch({
+                    type: Constants.ACTIONS.CLEAR_ERROR_MESSAGE
+                })
+                dispatch({
                     type: Constants.ACTIONS.UPDATE_QUIZ_LIST,
                     scheduleQuizData: sortByDateValue.map(item => new schedule(item))
                 });
