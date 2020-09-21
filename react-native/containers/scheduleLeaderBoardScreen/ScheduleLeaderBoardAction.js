@@ -132,10 +132,10 @@ export default {
                     resetScreen(navigation, Screens.LoginOption)
                 }
                 else {
-                    dispatch({
-                        type: Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE,
-                        message: errorResponse.error.message
-                    });
+                    // dispatch({
+                    //     type: Constants.ACTIONS.GENERAL_ERROR_ATTENDANCE,
+                    //     message: errorResponse.error.message
+                    // });
                     //const tempVal= errorResponse.error.message+' NxtquizTime '+ currentQuiz?.quizData?.startDate;
                     //alert(tempVal);
                     // console.log('old end time ',currentQuiz.innerQuizId);
