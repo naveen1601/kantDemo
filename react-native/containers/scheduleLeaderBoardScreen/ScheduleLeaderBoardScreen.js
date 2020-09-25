@@ -20,29 +20,29 @@ import Screen from '../screen/Screen';
 class ScheduleLeaderBoardScreen extends Component {
 
     state = {
-            isQuizEnded: this.props.route.params?.isQuizEnded,
-            startTimer: false,
-            calculatedTimeForNextQuiz: false,
-            newQuiz: null
-        }
+        isQuizEnded: this.props.route.params?.isQuizEnded,
+        startTimer: false,
+        calculatedTimeForNextQuiz: false,
+        newQuiz: null
+    }
     currentTime = moment();
 
     async componentDidMount() {
         if (this.state.isQuizEnded) {
             this.currentTime = await getTimeFromApi();
-            const currentQuiz = nextQuizData(this.props.quizScheduleList, this.props.currentQuiz.outerQuizId, this.props.currentQuiz.innerQuizId);
-            this.props.markAttendanceForNextQuiz(currentQuiz);
-            this.startTimerAfterAPIFetch();
+            //console.log(this.props.quizScheduleList);
+            this.nextQuiz = nextQuizData(this.props.quizScheduleList, this.props.currentQuiz.outerQuizId, this.props.currentQuiz.innerQuizId);
+            // console.log('curr '+this.props.currentQuiz);
+
+            // console.log('nextQuiz '+this.nextQuiz);
+
+            //this.props.markAttendanceForNextQuiz(this.nextQuiz);
             this.setState({
-                newQuiz: currentQuiz,
+                newQuiz: this.nextQuiz,
                 startTimer: true
             })
         } else {
-            this.props.startSpinner();
-            this.leaderBoardTimeId = setTimeout(() => {
-                this.props.getLeadersBoardBeforeQuiz()
-                this.startTimerAfterAPIFetch();
-            }, 13000);
+            this.startTimerAfterAPIFetch();
         }
     }
 
@@ -52,15 +52,22 @@ class ScheduleLeaderBoardScreen extends Component {
 
     getTimerForNextQuiz = () => {
 
-        if (!_.isEmpty(this.props.quizId && this.state.newQuiz)) {
+        if (!_.isEmpty(this.props.quizId && this.state.newQuiz?.innerQuizId)) {
             const nextQuizStartTime = moment(this.state.newQuiz?.quizData?.startDate);
             const durationbwStartandCurrent = this.currentTime && moment.duration(nextQuizStartTime.diff(this.currentTime));
             const timeInSeconds = durationbwStartandCurrent && durationbwStartandCurrent.asSeconds();
-            if (timeInSeconds == undefined || timeInSeconds <= 0) {
-                return 1;
+            let msg = 'nextQuDiff '+timeInSeconds
+            // alert(msg)
+            console.log(msg)
+            this.leaderBoardTimeId = setTimeout(() => {
+                this.props.getLeadersBoardBeforeQuiz(this.nextQuiz)
+            }, (timeInSeconds - 5) * 1000);
+
+            if (timeInSeconds == undefined || timeInSeconds <= 1) {
+                return 2;
             }
             else {
-                return timeInSeconds - 1;
+                return timeInSeconds-1;
             }
         }
         else return 8;
@@ -70,13 +77,24 @@ class ScheduleLeaderBoardScreen extends Component {
     startTimerAfterAPIFetch = () => this.setState({ startTimer: true });
 
     renderNextQuizTextAndTime = () => {
-        let quizText = this.state.isQuizEnded ? 'Moving to next Quiz in' : 'Quiz is going to start in';
-        const timer = this.state.isQuizEnded ? this.getTimerForNextQuiz() : 8;
-        let screenName = this.props.route.params?.isQuizEnded ? Screens.ScheduleLeaderBoardScreen : Screens.OnlineQuizScreen;
+        let quizText = ''
+        let timer = 0
+        let screenName = ''
 
-        if (_.isEmpty(this.props.quizId)) {
-            screenName = Screens.ScheduleQuizScreen;
+        if (this.state.isQuizEnded && !_.isEmpty(this.props.quizId)) {
+            quizText = 'Moving to next Quiz in';
+            timer = this.getTimerForNextQuiz();
+            screenName = Screens.ScheduleLeaderBoardScreen;
+        }
+        else {
+            quizText = 'Quiz is going to start in';
+            timer = 10;
+            screenName = Screens.OnlineQuizScreen;
+        }
+
+        if  ( this.state.isQuizEnded && !this.state.newQuiz?.innerQuizId) {
             quizText = 'Quiz over, exit in '
+            screenName = Screens.ScheduleQuizScreen;
         }
 
         return (
@@ -102,12 +120,13 @@ class ScheduleLeaderBoardScreen extends Component {
     }
 
     render() {
+        const leaderBoardData = this.state.isQuizEnded ? this.props.leaderBoardDataFinal : this.props.leaderBoardData
         return (
             <Screen>
                 <ScrollView keyboardShouldPersistTaps={'always'}>
                     <View style={styles.leadersBoardContainer}>
                         {this.renderNextQuizTextAndTime()}
-                        <LeaderBoard leaderBoardMatrix={this.props.leaderBoardData}
+                        <LeaderBoard leaderBoardMatrix={leaderBoardData}
                             userId={this.props.userId} />
 
                     </View>
@@ -126,15 +145,16 @@ const mapStateToProps = (state) => {
         leaderBoardData: state.scheduleLeaderBoard?.pairingMatrix,
         errorMessage: state.scheduleLeaderBoard?.errorMessage,
         quizScheduleList: state.scheduleQuiz?.scheduleQuizList,
-        currentQuiz: state.scheduleQuiz?.currentQuiz
+        currentQuiz: state.scheduleQuiz?.currentQuiz,
+        leaderBoardDataFinal: state.scheduleLeaderBoard?.pairingMatrixFinal
     }
 }
 
 export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
     let actionProps = Object.assign({}, dispatchProps, {
-        getLeadersBoardBeforeQuiz: () => {
-            dispatchProps.getLeadersBoardBeforeQuiz(stateProps.quizId, stateProps.userId, stateProps.token);
+        getLeadersBoardBeforeQuiz: (nextQuiz) => {
+            dispatchProps.getLeadersBoardBeforeQuiz(nextQuiz, stateProps.userId, stateProps.token);
         },
         markAttendanceForNextQuiz: (currentQuiz) => {
             dispatchProps.markAttendanceForNextQuiz(currentQuiz, stateProps.userId, stateProps.token)
@@ -147,8 +167,8 @@ export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        getLeadersBoardBeforeQuiz: function (quizId, userId, token) {
-            dispatch(ScheduleLeaderBoardAction.getLeadersBoardBeforeQuiz(quizId, userId, token, ownProps.navigation));
+        getLeadersBoardBeforeQuiz: function (nextQuiz, userId, token) {
+            dispatch(ScheduleLeaderBoardAction.getLeadersBoardBeforeQuiz(nextQuiz, userId, token, ownProps.navigation));
         },
         stopSpinner: function () {
             dispatch(ScheduleLeaderBoardAction.stopSpinner());

@@ -17,6 +17,8 @@ class LeaderBoard extends Component {
                 (bot.id == 100 || (bot.studentId && (bot.studentId == this.props.userId))) &&
                     userContainerStyle.push(styles.userBox)
                 const serialNum = bot.serialNum || bot.sequence;
+                (bot.status == 'absent') &&
+                    userContainerStyle.push(styles.absentBox)
                 isGoingUp = bot.isGoingUp || bot.position == 'up';
                 return (
                     <View style={userContainerStyle}>
@@ -26,6 +28,10 @@ class LeaderBoard extends Component {
                                 <Image source={require('../../staticData/assests/upArrow.png')}
                                     style={styles.arrowBox} />
                             </View>
+                        }
+                        {
+                            (bot.status == 'absent')&&
+                                <Text>Quit</Text>
                         }
 
                     </View>

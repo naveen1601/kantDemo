@@ -14,6 +14,7 @@ export default class user {
         this.userName = loginResponse?.user?.username;
         this.token = loginResponse?.token;
         this.userId = loginResponse?.user?.id;
+        this.rollNumber = loginResponse?.user?.rollNumber;
         
     }
 }

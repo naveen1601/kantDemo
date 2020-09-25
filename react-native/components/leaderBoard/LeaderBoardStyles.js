@@ -26,6 +26,9 @@ export default {
     arrowBox: {
         width: 28,
         height:28
+    },
+    absentBox: {
+        backgroundColor: '#dbd7d7',
     }
 
 }

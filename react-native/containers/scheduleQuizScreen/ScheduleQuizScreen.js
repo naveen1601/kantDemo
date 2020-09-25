@@ -16,6 +16,7 @@ import Text from '../../baseComponents/text/Text'
 import { Screens } from '../../helpers/ScreenHelpers';
 import { getTimeFromApi } from '../../helpers/CommonHelper';
 import Screen from '../screen/Screen';
+import ScheduleLeaderBoardAction from '../scheduleLeaderBoardScreen/ScheduleLeaderBoardAction';
 
 class ScheduleQuizScreen extends Component {
     state = {
@@ -25,15 +26,19 @@ class ScheduleQuizScreen extends Component {
         innerQuizId: '',
         outerQuizId: '',
         innerQuiz: {},
-        callAttendance: false
+        callAttendance: false,
+        callLeaderBoard: false
     };
 
     componentDidMount() {
-        this.checkQuizAvailable();
+        this.focusListener = this.props.navigation.addListener('focus', () => {
+            this.checkQuizAvailable();
+        });
     }
-    
+
     componentWillUnmount() {
         clearTimeout(this.attendanceTimeOutId);
+        clearTimeout(this.leaderBoardTimeOutId);
     }
 
     checkQuizAvailable = async () => {
@@ -59,7 +64,7 @@ class ScheduleQuizScreen extends Component {
                     const innerQuizStartTime = moment(innerQuiz[j].startDate);
                     const durationbwStartandCurrent = moment.duration(innerQuizStartTime.diff(currentUtcTime));
                     const differenceInteger = parseInt(durationbwStartandCurrent.asSeconds());
-                    if (differenceInteger > 2) {
+                    if (differenceInteger > 15) {
                         nextScheduleQuiz = innerQuiz[j];
                         secondsLeft = differenceInteger;
                         innerQuizId = innerQuiz[j].id;
@@ -81,7 +86,8 @@ class ScheduleQuizScreen extends Component {
             sequence,
             isQuizAvailable,
             innerQuiz: nextScheduleQuiz,
-            callAttendance: true
+            callAttendance: true,
+            callLeaderBoard: true
         });
     }
 
@@ -94,21 +100,32 @@ class ScheduleQuizScreen extends Component {
 
     renderCountDown = () => {
         const timerValue = parseInt(this.state.secondsLeft);
-        if (this.state.callAttendance && timerValue > 0 && timerValue <= 30) {
+        //marking attendance
+        if (this.state.callAttendance && timerValue > 14 && timerValue <= 30) {
             this.markAttendance();
-        } else if (this.state.callAttendance && timerValue > 0) {
-            const markAttendanceTime = (timerValue - 28) * 1000;
+        } else if (this.state.callAttendance && timerValue > 14) {
+            const markAttendanceTime = (timerValue - 30) * 1000;
             this.attendanceTimeOutId = setTimeout(() => {
                 //alert('marking Attendance'+markAttendanceTime);
                 this.markAttendance();
             }, markAttendanceTime);
         }
+
+        //getting LeadersBoard
+        if (this.state.callLeaderBoard && timerValue >= 5) {
+            this.leaderBoardTimeOutId = setTimeout(() => {
+                this.props.getLeadersBoardBeforeQuiz(this.props.currentQuiz);
+                this.setState({callLeaderBoard : false});
+            }, (timerValue - 5)*1000);
+        }
+
         let comp = this.state.isQuizAvailable ? (
             <View style={styles.timerConatiner}>
                 <Text style={styles.quizText}>Quiz will start in </Text>
                 <CountDown
                     until={timerValue}
                     onFinish={() => this.props.navigation.replace(Screens.ScheduleLeaderBoardScreen)}
+                    // onFinish={() => {}}
                     onPress={() => { }}
                     digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                     digitTxtStyle={{ color: '#255166' }}
@@ -142,6 +159,10 @@ class ScheduleQuizScreen extends Component {
                         <AlertInfo type="error"
                             message={this.props.quizError} />
                     }
+                    {!!this.props.leaderBoardError &&
+                        <AlertInfo type="error"
+                            message={this.props.leaderBoardError} />
+                    }
                     {this.renderCountDown()}
                     {this.renderQuizList()}
                 </ScrollView>
@@ -159,7 +180,9 @@ const mapStateToProps = (state) => {
         school: state.login.userData?.schoolName,
         quizSchedule: state.scheduleQuiz?.scheduleQuizList,
         quizError: state.scheduleQuiz?.errorMessage,
-        userId: state.login.userData?.userId
+        userId: state.login.userData?.userId,
+        leaderBoardError: state.scheduleLeaderBoard?.errorMessage,
+        currentQuiz: state.scheduleQuiz?.currentQuiz
     }
 }
 
@@ -168,6 +191,9 @@ export const mergeProps = (stateProps, dispatchProps, ownProps) => {
     let actionProps = Object.assign({}, dispatchProps, {
         markAttendanceOfQuiz: (outerQuizId, innerQuizId, sequence, innerQuiz) => {
             dispatchProps.markAttendanceOfQuiz(outerQuizId, innerQuizId, sequence, stateProps.userId, innerQuiz, stateProps.token);
+        },
+        getLeadersBoardBeforeQuiz: (quizId) => {
+            dispatchProps.getLeadersBoardBeforeQuiz(quizId, stateProps.userId, stateProps.token);
         },
 
     });
@@ -179,7 +205,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         markAttendanceOfQuiz: function (outerQuizId, innerQuizId, sequence, userId, innerQuiz, token) {
             dispatch(ScheduleQuizAction.markAttendanceOfQuiz(outerQuizId, innerQuizId, sequence, userId, innerQuiz, token, ownProps.navigation));
-        }
+        },
+        getLeadersBoardBeforeQuiz: function (quizId, userId, token) {
+            dispatch(ScheduleLeaderBoardAction.getLeadersBoardBeforeQuiz(quizId, userId, token, ownProps.navigation));
+        },
 
     }
 }

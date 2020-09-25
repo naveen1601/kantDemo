@@ -10,7 +10,7 @@ import FlatButton from '../../baseComponents/button/FlatButton';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer';
 import _ from 'lodash'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
-import { getTimerBasedOnGrade, getCompetencyListForOnline } from '../../helpers/CommonHelper';
+import { getTimerBasedOnGrade, getCompetencyListForOnline, nextQuizData } from '../../helpers/CommonHelper';
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
 import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 import OnlineQuizAction from './OnlineQuizAction';
@@ -19,7 +19,6 @@ import Screen from '../screen/Screen';
 
 
 class OnlineQuizScreen extends Component {
-
 
     constructor(props) {
         super(props);
@@ -35,18 +34,21 @@ class OnlineQuizScreen extends Component {
             isQuizEnded: false,
             isReviewAnswerClicked: false,
             userScore: 0,
-            fetchedLeaderfterQuiz: false,
-            oponentScoreApiCalled: false
         };
-        //this.timer = getTimeDifferenceInSeconds(this.props.quizData.startDate, this.props.quizData.endDate);
-        this.timer = getTimerBasedOnGrade(this.props.grade);
+        
+        this.fetchedLeaderAfterQuiz = false;
+        this.sendScoreToDB = false;
+        this.oponentScoreApiCalled = false;
+        this.nextQuizAttendance = false;
+        this.quizTimer = getTimerBasedOnGrade(this.props.grade);
 
-        this.botObject = '';
+        this.nextQuiz = nextQuizData(this.props.quizScheduleList, this.props.currentQuiz.outerQuizId, this.props.currentQuiz.innerQuizId);
+        this.botObject = this.getBotObjectFromPairObject();
     }
 
     componentWillUnmount() {
         clearTimeout(this.fetchScoreTimeId);
-        clearTimeout(this.scoreTimeout);
+        clearTimeout(this.fetchLeaderBoardTimeId);
 
     }
 
@@ -99,12 +101,6 @@ class OnlineQuizScreen extends Component {
             return item;
         });
         const userScore = quizWithAns.filter(item => item.isUserAnswerCorrect).length
-        // let botsWithScore = updatePairsWithScore(userScore, this.props.botsPair, this.state.quiz.length);
-
-        // if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.OFFLINE) { this.props.updatecompetencyLevel(this.getNewCompetency(userScore)); }
-        // else if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.VIRTUAL) { this.props.updatecompetencyLevelVirtual(this.getNewCompetency(userScore)); }
-
-        //this.props.updateScore(botsWithScore);
         this.setState({
             isQuizEnded: true,
             isReviewAnswerClicked: true,
@@ -142,7 +138,6 @@ class OnlineQuizScreen extends Component {
     //             />
     //         );
     //     }
-
     // }
 
     renderNextQuestion = () => {
@@ -154,25 +149,36 @@ class OnlineQuizScreen extends Component {
     }
 
     fetchOpponentScore = () => {
-        this.botObject &&
-            this.props.fetchOpponentScore(this.props.quizId, this.props.token);
+        // this.botObject &&
+        this.props.fetchOpponentScore(this.props.quizId, this.props.token);
+        if (!this.fetchedLeaderAfterQuiz) {
+            this.fetchLeaderBoardTimeId = setTimeout(() => {
+                this.props.fetchLeadersBoardAfterQuiz(this.props.quizData.id, this.props.userId, this.props.token);
+            }, 7000);
+            this.fetchedLeaderAfterQuiz = true;
+        }
+
     }
 
     setParameterToShowScore = () => this.setState({ isReviewAnswerClicked: false });
 
     renderQuizReview = () => {
-        this.props.sendScoreToDB(this.state.userScore, this.props.quizData.id, this.props.token);
 
-        if (!this.state.oponentScoreApiCalled) {
-            this.setState({ oponentScoreApiCalled: true })
-            this.fetchScoreTimeId =setTimeout(() => {
+        if (!this.sendScoreToDB) {
+            this.props.sendScoreToDB(this.state.userScore, this.props.quizData.id, this.props.token);
+            this.sendScoreToDB = true;
+        }
+
+        if (!this.oponentScoreApiCalled) {
+            this.oponentScoreApiCalled = true;
+            this.fetchScoreTimeId = setTimeout(() => {
                 this.fetchOpponentScore();
-            }, 8000);
+            }, 7000);
         }
 
         return (
             <>
-                {this.renderTimer(12, 'Calculating score in', this.setParameterToShowScore)}
+                {this.renderTimer(20, 'Calculating score in', this.setParameterToShowScore)}
                 <View >
                     {this.state.quiz.map((item, index) => {
                         const answerStyle = [styles.reviewUserAnswerText];
@@ -196,9 +202,9 @@ class OnlineQuizScreen extends Component {
     renderQuizSection = () => (
         <View>
             <CountDown
-                until={this.timer}
+                until={this.quizTimer}
                 onFinish={this.submitQuiz}
-                onPress={() => { }}
+                onPress={()=>{}}
                 timeToShow={['M', 'S']}
                 digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                 digitTxtStyle={{ color: '#255166' }}
@@ -249,20 +255,18 @@ class OnlineQuizScreen extends Component {
 
     renderScoreBoxContainer = (botObject) => {
         const quizLength = this.state.quiz.length;
+        console.log('renderScoreBox ',botObject)
 
-        if (!this.state.fetchedLeaderfterQuiz) {
-            this.props.fetchLeadersBoardAfterQuiz(this.props.quizData.id, this.props.userId, this.props.token);
-            this.setState({ fetchedLeaderfterQuiz: true })
+        if (!this.nextQuizAttendance) {
+            this.props.markAttendanceForNextQuiz(this.nextQuiz);
+            this.nextQuizAttendance = true;
         }
-        this.scoreTimeout = setTimeout(() => {
-            //redirecting after ScoreBox;
-            this.redirectAfterQuiz();
-        }, 5000);
+
 
         return (
             <>
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
-                {this.renderTimer(5, 'Updating LeaderBoard', ()=>{})}
+                {this.renderTimer(5, 'Updating LeaderBoard', this.redirectAfterQuiz)}
                 <View style={styles.scoreBoxContainer}>
                     <View style={styles.scoreBox}>
                         <Text style={styles.displayScoreText}>{this.props.name}</Text>
@@ -279,18 +283,17 @@ class OnlineQuizScreen extends Component {
     }
 
     render() {
-        this.botObject = this.getBotObjectFromPairObject();
 
         let comp = this.state.isQuizEnded ?
             (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer(this.botObject)) :
             this.renderQuizSection();
 
         let isSmall = true;
-        let grade, school;
+        let grade;
+        let school = `Roll No. ${this.props.rollNumber}`
         if (!this.botObject) {
-            isSmall = false;
-            grade = this.props.grade,
-                school = this.props.school
+            isSmall = false
+            grade = this.props.grade
         }
 
         return (
@@ -303,8 +306,9 @@ class OnlineQuizScreen extends Component {
                                 grade={grade}
                                 school={school}
                                 isSmall={isSmall} />
-                            {this.botObject && <StudentInfoDisplay
+                            {!!this.botObject && <StudentInfoDisplay
                                 name={this.botObject.name}
+                                school={`Roll No. ${this.botObject.rollNumber}`}
                                 isSmall={isSmall} />}
                         </View>
                         <View style={styles.OnlineQuizScreen}>
@@ -321,6 +325,7 @@ const mapStateToProps = state => {
     return {
         name: state.login.userData?.name,
         grade: state.login.userData?.grade,
+        rollNumber: state.login.userData?.rollNumber,
         school: state.login.userData?.schoolName,
         userId: state.login.userData?.userId,
         competencyLevel: state.login.userData?.competencylevelFromAPI,
@@ -329,9 +334,24 @@ const mapStateToProps = state => {
         userOponentId: state.scheduleLeaderBoard?.userOponentId,
         token: state.login.userData?.token,
         opponentScore: state.scheduleQuiz.opponentScore,
-        quizId: state.scheduleQuiz.currentQuiz?.innerQuizId
+        quizId: state.scheduleQuiz.currentQuiz?.innerQuizId,
+        quizScheduleList: state.scheduleQuiz?.scheduleQuizList,
+        currentQuiz: state.scheduleQuiz?.currentQuiz
 
     }
+}
+
+export const mergeProps = (stateProps, dispatchProps, ownProps) => {
+
+    let actionProps = Object.assign({}, dispatchProps, {
+
+        markAttendanceForNextQuiz: (currentQuiz) => {
+            dispatchProps.markAttendanceForNextQuiz(currentQuiz, stateProps.userId, stateProps.token)
+        }
+
+    });
+
+    return Object.assign({}, ownProps, stateProps, actionProps);
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -344,6 +364,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         fetchLeadersBoardAfterQuiz: function (quizId, userId, token) {
             dispatch(ScheduleLeaderBoardAction.getLeadersBoardAfterQuiz(quizId, userId, token, ownProps.navigation))
+        },
+        markAttendanceForNextQuiz: function (currentQuiz, userId, token) {
+            dispatch(ScheduleLeaderBoardAction.markAttendanceForNextQuiz(currentQuiz, userId, token, ownProps.navigation))
+
         }
     }
 }

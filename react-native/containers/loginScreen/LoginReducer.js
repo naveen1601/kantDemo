@@ -13,6 +13,7 @@ let initialState = {
         surName: '',
         schoolName: '',
         section: '',
+        rollNumber:0,
         competencylevelFromAPI: 0,
         userId: '',
         userName: '',

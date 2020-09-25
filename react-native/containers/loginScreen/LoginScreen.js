@@ -18,7 +18,7 @@ import Screen from '../screen/Screen';
 class LoginScreen extends Component {
 
     state = {
-        userName: '',
+        userName: 'KL',
         password: '',
         schoolCode: '',
         userNameHasError: false,

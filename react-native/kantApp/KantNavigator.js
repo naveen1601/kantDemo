@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useEffect, createRef } from "react";
 import {
     Image,
     StyleSheet,
@@ -22,8 +21,11 @@ import ScheduleQuizScreen from '../containers/scheduleQuizScreen/ScheduleQuizScr
 import ScheduleLeaderBoardScreen from '../containers/scheduleLeaderBoardScreen/ScheduleLeaderBoardScreen';
 import OnlineQuizScreen from '../containers/onlineQuizScreen/OnlineQuizScreen';
 import FlatButton from '../baseComponents/button/FlatButton';
+import { AppState } from 'react-native';
+
 
 const Stack = createStackNavigator();
+const navigationRef = createRef();
 
 quitQuizAndMoveToHome = (navigation) => (<HomeButton navigation={navigation} />);
 
@@ -38,7 +40,7 @@ function MyStack(props) {
                 resetScreen(navigation, Screens.LoginOption)
             }}
             text={'Logout'}
-        />): null
+        />) : null
         return comp;
     }
 
@@ -153,12 +155,38 @@ const mapDispatchToProps = dispatch => {
 StackNav = connect(mapStateToProps, mapDispatchToProps)(MyStack)
 
 export default KantNavigator = () => {
+
+    useEffect(() => {
+        AppState.addEventListener("change", _handleAppStateChange);
+
+        return () => {
+            AppState.removeEventListener("change", _handleAppStateChange);
+        };
+    }, []);
+
+    const _handleAppStateChange = (nextAppState) => {
+        if (nextAppState == "active") {
+            console.log("App has come to the foreground!");
+            
+
+        }
+        else if (nextAppState == "background") {
+            
+            console.log("App is in  backGround!");
+            navigationRef.current.canGoBack() &&
+                navigationRef.current.goBack()
+        }
+        else {
+            console.log("App is in else State");
+        }
+    };
+
     return (
         <>
             <StatusBar
                 barStyle="light-content"
                 backgroundColor="#255166" />
-            <NavigationContainer>
+            <NavigationContainer ref={navigationRef}>
                 <StackNav />
             </NavigationContainer>
             <AppLevelSpinner />
