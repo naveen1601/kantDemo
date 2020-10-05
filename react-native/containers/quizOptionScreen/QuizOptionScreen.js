@@ -132,8 +132,9 @@ class QuizOptionScreen extends Component {
 
     render() {
         const comp = this.state.isQuizInstructionEnabled ? this.renderInstructions() : this.renderQuizOptionButtonsConatiner();
-
+        const rollNum = this.props.rollNumber ? `Roll No: ${this.props.rollNumber}` : '';
         const gradeSection = this.props.grade + '' + (this.props.section ? this.props.section : '');
+        const compLevel = this.props.isLoggedIn ? this.props.competencylevelFromAPI/10 : '';
         return (
             <Screen>
                 <ScrollView keyboardShouldPersistTaps={'always'}
@@ -144,7 +145,9 @@ class QuizOptionScreen extends Component {
                 >
                     <StudentInfoDisplay name={this.props.name}
                         grade={gradeSection}
-                        school={this.props.school} />
+                        position = {rollNum}
+                        school={this.props.school}
+                        compLevel={compLevel} />
                     {comp}
                     {this.state.isOfflineClickedForLoggedinUser &&
                         this.renderOfflineSection()}
@@ -158,11 +161,12 @@ const mapStateToProps = (state) => {
     return {
         name: state.login.userData?.name,
         grade: state.login.userData?.grade,
+        rollNumber: state.login.userData?.rollNumber,
         section: state.login.userData?.section,
         school: state.login.userData?.schoolName,
         isLoggedIn: state.login?.isLoggedIn,
         token: state.login.userData?.token,
-        competencyLevel: state.login.userData?.competencyLevel,
+        competencylevelFromAPI: state.login.userData?.competencylevelFromAPI,
         competencyLevelVirtual: state.login.userData?.competencyLevelVirtual
     }
 }

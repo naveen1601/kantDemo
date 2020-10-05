@@ -1,6 +1,6 @@
 import MasterData from '../staticData/masterData.json';
-import Questions from '../staticData/questions_txt.json';
-import SubQuestions from '../staticData/subQuestions_txt.json';
+import Questions from '../staticData/questions.json';
+import SubQuestions from '../staticData/subQuestions.json';
 import { randomValueFromArray, AllCompetencyArray } from './CommonHelper';
 import _ from 'lodash';
 import Config from '../Configs';
@@ -65,7 +65,7 @@ export function findQuestionsFromQuestionFile(competencyAndLevelList) {
     //find all the questions which has same competency and level
     Questions.forEach(ques => {
         masterListOfCompetency.forEach(item => {
-            // ques.subject == item.subject && ques.level == item.level && //remove level, put check only on competency
+            // ques.subject == item.subject && ques.level == item.level && //remove level, put check only on competency\
             ques.subject == item.subject &&
                 item.questionsArray.push(ques);
         });

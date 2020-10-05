@@ -39,6 +39,9 @@ class OfflineQuizScreen extends Component {
             userScore: 0
         };
         this.timer = getTimerBasedOnGrade(this.props.grade);
+        this.currentUser = '';
+        this.botObject = '';
+        this.getStudentAndOpponentFromPair();
 
     }
 
@@ -217,8 +220,16 @@ class OfflineQuizScreen extends Component {
         </View>
     )
 
-    getBotObjectFromPairObject = () => {
-        return this.props.botsPair.flat().find(bot => bot.id == this.props.botIdPairedWithUser);
+    // getBotObjectFromPairObject = () => {
+    //     //(bot.id == 100 || (bot.studentId && (bot.studentId == this.props.userId)))
+    //     // serialNum
+    //     return this.props.botsPair.flat().find(bot => bot.id == this.props.botIdPairedWithUser);
+    // }
+
+    getStudentAndOpponentFromPair = () => {
+        const flatList = this.props.botsPair.flat();
+        this.currentUser = flatList.find(bot => bot.id == 100);
+        this.botObject = flatList.find(bot => bot.id == this.props.botIdPairedWithUser);
     }
 
     renderScoreBoxContainer = (botObject) => {
@@ -249,12 +260,12 @@ class OfflineQuizScreen extends Component {
     }
 
     render() {
-        let botObject = this.getBotObjectFromPairObject();
         let isrenderQuizReviewEnabled = this.state.isQuizEnded && this.state.isReviewAnswerClicked;
         let comp = this.state.isQuizEnded ?
-            (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer(botObject)) :
+            (this.state.isReviewAnswerClicked ? this.renderQuizReview() : this.renderScoreBoxContainer(this.botObject)) :
             this.renderQuizSection();
         // const comp = this.renderQuizReview();
+        const gradeSection = this.props.grade + '' + (this.props.section ? this.props.section : '');
 
         return (
             <View style={styles.reviewContainer}>
@@ -262,11 +273,15 @@ class OfflineQuizScreen extends Component {
                     <View style={styles.userInfoBox}>
                         <StudentInfoDisplay
                             name={this.props.name}
+                            grade = {gradeSection}
                             school={this.props.school}
+                            position={`Position: ${this.currentUser.serialNum}`}
                             isSmall />
                         <StudentInfoDisplay
-                            name={botObject.name}
+                            name={this.botObject.name}
                             school={this.props.school}
+                            grade={gradeSection}
+                            position={`Position: ${this.botObject.serialNum}`}
                             isSmall />
                     </View>
                     <View style={styles.OfflineQuizScreen}>
@@ -288,6 +303,7 @@ const mapStateToProps = state => {
     return {
         name: state.login.userData?.name,
         grade: state.login.userData?.grade,
+        section: state.login.userData?.section,
         school: state.login.userData?.school,
         competencyLevel: selectCompLevel,
         isLoggedIn: state.login.isLoggedIn,

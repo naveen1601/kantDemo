@@ -45,7 +45,13 @@ StudentInfoDisplay = (props) => {
             <View style={userInfoDivision}>
                 <Text style={displayName}>{name}</Text>
                 {!!props.grade &&
-                    <Text style={displayGradeLabel}>Grade: <Text style={displayGradeValue}>{props.grade}</Text></Text>
+                    <Text style={displayGradeLabel}>{`Grade: ${props.grade}`}</Text>
+                }
+                {!!props.position &&
+                    <Text style={diplaySchool}>{props.position}</Text>
+                }
+                {!!props.compLevel &&
+                    <Text style={diplaySchool}>{`Level: ${props.compLevel}`}</Text>
                 }
                 {!!props.school &&
                     <Text style={diplaySchool}>{props.school}</Text>

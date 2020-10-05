@@ -48,14 +48,14 @@ export default {
         backgroundColor: '#e9f4f7'
     },
     userInitialWrapper_small: {
-        width: 60,
-        height: 60
+        width: 80,
+        height: 80
     },
     userInitial_small: {
-        fontSize: 36
+        fontSize: 40
     },
     displayName_small: {
-        paddingTop: 18,
+        paddingTop: 0,
         fontSize: 18   
     },
     userInfoDivision_small: {

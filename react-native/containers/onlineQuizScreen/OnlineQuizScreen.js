@@ -43,7 +43,9 @@ class OnlineQuizScreen extends Component {
         this.quizTimer = getTimerBasedOnGrade(this.props.grade);
 
         this.nextQuiz = nextQuizData(this.props.quizScheduleList, this.props.currentQuiz.outerQuizId, this.props.currentQuiz.innerQuizId);
-        this.botObject = this.getBotObjectFromPairObject();
+        this.currentUser = '';
+        this.botObject = '';
+        this.getStudentAndOpponentFromPair();
     }
 
     componentWillUnmount() {
@@ -222,9 +224,10 @@ class OnlineQuizScreen extends Component {
         </View>
     )
 
-    getBotObjectFromPairObject = () => {
-        return this.props.leaderBoardData.flat().find(bot => bot.studentId == this.props.userOponentId);
-
+    getStudentAndOpponentFromPair = () => {
+        const flatList = this.props.leaderBoardData.flat();
+        this.currentUser = flatList.find(bot => bot.studentId == this.props.userId);
+        this.botObject = flatList.find(bot => bot.studentId == this.props.userOponentId);
     }
 
     renderTimer = (timer, message, onFinish) => {
@@ -293,7 +296,8 @@ class OnlineQuizScreen extends Component {
         let school = `Roll No. ${this.props.rollNumber}`
         if (!this.botObject) {
             isSmall = false
-            grade = this.props.grade
+            grade = this.props.grade + '' + (this.props.section ? this.props.section : '');
+
         }
 
         return (
@@ -305,11 +309,13 @@ class OnlineQuizScreen extends Component {
                                 name={this.props.name}
                                 grade={grade}
                                 school={school}
-                                isSmall={isSmall} />
+                                isSmall={isSmall}
+                                position={`Position: ${this.currentUser.sequence}`} />
                             {!!this.botObject && <StudentInfoDisplay
                                 name={this.botObject.name}
                                 school={`Roll No. ${this.botObject.rollNumber}`}
-                                isSmall={isSmall} />}
+                                isSmall={isSmall}
+                                position={`Position: ${this.botObject.sequence}`} />}
                         </View>
                         <View style={styles.OnlineQuizScreen}>
                             {comp}
@@ -325,6 +331,7 @@ const mapStateToProps = state => {
     return {
         name: state.login.userData?.name,
         grade: state.login.userData?.grade,
+        section: state.login.userData?.section,
         rollNumber: state.login.userData?.rollNumber,
         school: state.login.userData?.schoolName,
         userId: state.login.userData?.userId,
@@ -356,16 +363,16 @@ export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        fetchOpponentScore: function (quizId, token) {
+        fetchOpponentScore: function (quizId, token) { // 0+7 sec
             dispatch(OnlineQuizAction.fetchOpponentScore(quizId, token));
         },
-        sendScoreToDB: function (score, quizId, token) {
+        sendScoreToDB: function (score, quizId, token) { //0 sec
             dispatch(OnlineQuizAction.sendScoreToDB(score, quizId, token, ownProps.navigation));
         },
-        fetchLeadersBoardAfterQuiz: function (quizId, userId, token) {
+        fetchLeadersBoardAfterQuiz: function (quizId, userId, token) { // 0+7+7 sec
             dispatch(ScheduleLeaderBoardAction.getLeadersBoardAfterQuiz(quizId, userId, token, ownProps.navigation))
         },
-        markAttendanceForNextQuiz: function (currentQuiz, userId, token) {
+        markAttendanceForNextQuiz: function (currentQuiz, userId, token) { // 0+7+7+6 sec
             dispatch(ScheduleLeaderBoardAction.markAttendanceForNextQuiz(currentQuiz, userId, token, ownProps.navigation))
 
         }
