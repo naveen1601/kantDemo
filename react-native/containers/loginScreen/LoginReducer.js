@@ -19,6 +19,7 @@ let initialState = {
         userName: '',
         token: '',
         sponsoredBy:'',
+        schoolCode: '',
         competencyLevelVirtual: []
 
     },

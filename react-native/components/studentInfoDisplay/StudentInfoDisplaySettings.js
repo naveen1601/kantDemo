@@ -7,9 +7,9 @@ let $_ = {
     userInitialSize: 100,
     userInitialBGColor: $primary.white,
     namePaddingTop: $primary.baseGridUnit * 2,
-    nameFontSize: $primary.baseFontSize + 8,
+    nameFontSize: $primary.baseFontSize + 7,
     userInfoPaddingLeft: $primary.baseGridUnit * 2,
-    userInfoFontSize: $primary.baseFontSize + 4,
+    userInfoFontSize: $primary.baseFontSize + 2,
     userInitialFontSize: $primary.baseFontSize * 5
 };
 

@@ -56,6 +56,9 @@ StudentInfoDisplay = (props) => {
                 {!!props.school &&
                     <Text style={diplaySchool}>{props.school}</Text>
                 }
+                {!!props.schoolCode &&
+                    <Text style={diplaySchool}>{`School Code: ${props.schoolCode}`}</Text>
+                }
             </View>
         </View>
     );

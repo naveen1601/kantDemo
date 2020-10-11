@@ -39,7 +39,8 @@ export default {
             }
 
             let successCallback = (response) => {
-                console.log('Before LeaderBoard Success');
+                // debugger;
+                console.log('Before LeaderBoard Success ');
 
                 dispatch({
                     type: ScheduleQuizConstants.ACTIONS.UPDATE_CURRENT_QUIZ,

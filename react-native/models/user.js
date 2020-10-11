@@ -5,6 +5,7 @@ export default class user {
         this.surName = loginResponse?.user?.surname;
         this.userName = loginResponse?.user?.username;
         this.schoolName = loginResponse?.user?.school?.name;
+        this.schoolCode = loginResponse?.user?.school?.schoolCode;
         this.sponsoredBy = loginResponse?.user?.school?.sponsored
 
         this.grade = loginResponse?.user?.gradesections[0]?.grade?.name;

@@ -12,28 +12,43 @@ class LeaderBoard extends Component {
         (<View key={index}>
             {userPair.map(bot => {
 
-                const userContainerStyle = [styles.botBox];
+                const userBoxStyle = [styles.botContainer];
 
                 (bot.id == 100 || (bot.studentId && (bot.studentId == this.props.userId))) &&
-                    userContainerStyle.push(styles.userBox)
+                    userBoxStyle.push(styles.userBox)
                 const serialNum = bot.serialNum || bot.sequence;
                 (bot.status == 'absent') &&
-                    userContainerStyle.push(styles.absentBox)
+                    userBoxStyle.push(styles.absentBox)
                 isGoingUp = bot.isGoingUp || bot.position == 'up';
+
+                const level = bot.competency || 0;
+                const marks = bot.correctAnswer || 0;
+                const totalQuiz = bot.totalQuiz || 0;
+
+
                 return (
-                    <View style={userContainerStyle}>
-                        <Text style={styles.nameBox}>{serialNum}. {bot.name}</Text>
-                        {isGoingUp &&
-                            <View style={styles.arrowContainer}>
-                                <Image source={require('../../staticData/assests/upArrow.png')}
-                                    style={styles.arrowBox} />
+                    <View style={userBoxStyle}>
+                        <View style={styles.botBox}>
+                            <Text style={styles.nameBox}>{serialNum}. {bot.name}</Text>
+                            {isGoingUp &&
+                                <View style={styles.arrowContainer}>
+                                    <Image source={require('../../staticData/assests/upArrow.png')}
+                                        style={styles.arrowBox} />
+                                </View>
+                            }
+                            {
+                                (bot.status == 'absent') &&
+                                <Text>Quit</Text>
+                            }
+
+                        </View>
+                        {!bot.id &&
+                            <View style={styles.infoBox}>
+                                <Text style={styles.infoText}>Level: {level}</Text>
+                                <Text style={styles.infoText}>Marks: {marks}</Text>
+                                <Text style={styles.infoText}>Total Quiz: {totalQuiz}</Text>
                             </View>
                         }
-                        {
-                            (bot.status == 'absent')&&
-                                <Text>Quit</Text>
-                        }
-
                     </View>
                 )
             }

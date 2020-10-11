@@ -27,6 +27,9 @@ class ScheduleLeaderBoardScreen extends Component {
     }
     currentTime = moment();
 
+    quizSequence = (this.props.currentQuiz?.quizData?.sequence_value % 2 == 0) ? 'Even First Pair' : 'Odd First Pair'
+
+
     async componentDidMount() {
         if (this.state.isQuizEnded) {
             this.currentTime = await getTimeFromApi();
@@ -56,7 +59,7 @@ class ScheduleLeaderBoardScreen extends Component {
             const nextQuizStartTime = moment(this.state.newQuiz?.quizData?.startDate);
             const durationbwStartandCurrent = this.currentTime && moment.duration(nextQuizStartTime.diff(this.currentTime));
             const timeInSeconds = durationbwStartandCurrent && durationbwStartandCurrent.asSeconds();
-            let msg = 'nextQuDiff '+timeInSeconds
+            let msg = 'nextQuDiff ' + timeInSeconds
             // alert(msg)
             console.log(msg)
             this.leaderBoardTimeId = setTimeout(() => {
@@ -67,7 +70,7 @@ class ScheduleLeaderBoardScreen extends Component {
                 return 2;
             }
             else {
-                return timeInSeconds-1;
+                return timeInSeconds - 1;
             }
         }
         else return 8;
@@ -82,17 +85,17 @@ class ScheduleLeaderBoardScreen extends Component {
         let screenName = ''
 
         if (this.state.isQuizEnded && !_.isEmpty(this.props.quizId)) {
-            quizText = 'Moving to next Quiz in';
+            quizText = 'Leaderboard-Result';
             timer = this.getTimerForNextQuiz();
             screenName = Screens.ScheduleLeaderBoardScreen;
         }
         else {
-            quizText = 'Quiz is going to start in';
+            quizText = 'Leaderboard-Pair';
             timer = 10;
             screenName = Screens.OnlineQuizScreen;
         }
 
-        if  ( this.state.isQuizEnded && !this.state.newQuiz?.innerQuizId) {
+        if (this.state.isQuizEnded && !this.state.newQuiz?.innerQuizId) {
             quizText = 'Quiz over, exit in '
             screenName = Screens.ScheduleQuizScreen;
         }
@@ -120,15 +123,15 @@ class ScheduleLeaderBoardScreen extends Component {
     }
 
     render() {
-        const leaderBoardData = this.state.isQuizEnded ? this.props.leaderBoardDataFinal : this.props.leaderBoardData
+        const leaderBoardData = this.state.isQuizEnded ? this.props.leaderBoardDataFinal : this.props.leaderBoardData;
         return (
             <Screen>
                 <ScrollView keyboardShouldPersistTaps={'always'}>
+                <View><Text style={styles.displaySequenceText}>{this.quizSequence}</Text></View>
                     <View style={styles.leadersBoardContainer}>
                         {this.renderNextQuizTextAndTime()}
                         <LeaderBoard leaderBoardMatrix={leaderBoardData}
                             userId={this.props.userId} />
-
                     </View>
                 </ScrollView>
             </Screen>

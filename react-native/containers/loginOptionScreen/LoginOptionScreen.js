@@ -53,12 +53,12 @@ class LoginOptionScreen extends Component {
                         <View style={styles.loginFields}>
                             <Button
                                 onPress={this.handleLoginButton}
-                                text="Login through user id"
+                                text="Student Login"
                                 secondaryButton={true}
                             />
                             <Button
                                 onPress={this.handleGuestLogin}
-                                text="Login as Guest"
+                                text="Guest Student"
                                 secondaryButton={true}
                             />
                         </View>

@@ -3,6 +3,7 @@ import $_ from './StudentInfoDisplaySettings';
 export default {
     studentInfoContainer: {
         padding: $_.conatinerPadding,
+        paddingTop: 5,
         flexDirection: 'row',
         width: '70%'
     },
@@ -26,7 +27,6 @@ export default {
     userInfoDivision: {
         paddingLeft: $_.userInfoPaddingLeft,
         fontSize: $_.userInfoFontSize
-        
     },
     displayGradeLabel: {
         paddingTop: 6,

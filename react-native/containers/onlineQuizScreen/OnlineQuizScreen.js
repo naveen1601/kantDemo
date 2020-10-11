@@ -195,7 +195,6 @@ class OnlineQuizScreen extends Component {
                             </View>
                         )
                     })}
-                    <View style={styles.heightPatch} />
                 </View>
             </>
         )
@@ -258,11 +257,22 @@ class OnlineQuizScreen extends Component {
 
     renderScoreBoxContainer = (botObject) => {
         const quizLength = this.state.quiz.length;
+        const opponentStyle = [styles.scoreBox];
+        const userStyle = [styles.scoreBox];
         console.log('renderScoreBox ', botObject)
 
         if (!this.nextQuizAttendance) {
             this.props.markAttendanceForNextQuiz(this.nextQuiz);
             this.nextQuizAttendance = true;
+        }
+
+        if (botObject) {
+            if (this.state.userScore > this.props.opponentScore) {
+                userStyle.push(styles.scoreBoxWinner);
+            }
+            else if (this.state.userScore < this.props.opponentScore) {
+                opponentStyle.push(styles.scoreBoxWinner);
+            }
         }
 
 
@@ -271,12 +281,12 @@ class OnlineQuizScreen extends Component {
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
                 {this.renderTimer(5, 'Updating LeaderBoard', this.redirectAfterQuiz)}
                 <View style={styles.scoreBoxContainer}>
-                    <View style={styles.scoreBox}>
+                    <View style={userStyle}>
                         <Text style={styles.displayScoreText}>{this.props.name}</Text>
                         <Text style={styles.displayScoreText}>{this.state.userScore}/{quizLength}</Text>
                         <Text style={styles.displayScoreText}>Correct</Text>
                     </View>
-                    {botObject && <View style={styles.scoreBox}>
+                    {botObject && <View style={opponentStyle}>
                         <Text style={styles.displayScoreText}>{botObject.name}</Text>
                         <Text style={styles.displayScoreText}>{this.props.opponentScore}/{quizLength}</Text>
                         <Text style={styles.displayScoreText}>Correct</Text>
@@ -299,11 +309,13 @@ class OnlineQuizScreen extends Component {
             grade = this.props.grade + '' + (this.props.section ? this.props.section : '');
 
         }
+        const quizSequence = (this.props.quizData.sequence_value % 2 == 0) ? 'Even First Pair' : 'Odd First Pair';
 
         return (
             <Screen>
                 <View style={styles.reviewContainer}>
                     <ScrollView keyboardShouldPersistTaps={'always'}>
+                        <View><Text style={styles.displaySequenceText}>{quizSequence}</Text></View>
                         <View style={styles.userInfoBox}>
                             <StudentInfoDisplay
                                 name={this.props.name}

@@ -134,7 +134,7 @@ class QuizOptionScreen extends Component {
         const comp = this.state.isQuizInstructionEnabled ? this.renderInstructions() : this.renderQuizOptionButtonsConatiner();
         const rollNum = this.props.rollNumber ? `Roll No: ${this.props.rollNumber}` : '';
         const gradeSection = this.props.grade + '' + (this.props.section ? this.props.section : '');
-        const compLevel = this.props.isLoggedIn ? this.props.competencylevelFromAPI/10 : '';
+        const compLevel = this.props.isLoggedIn ? this.props.competencylevelFromAPI/100 : '';
         return (
             <Screen>
                 <ScrollView keyboardShouldPersistTaps={'always'}

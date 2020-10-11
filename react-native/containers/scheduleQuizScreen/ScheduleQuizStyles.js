@@ -1,7 +1,10 @@
 import $_ from './ScheduleQuizSettings';
 
 export default {
-    
+    scheduleQuizContainer:{
+        flex: 1,
+        alignItems: 'stretch',
+    },
     quizText:{
         padding:15,
         fontSize: 22,
@@ -12,8 +15,8 @@ export default {
     },
     alertContainer:{
         paddingTop:10
-    }
-    
+    },
+
     // quizOptionButtonContainer:{
     //     padding:10,
     //     paddingTop:20

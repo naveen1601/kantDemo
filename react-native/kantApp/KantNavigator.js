@@ -57,7 +57,7 @@ function MyStack(props) {
 
             <Stack.Screen name={Screens.LoginScreen}
                 component={LoginScreen}
-                options={{ headerTitle: 'Please Login' }} />
+                options={{ headerTitle: 'Student Login' }} />
 
             <Stack.Screen name={Screens.GuestScreen}
                 component={GuestScreen}

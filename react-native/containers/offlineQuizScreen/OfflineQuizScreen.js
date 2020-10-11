@@ -124,7 +124,9 @@ class OfflineQuizScreen extends Component {
         let botsWithScore = updatePairsWithScore(userScore, this.props.botsPair, this.state.quiz.length);
 
         if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.OFFLINE) { this.props.updatecompetencyLevel(this.getNewCompetency(userScore)); }
-        else if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.VIRTUAL) { this.props.updatecompetencyLevelVirtual(this.getNewCompetency(userScore)); }
+        else if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.VIRTUAL) { 
+            this.props.updatecompetencyLevelVirtual(this.getNewCompetency(userScore)); 
+        }
 
         this.props.updateScore(botsWithScore);
         this.setState({
@@ -190,7 +192,6 @@ class OfflineQuizScreen extends Component {
                         </View>
                     )
                 })}
-                <View style={styles.heightPatch} />
                 {/* <BounceButton
                     onPress={() => this.props.navigation.replace(Screens.LeadersBoardScreen)}
                     value={'See Leaderboard22'} /> */}
@@ -321,6 +322,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         updatecompetencyLevel: function (newCompetencyLevel) {
             dispatch(GuestActions.updatecompetencyLevel(newCompetencyLevel));
+        },
+        updatecompetencyLevelVirtual: function (newCompetencyLevel) {
+            dispatch(GuestActions.updateVirtualCompetency(newCompetencyLevel));
         }
     }
 }

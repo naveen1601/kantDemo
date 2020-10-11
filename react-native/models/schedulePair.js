@@ -107,6 +107,9 @@ function changeObjFormat(studentData) {
     studentId: studentData.student,
     sequence: studentData.sequence_value || studentData.current_sequence_value,
     position: studentData.positionChanged,
-    status: studentData.status
+    status: studentData.status,
+    totalQuiz: studentData.total_quiz,
+    competency: studentData.competency,
+    correctAnswer: studentData.student_numberOfCorrectAnswer
   }
 }

@@ -6,9 +6,6 @@ export default {
         flex: 1,
         alignItems: 'stretch',
     },
-    heightPatch: {
-        height: 100,
-    },
     OfflineQuizScreen: {
         padding: 20
     },

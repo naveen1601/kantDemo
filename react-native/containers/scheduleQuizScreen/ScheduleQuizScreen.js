@@ -17,6 +17,7 @@ import { Screens } from '../../helpers/ScreenHelpers';
 import { getTimeFromApi } from '../../helpers/CommonHelper';
 import Screen from '../screen/Screen';
 import ScheduleLeaderBoardAction from '../scheduleLeaderBoardScreen/ScheduleLeaderBoardAction';
+import BounceButton from '../../components/bounceButton/BounceButton';
 
 class ScheduleQuizScreen extends Component {
     state = {
@@ -125,8 +126,7 @@ class ScheduleQuizScreen extends Component {
                 <CountDown
                     until={timerValue}
                     onFinish={() => this.props.navigation.replace(Screens.ScheduleLeaderBoardScreen)}
-                    // onFinish={() => {}}
-                    onPress={() => { }}
+                    onPress={() => {}}
                     digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                     digitTxtStyle={{ color: '#255166' }}
                     separatorStyle={{ color: '#255166', paddingBottom: 25 }}
@@ -153,27 +153,35 @@ class ScheduleQuizScreen extends Component {
     render() {
         const gradeSection = this.props.grade + '' + (this.props.section ? this.props.section : '');
         const rollNumber = this.props.rollNumber ? `Roll No: ${this.props.rollNumber}` : '';
-        const compLevel = this.props.isLoggedIn ? this.props.competencylevelFromAPI/10 : '';
+        const compLevel = this.props.isLoggedIn ? this.props.competencylevelFromAPI / 100 : '';
 
         return (
             <Screen>
-                <ScrollView keyboardShouldPersistTaps={'always'}>
-                    <StudentInfoDisplay name={this.props.name}
-                        grade={gradeSection}
-                        position={rollNumber}
-                        school={this.props.school} 
-                        compLevel={compLevel}/>
-                    {!!this.props.quizError &&
-                        <AlertInfo type="error"
-                            message={this.props.quizError} />
+                <View style={styles.scheduleQuizContainer}>
+                    <ScrollView keyboardShouldPersistTaps={'always'}>
+                        {!!this.props.quizError &&
+                            <AlertInfo type="error"
+                                message={this.props.quizError} />
+                        }
+                        {!!this.props.leaderBoardError &&
+                            <AlertInfo type="error"
+                                message={this.props.leaderBoardError} />
+                        }
+                        <StudentInfoDisplay name={this.props.name}
+                            grade={gradeSection}
+                            position={rollNumber}
+                            school={this.props.school}
+                            compLevel={compLevel}
+                            schoolCode={this.props.schoolCode} />
+                        {this.renderCountDown()}
+                        {this.renderQuizList()}
+
+                    </ScrollView>
+                    {!!this.props.sponsoredBy &&
+                        <BounceButton
+                            text={this.props.sponsoredBy} />
                     }
-                    {!!this.props.leaderBoardError &&
-                        <AlertInfo type="error"
-                            message={this.props.leaderBoardError} />
-                    }
-                    {this.renderCountDown()}
-                    {this.renderQuizList()}
-                </ScrollView>
+                </View>
             </Screen>
         );
     }
@@ -187,6 +195,7 @@ const mapStateToProps = (state) => {
         rollNumber: state.login.userData?.rollNumber,
         token: state.login.userData?.token,
         school: state.login.userData?.schoolName,
+        schoolCode: state.login.userData?.schoolCode,
         quizSchedule: state.scheduleQuiz?.scheduleQuizList,
         quizError: state.scheduleQuiz?.errorMessage,
         userId: state.login.userData?.userId,
@@ -194,6 +203,7 @@ const mapStateToProps = (state) => {
         currentQuiz: state.scheduleQuiz?.currentQuiz,
         isLoggedIn: state.login?.isLoggedIn,
         competencylevelFromAPI: state.login.userData?.competencylevelFromAPI,
+        sponsoredBy: state.login?.userData?.sponsoredBy,
 
     }
 }

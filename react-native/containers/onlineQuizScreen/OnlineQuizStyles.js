@@ -1,3 +1,5 @@
+import DefaultPrimarySettings from "../../settings/styles/DefaultPrimarySettings";
+
 export default {
 
     reviewBoxTimerContainer: {
@@ -14,10 +16,7 @@ export default {
     reviewContainer: {
         flex: 1,
         alignItems: 'stretch',
-    },
-    heightPatch: {
-        height: 100,
-    },
+    },    
     OfflineQuizScreen: {
         padding: 20
     },
@@ -44,6 +43,9 @@ export default {
         width: '40%',
         backgroundColor: 'white',
         borderColor: '#255166'
+    },
+    scoreBoxWinner: {
+        backgroundColor: DefaultPrimarySettings.informationColors.success,
     },
     scoreBoxContainer: {
         flexDirection: 'row',
@@ -84,5 +86,10 @@ export default {
     reviewUserAnswerText:{
         fontSize:16,
         paddingTop: 6
+    },
+    displaySequenceText:{
+        fontSize:20,
+        textAlign:'center',
+        color: '#255166'
     }
 }
