@@ -63,7 +63,8 @@ class OfflineQuizScreen extends Component {
             userAnswer={currentQuestion.userAnswer}
             onChangeValue={this.handleUserInput}
             quesIndex={currentQuestion.index}
-            isEmptyWarning={currentQuestion.showEmptyWarning} />)
+            isEmptyWarning={currentQuestion.showEmptyWarning} 
+            qaFormat={currentQuestion.qaFormat}/>)
     }
 
     renderPreviousButton = () => {

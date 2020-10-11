@@ -17,7 +17,6 @@ import OnlineQuizAction from './OnlineQuizAction';
 import ScheduleLeaderBoardAction from '../scheduleLeaderBoardScreen/ScheduleLeaderBoardAction';
 import Screen from '../screen/Screen';
 
-
 class OnlineQuizScreen extends Component {
 
     constructor(props) {
@@ -35,7 +34,7 @@ class OnlineQuizScreen extends Component {
             isReviewAnswerClicked: false,
             userScore: 0,
         };
-        
+
         this.fetchedLeaderAfterQuiz = false;
         this.sendScoreToDB = false;
         this.oponentScoreApiCalled = false;
@@ -72,7 +71,8 @@ class OnlineQuizScreen extends Component {
             userAnswer={currentQuestion.userAnswer}
             onChangeValue={this.handleUserInput}
             quesIndex={currentQuestion.index}
-            isEmptyWarning={currentQuestion.showEmptyWarning} />)
+            isEmptyWarning={currentQuestion.showEmptyWarning}
+            qaFormat={currentQuestion.qaFormat} />)
     }
 
     renderPreviousButton = () => {
@@ -206,7 +206,7 @@ class OnlineQuizScreen extends Component {
             <CountDown
                 until={this.quizTimer}
                 onFinish={this.submitQuiz}
-                onPress={()=>{}}
+                onPress={() => { }}
                 timeToShow={['M', 'S']}
                 digitStyle={{ backgroundColor: '#FFF', borderWidth: 1, borderColor: '#255166' }}
                 digitTxtStyle={{ color: '#255166' }}
@@ -258,7 +258,7 @@ class OnlineQuizScreen extends Component {
 
     renderScoreBoxContainer = (botObject) => {
         const quizLength = this.state.quiz.length;
-        console.log('renderScoreBox ',botObject)
+        console.log('renderScoreBox ', botObject)
 
         if (!this.nextQuizAttendance) {
             this.props.markAttendanceForNextQuiz(this.nextQuiz);

@@ -8,7 +8,7 @@ export default {
         borderColor: '#255166',
         marginTop: 10,
         backgroundColor: 'white',
-        paddingBottom: 12,
+        paddingBottom: 10,
         paddingLeft: 12,  
         paddingRight: 12, 
     },
@@ -23,5 +23,10 @@ export default {
     },
     validationErrorText:{
         color: 'red',
-    }
+    },
+    imageBox: {
+        width: 150,
+        height: 150,
+        resizeMode: 'center'
+    },
 }
