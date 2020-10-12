@@ -11,7 +11,7 @@ export default class user {
         this.grade = loginResponse?.user?.gradesections[0]?.grade?.name;
         this.section = loginResponse?.user?.gradesections[0]?.section?.name;
 
-        this.competencylevelFromAPI = parseInt (loginResponse?.user?.competencylevel.level);
+        this.competencylevelFromAPI = loginResponse?.user?.competency && parseInt (loginResponse.user.competency);
         this.userName = loginResponse?.user?.username;
         this.token = loginResponse?.token;
         this.userId = loginResponse?.user?.id;

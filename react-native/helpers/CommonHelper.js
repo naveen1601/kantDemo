@@ -128,7 +128,7 @@ export function getTimeDifferenceInSeconds(startTime, endTime) {
 
 export function getCompetencyFromAttendanceAPI(response, userId) {
 
-    return response?.competencylevel?.level && parseInt(response?.competencylevel?.level);
+    return response?.competency && parseInt(response?.competencylevel);
 }
 
 export async function getTimeFromApi() {

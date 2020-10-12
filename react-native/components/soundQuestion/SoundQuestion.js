@@ -19,11 +19,9 @@ class SoundQuestion extends Component {
                 alert('error' + error.message);
                 return;
             }
-            // alert('Play');
 
             !this.isPlaying &&
                 this.soundQuestion.play(() => {
-                    // alert('Finished');
                     this.setState({
                         isPlayClicked: false
                     });

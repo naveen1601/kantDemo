@@ -73,7 +73,7 @@ export default {
                         message: errorResponse.error.message
                     });
                     const msg = 'getLeadrBeforQu ' + errorResponse.error.message
-                    // alert(msg);
+                    alert(msg);
                     console.log(msg)
 
                     //navigation.replace(Screens.ScheduleQuizScreen)
@@ -118,7 +118,7 @@ export default {
                         message: errorResponse.error.message
                     });
                     const msg = 'AfterQuizError ' + errorResponse?.error?.message + ' QuizID ' + quizId
-                    // alert(msg);
+                    alert(msg);
                     console.log(msg)
                     // navigation.replace(Screens.ScheduleQuizScreen)
                 }
@@ -164,7 +164,7 @@ export default {
                         message: errorResponse.error.message
                     });
                     const tempVal = errorResponse.error.message + ' ' + moment.utc() + '  NxtquizTime ' + currentQuiz?.quizData?.startDate;
-                    // alert(tempVal);
+                    alert(tempVal);
                     console.log('Nxt Atttn error ',errorResponse.error.message);
                     navigation.replace(Screens.ScheduleQuizScreen)
                 }
