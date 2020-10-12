@@ -6,7 +6,6 @@ import OfflineQuizScreenStyles from './OfflineQuizScreenStyles'
 import { connect } from 'react-redux';
 import CountDown from 'react-native-countdown-component';
 import Text from '../../baseComponents/text/Text';
-import TextInput from '../../baseComponents/textInput/TextInput';
 import FlatButton from '../../baseComponents/button/FlatButton';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer';
 import _ from 'lodash'
@@ -19,10 +18,11 @@ import Config from '../../Configs';
 import GuestActions from '../guestScreen/GuestActions';
 import BounceButton from '../../components/bounceButton/BounceButton';
 import QuizConstants from '../quizOptionScreen/QuizConstants';
+import SoundQuestion from '../../components/soundQuestion/SoundQuestion';
+import ImageQuestion from '../../components/imageQuestion/ImageQuestion';
 
 
 class OfflineQuizScreen extends Component {
-
 
     constructor(props) {
         super(props);
@@ -30,7 +30,7 @@ class OfflineQuizScreen extends Component {
         //     this.props.competencyLevelVirtual
         this.state = {
             isAnswerEmpty: false,
-            quiz: findQuestionsForQuiz(this.props.competencyLevel, randomNumberBetweenTwoNum(6, 10))
+            quiz: findQuestionsForQuiz(this.props.competencyLevel, randomNumberBetweenTwoNum(5, 7))
                 .map((item, index) =>
                     ({ ...item, index, showEmptyWarning: false, userAnswer: '', isUserAnswerCorrect: false })),
             currentQuestionIndex: 0,
@@ -63,8 +63,8 @@ class OfflineQuizScreen extends Component {
             userAnswer={currentQuestion.userAnswer}
             onChangeValue={this.handleUserInput}
             quesIndex={currentQuestion.index}
-            isEmptyWarning={currentQuestion.showEmptyWarning} 
-            qaFormat={currentQuestion.qaFormat}/>)
+            isEmptyWarning={currentQuestion.showEmptyWarning}
+            qaFormat={currentQuestion.qaFormat} />)
     }
 
     renderPreviousButton = () => {
@@ -124,8 +124,8 @@ class OfflineQuizScreen extends Component {
         let botsWithScore = updatePairsWithScore(userScore, this.props.botsPair, this.state.quiz.length);
 
         if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.OFFLINE) { this.props.updatecompetencyLevel(this.getNewCompetency(userScore)); }
-        else if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.VIRTUAL) { 
-            this.props.updatecompetencyLevelVirtual(this.getNewCompetency(userScore)); 
+        else if (this.props.selectedQuiz == QuizConstants.QUIZOPTIONS.VIRTUAL) {
+            this.props.updatecompetencyLevelVirtual(this.getNewCompetency(userScore));
         }
 
         this.props.updateScore(botsWithScore);
@@ -177,26 +177,42 @@ class OfflineQuizScreen extends Component {
     }
 
     renderQuizReview = () => {
-        return (
-            <View >
-                {this.state.quiz.map((item, index) => {
-                    const answerStyle = [styles.reviewUserAnswerText];
-                    item.isUserAnswerCorrect ? answerStyle.push(styles.corrrectUserAnswerText) :
-                        answerStyle.push(styles.errorUserAnswerText);
 
-                    return (
-                        <View>
-                            <Text style={styles.reviewQuestionText}>{index + 1}. {item.ques} : {item.questParam}</Text>
-                            <Text style={styles.reviewAnswerText}>Ans. {item.ans}</Text>
-                            <Text style={answerStyle}>Your Ans. {item.userAnswer}</Text>
-                        </View>
-                    )
-                })}
-                {/* <BounceButton
-                    onPress={() => this.props.navigation.replace(Screens.LeadersBoardScreen)}
-                    value={'See Leaderboard22'} /> */}
-            </View>
-        )
+        const comp = this.state.quiz.map((item, index) => {
+            const answerStyle = [styles.reviewUserAnswerText];
+            item.isUserAnswerCorrect ? answerStyle.push(styles.corrrectUserAnswerText) :
+                answerStyle.push(styles.errorUserAnswerText);
+
+            const soundName = (item.qaFormat == 'MP3TXT') ?
+                item.questParam.split(".mp3")[0] : '';
+
+            const imageName = (item.qaFormat == 'IMGTXT') ?
+                item.questParam.split(".jpeg")[0] : '';
+
+            let questionText;
+            let mediaQuestion;
+
+            if (soundName) {
+                mediaQuestion = <SoundQuestion soundName={soundName} />
+            }
+            else if (imageName) { 
+                mediaQuestion = <ImageQuestion imageName={imageName} />
+             }
+            else { 
+                questionText = item.questParam;
+            }
+
+            return (
+                <View>
+                    <Text style={styles.reviewQuestionText}>{index + 1}. {item.ques} : {questionText}</Text>
+                    {mediaQuestion}
+                    <Text style={styles.reviewAnswerText}>Ans. {item.ans}</Text>
+                    <Text style={answerStyle}>Your Ans. {item.userAnswer}</Text>
+                </View>
+            )
+        });
+
+        return comp;
     }
 
     renderQuizSection = () => (
@@ -275,7 +291,7 @@ class OfflineQuizScreen extends Component {
                     <View style={styles.userInfoBox}>
                         <StudentInfoDisplay
                             name={this.props.name}
-                            grade = {gradeSection}
+                            grade={gradeSection}
                             school={this.props.school}
                             position={`Position: ${this.currentUser.serialNum}`}
                             isSmall />

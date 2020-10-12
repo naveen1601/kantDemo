@@ -6,7 +6,8 @@ import TextInput from '../../baseComponents/textInput/TextInput';
 import QuestionAnswerStyles from './QuestionAnswerStyles';
 import { create } from '../../helpers/PlatformSpecificStyles';
 import ImageIndexing from "../../staticData/images";
-import Button from '../../baseComponents/button/Button';
+import SoundQuestion from '../soundQuestion/SoundQuestion';
+import ImageQuestion from '../imageQuestion/ImageQuestion';
 
 class QuestionAnswer extends Component {
 
@@ -14,46 +15,37 @@ class QuestionAnswer extends Component {
         this.props.onChangeValue({ userAnswer, key: this.props.quesIndex })
     }
 
-    renderSoundQuestion = (soundLocation) => {
-        // Sound.setCategory('Playback');
-
-        return (
-            <Button
-                onPress={()=>{}}
-                text={'Play'}
-            />
-        );
-    }
 
     render() {
         let imageName = '';
-        let soundLocation = '';
+        let soundName = '';
         if (this.props.qaFormat == 'IMGTXT') {
             imageName = this.props.questionParam.split(".jpeg")[0];
         }
         else if (this.props.qaFormat == 'MP3TXT') {
-            console.log('soundLocation', soundLocation);
+            soundName = this.props.questionParam.split(".mp3")[0];
+            // console.log('soundName', soundName);
         }
+
         return (
             <View key={this.props.quesIndex}>
                 <View style={styles.questionBoxContainer}>
                     {this.props.question &&
                         <Text style={styles.questionBoxText}>{this.props.question}</Text>
                     }
-                    {!imageName && !soundLocation &&
+                    {!imageName && !soundName &&
                         <Text style={styles.questionBoxText}>{this.props.questionParam}</Text>}
                     {
                         !!imageName &&
-                        <View style={{ alignItems: "center", justifyContent: "center" }}>
-                            <Image source={ImageIndexing[imageName]}
-                                style={styles.imageBox}
-                                resizeMode="contain" />
-                        </View>
+                        <ImageQuestion
+                            imageName={imageName} />
                     }
-                    {/* {
-                        !!soundLocation &&
-                        this.renderSoundQuestion(soundLocation)
-                    } */}
+                    {
+                        !!soundName &&
+                        <SoundQuestion
+                            soundName={soundName} />
+
+                    }
                 </View>
 
                 <View style={styles.answerBoxContainer}>

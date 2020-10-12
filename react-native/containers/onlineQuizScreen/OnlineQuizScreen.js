@@ -16,6 +16,8 @@ import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 import OnlineQuizAction from './OnlineQuizAction';
 import ScheduleLeaderBoardAction from '../scheduleLeaderBoardScreen/ScheduleLeaderBoardAction';
 import Screen from '../screen/Screen';
+import SoundQuestion from '../../components/soundQuestion/SoundQuestion';
+import ImageQuestion from '../../components/imageQuestion/ImageQuestion';
 
 class OnlineQuizScreen extends Component {
 
@@ -177,27 +179,49 @@ class OnlineQuizScreen extends Component {
                 this.fetchOpponentScore();
             }, 7000);
         }
+        let comp;
+
+        comp = this.state.quiz.map((item, index) => {
+            const answerStyle = [styles.reviewUserAnswerText];
+            item.isUserAnswerCorrect ? answerStyle.push(styles.corrrectUserAnswerText) :
+                answerStyle.push(styles.errorUserAnswerText);
+
+            const soundName = (item.qaFormat == 'MP3TXT') ?
+                item.questParam.split(".mp3")[0] : '';
+
+            const imageName = (item.qaFormat == 'IMGTXT') ?
+                item.questParam.split(".jpeg")[0] : '';
+
+            let questionText;
+            let mediaQuestion;
+
+            if (soundName) {
+                mediaQuestion = <SoundQuestion soundName={soundName}/>
+            }
+            else if (imageName) {
+                mediaQuestion = <ImageQuestion imageName={imageName}/>
+            }
+            else {
+                questionText = item.questParam;
+            }
+
+            return (
+                <View>
+                    <Text style={styles.reviewQuestionText}>{index + 1}. {item.ques} : {questionText}</Text>
+                    {mediaQuestion}
+                    <Text style={styles.reviewAnswerText}>Ans. {item.ans}</Text>
+                    <Text style={answerStyle}>Your Ans. {item.userAnswer}</Text>
+                </View>
+            )
+        });
 
         return (
             <>
                 {this.renderTimer(20, 'Calculating score in', this.setParameterToShowScore)}
-                <View >
-                    {this.state.quiz.map((item, index) => {
-                        const answerStyle = [styles.reviewUserAnswerText];
-                        item.isUserAnswerCorrect ? answerStyle.push(styles.corrrectUserAnswerText) :
-                            answerStyle.push(styles.errorUserAnswerText);
-
-                        return (
-                            <View>
-                                <Text style={styles.reviewQuestionText}>{index + 1}. {item.ques} : {item.questParam}</Text>
-                                <Text style={styles.reviewAnswerText}>Ans. {item.ans}</Text>
-                                <Text style={answerStyle}>Your Ans. {item.userAnswer}</Text>
-                            </View>
-                        )
-                    })}
-                </View>
+                {comp}
             </>
         )
+
     }
 
     renderQuizSection = () => (
@@ -273,7 +297,7 @@ class OnlineQuizScreen extends Component {
             else if (this.state.userScore < this.props.opponentScore) {
                 opponentStyle.push(styles.scoreBoxWinner);
             }
-        }
+        } waad
 
 
         return (
