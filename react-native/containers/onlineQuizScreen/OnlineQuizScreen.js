@@ -297,9 +297,7 @@ class OnlineQuizScreen extends Component {
             else if (this.state.userScore < this.props.opponentScore) {
                 opponentStyle.push(styles.scoreBoxWinner);
             }
-        } waad
-
-
+        }
         return (
             <>
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
