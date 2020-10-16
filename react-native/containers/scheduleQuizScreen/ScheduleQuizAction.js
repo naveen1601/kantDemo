@@ -109,7 +109,7 @@ export default {
                     alert(msg);
                     console.log(msg)
 
-                    navigation.replace(Screens.ScheduleQuizScreen);
+                    // navigation.replace(Screens.ScheduleQuizScreen);
 
                 }
             };

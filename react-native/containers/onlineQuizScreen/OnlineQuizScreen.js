@@ -52,6 +52,7 @@ class OnlineQuizScreen extends Component {
     componentWillUnmount() {
         clearTimeout(this.fetchScoreTimeId);
         clearTimeout(this.fetchLeaderBoardTimeId);
+        clearTimeout(this.markAttendanceTimeId);
 
     }
 
@@ -158,8 +159,15 @@ class OnlineQuizScreen extends Component {
         if (!this.fetchedLeaderAfterQuiz) {
             this.fetchLeaderBoardTimeId = setTimeout(() => {
                 this.props.fetchLeadersBoardAfterQuiz(this.props.quizData.id, this.props.userId, this.props.token);
-            }, 7000);
+            }, 6000);
             this.fetchedLeaderAfterQuiz = true;
+        }
+
+        if (!this.nextQuizAttendance) {
+            this.markAttendanceTimeId = setTimeout(() => {
+                this.props.markAttendanceForNextQuiz(this.nextQuiz);
+            }, 12000);
+            this.nextQuizAttendance = true;
         }
 
     }
@@ -177,7 +185,7 @@ class OnlineQuizScreen extends Component {
             this.oponentScoreApiCalled = true;
             this.fetchScoreTimeId = setTimeout(() => {
                 this.fetchOpponentScore();
-            }, 7000);
+            }, 6000);
         }
         let comp;
 
@@ -196,10 +204,10 @@ class OnlineQuizScreen extends Component {
             let mediaQuestion;
 
             if (soundName) {
-                mediaQuestion = <SoundQuestion soundName={soundName}/>
+                mediaQuestion = <SoundQuestion soundName={soundName} />
             }
             else if (imageName) {
-                mediaQuestion = <ImageQuestion imageName={imageName}/>
+                mediaQuestion = <ImageQuestion imageName={imageName} />
             }
             else {
                 questionText = item.questParam;
@@ -217,7 +225,7 @@ class OnlineQuizScreen extends Component {
 
         return (
             <>
-                {this.renderTimer(20, 'Calculating score in', this.setParameterToShowScore)}
+                {this.renderTimer(22, 'Calculating score in', this.setParameterToShowScore)}
                 {comp}
             </>
         )
@@ -285,10 +293,6 @@ class OnlineQuizScreen extends Component {
         const userStyle = [styles.scoreBox];
         console.log('renderScoreBox ', botObject)
 
-        if (!this.nextQuizAttendance) {
-            this.props.markAttendanceForNextQuiz(this.nextQuiz);
-            this.nextQuizAttendance = true;
-        }
 
         if (botObject) {
             if (this.state.userScore > this.props.opponentScore) {
@@ -298,21 +302,33 @@ class OnlineQuizScreen extends Component {
                 opponentStyle.push(styles.scoreBoxWinner);
             }
         }
+
+        const userScoreBox = (<View style={userStyle}>
+            <Text style={styles.displayScoreText}>{this.props.name}</Text>
+            <Text style={styles.displayScoreText}>{this.state.userScore}/{quizLength}</Text>
+            <Text style={styles.displayScoreText}>Correct</Text>
+        </View>);
+
+        const opponentScoreBox = botObject ? (<View style={opponentStyle}>
+            <Text style={styles.displayScoreText}>{botObject.name}</Text>
+            <Text style={styles.displayScoreText}>{this.props.opponentScore}/{quizLength}</Text>
+            <Text style={styles.displayScoreText}>Correct</Text>
+        </View>) : '';
+        let firstBox = userScoreBox;
+        let secondBox = opponentScoreBox;
+
+        if(botObject && this.state.userScore < this.props.opponentScore){
+            secondBox = userScoreBox;
+            firstBox = opponentScoreBox;
+        }
+
         return (
             <>
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
-                {this.renderTimer(5, 'Updating LeaderBoard', this.redirectAfterQuiz)}
+                {this.renderTimer(3, 'Updating LeaderBoard', this.redirectAfterQuiz)}
                 <View style={styles.scoreBoxContainer}>
-                    <View style={userStyle}>
-                        <Text style={styles.displayScoreText}>{this.props.name}</Text>
-                        <Text style={styles.displayScoreText}>{this.state.userScore}/{quizLength}</Text>
-                        <Text style={styles.displayScoreText}>Correct</Text>
-                    </View>
-                    {botObject && <View style={opponentStyle}>
-                        <Text style={styles.displayScoreText}>{botObject.name}</Text>
-                        <Text style={styles.displayScoreText}>{this.props.opponentScore}/{quizLength}</Text>
-                        <Text style={styles.displayScoreText}>Correct</Text>
-                    </View>}
+                    {firstBox}
+                    {secondBox}
                 </View>
             </>)
     }
@@ -325,7 +341,6 @@ class OnlineQuizScreen extends Component {
 
         let isSmall = true;
         let grade;
-        let school = `Roll No. ${this.props.rollNumber}`
         if (!this.botObject) {
             isSmall = false
             grade = this.props.grade + '' + (this.props.section ? this.props.section : '');
@@ -342,12 +357,12 @@ class OnlineQuizScreen extends Component {
                             <StudentInfoDisplay
                                 name={this.props.name}
                                 grade={grade}
-                                school={school}
+                                rollNum={this.props.rollNumber}
                                 isSmall={isSmall}
                                 position={`Position: ${this.currentUser.sequence}`} />
                             {!!this.botObject && <StudentInfoDisplay
                                 name={this.botObject.name}
-                                school={`Roll No. ${this.botObject.rollNumber}`}
+                                rollNum={this.botObject.rollNumber}
                                 isSmall={isSmall}
                                 position={`Position: ${this.botObject.sequence}`} />}
                         </View>

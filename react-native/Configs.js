@@ -8,11 +8,11 @@ export default {
     LEADERBOARD_TIMER: 10,
     GRADE_TIMER: [{
         maxGrade: 12,
-        timer: 75
+        timer: 90
     },
     {
         maxGrade: 8,
-        timer: 90
+        timer: 105
     },
     {
         maxGrade: 5,

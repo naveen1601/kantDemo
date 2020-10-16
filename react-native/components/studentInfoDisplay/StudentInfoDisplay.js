@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 StudentInfoDisplay = (props) => {
 
     let name = props.name ? props.name.toUpperCase() : "";
+    const comptencyLevel = props.compLevel && props.compLevel/100;
 
     const userInitialWrapper = [styles.userInitialWrapper];
     const studentInfoContainer = [styles.studentInfoContainer];
@@ -47,11 +48,14 @@ StudentInfoDisplay = (props) => {
                 {!!props.grade &&
                     <Text style={displayGradeLabel}>{`Grade: ${props.grade}`}</Text>
                 }
+                {!!props.rollNum &&
+                    <Text style={diplaySchool}>{`Roll No. ${props.rollNum}`}</Text>
+                }
                 {!!props.position &&
                     <Text style={diplaySchool}>{props.position}</Text>
                 }
                 {!!props.compLevel &&
-                    <Text style={diplaySchool}>{`Level: ${props.compLevel}`}</Text>
+                    <Text style={diplaySchool}>{`Level: ${comptencyLevel}`}</Text>
                 }
                 {!!props.school &&
                     <Text style={diplaySchool}>{props.school}</Text>

@@ -110,6 +110,7 @@ function changeObjFormat(studentData) {
     status: studentData.status,
     totalQuiz: studentData.total_quiz,
     competency: studentData.competency,
-    correctAnswer: studentData.student_numberOfCorrectAnswer
+    correctAnswer: studentData.student_numberOfCorrectAnswer,
+    firstPositionChange: studentData.positionChangedfixup
   }
 }

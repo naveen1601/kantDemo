@@ -20,6 +20,7 @@ class LeaderBoard extends Component {
                 (bot.status == 'absent') &&
                     userBoxStyle.push(styles.absentBox)
                 isGoingUp = bot.isGoingUp || bot.position == 'up';
+                isFirstUserSame = bot.firstPositionChange == 'fixup';
 
                 const level = bot.competency || 0;
                 const marks = bot.correctAnswer || 0;
@@ -36,6 +37,10 @@ class LeaderBoard extends Component {
                                         style={styles.arrowBox} />
                                 </View>
                             }
+                            {!!isFirstUserSame &&
+                                <View style={styles.circle}>
+                                </View>
+                            }
                             {
                                 (bot.status == 'absent') &&
                                 <Text>Quit</Text>
@@ -44,7 +49,7 @@ class LeaderBoard extends Component {
                         </View>
                         {!bot.id &&
                             <View style={styles.infoBox}>
-                                <Text style={styles.infoText}>Level: {level}</Text>
+                                <Text style={styles.infoText}>Level: {level/100}</Text>
                                 <Text style={styles.infoText}>Marks: {marks}</Text>
                                 <Text style={styles.infoText}>Total Quiz: {totalQuiz}</Text>
                             </View>
@@ -61,7 +66,7 @@ class LeaderBoard extends Component {
 
     render() {
         return (
-            <View style={styles.gradeBoxContainer}>
+            <View>
                 {this.renderLeaderBoard()}
             </View>
         );

@@ -152,8 +152,8 @@ class ScheduleQuizScreen extends Component {
 
     render() {
         const gradeSection = this.props.grade + '' + (this.props.section ? this.props.section : '');
-        const rollNumber = this.props.rollNumber ? `Roll No: ${this.props.rollNumber}` : '';
-        const compLevel = this.props.isLoggedIn ? this.props.competencylevelFromAPI / 100 : '';
+        const rollNumber = this.props.rollNumber ? this.props.rollNumber: '';
+        const compLevel = this.props.isLoggedIn ? this.props.competencylevelFromAPI : '';
 
         return (
             <Screen>
@@ -169,7 +169,7 @@ class ScheduleQuizScreen extends Component {
                         }
                         <StudentInfoDisplay name={this.props.name}
                             grade={gradeSection}
-                            position={rollNumber}
+                            rollNum={rollNumber}
                             school={this.props.school}
                             compLevel={compLevel}
                             schoolCode={this.props.schoolCode} />

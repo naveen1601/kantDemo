@@ -73,7 +73,7 @@ class ScheduleLeaderBoardScreen extends Component {
                 return timeInSeconds - 1;
             }
         }
-        else return 8;
+        else return 7;
 
     }
 
@@ -91,7 +91,7 @@ class ScheduleLeaderBoardScreen extends Component {
         }
         else {
             quizText = 'Leaderboard-Pair';
-            timer = 10;
+            timer = 5;
             screenName = Screens.OnlineQuizScreen;
         }
 

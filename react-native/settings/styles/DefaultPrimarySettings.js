@@ -33,7 +33,7 @@ export default {
         errorLight: '#FEEAE8',
         warning: '#FF8F1C',
         warningLight: '#FFF4E8',
-        success: '#2B8A4D',
+        success: '#CEF5D0',
         successLight: '#E0FBE9',
         info: '#4B96F8',
         infoLight: '#EAF3FF'

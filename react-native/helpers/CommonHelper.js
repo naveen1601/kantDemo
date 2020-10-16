@@ -77,7 +77,7 @@ export function updatePairsWithScore(userScore, botsPair, quizLength) {
 
     botsPair.forEach(pair => {
         pair.forEach(bot => {
-            bot.score = bot.id == 100 ? userScore : randomNumberBetweenTwoNum(quizLength - 6, quizLength);
+            bot.score = bot.id == 100 ? userScore : randomNumberBetweenTwoNum(1, quizLength);
         });
     });
     return botsPair

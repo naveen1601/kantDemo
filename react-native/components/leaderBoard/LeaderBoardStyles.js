@@ -31,6 +31,12 @@ export default {
     },
     infoText:{
         paddingRight:5
+    },
+    circle: {
+        width: 14,
+        height: 14,
+        borderRadius: 14/2,
+        backgroundColor: '#2B8A4D'
     }
 
 }
