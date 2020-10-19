@@ -159,16 +159,16 @@ class OnlineQuizScreen extends Component {
         if (!this.fetchedLeaderAfterQuiz) {
             this.fetchLeaderBoardTimeId = setTimeout(() => {
                 this.props.fetchLeadersBoardAfterQuiz(this.props.quizData.id, this.props.userId, this.props.token);
-            }, 6000);
+            }, 7000);
             this.fetchedLeaderAfterQuiz = true;
         }
 
-        if (!this.nextQuizAttendance) {
-            this.markAttendanceTimeId = setTimeout(() => {
-                this.props.markAttendanceForNextQuiz(this.nextQuiz);
-            }, 12000);
-            this.nextQuizAttendance = true;
-        }
+        // if (!this.nextQuizAttendance) {
+        //     this.markAttendanceTimeId = setTimeout(() => {
+        //         this.props.markAttendanceForNextQuiz(this.nextQuiz);
+        //     }, 14000);
+        //     this.nextQuizAttendance = true;
+        // }
 
     }
 
@@ -185,7 +185,7 @@ class OnlineQuizScreen extends Component {
             this.oponentScoreApiCalled = true;
             this.fetchScoreTimeId = setTimeout(() => {
                 this.fetchOpponentScore();
-            }, 6000);
+            }, 7000);
         }
         let comp;
 
@@ -225,7 +225,7 @@ class OnlineQuizScreen extends Component {
 
         return (
             <>
-                {this.renderTimer(22, 'Calculating score in', this.setParameterToShowScore)}
+                {this.renderTimer(20, 'Calculating score in', this.setParameterToShowScore)}
                 {comp}
             </>
         )
@@ -293,6 +293,10 @@ class OnlineQuizScreen extends Component {
         const userStyle = [styles.scoreBox];
         console.log('renderScoreBox ', botObject)
 
+        if (!this.nextQuizAttendance) {
+            this.props.markAttendanceForNextQuiz(this.nextQuiz);
+            this.nextQuizAttendance = true;
+        }
 
         if (botObject) {
             if (this.state.userScore > this.props.opponentScore) {
@@ -317,7 +321,7 @@ class OnlineQuizScreen extends Component {
         let firstBox = userScoreBox;
         let secondBox = opponentScoreBox;
 
-        if(botObject && this.state.userScore < this.props.opponentScore){
+        if (botObject && this.state.userScore < this.props.opponentScore) {
             secondBox = userScoreBox;
             firstBox = opponentScoreBox;
         }
@@ -325,10 +329,11 @@ class OnlineQuizScreen extends Component {
         return (
             <>
                 <Text style={styles.quizResultLabel}> Quiz Result </Text>
-                {this.renderTimer(3, 'Updating LeaderBoard', this.redirectAfterQuiz)}
+                {this.renderTimer(5, 'Updating LeaderBoard', this.redirectAfterQuiz)}
                 <View style={styles.scoreBoxContainer}>
                     {firstBox}
-                    {secondBox}
+                    {!!secondBox &&
+                        secondBox}
                 </View>
             </>)
     }
@@ -400,7 +405,6 @@ const mapStateToProps = state => {
 export const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
     let actionProps = Object.assign({}, dispatchProps, {
-
         markAttendanceForNextQuiz: (currentQuiz) => {
             dispatchProps.markAttendanceForNextQuiz(currentQuiz, stateProps.userId, stateProps.token)
         }

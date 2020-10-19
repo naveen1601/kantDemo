@@ -91,7 +91,7 @@ class ScheduleLeaderBoardScreen extends Component {
         }
         else {
             quizText = 'Leaderboard-Pair';
-            timer = 5;
+            timer = 7;
             screenName = Screens.OnlineQuizScreen;
         }
 

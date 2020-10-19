@@ -52,7 +52,7 @@ export default {
                         message: errorResponse.error.message
                     });
                     const msg = 'getList ' + errorResponse.error.message
-                    alert(msg);
+                    // alert(msg); 
                     console.log(msg)
 
                     navigation.navigate(Screens.ScheduleQuizScreen)
@@ -106,9 +106,8 @@ export default {
                         message: errorResponse.error.message
                     });
                     const msg = 'markAtte ' + errorResponse.error.message
-                    alert(msg);
+                    //alert(msg);
                     console.log(msg)
-
                     // navigation.replace(Screens.ScheduleQuizScreen);
 
                 }

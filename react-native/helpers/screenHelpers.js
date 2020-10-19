@@ -18,3 +18,12 @@ export const resetScreen = (navigation,screenName) => {
     routes: [{ name: screenName }],
   });
 };
+
+export const navigateScreenOnError = (navigation,screenName) => {
+  let routeLength = navigation.dangerouslyGetState()?.routes.length;
+  if(routeLength){
+
+    if(navigation.dangerouslyGetState()?.routes[routeLength-1]?.name != Screens.QuizOptionScreen)
+      navigation.replace(screenName);
+  }
+};

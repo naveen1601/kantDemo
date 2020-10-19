@@ -26,7 +26,7 @@ export default {
 
             let errorCallback = (errorResponse) => {
                 const msg = 'fetchOpponentScore '+errorResponse.error.message
-                alert(msg);
+                // alert(msg);
                 console.log(msg)
                 
                     dispatch({
@@ -57,7 +57,7 @@ export default {
 
             let errorCallback = (errorResponse) => {
                 const msg = 'sendScoretoDB '+errorResponse.error.message + ' ' +quizId
-                alert(msg);
+                // alert(msg);
                 console.log(msg)
 
                 if (errorResponse.status === 401) {
