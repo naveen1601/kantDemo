@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, AppState } from 'react-native';
 import Button from '../../baseComponents/button/Button';
 import { create } from '../../helpers/PlatformSpecificStyles';
 import OnlineQuizStyles from './OnlineQuizStyles'
@@ -10,7 +10,7 @@ import FlatButton from '../../baseComponents/button/FlatButton';
 import QuestionAnswer from '../../components/questionAnswer/QuestionAnswer';
 import _ from 'lodash'
 import StudentInfoDisplay from '../../components/studentInfoDisplay/StudentInfoDisplay';
-import { getTimerBasedOnGrade, getCompetencyListForOnline, nextQuizData } from '../../helpers/CommonHelper';
+import { getTimerBasedOnGrade, getCompetencyListForOnline, nextQuizData, getTimeFromApi } from '../../helpers/CommonHelper';
 import { findQuestionsForQuiz } from '../../helpers/QuizSetup';
 import { Screens, resetScreen } from '../../helpers/ScreenHelpers';
 import OnlineQuizAction from './OnlineQuizAction';
@@ -18,6 +18,7 @@ import ScheduleLeaderBoardAction from '../scheduleLeaderBoardScreen/ScheduleLead
 import Screen from '../screen/Screen';
 import SoundQuestion from '../../components/soundQuestion/SoundQuestion';
 import ImageQuestion from '../../components/imageQuestion/ImageQuestion';
+import moment from 'moment';
 
 class OnlineQuizScreen extends Component {
 
@@ -49,12 +50,33 @@ class OnlineQuizScreen extends Component {
         this.getStudentAndOpponentFromPair();
     }
 
+    componentDidMount() {
+        AppState.addEventListener("change", this._handleAppStateChange);
+        this.quizOverTime = moment(this.props.currentQuiz.startDate).add((this.quizTimer-3),'s');
+    }
+
     componentWillUnmount() {
         clearTimeout(this.fetchScoreTimeId);
         clearTimeout(this.fetchLeaderBoardTimeId);
         clearTimeout(this.markAttendanceTimeId);
-
+        AppState.removeEventListener("change", this._handleAppStateChange);
     }
+
+    _handleAppStateChange = async(nextAppState) => {
+        if (nextAppState == "active") {
+            console.log("App has come to the foreground!");
+            const currentUtcTime = await getTimeFromApi();
+            if(currentUtcTime > this.quizOverTime){
+                this.props.navigation.replace(Screens.ScheduleQuizScreen);
+            }
+        }
+        else if (nextAppState == "background") {   
+            console.log("App is in  backGround!");
+        }
+        else {
+            console.log("App is in else State");
+        }
+    };
 
     handleUserInput = ({ userAnswer, key }) => {
         let questionWithUserInput = this.state.quiz;
@@ -131,19 +153,6 @@ class OnlineQuizScreen extends Component {
         }
         return isCorrect;
     }
-
-    // renderSubmitButton = () => {
-    //     const isLastQuestion = !(this.state.currentQuestionIndex < this.state.quiz.length - 1);
-    //     const buttonText = "Submit Quiz";
-    //     if (isLastQuestion) {
-    //         return (
-    //             <Button
-    //                 onPress={this.submitQuiz}
-    //                 text={buttonText}
-    //             />
-    //         );
-    //     }
-    // }
 
     renderNextQuestion = () => {
         this.setState({ currentQuestionIndex: ++this.state.currentQuestionIndex });

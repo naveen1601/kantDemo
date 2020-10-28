@@ -167,13 +167,11 @@ export default KantNavigator = () => {
     const _handleAppStateChange = (nextAppState) => {
         if (nextAppState == "active") {
             console.log("App has come to the foreground!");
-            
-
         }
         else if (nextAppState == "background") {
             
             console.log("App is in  backGround!");
-            navigationRef.current.canGoBack() &&
+            navigationRef.current.canGoBack() && navigationRef.current.getCurrentRoute().name != Screens.OnlineQuizScreen &&
                 navigationRef.current.goBack()
         }
         else {
