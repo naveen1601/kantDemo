@@ -74,7 +74,7 @@ export default {
                     });
                     const msg = 'getLeadrBeforQu ' + errorResponse.error.message
                     // alert(msg);
-                    console.log(msg)
+                    //console.log(msg)
 
                     //navigation.replace(Screens.ScheduleQuizScreen)
                 }
@@ -119,7 +119,7 @@ export default {
                     });
                     const msg = 'AfterQuizError ' + errorResponse?.error?.message + ' QuizID ' + quizId
                     // alert(msg);
-                    console.log(msg);
+                    //console.log(msg);
                     // navigation.replace(Screens.ScheduleQuizScreen)
                 }
             };

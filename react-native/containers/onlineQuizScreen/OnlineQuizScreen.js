@@ -318,6 +318,7 @@ class OnlineQuizScreen extends Component {
             <Text style={styles.displayScoreText}>{this.props.opponentScore}/{quizLength}</Text>
             <Text style={styles.displayScoreText}>Correct</Text>
         </View>) : '';
+
         let firstBox = userScoreBox;
         let secondBox = opponentScoreBox;
 
@@ -353,23 +354,35 @@ class OnlineQuizScreen extends Component {
         }
         const quizSequence = (this.props.quizData.sequence_value % 2 == 0) ? 'Even First Pair' : 'Odd First Pair';
 
+        let userInfoComp = (<StudentInfoDisplay
+            name={this.props.name}
+            grade={grade}
+            rollNum={this.props.rollNumber}
+            isSmall={isSmall}
+            position={this.currentUser.sequence} />)
+
+        let oppInfoComp = !!this.botObject ? (<StudentInfoDisplay
+            name={this.botObject.name}
+            rollNum={this.botObject.rollNumber}
+            isSmall={isSmall}
+            position={this.botObject.sequence} />) : null
+
+        let firstBox = userInfoComp;
+        let secondBox = oppInfoComp;
+
+        if (!!this.botObject && this.botObject.sequence > this.currentUser.sequence) {
+            firstBox = oppInfoComp;
+            secondBox = userInfoComp;
+        }
+
         return (
             <Screen>
                 <View style={styles.reviewContainer}>
                     <ScrollView keyboardShouldPersistTaps={'always'}>
                         <View><Text style={styles.displaySequenceText}>{quizSequence}</Text></View>
                         <View style={styles.userInfoBox}>
-                            <StudentInfoDisplay
-                                name={this.props.name}
-                                grade={grade}
-                                rollNum={this.props.rollNumber}
-                                isSmall={isSmall}
-                                position={`Position: ${this.currentUser.sequence}`} />
-                            {!!this.botObject && <StudentInfoDisplay
-                                name={this.botObject.name}
-                                rollNum={this.botObject.rollNumber}
-                                isSmall={isSmall}
-                                position={`Position: ${this.botObject.sequence}`} />}
+                            {firstBox}
+                            {!!this.botObject && secondBox}
                         </View>
                         <View style={styles.OnlineQuizScreen}>
                             {comp}

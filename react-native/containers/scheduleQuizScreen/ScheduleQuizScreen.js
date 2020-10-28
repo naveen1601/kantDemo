@@ -14,7 +14,7 @@ import CountDown from 'react-native-countdown-component';
 import moment from 'moment'
 import Text from '../../baseComponents/text/Text'
 import { Screens } from '../../helpers/ScreenHelpers';
-import { getTimeFromApi } from '../../helpers/CommonHelper';
+import { checkTodayDateQuiz, getTimeFromApi } from '../../helpers/CommonHelper';
 import Screen from '../screen/Screen';
 import ScheduleLeaderBoardAction from '../scheduleLeaderBoardScreen/ScheduleLeaderBoardAction';
 import BounceButton from '../../components/bounceButton/BounceButton';
@@ -56,8 +56,9 @@ class ScheduleQuizScreen extends Component {
 
         for (; i >= 0; i--) {
             const quizEndTime = moment(outerQuiz[i].endDate);
+            const isQuizToday = checkTodayDateQuiz(outerQuiz[i].startDate, currentUtcTime);
             const durationbwEndandCurrent = moment.duration(quizEndTime.diff(currentUtcTime));
-            if (parseInt(durationbwEndandCurrent.asSeconds()) > 110) { //checking for 1 quiz if endtime of quiz > current time
+            if (isQuizToday && parseInt(durationbwEndandCurrent.asSeconds()) > 110) { //checking for 1 quiz if endtime of quiz > current time
 
                 const innerQuiz = outerQuiz[i].quizList;
                 let j = 0;
@@ -136,7 +137,7 @@ class ScheduleQuizScreen extends Component {
             </View >
         ) :
             (<View style={styles.alertContainer}><AlertInfo type="alertInfo"
-                message={'No Active Quiz Found'} />
+                message={'No Quiz Schedule For Today'} />
             </View>);
 
         return comp;

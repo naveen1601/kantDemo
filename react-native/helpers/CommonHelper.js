@@ -150,3 +150,12 @@ export async function getTimeFromApi() {
     return apiDate
 }
 
+export function checkTodayDateQuiz(quizDate, todayDate) {
+    const comingDate = moment(moment(quizDate).format('YYYY-MM-DD'));
+
+    const isTodayDate = moment(todayDate.format('YYYY-MM-DD')).isSame(comingDate);
+
+    return isTodayDate;
+
+}
+

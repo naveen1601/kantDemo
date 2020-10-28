@@ -52,7 +52,7 @@ StudentInfoDisplay = (props) => {
                     <Text style={diplaySchool}>{`Roll No. ${props.rollNum}`}</Text>
                 }
                 {!!props.position &&
-                    <Text style={diplaySchool}>{props.position}</Text>
+                    <Text style={diplaySchool}>{`Position: ${props.position}`}</Text>
                 }
                 {!!props.compLevel &&
                     <Text style={diplaySchool}>{`Level: ${comptencyLevel}`}</Text>
