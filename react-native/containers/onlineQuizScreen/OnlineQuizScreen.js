@@ -331,7 +331,7 @@ class OnlineQuizScreen extends Component {
         let firstBox = userScoreBox;
         let secondBox = opponentScoreBox;
 
-        if (botObject && this.state.userScore < this.props.opponentScore) {
+        if (botObject && botObject.sequence < this.currentUser.sequence) {
             secondBox = userScoreBox;
             firstBox = opponentScoreBox;
         }
@@ -379,7 +379,7 @@ class OnlineQuizScreen extends Component {
         let firstBox = userInfoComp;
         let secondBox = oppInfoComp;
 
-        if (!!this.botObject && this.botObject.sequence > this.currentUser.sequence) {
+        if (!!this.botObject && this.botObject.sequence < this.currentUser.sequence) {
             firstBox = oppInfoComp;
             secondBox = userInfoComp;
         }
